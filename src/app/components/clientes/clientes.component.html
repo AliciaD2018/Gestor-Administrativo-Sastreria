@@ -26,11 +26,13 @@
     <br>
 
     <form action="" method="get" align='right'>
-        <input type="text"  class="forms-control" placeholder="Buscar.." [(ngModel)]="filtropost"
+        <input type="text"  class="forms-control" placeholder="Buscar..." [(ngModel)]="filtropost"
         name="filtropost" border-radius=4px>
         <button type="submit" >Buscar</button>
         
     </form>
+
+    <br>
 
     <tr *ngFor="let post of datos"></tr>
   
@@ -67,7 +69,7 @@
         </ng-container>
       
         <ng-container matColumnDef="borrar">
-          <th mat-header-cell *matHeaderCellDef> Borra? </th>
+          <th mat-header-cell *matHeaderCellDef> Borrar? </th>
           <td mat-cell *matCellDef="let j = index;">
             <i class="material-icons" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)" >delete</i>
           </td>
@@ -80,7 +82,7 @@
       <br>
       <div align='center'> 
         <nav>   
-            <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarCliente" routerLinkActive="registrarCliente">Nuevo</button> 
+            <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarCliente" routerLinkActive="registrarCliente">Agregar cliente</button> 
         </nav>         
         <i class="material-icons">person_add</i>
         

@@ -18,13 +18,16 @@ export class RegistrarClienteComponent implements OnInit {
 
     const nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
     const t1 = (<HTMLInputElement>document.getElementById("telefono1")).value;
+    const notast1 = (<HTMLInputElement>document.getElementById("notasTelefono1")).value;
     const t2 = (<HTMLInputElement>document.getElementById("telefono2")).value;
+    const notast2 = (<HTMLInputElement>document.getElementById("notasTelefono2")).value;
     const cedula = (<HTMLInputElement>document.getElementById("cedula")).value;
     const mail = (<HTMLInputElement>document.getElementById("email")).value;
     const direc = (<HTMLInputElement>document.getElementById("direccion")).value;
+    const obs = (<HTMLInputElement>document.getElementById("observacionesCliente")).value;
 
     const clientes = {
-      nombre, t1, t2, cedula, mail, direc
+      cedula, nombre, t1, notast1, t2, notast2, mail, direc, obs
     }
   } 
 
