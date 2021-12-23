@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-//import esLocale from '@fullcalendar/core/locales/es';
+import esLocale from '@fullcalendar/core/locales/es';
 
 @Component({
   selector: 'app-calendario',
@@ -12,13 +12,13 @@ import interactionPlugin from '@fullcalendar/interaction';
 })
 export class CalendarioComponent implements OnInit {
 
- // public events: any[];
-  //public options: any;
+  public events: any[];
+  public options: any;
 
   constructor() { }
 
   ngOnInit() {
-/*
+
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin,interactionPlugin],
       defaulDate: new Date(),
@@ -49,7 +49,7 @@ export class CalendarioComponent implements OnInit {
         description: "Evento 3"
       },
     ]
-    */
+    
   }
 
 }
