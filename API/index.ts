@@ -8,5 +8,5 @@ const app = express();
 app.use(insertCustomers);
 
 app.listen(PORT,()=>{
-    console.log('Backend started up on port ', PORT);
+    console.log('Backend started up on port: ', PORT, '\n');
 });

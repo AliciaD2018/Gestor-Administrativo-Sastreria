@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000}));
 app.use(bodyParser.json({ limit: '50mb'}));
 
-async function insertCustomer(Cedula: string, NombreCompleto: string, Email: string, Direccion: string,
+async function uspInsertCustomer(Cedula: string, NombreCompleto: string, Email: string, Direccion: string,
                                 Observaciones: string, Telefono1: string, NotasTelefono1: string,
                                 Telefono2: string, NotasTelefono2: string) {
     try{
@@ -36,4 +36,4 @@ async function insertCustomer(Cedula: string, NombreCompleto: string, Email: str
     };
 }
 
-export{insertCustomer}
+export{uspInsertCustomer}

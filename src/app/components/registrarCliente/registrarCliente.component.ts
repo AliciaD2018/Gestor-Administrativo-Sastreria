@@ -1,6 +1,7 @@
 import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { Articulo, ClientesComponent } from '../clientes/clientes.component';
+import { insertCustomers } from 'API/endpoints/insertCustomer';
 
 @Component({
   selector: 'app-registrarCliente',
