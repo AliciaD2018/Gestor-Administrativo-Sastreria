@@ -1,23 +1,40 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br>
+<h1 align="center">
+  Formulario para registro de clientes
+</h1>
 <div class="container">
   <form>
    <div class="form-group">
+    <p>
+      <br>
+      <label>Cédula:</label> <br>
+      <input id="cedula" class="form-control" type="text" placeholder="Ingrese cédula sin espacios ni guiones. Ej.: 301230456"> <br>
+    </p>
     <p>
       <label>Nombre:</label> <br>
       <input id="nombre" class="form-control" type="text" placeholder="Nombre..."><br>
     </p>
     <p>
-      <label>Telefono_1:</label> <br>
+      <label>Teléfono 1:</label> <br>
       <input id="telefono1" class="form-control" type="text" placeholder=""><br>
     </p>
     <p>
-      <label>Telefono_2:</label> <br>
+      <label>Notas teléfono 1:</label> <br>
+      <textarea id="notasTelefono1" class="form-control" type="text" placeholder="">
+      </textarea>
+       <br>
+    </p>
+    <p>
+      <label>Teléfono 2:</label> <br>
       <input id="telefono2" class="form-control" type="text" placeholder=""> <br>
     </p>
     <p>
-      <label>C&eacute;dula:</label> <br>
-      <input id="cedula" class="form-control" type="text" placeholder=""> <br>
+      <label>Notas teléfono 2:</label> <br>
+      <textarea id="notasTelefono2" class="form-control" type="text" placeholder="">
+      </textarea>
+       <br>
     </p>
     <p>
       <label>E-mail:</label> <br>
@@ -27,6 +44,14 @@
       <label>Dirección:</label> <br>
       <input id="direccion" class="form-control" type="text" placeholder=""> <br>
     </p>
-    <button class="btn btn-success" type="submit" (click)="guardarCliente()" >Registrar</button>
+    <p>
+      <label>Observaciones cliente:</label> <br>
+      <textarea id="observacionesCliente" class="form-control" type="text" placeholder="">
+      </textarea>
+       <br>
+    </p>
+    <div align="center">
+      <button class="btn btn-success" type="submit" (click)="guardarCliente()">Registrar</button>
+    </div>
   </div>
 </form>

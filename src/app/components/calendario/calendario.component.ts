@@ -40,13 +40,13 @@ export class CalendarioComponent implements OnInit {
       {
         title: "Evento 2",
         start: new Date(new Date().getTime() + 86400000 ),
-        description: "Evento 3"
+        description: "Evento 2"
       },
       {
-        title: "Evento 3",
-        start: new Date(new Date().getTime() + (86400000 * 2) ),
+        title: "Orden 1289",
+        start: new Date(new Date().getTime() + (86400000 * 2.1) ),
         end: new Date(new Date().getTime() + (86400000 * 3) ),
-        description: "Evento 3"
+        description: "3 pantalones"
       },
     ]
     
