@@ -1,0 +1,61 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br>
+<h1 align="center">
+  Formulario para registro de clientes
+</h1>
+
+<div class="container">
+  <form>
+   <div class="form-group">
+    <p>
+      <br>
+      <label>Cédula:</label> <br>
+      <input id="cedula" class="form-control" type="text" placeholder="Ingrese cédula sin espacios ni guiones. Ej.: 301230456" value="301230456"> <br>
+    </p>
+    <p>
+      <label>Nombre:</label> <br>
+      <input id="nombre" class="form-control" type="text" placeholder="Nombre..." value="Victor Macarena"><br>
+    </p>
+    <p>
+      <label>Teléfono 1:</label> <br>
+      <input id="telefono1" class="form-control" type="text" placeholder="" value="88888888"><br>
+    </p>
+    <p>
+      <label>Notas teléfono 1:</label> <br>
+      <textarea id="notasTelefono1" class="form-control" type="text" placeholder="" >
+        Si no contesta esta chocho
+      </textarea>
+       <br>
+    </p>
+    <p>
+      <label>Teléfono 2:</label> <br>
+      <input id="telefono2" class="form-control" type="text" placeholder="" value="0"> <br>
+    </p>
+    <p>
+      <label>Notas teléfono 2:</label> <br>
+      <textarea id="notasTelefono2" class="form-control" type="text" placeholder="" >
+      </textarea>
+       <br>
+    </p>
+    <p>
+      <label>E-mail:</label> <br>
+      <input id="email" class="form-control" type="text" placeholder="" value="losdelrio@gmail.com"> <br>
+    </p>
+    <p>
+      <label>Dirección:</label> <br>
+      <input id="direccion" class="form-control" type="text" placeholder="" value="Avenida siempre viva"> <br>
+    </p>
+    <p>
+      <label>Observaciones cliente:</label> <br>
+      <textarea id="observacionesCliente" class="form-control" type="text" placeholder="">
+        Ocupo la mudadita para estrenar el 25
+      </textarea>
+       <br>
+    </p>
+    <div align="center">
+      <button class="btn btn-success" type="button"  (click)="guardarCliente()">Agregar</button>
+      <!--routerLink="/clientes"-->
+    </div>
+  </div>
+</form>
