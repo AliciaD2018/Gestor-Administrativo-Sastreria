@@ -1,25 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <header class="header">
     <div class="container logo-nav-container">
-        <a href="#" class='logo'> Sara Lerh Sastrería</a>
-        <nav class='navigation'>
-            <ul>
-                <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
-                <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
-                <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']" > Clientes </a> </li>
-                <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']" > Órdenes</a> </li>
-            </ul>
-        </nav>
+      <a href="#" class='logo'> Sara Lerh Sastrería</a>
+      <nav class='navigation'>
+        <ul>
+          <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
+          <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
+          <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']"> Clientes </a> </li>
+          <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']"> Órdenes</a> </li>
+        </ul>
+      </nav>
     </div>
-</header>
+  </header>
+
+  <br>
+  <br>
   
+  <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono1">
+      <th mat-header-cell *matHeaderCellDef> Telefono_1 </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.telefono1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono2">
+      <th mat-header-cell *matHeaderCellDef> Telefono_2 </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.telefono2}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cedula">
+      <th mat-header-cell *matHeaderCellDef> Cedula </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.cedula}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> E-mail </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef> Dirección </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.direccion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="borrar">
+      <th mat-header-cell *matHeaderCellDef> Borra? </th>
+      <td mat-cell *matCellDef="let j = index;">
+        <i class="material-icons" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">delete</i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+  </table>
+
 </body>
+
 </html>

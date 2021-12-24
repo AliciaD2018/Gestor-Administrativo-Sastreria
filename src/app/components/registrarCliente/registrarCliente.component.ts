@@ -26,6 +26,8 @@ export class RegistrarClienteComponent implements OnInit {
     const clientes = {
       nombre, t1, t2, cedula, mail, direc
     }
+
+    console.log(clientes);
   } 
 
 }
