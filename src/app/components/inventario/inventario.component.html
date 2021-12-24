@@ -28,34 +28,34 @@
   
   <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
 
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.nombre}} </td>
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef> Codigo </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.codigo}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="telefono1">
-      <th mat-header-cell *matHeaderCellDef> Telefono_1 </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.telefono1}} </td>
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="telefono2">
-      <th mat-header-cell *matHeaderCellDef> Telefono_2 </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.telefono2}} </td>
+    <ng-container matColumnDef="descorta">
+      <th mat-header-cell *matHeaderCellDef> Des.corta </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.descorta}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="cedula">
-      <th mat-header-cell *matHeaderCellDef> Cedula </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.cedula}} </td>
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> E-mail </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.email}} </td>
+    <ng-container matColumnDef="fecharegistro">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.fecharegistro}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="direccion">
-      <th mat-header-cell *matHeaderCellDef> Dirección </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.direccion}} </td>
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+      <td mat-cell *matCellDef="let articulo"> {{articulo.cantidad}} </td>
     </ng-container>
 
     <ng-container matColumnDef="borrar">

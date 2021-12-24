@@ -10,12 +10,12 @@ export class InventarioComponent{
 
   filtropost = '';
 
-  columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
+  columnas: string[] = ['codigo', 'descripcion','descorta', 'precio', 'fecharegistro', 'cantidad', 'borrar'];
 
   public datos: Articulo[] = [
-    new Articulo('Alicia Diaz', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
-    new Articulo('Maritza Rivas', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
-    new Articulo('Hector', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
+    new Articulo('1001', 'pantalon jeans', 'panta', '9500', '24/12/2021', '5'),
+    new Articulo('1002', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
+    new Articulo('1003', 'pantalon', 'panta', '9500', '24/12/2021', '5')
   ];
 
   articuloselect: Articulo = new Articulo('', "", '', '', '', '');
@@ -31,9 +31,9 @@ export class InventarioComponent{
 
   
   agregar() {
-    this.datos.push(new Articulo(this.articuloselect.nombre, this.articuloselect.telefono1,
-      this.articuloselect.telefono2, this.articuloselect.cedula,
-      this.articuloselect.email, this.articuloselect.direccion));
+    this.datos.push(new Articulo(this.articuloselect.codigo, this.articuloselect.descripcion,
+      this.articuloselect.descorta, this.articuloselect.precio,
+      this.articuloselect.fecharegistro, this.articuloselect.cantidad));
     this.tabla1.renderRows();
     this.articuloselect = new Articulo('', '', '', '', '', '');
   }
@@ -41,12 +41,12 @@ export class InventarioComponent{
 
 export class Articulo {
   constructor(
-    public nombre: string,
-    public telefono1: string,
-    public telefono2: string,
-    public cedula: string,
-    public email: string,
-    public direccion: string) {
-  }
+    public codigo: string,
+    public descripcion: string,
+    public descorta: string,
+    public precio: string,
+    public fecharegistro: string,
+    public cantidad: string
+    ) { }
 
 }
