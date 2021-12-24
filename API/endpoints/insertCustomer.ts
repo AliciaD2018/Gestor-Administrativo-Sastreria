@@ -3,7 +3,7 @@ import { uspInsertCustomer } from '../controllers/insertCustomerController';
 
 const router = express();
 
-router.get('/api/insertcustomer', (req, res) => {
+router.post('/api/insertcustomer', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
     console.log("Executing endpoint...\n")
