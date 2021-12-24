@@ -11,6 +11,7 @@ app.use(bodyParser.json({ limit: '50mb'}));
 async function uspInsertCustomer(Cedula: string, NombreCompleto: string, Email: string, Direccion: string,
                                 Observaciones: string, Telefono1: string, NotasTelefono1: string,
                                 Telefono2: string, NotasTelefono2: string) {
+    console.log("Executing controller...\n");
     try{
         // Establish connection
         await sql.connect(config);
