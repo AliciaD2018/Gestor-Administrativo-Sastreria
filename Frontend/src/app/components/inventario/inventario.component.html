@@ -25,37 +25,42 @@
 
   <br>
   <br>
+  <h1 align='center'> <b> <u>Lista de Inventario</u></b></h1>
+  <form action="" method="get" align='right'>
+    <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
+  </form>
+  <br>  
   
-  <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
 
     <ng-container matColumnDef="codigo">
       <th mat-header-cell *matHeaderCellDef> Codigo </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.codigo}} </td>
+      <td mat-cell *matCellDef="let inventar"> {{inventar.codigo}} </td>
     </ng-container>
 
     <ng-container matColumnDef="descripcion">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
+      <td mat-cell *matCellDef="let inventar"> {{inventar.descripcion}} </td>
     </ng-container>
 
     <ng-container matColumnDef="descorta">
       <th mat-header-cell *matHeaderCellDef> Des.corta </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.descorta}} </td>
+      <td mat-cell *matCellDef="let inventar"> {{inventar.descorta}} </td>
     </ng-container>
 
     <ng-container matColumnDef="precio">
       <th mat-header-cell *matHeaderCellDef> Precio </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
+      <td mat-cell *matCellDef="let inventar"> {{inventar.precio}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fecharegistro">
       <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.fecharegistro}} </td>
+      <td mat-cell *matCellDef="let inventar"> {{inventar.fecharegistro}} </td>
     </ng-container>
 
     <ng-container matColumnDef="cantidad">
       <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-      <td mat-cell *matCellDef="let articulo"> {{articulo.cantidad}} </td>
+      <td mat-cell *matCellDef="let inventar"> {{inventar.cantidad}} </td>
     </ng-container>
 
     <ng-container matColumnDef="borrar">

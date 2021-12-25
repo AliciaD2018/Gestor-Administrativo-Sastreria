@@ -25,46 +25,44 @@
     <br>
     <br>
 
+          
+    <h1 align='center'> <b> <u>Lista de Clientes</u></b></h1>
     <form action="" method="get" align='right'>
-        <input type="text"  class="forms-control" placeholder="Buscar..." [(ngModel)]="filtropost"
-        name="filtropost" border-radius=4px>
-        <button type="submit" >Buscar</button>  
+      <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
     </form>
 
     <br>
-
-    <tr *ngFor="let post of datos"></tr>
   
-    <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
 
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.nombre}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.nombre}} </td>
         </ng-container>
       
         <ng-container matColumnDef="telefono1">
           <th mat-header-cell *matHeaderCellDef> Telefono_1 </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.telefono1}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.telefono1}} </td>
         </ng-container>
       
         <ng-container matColumnDef="telefono2">
           <th mat-header-cell *matHeaderCellDef> Telefono_2 </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.telefono2}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.telefono2}} </td>
         </ng-container>
 
         <ng-container matColumnDef="cedula">
           <th mat-header-cell *matHeaderCellDef> Cedula </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.cedula}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.cedula}} </td>
         </ng-container>
 
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef> E-mail </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.email}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.email}} </td>
         </ng-container>
 
         <ng-container matColumnDef="direccion">
           <th mat-header-cell *matHeaderCellDef> Dirección </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.direccion}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.direccion}} </td>
         </ng-container>
       
         <ng-container matColumnDef="borrar">

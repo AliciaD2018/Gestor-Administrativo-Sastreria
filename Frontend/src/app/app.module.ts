@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { FiltroPipe } from './components/clientes/filtro.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrarClienteComponent } from './components/registrarCliente/registrarCliente.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
@@ -62,7 +61,6 @@ const routes: Routes = [
     PrincipalComponent,
     ClientesComponent,
     CalendarioComponent,
-    FiltroPipe,
     RegistrarClienteComponent,
     InventarioComponent,
     OrdenesComponent

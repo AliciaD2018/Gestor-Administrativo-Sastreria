@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-inventario',
@@ -28,6 +28,17 @@ export class InventarioComponent{
       this.tabla1.renderRows();
     }
   }
+   //-------Filtro de busqueda
+   dataSource: any;
+   ngOnInit() {
+     this.dataSource = new MatTableDataSource(this.datos);
+   }
+ 
+   filtrar(event: Event) {
+     const filtro = (event.target as HTMLInputElement).value;
+     this.dataSource.filter = filtro.trim().toLowerCase();
+   }
+ 
 
   
   agregar() {

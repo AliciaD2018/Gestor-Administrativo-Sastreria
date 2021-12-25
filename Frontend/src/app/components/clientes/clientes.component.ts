@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { FiltroPipe } from './filtro.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
 
@@ -14,19 +13,22 @@ import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.
 
 
 export class ClientesComponent {
-  filtropost = '';
+  private importa:RegistrarClienteComponent
+  constructor(
+   // private importa:RegistrarClienteComponent
+    ) { }
 
   columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
 
-  public datos: Articulo[] = [
-    new Articulo('Alicia Diaz', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
-    new Articulo('Maritza Rivas', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
-    new Articulo('Hector', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
+  public datos: Clients[] = [
+    new Clients('Alicia Diaz', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
+    new Clients('Maritza Rivas', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
+    new Clients('Hector', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
   ];
 
-  articuloselect: Articulo = new Articulo('', "", '', '', '', '');
+  clientselect: Clients = new Clients('', "", '', '', '', '');
 
-  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
+  @ViewChild(MatTable) tabla1!: MatTable<Clients>;
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
@@ -35,17 +37,43 @@ export class ClientesComponent {
     }
   }
 
-  
-  agregar() {
-    this.datos.push(new Articulo(this.articuloselect.nombre, this.articuloselect.telefono1,
-      this.articuloselect.telefono2, this.articuloselect.cedula,
-      this.articuloselect.email, this.articuloselect.direccion));
-    this.tabla1.renderRows();
-    this.articuloselect = new Articulo('', '', '', '', '', '');
+  //-------Filtro de busqueda
+  dataSource: any;
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.datos);
   }
+
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro.trim().toLowerCase();
+  }
+
+  nuevo(){
+    var nomb=this.importa.guardarCliente().Cedula;
+    var tel1=this.importa.guardarCliente().Telefono1;
+    var tel2=this.importa.guardarCliente().Telefono2;
+    var ced=this.importa.guardarCliente().Cedula;
+    var mail=this.importa.guardarCliente().Email;
+    var dir=this.importa.guardarCliente().Direccion;
+
+    var valor=new Clients(nomb, tel1, tel2, ced, mail, dir)
+    this.datos.push(valor);
+  } 
+ 
+
+  //nombre,telefono1,telefono2,cedula,email,direccion
+  agregar() {
+    this.datos.push(
+      new Clients(this.clientselect.nombre, this.clientselect.telefono1,
+      this.clientselect.telefono2, this.clientselect.cedula,
+      this.clientselect.email, this.clientselect.direccion));
+    this.tabla1.renderRows();
+    this.clientselect = new Clients('', '', '', '', '', '');
+  }
+
 }
 
-export class Articulo {
+export class Clients {
   constructor(
     public nombre: string,
     public telefono1: string,
