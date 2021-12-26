@@ -23,9 +23,7 @@
     </header>
 
     <br>
-    <br>
-
-          
+    <br>     
     <h1 align='center'> <b> <u>Lista de Clientes</u></b></h1>
     <form action="" method="get" align='right'>
       <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
@@ -68,7 +66,7 @@
         <ng-container matColumnDef="borrar">
           <th mat-header-cell *matHeaderCellDef> Borrar? </th>
           <td mat-cell *matCellDef="let j = index;">
-            <i class="material-icons" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)" >delete</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)" >delete</i>
           </td>
         </ng-container>
       
@@ -76,15 +74,19 @@
         <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
       </table>
 
-      <br>
+      <hr>
       <div align='center'> 
         <nav>   
             <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarCliente" routerLinkActive="registrarCliente">Agregar cliente</button> 
-        </nav>         
-        <i class="material-icons">person_add</i>
-        
+            <i class="material-icons">person_add</i>
+            &nbsp;    
+            <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarCliente" routerLinkActive="registrarCliente">Modificar cliente</button> 
+            <i class="material-icons">edit</i>
+          </nav>               
       </div>
+      <hr>
+      <button class="material-icons" (click)="agregar()" ></button>
     
-</body>.
+</body>
 </html>
 

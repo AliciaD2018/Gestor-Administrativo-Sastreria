@@ -26,10 +26,26 @@
   <br>
   <br>
   <h1 align='center'> <b> <u>Lista de Inventario</u></b></h1>
+
+  <hr>
+  <form action="" align='left'>
+    <select name="cars" id="cars" class="forms-control" placeholder="Seleccionar..." border-radius=4px>
+      <optgroup label="Hilos">
+        <option value="" disabled selected hidden>Categorias...</option>
+        <option value="negro">Negro</option>
+        <option value="blanco">Blanco</option>
+      </optgroup>
+      <optgroup label="Telas">
+        <option value="suave">Suave</option>
+        <option value="lisa">Lisa</option>
+      </optgroup>
+    </select>
+  </form>
+
   <form action="" method="get" align='right'>
     <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
   </form>
-  <br>  
+  <hr>  
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
 
@@ -66,7 +82,7 @@
     <ng-container matColumnDef="borrar">
       <th mat-header-cell *matHeaderCellDef> Borra? </th>
       <td mat-cell *matCellDef="let j = index;">
-        <i class="material-icons" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">delete</i>
+        <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">delete</i>
       </td>
     </ng-container>
 
@@ -74,6 +90,17 @@
     <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
   </table>
 
-</body>
+  <hr>
+  <div align='center'> 
+    <nav>   
+        <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarMaterial" routerLinkActive="">Agregar Material</button> 
+        <i class="material-icons">person_add</i>
+        &nbsp;    
+        <button class="material-icons" mat-raised-button focusable="false" routerLink="" routerLinkActive="">Modificar Material</button> 
+        <i class="material-icons">edit</i>
+      </nav>               
+  </div>
+  <hr>
 
+</body>
 </html>

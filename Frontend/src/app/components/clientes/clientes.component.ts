@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { Router, RouterModule } from '@angular/router';
 import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
+import { NodeWithI18n } from '@angular/compiler';
 
 @Component({
   selector: 'app-clientes',
@@ -13,22 +14,24 @@ import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.
 
 
 export class ClientesComponent {
-  private importa:RegistrarClienteComponent
-  constructor(
-   // private importa:RegistrarClienteComponent
-    ) { }
+
+  //importa: RegistrarClienteComponent
+  @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
+
 
   columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
 
   public datos: Clients[] = [
     new Clients('Alicia Diaz', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
-    new Clients('Maritza Rivas', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
-    new Clients('Hector', '86556412', '86556412', '5678908', 'ali@gmail.com', 'SC'),
+    new Clients('Maritza Rivas', '86556412', '86556412', '1119101', 'mari@gmail.com', 'SC'),
+    new Clients('Hector Araya', '86556412', '86556412', '2344390', 'hecti@gmail.com', 'SC'),
   ];
 
   clientselect: Clients = new Clients('', "", '', '', '', '');
 
   @ViewChild(MatTable) tabla1!: MatTable<Clients>;
+
+
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
@@ -48,27 +51,39 @@ export class ClientesComponent {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  nuevo(){
-    var nomb=this.importa.guardarCliente().Cedula;
-    var tel1=this.importa.guardarCliente().Telefono1;
-    var tel2=this.importa.guardarCliente().Telefono2;
-    var ced=this.importa.guardarCliente().Cedula;
-    var mail=this.importa.guardarCliente().Email;
-    var dir=this.importa.guardarCliente().Direccion;
+  //nombre, te1, te2, cedula, email,direccion
+  nuevo() {
+    var nomb = this.importa.guardarCliente().nombre;
+    var tel1 = this.importa.guardarCliente().t1;
+    var tel2 = this.importa.guardarCliente().t2;
+    var ced = this.importa.guardarCliente().cedula;
+    var mail = this.importa.guardarCliente().mail;
+    var dir = this.importa.guardarCliente().direc;
 
-    var valor=new Clients(nomb, tel1, tel2, ced, mail, dir)
+    var valor = new Clients(this.importa.guardarCliente().nombre, this.importa.guardarCliente().t1,
+      this.importa.guardarCliente().t2, this.importa.guardarCliente().cedula, this.importa.guardarCliente().mail,
+      this.importa.guardarCliente().direc)
     this.datos.push(valor);
-  } 
- 
+  }
+
+
 
   //nombre,telefono1,telefono2,cedula,email,direccion
   agregar() {
-    this.datos.push(
-      new Clients(this.clientselect.nombre, this.clientselect.telefono1,
-      this.clientselect.telefono2, this.clientselect.cedula,
-      this.clientselect.email, this.clientselect.direccion));
+    /*     this.datos.push(
+          new Clients(this.clientselect.nombre, this.clientselect.telefono1,
+          this.clientselect.telefono2, this.clientselect.cedula,
+          this.clientselect.email, this.clientselect.direccion)); */
+
+    var valor = new Clients(this.importa.guardarCliente().nombre, this.importa.guardarCliente().t1,
+      this.importa.guardarCliente().t2, this.importa.guardarCliente().cedula, this.importa.guardarCliente().mail,
+      this.importa.guardarCliente().direc)
+    this.datos.push(valor);
+
     this.tabla1.renderRows();
     this.clientselect = new Clients('', '', '', '', '', '');
+
+    console.log(this.datos)
   }
 
 }

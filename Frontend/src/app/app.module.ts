@@ -23,6 +23,7 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 
 import { HttpClientModule } from '@angular/common/http'
+import { RegistrarMaterialComponent } from './components/registrarMaterial/registrarMaterial.component';
 
 const routes: Routes = [
 
@@ -50,7 +51,11 @@ const routes: Routes = [
   {
     path:'ordenes',
     component: OrdenesComponent
-  }
+  },
+  {
+    path:'registrarMaterial',
+    component: RegistrarMaterialComponent
+  },
   
 ];
 
@@ -63,11 +68,11 @@ const routes: Routes = [
     CalendarioComponent,
     RegistrarClienteComponent,
     InventarioComponent,
-    OrdenesComponent
+    OrdenesComponent,
+    RegistrarMaterialComponent
    ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,
     RouterModule.forRoot(routes),
     FullCalendarModule,
     BrowserAnimationsModule,

@@ -1,6 +1,6 @@
 import { DataSource } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
-import { ClientesComponent, Clients } from '../clientes/clientes.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+//import { ClientesComponent } from '../clientes/clientes.component';
 import { ApiService } from '../../services/api/api.service';
 import { CustomerI } from '../../models/customer.interface';
 
@@ -10,7 +10,7 @@ import { CustomerI } from '../../models/customer.interface';
   styleUrls: ['./registrarCliente.component.css']
 })
 export class RegistrarClienteComponent implements OnInit {
-
+  
   constructor(
     private api:ApiService,
     //private importa:ClientesComponent
@@ -36,13 +36,12 @@ export class RegistrarClienteComponent implements OnInit {
       Direccion: direc, Observaciones:obs, Telefono1:t1,
       NotasTelefono1:notast1, Telefono2:t2, NotasTelefono2:notast2
     }
-    return cliente;
-
+    //console.log(cliente);
+    return {nombre,t1,t2,cedula,mail,direc};
+    //this.importa.nuevo(nombre,t1,t2,cedula,mail,direc);
     //this.api.insertCustomer(cliente);
     //console.log(cliente);
-
     //this.importa.agregar(nombre, t1,t2,cedula,mail,direc);
-
     //console.log(this.importa.datos.push)
   
   } 

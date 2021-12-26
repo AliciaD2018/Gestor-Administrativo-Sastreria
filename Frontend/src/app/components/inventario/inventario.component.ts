@@ -8,8 +8,6 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 })
 export class InventarioComponent{
 
-  filtropost = '';
-
   columnas: string[] = ['codigo', 'descripcion','descorta', 'precio', 'fecharegistro', 'cantidad', 'borrar'];
 
   public datos: Articulo[] = [
@@ -39,8 +37,6 @@ export class InventarioComponent{
      this.dataSource.filter = filtro.trim().toLowerCase();
    }
  
-
-  
   agregar() {
     this.datos.push(new Articulo(this.articuloselect.codigo, this.articuloselect.descripcion,
       this.articuloselect.descorta, this.articuloselect.precio,
