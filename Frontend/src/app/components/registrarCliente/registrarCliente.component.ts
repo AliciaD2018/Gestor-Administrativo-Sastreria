@@ -8,7 +8,11 @@ import { ApiService } from '../../services/api/api.service';
   providers: [ ApiService ],
 })
 
+  //@ViewChild(ClientesComponent) importa: ClientesComponent;
+
+ 
 export class RegistrarClienteComponent implements OnInit {
+  public cliente_nuevo: any;
 
   constructor(
     private api: ApiService
@@ -19,29 +23,34 @@ export class RegistrarClienteComponent implements OnInit {
   }
 
   guardarCliente() { //: Object
-    console.log("llega")
+    console.log("llegaa")
 
     const cedula = (<HTMLInputElement>document.getElementById("cedula")).value;
     const nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    const mail = (<HTMLInputElement>document.getElementById("email")).value;
-    const direc = (<HTMLInputElement>document.getElementById("direccion")).value;
+    const email = (<HTMLInputElement>document.getElementById("email")).value;
+    const direccion = (<HTMLInputElement>document.getElementById("direccion")).value;
     const obs = (<HTMLInputElement>document.getElementById("observacionesCliente")).value;
-    const t1 = (<HTMLInputElement>document.getElementById("telefono1")).value;
+    const telefono1 = (<HTMLInputElement>document.getElementById("telefono1")).value;
     const notast1 = (<HTMLInputElement>document.getElementById("notasTelefono1")).value;
-    const t2 = (<HTMLInputElement>document.getElementById("telefono2")).value;
+    const telefono2 = (<HTMLInputElement>document.getElementById("telefono2")).value;
     const notast2 = (<HTMLInputElement>document.getElementById("notasTelefono2")).value;
 
-        const cliente = {
-        Cedula: cedula, NombreCompleto: nombre, Email: mail,
-        Direccion: direc, Observaciones:obs, Telefono1:t1,
-        NotasTelefono1:notast1, Telefono2:t2, NotasTelefono2:notast2
-      }
 
-    this.api.insertCustomer(cliente).subscribe(res =>{
-      console.log('Response: ', res);
-    });
-  
-  } 
+    this.cliente_nuevo = {
+     nombre, cedula, direccion, email, telefono1, telefono2
+    }
 
+    const c = localStorage.getItem("clientes");
+    if (c !== null) {
+      var json_clientes = JSON.parse(c);
+      json_clientes = [...json_clientes, this.cliente_nuevo];
+
+      // guarda temporalmente
+      localStorage.setItem("clientes", JSON.stringify(json_clientes));
+    } else {
+      localStorage.setItem("clientes", this.cliente_nuevo);
+    }
+
+  }
 }
 
