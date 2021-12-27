@@ -79,7 +79,8 @@ const routes: Routes = [
     ModificarClienteComponent,
     InventarioComponent,
     OrdenesComponent,
-    RegistrarMaterialComponent
+    RegistrarMaterialComponent,
+    ModificarInventarioComponent
    ],
   imports: [
     BrowserModule,
