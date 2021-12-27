@@ -1,20 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { RegistrarMaterialComponent } from '../registrarMaterial/registrarMaterial.component';
 
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
-export class InventarioComponent{
+export class InventarioComponent {
 
-  columnas: string[] = ['codigo', 'descripcion','descorta', 'precio', 'fecharegistro', 'cantidad', 'borrar'];
+  @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
-  public datos: Articulo[] = [
-    new Articulo('1001', 'pantalon jeans', 'panta', '9500', '24/12/2021', '5'),
-    new Articulo('1002', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
-    new Articulo('1003', 'pantalon', 'panta', '9500', '24/12/2021', '5')
-  ];
+  columnas: string[] = ['codigo', 'descripcion','descorta', 'preciocompra', 'precioventa','cantidad', 'borrar'];
+
+  public datos: Articulo[] = [];
+  
 
   articuloselect: Articulo = new Articulo('', "", '', '', '', '');
 
@@ -24,12 +24,29 @@ export class InventarioComponent{
     if (confirm("Realmente quiere borrarlo?")) {
       this.datos.splice(cod, 1);
       this.tabla1.renderRows();
+      localStorage.setItem("inventario", JSON.stringify(this.datos));
     }
   }
    //-------Filtro de busqueda
    dataSource: any;
    ngOnInit() {
-     this.dataSource = new MatTableDataSource(this.datos);
+    if (localStorage.getItem("isFirstTime") === "true" || localStorage.getItem("isFirstTime") === null) {
+      this.datos = [
+        new Articulo('1001', 'pantalon jeans', 'panta', '9500', '24/12/2021', '5'),
+        new Articulo('1002', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
+        new Articulo('1003', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
+
+      ]
+      localStorage.setItem("inventario", JSON.stringify(this.datos));
+      localStorage.setItem("isFirstTime", "false");
+    }
+    // extrae los datos del local storage
+    const c = localStorage.getItem("inventario");
+    if (c !== null) {
+      this.datos = JSON.parse(c);
+    }
+
+    this.dataSource = new MatTableDataSource(this.datos);
    }
  
    filtrar(event: Event) {
@@ -37,12 +54,17 @@ export class InventarioComponent{
      this.dataSource.filter = filtro.trim().toLowerCase();
    }
  
-  agregar() {
-    this.datos.push(new Articulo(this.articuloselect.codigo, this.articuloselect.descripcion,
-      this.articuloselect.descorta, this.articuloselect.precio,
-      this.articuloselect.fecharegistro, this.articuloselect.cantidad));
+   agregar(): void {
+    console.log("entra")
+
+    this.importa.guardarInventario();
+    console.log("PRueva");
+    console.log(this.importa.inventario_nuevo)
+
     this.tabla1.renderRows();
     this.articuloselect = new Articulo('', '', '', '', '', '');
+
+    console.log(this.datos)
   }
 }
 

@@ -62,7 +62,7 @@ const routes: Routes = [
     component: ModificarClienteComponent
   },
   {
-    path:'modificarInveentario',
+    path:'modificarInventario',
     component: ModificarInventarioComponent
   },
   

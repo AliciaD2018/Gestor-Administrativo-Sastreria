@@ -8,8 +8,6 @@ import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.
   styleUrls: ['./clientes.component.css'],
 })
 
-
-
 export class ClientesComponent {
 
   @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
@@ -61,19 +59,6 @@ export class ClientesComponent {
   filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
-  }
-
-  nuevo(nombre) {
-    console.log("llega a nuevo")
-
-    var valor = new Clients('malisim', nombre, 'd1', 'd1', 'd1', 'd1')
-    console.log(valor);
-    this.datos.push(valor);
-
-    this.tabla1.renderRows();
-    this.clientselect = new Clients('', '', '', '', '', '');
-
-    console.log(this.datos)
   }
 
   agregar(): void {
