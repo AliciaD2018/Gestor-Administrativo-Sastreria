@@ -8,14 +8,15 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class RegistrarOrdenComponent implements OnInit {
   public orden_nueva: any;
+  private datosalmacenados: any;
+  private numeroOrden: any;
 
   constructor(
     private api: ApiService
-  ) { }
+  ) {this.datosalmacenados = []
+    this.numeroOrden = "" }
 
-  ngOnInit() { 
-    
-  }
+  ngOnInit() { this.datosalmacenados = JSON.parse(localStorage.getItem('ordenes')) }
 
   guardarOrden() {
 
@@ -26,6 +27,12 @@ export class RegistrarOrdenComponent implements OnInit {
     const fechaEntrega = (<HTMLInputElement>document.getElementById("fechaEntrega")).value;
     const cantidadPrendas = (<HTMLInputElement>document.getElementById("cantidadPrendas")).value;
 
+    for (const iterator of this.datosalmacenados) {
+      if (iterator.numeroOrden === numeroOrden) {
+        alert('existe');
+        return;
+      }
+    }
 
     this.orden_nueva = {
      numeroOrden, cliente, costoTotal, saldo, fechaEntrega, cantidadPrendas
