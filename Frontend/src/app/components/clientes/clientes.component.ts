@@ -4,7 +4,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { Router, RouterModule } from '@angular/router';
 import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
-import { NodeWithI18n } from '@angular/compiler';
 
 @Component({
   selector: 'app-clientes',
@@ -52,19 +51,19 @@ export class ClientesComponent {
   }
 
   //nombre, te1, te2, cedula, email,direccion
-  nuevo() {
-    var nomb = this.importa.guardarCliente().nombre;
-    var tel1 = this.importa.guardarCliente().t1;
-    var tel2 = this.importa.guardarCliente().t2;
-    var ced = this.importa.guardarCliente().cedula;
-    var mail = this.importa.guardarCliente().mail;
-    var dir = this.importa.guardarCliente().direc;
+  // nuevo() {
+  //   var nomb = this.importa.guardarCliente().nombre;
+  //   var tel1 = this.importa.guardarCliente().t1;
+  //   var tel2 = this.importa.guardarCliente().t2;
+  //   var ced = this.importa.guardarCliente().cedula;
+  //   var mail = this.importa.guardarCliente().mail;
+  //   var dir = this.importa.guardarCliente().direc;
 
-    var valor = new Clients(this.importa.guardarCliente().nombre, this.importa.guardarCliente().t1,
-      this.importa.guardarCliente().t2, this.importa.guardarCliente().cedula, this.importa.guardarCliente().mail,
-      this.importa.guardarCliente().direc)
-    this.datos.push(valor);
-  }
+  //   var valor = new Clients(this.importa.guardarCliente().nombre, this.importa.guardarCliente().t1,
+  //                           this.importa.guardarCliente().t2, this.importa.guardarCliente().cedula, this.importa.guardarCliente().mail,
+  //                           this.importa.guardarCliente().direc);
+  //   this.datos.push(valor);
+  // }
 
 
 
@@ -75,10 +74,10 @@ export class ClientesComponent {
           this.clientselect.telefono2, this.clientselect.cedula,
           this.clientselect.email, this.clientselect.direccion)); */
 
-    var valor = new Clients(this.importa.guardarCliente().nombre, this.importa.guardarCliente().t1,
-      this.importa.guardarCliente().t2, this.importa.guardarCliente().cedula, this.importa.guardarCliente().mail,
-      this.importa.guardarCliente().direc)
-    this.datos.push(valor);
+    // var valor = new Clients(this.importa.guardarCliente().nombre, this.importa.guardarCliente().t1,
+    //   this.importa.guardarCliente().t2, this.importa.guardarCliente().cedula, this.importa.guardarCliente().mail,
+    //   this.importa.guardarCliente().direc)
+    // this.datos.push(valor);
 
     this.tabla1.renderRows();
     this.clientselect = new Clients('', '', '', '', '', '');

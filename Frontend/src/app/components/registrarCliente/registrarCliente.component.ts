@@ -1,4 +1,3 @@
-import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 //import { ClientesComponent } from '../clientes/clientes.component';
 import { ApiService } from '../../services/api/api.service';
@@ -9,6 +8,7 @@ import { CustomerI } from '../../models/customer.interface';
   templateUrl: './registrarCliente.component.html',
   styleUrls: ['./registrarCliente.component.css']
 })
+
 export class RegistrarClienteComponent implements OnInit {
   
   constructor(
@@ -37,9 +37,11 @@ export class RegistrarClienteComponent implements OnInit {
       NotasTelefono1:notast1, Telefono2:t2, NotasTelefono2:notast2
     }
     //console.log(cliente);
-    return {nombre,t1,t2,cedula,mail,direc};
+    //return {nombre,t1,t2,cedula,mail,direc};
     //this.importa.nuevo(nombre,t1,t2,cedula,mail,direc);
-    //this.api.insertCustomer(cliente);
+    this.api.insertCustomer(cliente).subscribe(res =>{
+      console.log('Response: ', res);
+    });
     //console.log(cliente);
     //this.importa.agregar(nombre, t1,t2,cedula,mail,direc);
     //console.log(this.importa.datos.push)

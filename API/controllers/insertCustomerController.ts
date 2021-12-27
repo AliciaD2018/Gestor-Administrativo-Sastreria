@@ -21,8 +21,8 @@ async function uspInsertCustomer(Cedula: string, NombreCompleto: string, Email: 
 
         // String Query
         let strQuery = 'EXEC uspInsertCustomer ';
-        strQuery += Cedula + ', ' + NombreCompleto + ', ' + Email + ', ' + Direccion + ', ' + Observaciones + ', ' +
-                    Telefono1 + ', ' + NotasTelefono1 + ', ' + Telefono2 + ', ' + NotasTelefono2 + ';';
+        strQuery += Cedula + ', \'' + NombreCompleto + '\', \'' + Email + '\', \'' + Direccion + '\', \'' + Observaciones + '\', ' +
+                    Telefono1 + ', \'' + NotasTelefono1 + '\', ' + Telefono2 + ', \'' + NotasTelefono2 + '\';';
 
         console.log(strQuery);
 
