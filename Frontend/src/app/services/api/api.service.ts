@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CustomerI } from '../../models/customer.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,16 +9,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 })
 export class ApiService {
   
-  private url = "http://localhost:5000/api/insertcustomer";
+  private url = "http://localhost:4400";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  insertCustomer(cliente:CustomerI){
+  insertCustomer(cliente:CustomerI): Observable<any>{
     
     console.log("Comunicating with the API...");
     console.log(cliente);
 
-    return this.http.post(this.url, cliente);
+    return this.http.post<CustomerI>(this.url + "/api/insertcustomer", cliente)
 
     // insertCustomers(cliente.Cedula, cliente.NombreCompleto, cliente.Email,
     //   cliente.Direccion, cliente.Observaciones, cliente.Telefono1,
