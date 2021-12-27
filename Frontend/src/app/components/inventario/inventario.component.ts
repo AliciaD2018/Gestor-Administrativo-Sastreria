@@ -11,10 +11,10 @@ export class InventarioComponent {
 
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
-  columnas: string[] = ['codigo', 'descripcion','descorta', 'preciocompra', 'precioventa','cantidad', 'borrar'];
+  columnas: string[] = [ 'codigo','descripcion','descorta','cantidad', 'fecharegistro','precio', 'borrar'];
 
-  public datos: Articulo[] = [];
-  
+  public datosi: Articulo[] = [];
+
 
   articuloselect: Articulo = new Articulo('', "", '', '', '', '');
 
@@ -22,31 +22,31 @@ export class InventarioComponent {
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.datos.splice(cod, 1);
+      this.datosi.splice(cod, 1);
       this.tabla1.renderRows();
-      localStorage.setItem("inventario", JSON.stringify(this.datos));
+      localStorage.setItem("inventarios", JSON.stringify(this.datosi));
     }
   }
    //-------Filtro de busqueda
    dataSource: any;
    ngOnInit() {
     if (localStorage.getItem("isFirstTime") === "true" || localStorage.getItem("isFirstTime") === null) {
-      this.datos = [
+      this.datosi = [
         new Articulo('1001', 'pantalon jeans', 'panta', '9500', '24/12/2021', '5'),
         new Articulo('1002', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
         new Articulo('1003', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
 
       ]
-      localStorage.setItem("inventario", JSON.stringify(this.datos));
+      localStorage.setItem("inventarios", JSON.stringify(this.datosi));
       localStorage.setItem("isFirstTime", "false");
     }
-    // extrae los datos del local storage
-    const c = localStorage.getItem("inventario");
+    // extrae los datosi del local storage
+    const c = localStorage.getItem("inventarios");
     if (c !== null) {
-      this.datos = JSON.parse(c);
+      this.datosi = JSON.parse(c);
     }
 
-    this.dataSource = new MatTableDataSource(this.datos);
+    this.dataSource = new MatTableDataSource(this.datosi);
    }
  
    filtrar(event: Event) {
@@ -64,18 +64,18 @@ export class InventarioComponent {
     this.tabla1.renderRows();
     this.articuloselect = new Articulo('', '', '', '', '', '');
 
-    console.log(this.datos)
+    console.log(this.datosi)
   }
 }
 
 export class Articulo {
-  constructor(
+  constructor(//'codigo', 'descripcion','descorta', 'precio', 'fecharegistro','cantidad', 'borrar'
+    public cantidad: string,
     public codigo: string,
-    public descripcion: string,
     public descorta: string,
-    public precio: string,
+    public descripcion: string,
     public fecharegistro: string,
-    public cantidad: string
+    public precio: string
     ) { }
 
 }
