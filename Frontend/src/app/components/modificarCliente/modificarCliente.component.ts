@@ -55,7 +55,7 @@ export class ModificarClienteComponent implements OnInit {
     return null;
   }
 
-  modificar() {
+  modificarCliente() {
     console.log('modificando cliente...')
     
     for (const iterator of this.datosalmacenados) {

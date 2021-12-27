@@ -28,19 +28,6 @@
   <h1 align='center'> <b> <u>Lista de Órdenes</u></b></h1>
 
   <hr>
-  <form action="" align='left'>
-    <select name="cars" id="cars" class="forms-control" placeholder="Seleccionar..." border-radius=4px>
-      <optgroup label="Hilos">
-        <option value="" disabled selected hidden>Categorias...</option>
-        <option value="negro">Negro</option>
-        <option value="blanco">Blanco</option>
-      </optgroup>
-      <optgroup label="Telas">
-        <option value="suave">Suave</option>
-        <option value="lisa">Lisa</option>
-      </optgroup>
-    </select>
-  </form>
 
   <form action="" method="get" align='right'>
     <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
@@ -93,11 +80,11 @@
   <hr>
   <div align='center'> 
     <nav>   
-        <button class="material-icons" mat-raised-button focusable="false" routerLink="" routerLinkActive="">Agregar orden</button> 
+        <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarOrden" routerLinkActive="/registrarOrden">Agregar orden</button> 
         &nbsp;
         <i class="material-icons"> library_books</i>
         &nbsp; &nbsp; &nbsp; &nbsp;
-        <button class="material-icons" mat-raised-button focusable="false" routerLink="" routerLinkActive="">Modificar orden</button> 
+        <button class="material-icons" mat-raised-button focusable="false" routerLink="/modificarOrden" routerLinkActive="/modificarOrden">Modificar orden</button> 
         &nbsp;
         <i class="material-icons"> edit</i>
       </nav>               

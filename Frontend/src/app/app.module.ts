@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { RegistrarMaterialComponent } from './components/registrarMaterial/registrarMaterial.component';
 import { ModificarClienteComponent } from './components/modificarCliente/modificarCliente.component';
 import { ModificarInventarioComponent } from './components/modificarInventario/modificarInventario.component';
+import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOrden.component';
+import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
 
 const routes: Routes = [
 
@@ -69,7 +71,14 @@ const routes: Routes = [
     path:'modificarInveentario',
     component: ModificarInventarioComponent
   },
-  
+  {
+    path:'registrarOrden',
+    component: RegistrarOrdenComponent
+  },
+  {
+    path:'modificarOrden',
+    component: ModificarOrdenComponent
+  }
 ];
 
 
@@ -84,7 +93,9 @@ const routes: Routes = [
     InventarioComponent,
     OrdenesComponent,
     RegistrarMaterialComponent,
-    ModificarInventarioComponent
+    ModificarInventarioComponent,
+    RegistrarOrdenComponent,
+    ModificarOrdenComponent
    ],
   imports: [
     BrowserModule,
