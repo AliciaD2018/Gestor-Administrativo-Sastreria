@@ -11,7 +11,7 @@
     <p>
       <br>
       <label>Codigo:</label> <br>
-      <input id="codigo" class="form-control" type="number" placeholder="Codigo.." value="8001"> <br>
+      <input id="codigo" class="form-control" type="text" placeholder="Codigo.." value="8001"> <br>
     </p>
     <p>
       <label>Descripción:</label> <br>
@@ -22,22 +22,22 @@
       <input id="descorta" class="form-control" type="text" placeholder="" value="rojo"><br>
     </p>
     <p>
-      <label>Cantidad:</label> <br>
-      <input id="cantidad" class="form-control" type="number" placeholder=""  value="2">
+      <label>Precio Compra:</label> <br>
+      <input id="precio" class="form-control" type="text" placeholder="" value="4500"> <br>
+    </p>
+    <p>
+      <label>Fecha de Registro:</label> <br>
+      <input id="fecharegistro" class="form-control" type="text" placeholder=""  value="24/12/2021">
        <br>
     </p>
     <p>
-      <label>Precio Compra:</label> <br>
-      <input id="pc" class="form-control" type="number" placeholder="" value="4500"> <br>
-    </p>
-    <p>
-      <label>Precio Venta:</label> <br>
-      <input id="pv" class="form-control" type="number" placeholder=""  value="5800">
+      <label>Cantidad:</label> <br>
+      <input id="cantidad" class="form-control" type="text" placeholder=""  value="2">
        <br>
     </p>
 
     <div align="center">
-      <button class="btn btn-success" type="button"  (click)="null">Agregar</button>
+      <button class="btn btn-success" type="button"  (click)="guardarInventario()">Agregar</button>
       <!--routerLink="/clientes"-->
     </div>
   </div>

@@ -12,15 +12,19 @@ import { ApiService } from '../../services/api/api.service';
 
  
 export class RegistrarClienteComponent implements OnInit {
+  
   public cliente_nuevo: any;
+  private datosalmacenados: any;
+  private cedula: any;
 
   constructor(
     private api: ApiService
-  ) { }
+  ) { 
+    this.datosalmacenados = []
+    this.cedula = ""}
 
-  ngOnInit() { 
-    
-  }
+
+  ngOnInit() { this.datosalmacenados = JSON.parse(localStorage.getItem('clientes')) }
 
   guardarCliente() { //: Object
     console.log("llegaa")
@@ -35,6 +39,12 @@ export class RegistrarClienteComponent implements OnInit {
     const telefono2 = (<HTMLInputElement>document.getElementById("telefono2")).value;
     const notast2 = (<HTMLInputElement>document.getElementById("notasTelefono2")).value;
 
+    for (const iterator of this.datosalmacenados) {
+      if (iterator.cedula === cedula) {
+        alert('existe');
+        return;
+      }
+    }
 
     this.cliente_nuevo = {
      nombre, cedula, direccion, email, telefono1, telefono2
