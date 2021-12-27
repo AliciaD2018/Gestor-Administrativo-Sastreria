@@ -8,9 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000}));
 app.use(bodyParser.json({ limit: '50mb'}));
 
-async function uspDeleteCustomer(Cedula: string, NombreCompleto: string, Email: string, Direccion: string,
-                                Observaciones: string, Telefono1: string, NotasTelefono1: string,
-                                Telefono2: string, NotasTelefono2: string) {
+async function uspSelectCustomer(Cedula: string) {
     try{
         // Establish connection
         await sql.connect(config);
@@ -19,9 +17,8 @@ async function uspDeleteCustomer(Cedula: string, NombreCompleto: string, Email: 
         var request = new sql.Request();
 
         // String Query
-        let strQuery = 'EXEC uspInsertCustomer ';
-        strQuery += Cedula + ', ' + NombreCompleto + ', ' + Email + ', ' + Direccion + ', ' + Observaciones + ', ' +
-                    Telefono1 + ', ' + NotasTelefono1 + ', ' + Telefono2 + ', ' + NotasTelefono2 + ';';
+        let strQuery = 'EXEC uspSelectCustomer ';
+        strQuery += Cedula + ';';
 
         console.log(strQuery);
 
@@ -36,4 +33,4 @@ async function uspDeleteCustomer(Cedula: string, NombreCompleto: string, Email: 
     };
 }
 
-export{uspDeleteCustomer}
+export{uspSelectCustomer}

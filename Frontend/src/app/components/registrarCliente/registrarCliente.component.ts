@@ -4,7 +4,8 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'app-registrarCliente',
   templateUrl: './registrarCliente.component.html',
-  styleUrls: ['./registrarCliente.component.css']
+  styleUrls: ['./registrarCliente.component.css'],
+  providers: [ ApiService ],
 })
 
 export class RegistrarClienteComponent implements OnInit {
@@ -13,7 +14,9 @@ export class RegistrarClienteComponent implements OnInit {
     private api: ApiService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    
+  }
 
   guardarCliente() { //: Object
     console.log("llega")
