@@ -12,4 +12,8 @@ export class ModificarClienteComponent implements OnInit {
   ngOnInit() {
   }
 
+  modificar(){
+    console.log('modificando cliente...')
+  }
+
 }

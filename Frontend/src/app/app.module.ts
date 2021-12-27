@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { FullCalendarModule} from 'primeng/fullcalendar';
 
@@ -17,13 +16,14 @@ import { AppComponent } from './app.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { RegistrarClienteComponent } from './components/registrarCliente/registrarCliente.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { RegistrarMaterialComponent } from './components/registrarMaterial/registrarMaterial.component';
+import { ModificarClienteComponent } from './components/modificarCliente/modificarCliente.component';
 
 const routes: Routes = [
 
@@ -67,6 +67,7 @@ const routes: Routes = [
     ClientesComponent,
     CalendarioComponent,
     RegistrarClienteComponent,
+    ModificarClienteComponent,
     InventarioComponent,
     OrdenesComponent,
     RegistrarMaterialComponent
@@ -81,7 +82,6 @@ const routes: Routes = [
     MatButtonModule,
     FormsModule,
     MatFormFieldModule,
-    NgbModule,
     HttpClientModule
   ],
   providers: [],
