@@ -4,7 +4,8 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'app-registrarCliente',
   templateUrl: './registrarCliente.component.html',
-  styleUrls: ['./registrarCliente.component.css']
+  styleUrls: ['./registrarCliente.component.css'],
+  providers: [ ApiService ],
 })
 
   //@ViewChild(ClientesComponent) importa: ClientesComponent;
@@ -21,6 +22,7 @@ export class RegistrarClienteComponent implements OnInit {
   ) { 
     this.datosalmacenados = []
     this.cedula = ""}
+
 
   ngOnInit() { this.datosalmacenados = JSON.parse(localStorage.getItem('clientes')) }
 

@@ -6,7 +6,7 @@ import { FullCalendarModule} from 'primeng/fullcalendar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path:'inventario',
     component: InventarioComponent
+  },
+  {
+    path:'modificarClientes',
+    component: ModificarClienteComponent
   },
   {
     path:'ordenes',
