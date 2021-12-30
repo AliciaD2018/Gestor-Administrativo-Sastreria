@@ -11,15 +11,20 @@ app.use(bodyParser.json({ limit: '50mb'}));
 async function uspInsertCustomer(Cedula: string, NombreCompleto: string, Email: string, Direccion: string,
                                 Observaciones: string, Telefono1: string, NotasTelefono1: string,
                                 Telefono2: string, NotasTelefono2: string) {
+    
     console.log("Executing controller...\n");
+    
     try{
         // Establish connection
+        console.log("Establishing connection to DB...");
         await sql.connect(config);
 
         // Creates Request object
+        console.log("Creating request...");
         var request = new sql.Request();
 
         // String Query
+        console.log("Building the string query..");
         let strQuery = 'EXEC uspInsertCustomer ';
         strQuery += Cedula + ', \'' + NombreCompleto + '\', \'' + Email + '\', \'' + Direccion + '\', \'' + Observaciones + '\', ' +
                     Telefono1 + ', \'' + NotasTelefono1 + '\', ' + Telefono2 + ', \'' + NotasTelefono2 + '\';';
@@ -27,6 +32,7 @@ async function uspInsertCustomer(Cedula: string, NombreCompleto: string, Email: 
         console.log(strQuery);
 
         // Executes string query
+        console.log("Executing query...");
         await request.query(strQuery);
 
         console.log("Insertion successfully: Customer");

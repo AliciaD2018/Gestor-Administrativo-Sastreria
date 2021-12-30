@@ -15,14 +15,10 @@ export class ApiService {
 
   insertCustomer(cliente:CustomerI): Observable<any>{
     
-    console.log("Comunicating with the API...");
-    console.log(cliente);
+    console.log("Comunicating with the API (api.service.ts)...");
+    //console.log(cliente);
 
     return this.http.post<CustomerI>(this.url + "/api/insertcustomer", cliente)
-
-    // insertCustomers(cliente.Cedula, cliente.NombreCompleto, cliente.Email,
-    //   cliente.Direccion, cliente.Observaciones, cliente.Telefono1,
-    //   cliente.NotasTelefono1, cliente.Telefono2, cliente.NotasTelefono2);
   }
 
 }

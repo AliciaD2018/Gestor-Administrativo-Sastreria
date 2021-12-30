@@ -24,8 +24,7 @@
     </p>
     <p>
       <label>Notas teléfono 1:</label> <br>
-      <textarea id="notasTelefono1" class="form-control" type="text" placeholder="" >
-        Si no contesta esta chocho
+      <textarea id="notasTelefono1" class="form-control" type="text" placeholder="" >Si no contesta esta chocho
       </textarea>
        <br>
     </p>
@@ -49,13 +48,12 @@
     </p>
     <p>
       <label>Observaciones cliente:</label> <br>
-      <textarea id="observacionesCliente" class="form-control" type="text" placeholder="">
-        Ocupo la mudadita para estrenar el 25
+      <textarea id="observacionesCliente" class="form-control" type="text" placeholder="">Ocupo la mudadita para estrenar el 25
       </textarea>
        <br>
     </p>
     <div align="center">
-      <button class="btn btn-success" type="button" routerLink="/clientes" (click)="guardarCliente()">Agregar</button>
+      <button class="btn btn-success" type="button" (click)="insertarCliente()">Agregar</button>
       <!--routerLink="/clientes"-->
     </div>
   </div>

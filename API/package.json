@@ -1,8 +1,8 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "API for backend of Sistema Gestor Sastreria",
-  "main": "index.js",
+  "description": "API for backend of Sistema Gestor de Sastreria",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.ts"
@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^6.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "mssql": "^7.1.0",
-    "cors": "^2.8.5",
     "tedious": "^11.0.9"
   },
   "devDependencies": {

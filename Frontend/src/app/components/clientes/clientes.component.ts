@@ -64,7 +64,7 @@ export class ClientesComponent {
   agregar(): void {
     console.log("entra")
 
-    this.importa.guardarCliente();
+    this.importa.insertarCliente();
     console.log("PRueva");
     console.log(this.importa.cliente_nuevo)
 
