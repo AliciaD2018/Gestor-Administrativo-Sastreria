@@ -65,7 +65,7 @@ export class ClientesComponent {
     console.log("entra")
 
     this.importa.insertarCliente();
-    console.log("PRueva");
+    console.log("Prueba");
     console.log(this.importa.cliente_nuevo)
 
     this.tabla1.renderRows();

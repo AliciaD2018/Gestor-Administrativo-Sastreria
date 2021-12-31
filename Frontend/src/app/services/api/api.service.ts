@@ -1,24 +1,43 @@
 import { Injectable } from '@angular/core';
 import { CustomerI } from '../../models/customer.interface';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  private url = "http://localhost:4500";
+
+  constructor() { }
+
+  insertCustomer(cliente: CustomerI) {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json", );
+
+    const clienteJSON = {
+      Cedula: cliente.Cedula,
+      NombreCompleto: cliente.NombreCompleto,
+      Email: cliente.Email,
+      Direccion: cliente.Direccion,
+      Observaciones: cliente.Observaciones,
+      Telefono1: cliente.Telefono1,
+      NotasTelefono1: cliente.NotasTelefono1,
+      Telefono2: cliente.Telefono2,
+      NotasTelefono2: cliente.NotasTelefono2
+    }
+
+    // Generado con postman
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(clienteJSON)
+    };
+
+    return fetch(this.url + `/api/insertcustomer?cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}&telefono1=${cliente.Telefono1}&notasTelefono1=${cliente.NotasTelefono1}&telefono2=${cliente.Telefono2}&notasTelefono2=${cliente.NotasTelefono2}`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   
-  private url = "http://localhost:4400";
-
-  constructor(private http: HttpClient) { }
-
-  insertCustomer(cliente:CustomerI): Observable<any>{
-    
-    console.log("Comunicating with the API (api.service.ts)...");
-    //console.log(cliente);
-
-    return this.http.post<CustomerI>(this.url + "/api/insertcustomer", cliente)
   }
-
 }
