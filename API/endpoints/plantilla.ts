@@ -2,9 +2,9 @@ import express from 'express';
 // CAMBIAR POR CONTROLLER CORRECTO
 import { insertCustomer } from '../controllers/insertCustomerController';
 
-const app = express();
+const router = express();
 
-app.get('/api/insertcustomer', (req, res) => {
+router.get('/api/insertcustomer', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
     try{
@@ -20,4 +20,4 @@ app.get('/api/insertcustomer', (req, res) => {
 });
 
 // CAMBIAR NOMBRE DE EXPORTACION
-export {app as insertCustomers}
+export {router as insertCustomers}

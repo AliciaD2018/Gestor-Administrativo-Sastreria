@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CustomerI } from '../../models/customer.interface';
+import { materialsI } from '../../models/materials.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,13 @@ import { CustomerI } from '../../models/customer.interface';
 export class ApiService {
 
   private url = "http://localhost:4500";
-
+  private myHeaders = new Headers();
+  
   constructor() { }
 
   insertCustomer(cliente: CustomerI) {
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json", );
+    this.myHeaders.append("Content-Type", "application/json", );
 
     const clienteJSON = {
       Cedula: cliente.Cedula,
@@ -30,7 +31,7 @@ export class ApiService {
     // Generado con postman
     var requestOptions = {
       method: 'POST',
-      headers: myHeaders,
+      headers: this.myHeaders,
       body: JSON.stringify(clienteJSON)
     };
 
@@ -38,6 +39,18 @@ export class ApiService {
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
-  
+  }
+
+  async selectMaterialsInventory(){
+    this.myHeaders.append("Content-Type", "application/json", );
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectmaterialsinventory`, requestOptions)
+    let materiales = await respuesta.json();
+    return materiales['materiales'];
   }
 }

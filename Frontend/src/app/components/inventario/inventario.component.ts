@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { RegistrarMaterialComponent } from '../registrarMaterial/registrarMaterial.component';
+import { ApiService } from '../../services/api/api.service';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-inventario',
@@ -9,12 +11,15 @@ import { RegistrarMaterialComponent } from '../registrarMaterial/registrarMateri
 })
 export class InventarioComponent {
 
+  constructor(private api: ApiService) { }
+
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
-  columnas: string[] = [ 'codigo','descripcion','descorta','cantidad', 'fecharegistro','precio', 'borrar'];
+  columnas: string[] = ['codigo', 'descripcion', 'categoria', 'cantidad', 'fecharegistro', 'precio', 'borrar'];
 
-  public datosi: Articulo[] = [];
+  private datos: Array<Articulo> = [];
 
+  //datos.push({cantidad:material['Cantidad'],codigo:material['Codigo'],categoria:material['Categoria'],descripcion:material['Descripcion'],fecharegistro:material['FechaRegistro'],precio:material['PrecioVenta']});
 
   articuloselect: Articulo = new Articulo('', "", '', '', '', '');
 
@@ -22,60 +27,53 @@ export class InventarioComponent {
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.datosi.splice(cod, 1);
+      this.datos.splice(cod, 1);
       this.tabla1.renderRows();
-      localStorage.setItem("inventarios", JSON.stringify(this.datosi));
     }
   }
-   //-------Filtro de busqueda
-   dataSource: any;
-   ngOnInit() {
-    if (localStorage.getItem("isFirstTime") === "true" || localStorage.getItem("isFirstTime") === null) {
-      this.datosi = [
-        new Articulo('1001', 'pantalon jeans', 'panta', '9500', '24/12/2021', '5'),
-        new Articulo('1002', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
-        new Articulo('1003', 'pantalon', 'panta', '9500', '24/12/2021', '5'),
-
-      ]
-      localStorage.setItem("inventarios", JSON.stringify(this.datosi));
-      localStorage.setItem("isFirstTime", "false");
-    }
-    // extrae los datosi del local storage
-    const c = localStorage.getItem("inventarios");
-    if (c !== null) {
-      this.datosi = JSON.parse(c);
-    }
-
-    this.dataSource = new MatTableDataSource(this.datosi);
-   }
- 
-   filtrar(event: Event) {
-     const filtro = (event.target as HTMLInputElement).value;
-     this.dataSource.filter = filtro.trim().toLowerCase();
-   }
- 
-   agregar(): void {
-    console.log("entra")
-
-    this.importa.guardarInventario();
-    console.log("PRueva");
-    console.log(this.importa.inventario_nuevo)
-
-    this.tabla1.renderRows();
-    this.articuloselect = new Articulo('', '', '', '', '', '');
-
-    console.log(this.datosi)
+  //-------Filtro de busqueda
+  dataSource: any;
+  ngOnInit() {
+    
+    
+    this.agregar();
   }
+
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro.trim().toLowerCase();
+  }
+
+  agregar(): void {
+    let materiales = this.api.selectMaterialsInventory().then(
+      function (result) {
+        let datos2: Array<Articulo> = [];
+        // console.log(result[0]);
+        for (let index = 0; index < result.length; index++) {
+          const material = result[index];
+          // console.log(material['Descripcion']);
+          datos2.push({cantidad:material['Cantidad'],codigo:material['Codigo'],categoria:material['Categoria'],descripcion:material['Descripcion'],fecharegistro:material['FechaRegistro'],precio:material['PrecioVenta']});
+        }
+        console.log(datos2);
+        return datos2;
+      }
+    );
+    console.log(materiales);
+    this.datos.push({cantidad:'13',codigo:'TEL015',categoria:'TELAS',descripcion:'TELA BARATA',fecharegistro:'05/01/2022',precio:'890'});
+    const articulos = JSON.stringify(this.datos);
+    this.datos = JSON.parse(articulos);
+    this.dataSource = new MatTableDataSource(this.datos);
+  }  
 }
 
 export class Articulo {
-  constructor(//'codigo', 'descripcion','descorta', 'precio', 'fecharegistro','cantidad', 'borrar'
+  constructor(//'codigo', 'descripcion','categoria', 'precio', 'fecharegistro','cantidad', 'borrar'
     public cantidad: string,
     public codigo: string,
-    public descorta: string,
+    public categoria: string,
     public descripcion: string,
     public fecharegistro: string,
     public precio: string
-    ) { }
+  ) { }
 
 }
