@@ -30,7 +30,7 @@ async function NOMBRE(VARIAB: string) {
     }catch(error){
         console.log("Something went wrong");
         //console.log(error.message);
-    };
+    }
 }
 
 export{NOMBRE}
