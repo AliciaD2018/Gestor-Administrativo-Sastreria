@@ -4,8 +4,6 @@ import { uspInsertCustomer } from '../controllers/insertCustomerController';
 const router = express();
 
 router.post('/api/insertcustomer', (req, res) => {
-    // req.header("Access-Control-Allow-Origin", "*");
-    // req.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     try{
         uspInsertCustomer(<string>(req.query['cedula']), <string>(req.query['nombreCompleto']), <string>(req.query['email']),
