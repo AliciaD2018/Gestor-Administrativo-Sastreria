@@ -2,9 +2,11 @@ import express from 'express';
 // CAMBIAR POR CONTROLLER CORRECTO
 import { uspSelectCustomer } from '../controllers/selectClientesController';
 
-const app = express();
+const router = express();
+const cors = require('cors');
+router.use(cors());
 
-app.get('/api/selectcustomer', (req, res) => {
+router.get('/api/selectcustomer', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
     try{
@@ -18,4 +20,4 @@ app.get('/api/selectcustomer', (req, res) => {
 });
 
 // CAMBIAR NOMBRE DE EXPORTACION
-export {app as selectCustomers}
+export {router as selectCustomers}

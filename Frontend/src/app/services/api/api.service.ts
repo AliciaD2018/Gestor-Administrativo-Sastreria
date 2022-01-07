@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CustomerI } from '../../models/customer.interface';
-import { materialsI } from '../../models/materials.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +7,15 @@ import { materialsI } from '../../models/materials.interface';
 export class ApiService {
 
   private url = "http://localhost:4500";
+  // private url = "https://sistemagestorsastreria.herokuapp.com/";
   private myHeaders = new Headers();
   
   constructor() { }
 
   insertCustomer(cliente: CustomerI) {
+    console.clear();
 
-    this.myHeaders.append("Content-Type", "application/json", );
+    this.myHeaders.append("Content-Type", "application/json");
 
     const clienteJSON = {
       Cedula: cliente.Cedula,
@@ -42,8 +43,11 @@ export class ApiService {
   }
 
   async selectMaterialsInventory(){
-    this.myHeaders.append("Content-Type", "application/json", );
+    console.clear();
+    
+    this.myHeaders.append('Content-Type', 'application/json');
 
+    console.log("api.service")
     var requestOptions = {
       method: 'GET',
       headers: this.myHeaders,

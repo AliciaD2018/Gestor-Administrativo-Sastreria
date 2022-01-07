@@ -3,6 +3,16 @@ import { uspInsertCustomer } from '../controllers/insertCustomerController';
 
 const router = express();
 
+// router.use((req, res, next) => {
+//     res.append('Access-Control-Allow-Origin', ['*']);
+//     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.append('Access-Control-Allow-Headers', 'Content-Type');
+//     next();
+// });
+
+const cors = require('cors');
+router.use(cors());
+
 router.post('/api/insertcustomer', (req, res) => {
 
     try{
