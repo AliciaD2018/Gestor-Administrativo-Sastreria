@@ -1,13 +1,6 @@
-import { response } from "express";
 import { config } from "../config";
 
-var express = require('express');
-var app = express();
 var sql = require("mssql");
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000}));
-app.use(bodyParser.json({ limit: '50mb'}));
 
 async function uspSelectMaterialsInventory() {
     try{
@@ -30,7 +23,7 @@ async function uspSelectMaterialsInventory() {
 
     }catch(error){
         console.log("Something went wrong");
-        //console.log(error.message);
+        console.log(error);
     };
 }
 

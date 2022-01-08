@@ -3,13 +3,8 @@ import { uspInsertCustomer } from '../controllers/insertCustomerController';
 
 const router = express();
 
-// router.use((req, res, next) => {
-//     res.append('Access-Control-Allow-Origin', ['*']);
-//     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//     res.append('Access-Control-Allow-Headers', 'Content-Type');
-//     next();
-// });
-
+// Gestiona los headers para recursos de origenes cruzados (CORS)
+// Debe ir antes de la ruta
 const cors = require('cors');
 router.use(cors());
 

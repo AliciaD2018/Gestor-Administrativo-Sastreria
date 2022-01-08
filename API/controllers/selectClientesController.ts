@@ -29,7 +29,7 @@ async function uspSelectCustomer(Cedula: string) {
 
     }catch(error){
         console.log("Something went wrong");
-        //console.log(error.message);
+        console.log(error);
     };
 }
 

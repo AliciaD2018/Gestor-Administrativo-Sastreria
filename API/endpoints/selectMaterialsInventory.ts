@@ -2,6 +2,9 @@ import express from 'express';
 import { uspSelectMaterialsInventory } from '../controllers/selectMaterialsInventoryController';
 
 const router = express();
+
+// Gestiona los headers para recursos de origenes cruzados (CORS)
+// Debe ir antes de la ruta
 const cors = require('cors');
 router.use(cors());
 
