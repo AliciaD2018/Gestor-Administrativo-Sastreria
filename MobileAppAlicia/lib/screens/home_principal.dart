@@ -24,7 +24,7 @@ class _Home_PrincipalState extends State<Home_Principal> {
       body: Center(
         child: Column(
           children: <Widget>[
-            const Text('......'),
+            const Text('.:....).'),
             RaisedButton(
                 child: const Text('Lista de Materiales Faltantes'),
                 onPressed: () => {
