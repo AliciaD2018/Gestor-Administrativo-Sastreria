@@ -1,6 +1,6 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter_app_sastreria/screens/home_principal.dart';
+import 'package:flutter_app_sastreria/views/home_principal.dart';
 
 void main() {
   runApp(MyApp());

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app_sastreria/screens/lista_faltantes.dart';
-import 'package:flutter_app_sastreria/screens/lista_ordenes.dart';
+// import 'package:flutter_app_sastreria/screens/lista_ordenes.dart';
 
 // ignore: camel_case_types
 class Home_Principal extends StatefulWidget {
@@ -33,14 +33,14 @@ class _Home_PrincipalState extends State<Home_Principal> {
                           MaterialPageRoute(
                               builder: (context) => Lista_Faltantes()))
                     }),
-            RaisedButton(
-                child: const Text('Lista Pendientes Semanal'),
-                onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Lista_Ordenes()))
-                    })
+            // RaisedButton(
+            //     child: const Text('Lista Pendientes Semanal'),
+            //     onPressed: () => {
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                   builder: (context) => const Lista_Ordenes()))
+            //         })
           ],
         ),
       ),
