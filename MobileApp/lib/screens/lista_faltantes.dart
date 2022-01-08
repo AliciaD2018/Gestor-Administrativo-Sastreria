@@ -1,17 +1,15 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, avoid_print
 
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_app_sastreria/models/claseMaterial.dart';
-
 import 'package:flutter_app_sastreria/models/Articulo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+bool tonoColor = false;
+
 class Lista_Faltantes extends StatelessWidget {
-  Lista_Faltantes({Key? key}) : super(key: key);
+  const Lista_Faltantes({Key? key}) : super(key: key);
 
   Future<List<Articulo>> _selectMaterials() async {
     String url = 'http://localhost:4500/api/selectmaterialsinventory';
@@ -19,19 +17,19 @@ class Lista_Faltantes extends StatelessWidget {
     List<Articulo> articulos = [];
 
     if (response.statusCode == 200) {
-      //print(response.body);
       String strData = utf8.decode(response.bodyBytes);
       final jsonData = jsonDecode(strData);
+      List elementos = jsonData['materiales'];
 
-      // for (var item in jsonData["data"]) {
-      //   articulos.add(Articulo(
-      //       codigo: item["Codigo"],
-      //       categoria: item["Categoria"],
-      //       descripcion: item["Descripcion"],
-      //       cantidad: item["Cantidad"]));
-      // }
+      for (var i = 0; i < elementos.length; i++) {
+        articulos.add(Articulo(
+            codigo: elementos[i]["Codigo"],
+            categoria: elementos[i]["Categoria"],
+            descripcion: elementos[i]["Descripcion"],
+            cantidad: elementos[i]["Cantidad"]));
+      }
 
-      print(articulos);
+      // print(articulos);
       return articulos;
     } else {
       throw Exception("Connection failed");
@@ -40,32 +38,64 @@ class Lista_Faltantes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _selectMaterials();
-    return new MaterialApp(
+    Future<List<Articulo>> inventario = _selectMaterials();
+    return MaterialApp(
         title: 'Materiales',
-        theme: new ThemeData(
+        theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-            appBar: AppBar(title: Text('Articulos Faltantes')),
-            body: new ListView(
-              children: materiales.map(_buildItem).toList(),
+            appBar: AppBar(
+              title: Text('Articulos Faltantes'),
+            ),
+            body: FutureBuilder(
+              future: inventario,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView(
+                    children: _buildItem(snapshot.data),
+                  );
+                } else if (snapshot.hasError) {
+                  print(snapshot.error);
+                  return Text("Error");
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             )));
   }
 }
 
-Widget _buildItem(Materiales articulo) {
-  return new ListTile(
-    title: new Text(articulo.categoria),
-    subtitle: Column(children: <Widget>[
-      new Text('Descripcion: ${articulo.descripcion}'),
-      new Text('Cantidad: ${articulo.cantidad}'),
-    ]),
-    tileColor: Colors.blue.shade100,
-    leading: new Icon(Icons.checkroom),
-    contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-    onTap: () {
-      print(articulo.codigo);
-    },
-  );
+List<Widget> _buildItem(datos) {
+  List<Widget> inventario = [];
+  Color colorLinea;
+
+  for (var articulo in datos) {
+    tonoColor = !tonoColor;
+
+    if (tonoColor) {
+      colorLinea = Colors.blueGrey.shade200;
+    } else {
+      colorLinea = Colors.blueGrey.shade400;
+    }
+
+    inventario.add(ListTile(
+      title: Text(articulo.categoria),
+      subtitle: Column(children: <Widget>[
+        Text('Descripcion: ${articulo.descripcion}',
+            style: new TextStyle(fontWeight: FontWeight.bold)),
+        Text('Cantidad: ${articulo.cantidad}',
+            style: new TextStyle(fontWeight: FontWeight.bold)),
+      ]),
+      tileColor: colorLinea,
+      leading: Icon(Icons.checkroom),
+      contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+      onTap: () {
+        print(articulo.codigo);
+      },
+    ));
+  }
+
+  return inventario;
 }

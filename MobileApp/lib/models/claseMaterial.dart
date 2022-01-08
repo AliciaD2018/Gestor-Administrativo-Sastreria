@@ -12,6 +12,8 @@ class Materiales {
 }
 
 final materiales = [
-  new Materiales(codigo: 001, categoria: 'Tela', descripcion: 'Europe tela', cantidad: 10),
-  new Materiales(codigo: 002, categoria: 'Tela', descripcion: 'spain tela', cantidad: 8),
+  const Materiales(
+      codigo: 001, categoria: 'Tela', descripcion: 'Europe tela', cantidad: 10),
+  const Materiales(
+      codigo: 002, categoria: 'Tela', descripcion: 'spain tela', cantidad: 8),
 ];

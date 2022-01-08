@@ -1,5 +1,5 @@
 class Articulo {
-  final int codigo;
+  final String codigo;
   final String categoria;
   final String descripcion;
   final int cantidad;
