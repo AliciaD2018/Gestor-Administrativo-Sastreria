@@ -33,20 +33,32 @@ export class CalendarioComponent implements OnInit {
 
     this.events = [
       {
-        title: "Evento 1",
+        title: "Orden 1284",
         start: new Date(),
-        description: "Evento 1"
       },
       {
-        title: "Evento 2",
-        start: new Date(new Date().getTime() + 86400000 ),
-        description: "Evento 2"
+        title: "Orden 1288",
+        start: new Date(),
       },
       {
         title: "Orden 1289",
-        start: new Date(new Date().getTime() + (86400000 * 2.1) ),
-        end: new Date(new Date().getTime() + (86400000 * 3) ),
-        description: "3 pantalones"
+        start: new Date(2022, 0, 10, 16, 30, 0, 0),
+      },
+      {
+        title: "Orden 1290",
+        start: new Date(2022, 0, 10, 8, 1, 0, 0),
+      },
+      {
+        title: "Orden 1292",
+        start: new Date(2022, 0, 10, 14, 45, 0, 0),
+      },
+      {
+        title: "Orden 1292",
+        start: new Date(2022, 0, 13, 13, 5, 0, 0),
+      },
+      {
+        title: "Orden 1292",
+        start: new Date(2022, 0, 14, 3, 30, 0, 0),
       },
     ]
     
