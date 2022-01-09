@@ -42,7 +42,7 @@ class Lista_Faltantes extends StatelessWidget {
     return MaterialApp(
         title: 'Materiales',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.teal,
         ),
         home: Scaffold(
             appBar: AppBar(
@@ -68,6 +68,7 @@ class Lista_Faltantes extends StatelessWidget {
 }
 
 List<Widget> _buildItem(datos) {
+  bool value = false;
   List<Widget> inventario = [];
   Color colorLinea;
 
@@ -75,9 +76,9 @@ List<Widget> _buildItem(datos) {
     tonoColor = !tonoColor;
 
     if (tonoColor) {
-      colorLinea = Colors.blueGrey.shade200;
+      colorLinea = Color.fromARGB(255, 169, 218, 243);
     } else {
-      colorLinea = Colors.blueGrey.shade400;
+      colorLinea = Color.fromARGB(255, 107, 186, 226);
     }
 
     inventario.add(ListTile(
@@ -87,15 +88,24 @@ List<Widget> _buildItem(datos) {
             style: new TextStyle(fontWeight: FontWeight.bold)),
         Text('Cantidad: ${articulo.cantidad}',
             style: new TextStyle(fontWeight: FontWeight.bold)),
+        Checkbox(value: value, onChanged: estado()),
       ]),
       tileColor: colorLinea,
       leading: Icon(Icons.checkroom),
       contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+      iconColor: Colors.black,
       onTap: () {
         print(articulo.codigo);
       },
     ));
   }
-
   return inventario;
+}
+
+estado() {
+  Colors.amber;
+  onChanged:
+  (bool value) {
+      value = true;
+  };
 }
