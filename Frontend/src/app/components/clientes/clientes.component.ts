@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ApiService } from 'src/app/services/api/api.service';
 import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
 
 @Component({
@@ -10,6 +11,9 @@ import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.
 
 export class ClientesComponent {
 
+  constructor(private api: ApiService) {
+  }
+  
   @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
 
 
@@ -32,28 +36,7 @@ export class ClientesComponent {
   //-------Filtro de busqueda
   dataSource: any;
   ngOnInit() {
-
-    if (localStorage.getItem("isFirstTime") === "true" || localStorage.getItem("isFirstTime") === null) {
-      this.datos = [
-        new Clients('Alicia Diaz', '86556412', '64864723', '5678908', 'ali@gmail.com', 'SC'),
-        new Clients('Maritza Rivas', '64864723', '86556412', '1119101', 'mari@gmail.com', 'SC'),
-        new Clients('Rony Araya', '87654321', '86556412', '2344390', 'hecti@gmail.com', 'Garabito'),
-        new Clients('Trinidad Perez', '89765432', '67009898', '5578908', 'tri@gmail.com', 'Santa Rosa'),
-        new Clients('Rosa Rivas', '67009898', '81234567', '9119101', 'ross@gmail.com', 'SC'),
-        new Clients('Tomas Venegas', '81234567', '86556412', '3344390', 'joan@gmail.com', 'SC'),
-
-      ]
-      localStorage.setItem("clientes", JSON.stringify(this.datos));
-      localStorage.setItem("isFirstTime", "false");
-    }
-    // extrae los datos del local storage
-    const c = localStorage.getItem("clientes");
-    if (c !== null) {
-      this.datos = JSON.parse(c);
-    }
-
-    this.dataSource = new MatTableDataSource(this.datos);
-
+    this.agregarCliente();
   }
 
   filtrar(event: Event) {
@@ -61,17 +44,28 @@ export class ClientesComponent {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  agregar(): void {
-    console.log("entra")
+  agregarCliente(): void {
+    const promise = this.api.selectCustomer().then()
+    promise.then((data) => {
+      console.log(JSON.stringify(data));
+      for (var index of data) {
 
-    this.importa.insertarCliente();
-    console.log("Prueba");
-    console.log(this.importa.cliente_nuevo)
+        this.datos.push({
+          nombre: index['Nombre'], telefono1: index['Telefono'],
+          telefono2: index['Telefono'], cedula: index['Cedula'],
+          email: index['Email'], direccion: index['Direccion']
+        });
+        //console.log(index);
+      }
 
-    this.tabla1.renderRows();
-    this.clientselect = new Clients('', '', '', '', '', '');
+      //Se realiza la carga en la tabla general html del inventario.
+      const articulos = JSON.stringify(this.datos);
+      this.datos = JSON.parse(articulos);
+      this.dataSource = new MatTableDataSource(this.datos);
 
-    console.log(this.datos)
+    }).catch((error) => {
+      console.log("Promise rejected with " + JSON.stringify(error));
+    });
   }
 
 }

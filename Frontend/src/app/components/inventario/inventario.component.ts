@@ -12,10 +12,8 @@ import { DataSource } from '@angular/cdk/collections';
 })
 export class InventarioComponent implements OnInit {
 
-  public info: Array<any>;
 
   constructor(private api: ApiService) {
-    this.info = [];
   }
 
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
