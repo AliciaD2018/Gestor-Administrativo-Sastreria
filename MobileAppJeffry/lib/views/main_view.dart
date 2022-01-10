@@ -18,15 +18,23 @@ class _main_viewState extends State<main_view> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sistema Gestor de Sastrería\nSara Lehr'),
-        backgroundColor: Colors.green.shade200,
+        backgroundColor: Colors.green.shade600,
       ),
-      backgroundColor: const Color.fromARGB(255, 211, 209, 209),
+      backgroundColor: Colors.green.shade200,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Row(
+              children: [
+                Expanded(
+                  child: Image.asset('images/portadasastre2.png'),
+                ),
+              ],
+            ),
             RaisedButton(
                 child: const Text('Lista Semanal Órdenes Pendientes'),
+                color: Colors.green.shade400,
                 onPressed: () => {
                       Navigator.push(
                           context,

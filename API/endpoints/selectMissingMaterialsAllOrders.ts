@@ -10,8 +10,6 @@ router.use(cors());
 
 router.get('/api/selectmissingmaterialsallorders', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-
-    console.log("endpoint");
     
     try{
         uspSelectMissingMaterialsAllOrders()
