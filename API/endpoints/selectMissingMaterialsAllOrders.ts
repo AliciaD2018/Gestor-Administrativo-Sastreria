@@ -1,5 +1,5 @@
 import express from 'express';
-import { uspSelectMaterialsInventory } from '../controllers/selectMaterialsInventoryController';
+import { uspSelectMissingMaterialsAllOrders } from '../controllers/selectMissingMaterialsAllOrdersController';
 
 const router = express();
 
@@ -11,11 +11,10 @@ router.use(cors());
 router.get('/api/selectmissingmaterialsallorders', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
-
     console.log("endpoint");
     
     try{
-        uspSelectMaterialsInventory()
+        uspSelectMissingMaterialsAllOrders()
         .then( response => {
             // console.log(response);
             res.status(200).send({

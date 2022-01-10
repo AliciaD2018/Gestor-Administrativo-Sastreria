@@ -55,7 +55,7 @@ class _Home_PrincipalState extends State<Home_Principal> {
     
               children: [
                 new Expanded(
-                  child: new Image.asset('assets/portadasastre.png'),
+                  child: new Image.asset('image/portadasastre.png'),
                 ),
               ],
             ),

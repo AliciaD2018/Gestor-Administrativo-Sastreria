@@ -1,14 +1,14 @@
 class Articulo {
-  final String codigo;
   final String categoria;
   final String descripcion;
   final int cantidad;
+  final String unidadMedida;
 
   const Articulo(
-      {required this.codigo,
-      required this.categoria,
+      {required this.categoria,
       required this.descripcion,
-      required this.cantidad});
+      required this.cantidad,
+      required this.unidadMedida});
 }
 
 // final materiales = [

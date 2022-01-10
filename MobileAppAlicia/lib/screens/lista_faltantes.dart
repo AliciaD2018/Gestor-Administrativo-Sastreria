@@ -12,21 +12,21 @@ class Lista_Faltantes extends StatelessWidget {
   const Lista_Faltantes({Key? key}) : super(key: key);
 
   Future<List<Articulo>> _selectMaterials() async {
-    String url = 'http://192.168.0.148:4500/api/selectmaterialsinventory';
+    String url = 'http://192.168.1.3:4500/api/selectmissingmaterialsallorders';
     final response = await http.get(Uri.parse(url));
     List<Articulo> articulos = [];
 
     if (response.statusCode == 200) {
       String strData = utf8.decode(response.bodyBytes);
       final jsonData = jsonDecode(strData);
-      List elementos = jsonData['materiales'];
+      List elementos = jsonData['materialesfaltantestodaslasordenes'];
 
       for (var i = 0; i < elementos.length; i++) {
         articulos.add(Articulo(
-            codigo: elementos[i]["Codigo"],
-            categoria: elementos[i]["Categoria"],
+            categoria: elementos[i]["CategoriaMaterial"],
             descripcion: elementos[i]["Descripcion"],
-            cantidad: elementos[i]["Cantidad"]));
+            cantidad: elementos[i]["Cantidad"],
+            unidadMedida: elementos[i]['Simbolo']));
       }
 
       // print(articulos);
@@ -86,7 +86,7 @@ List<Widget> _buildItem(datos) {
       subtitle: Column(children: <Widget>[
         Text('Descripcion: ${articulo.descripcion}',
             style: new TextStyle(fontWeight: FontWeight.bold)),
-        Text('Cantidad: ${articulo.cantidad}',
+        Text('Cantidad: ${articulo.cantidad} ${articulo.unidadMedida}',
             style: new TextStyle(fontWeight: FontWeight.bold)),
         Checkbox(value: value, onChanged: estado()),
       ]),
@@ -95,7 +95,7 @@ List<Widget> _buildItem(datos) {
       contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
       iconColor: Colors.black,
       onTap: () {
-        print(articulo.codigo);
+        print(articulo.descripcion);
       },
     ));
   }
@@ -106,6 +106,6 @@ estado() {
   Colors.amber;
   onChanged:
   (bool value) {
-      value = true;
+    value = true;
   };
 }
