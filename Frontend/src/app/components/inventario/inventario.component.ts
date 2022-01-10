@@ -54,11 +54,11 @@ export class InventarioComponent implements OnInit {
       //console.log(JSON.stringify(data));
       for (var material of materiales) {
 
-        // this.datos.push({
-        //   codigo: material['Codigo'], categoria: material['Categoria'],
-        //   descripcion: material['Descripcion'], cantidad: material['Cantidad'],
-        //   precio: material['PrecioVenta'], fecharegistro: material['FechaRegistro']
-        // });
+        this.datos.push({
+          codigo: material['Codigo'], categoria: material['Categoria'],
+          descripcion: material['Descripcion'], cantidad: material['Cantidad'], unidadmedida: material['Simbolo'],
+          precio: material['PrecioVenta'], fecharegistro: material['FechaRegistro']
+        });
         //console.log(index);
       }
 
