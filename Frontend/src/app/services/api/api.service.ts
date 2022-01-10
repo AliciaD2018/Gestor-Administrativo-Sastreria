@@ -57,4 +57,19 @@ export class ApiService {
     let materiales = await respuesta.json();
     return materiales['materiales'];
   }
+
+  async selectCustomer(){
+    console.clear();
+    
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectcustomer`, requestOptions)
+    let cliente = await respuesta.json();
+    return cliente['clientes'];
+  }
 }

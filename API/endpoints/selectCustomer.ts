@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import { uspSelectCustomer } from '../controllers/selectClientesController';
 
 const router = express();
@@ -11,13 +11,19 @@ router.use(cors());
 router.get('/api/selectcustomer', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
-    try{
+    try {
         uspSelectCustomer(<string>(req.query['cedula']))
-    }catch(err){
+        .then( response => {
+            // console.log(response);
+            res.status(200).send({
+                clientes: response
+            });
+        });
+    } catch (err) {
         res.status(500).send({
             error: err
         });
     }
 });
 
-export {router as selectCustomers}
+export { router as selectCustomers }
