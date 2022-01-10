@@ -1,5 +1,20 @@
-2022/01/09-20:15:57.328 40d8 Log #3: 3 ops saved to Table #4 OK
-2022/01/09-20:15:57.335 40d8 Archiving C:\Users\jeffr\AppData\Local\Temp\flutter_tools.178702ed\flutter_tools_chrome_device.1150dadc\Default\Site Characteristics Database/000003.log: OK
-2022/01/09-20:15:57.335 40d8 Table #4: 3 entries OK
-2022/01/09-20:15:57.340 40d8 Archiving C:\Users\jeffr\AppData\Local\Temp\flutter_tools.178702ed\flutter_tools_chrome_device.1150dadc\Default\Site Characteristics Database/MANIFEST-000001: OK
-2022/01/09-20:15:57.821 40d8 **** Repaired leveldb C:\Users\jeffr\AppData\Local\Temp\flutter_tools.178702ed\flutter_tools_chrome_device.1150dadc\Default\Site Characteristics Database; recovered 1 files; 226 bytes. Some data may have been lost. ****
+2022/01/09-20:57:41.456 25ec Reusing MANIFEST C:\Users\alicia\AppData\Local\Temp\flutter_tools.abe2ed8f\flutter_tools_chrome_device.e63ff5fb\Default\Site Characteristics Database/MANIFEST-000001
+2022/01/09-20:57:41.457 25ec Recovering log #3
+2022/01/09-20:57:41.457 25ec Level-0 table #10: started
+2022/01/09-20:57:41.459 25ec Level-0 table #10: 226 bytes OK
+2022/01/09-20:57:41.459 25ec Recovering log #6
+2022/01/09-20:57:41.459 25ec Level-0 table #11: started
+2022/01/09-20:57:41.461 25ec Level-0 table #11: 168 bytes OK
+2022/01/09-20:57:41.462 25ec Recovering log #10
+2022/01/09-20:57:41.462 25ec Reusing old log C:\Users\alicia\AppData\Local\Temp\flutter_tools.abe2ed8f\flutter_tools_chrome_device.e63ff5fb\Default\Site Characteristics Database/000010.log 
+2022/01/09-20:57:41.464 25ec Delete type=0 #3
+2022/01/09-20:57:41.464 25ec Delete type=0 #6
+2022/01/09-20:57:41.465 1998 Compacting 5@0 + 0@1 files
+2022/01/09-20:57:41.469 1998 Generated table #12@0: 2 keys, 197 bytes
+2022/01/09-20:57:41.469 1998 Compacted 5@0 + 0@1 files => 197 bytes
+2022/01/09-20:57:41.470 1998 compacted to: files[ 0 1 0 0 0 0 0 ]
+2022/01/09-20:57:41.471 1998 Delete type=2 #4
+2022/01/09-20:57:41.471 1998 Delete type=2 #7
+2022/01/09-20:57:41.471 1998 Delete type=2 #8
+2022/01/09-20:57:41.471 1998 Delete type=2 #10
+2022/01/09-20:57:41.471 1998 Delete type=2 #11
