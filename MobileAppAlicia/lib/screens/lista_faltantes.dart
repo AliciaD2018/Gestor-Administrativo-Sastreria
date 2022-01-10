@@ -12,7 +12,7 @@ class Lista_Faltantes extends StatelessWidget {
   const Lista_Faltantes({Key? key}) : super(key: key);
 
   Future<List<Articulo>> _selectMaterials() async {
-    String url = 'http://192.168.1.3:4500/api/selectmissingmaterialsallorders';
+    String url = 'http://192.168.0.148:4500/api/selectmissingmaterialsallorders';
     final response = await http.get(Uri.parse(url));
     List<Articulo> articulos = [];
 
@@ -87,8 +87,7 @@ List<Widget> _buildItem(datos) {
         Text('Descripcion: ${articulo.descripcion}',
             style: new TextStyle(fontWeight: FontWeight.bold)),
         Text('Cantidad: ${articulo.cantidad} ${articulo.unidadMedida}',
-            style: new TextStyle(fontWeight: FontWeight.bold)),
-        Checkbox(value: value, onChanged: estado()),
+            style: new TextStyle(fontWeight: FontWeight.bold))
       ]),
       tileColor: colorLinea,
       leading: Icon(Icons.checkroom),
@@ -102,10 +101,3 @@ List<Widget> _buildItem(datos) {
   return inventario;
 }
 
-estado() {
-  Colors.amber;
-  onChanged:
-  (bool value) {
-    value = true;
-  };
-}

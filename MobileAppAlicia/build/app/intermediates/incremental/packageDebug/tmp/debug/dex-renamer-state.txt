@@ -1,4 +1,4 @@
-#Sat Jan 08 21:34:19 CST 2022
-base.0=C\:\\Users\\alicia\\Documents\\VERANO\\Proyecto de Software\\SistemaGestor-Sastreria\\MobileAppAlicia\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sun Jan 09 21:18:51 CST 2022
+base.0=C\:\\Users\\alicia\\Documents\\VERANO\\SistemaGestor-Sastreria\\MobileAppAlicia\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
