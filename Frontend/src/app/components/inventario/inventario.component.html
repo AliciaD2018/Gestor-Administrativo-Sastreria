@@ -51,32 +51,37 @@
 
     <ng-container matColumnDef="codigo">
       <th mat-header-cell *matHeaderCellDef> Codigo </th>
-      <td mat-cell *matCellDef="let inventar"> {{inventar.codigo}} </td>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.codigo}} </td>
     </ng-container>
 
     <ng-container matColumnDef="descripcion">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let inventar"> {{inventar.descripcion}} </td>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.descripcion}} </td>
     </ng-container>
 
     <ng-container matColumnDef="categoria">
-      <th mat-header-cell *matHeaderCellDef> Des.categoria </th>
-      <td mat-cell *matCellDef="let inventar"> {{inventar.categoria}} </td>
+      <th mat-header-cell *matHeaderCellDef> Categoria </th>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.categoria}} </td>
     </ng-container>
 
     <ng-container matColumnDef="precio">
       <th mat-header-cell *matHeaderCellDef> Precio </th>
-      <td mat-cell *matCellDef="let inventar"> {{inventar.precio}} </td>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.precio}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fecharegistro">
       <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
-      <td mat-cell *matCellDef="let inventar"> {{inventar.fecharegistro}} </td>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
     </ng-container>
 
     <ng-container matColumnDef="cantidad">
       <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-      <td mat-cell *matCellDef="let inventar"> {{inventar.cantidad}} </td>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.cantidad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unidadmedida">
+      <th mat-header-cell *matHeaderCellDef> Unidad de medida </th>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.unidadmedida}} </td>
     </ng-container>
 
     <ng-container matColumnDef="borrar">

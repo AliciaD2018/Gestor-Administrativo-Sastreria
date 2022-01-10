@@ -1,5 +1,6 @@
 import { insertCustomers } from './endpoints/insertCustomer';
 import { SelectMaterialsInventory } from './endpoints/selectMaterialsInventory';
+import { selectMissingMaterialsAllOrders } from './endpoints/selectMissingMaterialsAllOrders';
 
 var express = require('express');
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(insertCustomers);
 app.use(SelectMaterialsInventory);
+app.use(selectMissingMaterialsAllOrders);
 
 app.listen(PORT,()=>{
     console.log('Backend listening on port: ', PORT, '\n');

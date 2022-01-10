@@ -12,7 +12,7 @@ class missing_materials extends StatelessWidget {
   const missing_materials({Key? key}) : super(key: key);
 
   Future<List<Articulo>> _selectMaterials() async {
-    String url = 'http://localhost:4500/api/selectmaterialsinventory';
+    String url = 'http://192.168.1.3:4500/api/selectmaterialsinventory';
     final response = await http.get(Uri.parse(url));
     List<Articulo> articulos = [];
 

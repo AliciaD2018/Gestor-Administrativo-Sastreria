@@ -15,13 +15,13 @@ export class InventarioComponent {
 
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
-  columnas: string[] = ['codigo', 'descripcion', 'categoria', 'cantidad', 'fecharegistro', 'precio', 'borrar'];
+  columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'borrar'];
 
   private datos: Array<Articulo> = [];
 
   //datos.push({cantidad:material['Cantidad'],codigo:material['Codigo'],categoria:material['Categoria'],descripcion:material['Descripcion'],fecharegistro:material['FechaRegistro'],precio:material['PrecioVenta']});
 
-  articuloselect: Articulo = new Articulo('', "", '', '', '', '');
+  articuloselect: Articulo = new Articulo('', '', '', '', '', '', '');
 
   @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
 
@@ -34,8 +34,8 @@ export class InventarioComponent {
   //-------Filtro de busqueda
   dataSource: any;
   ngOnInit() {
-    
-    
+
+
     this.agregar();
   }
 
@@ -52,26 +52,27 @@ export class InventarioComponent {
         for (let index = 0; index < result.length; index++) {
           const material = result[index];
           // console.log(material['Descripcion']);
-          datos2.push({cantidad:material['Cantidad'],codigo:material['Codigo'],categoria:material['Categoria'],descripcion:material['Descripcion'],fecharegistro:material['FechaRegistro'],precio:material['PrecioVenta']});
+          datos2.push({ codigo: material['Codigo'], categoria: material['Categoria'], descripcion: material['Descripcion'], cantidad: material['Cantidad'], unidadmedida: material['UnidadMedida'], precio: material['PrecioVenta'], fecharegistro: material['FechaRegistro']});
         }
         console.log(datos2);
         return datos2;
       }
     );
     console.log(materiales);
-    this.datos.push({cantidad:'13',codigo:'TEL015',categoria:'TELAS',descripcion:'TELA BARATA',fecharegistro:'05/01/2022',precio:'890'});
+    this.datos.push({ codigo: 'TEL015', categoria: 'TELAS', descripcion: 'TELA BARATA', cantidad: '13', unidadmedida: 'm',fecharegistro: '05/01/2022', precio: '890' });
     const articulos = JSON.stringify(this.datos);
     this.datos = JSON.parse(articulos);
     this.dataSource = new MatTableDataSource(this.datos);
-  }  
+  }
 }
 
 export class Articulo {
-  constructor(//'codigo', 'descripcion','categoria', 'precio', 'fecharegistro','cantidad', 'borrar'
-    public cantidad: string,
+  constructor(//'codigo','categoria' , 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'borrar'
     public codigo: string,
     public categoria: string,
     public descripcion: string,
+    public cantidad: string,
+    public unidadmedida: string,
     public fecharegistro: string,
     public precio: string
   ) { }
