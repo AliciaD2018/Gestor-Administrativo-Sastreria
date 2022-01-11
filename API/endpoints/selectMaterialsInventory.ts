@@ -10,9 +10,6 @@ router.use(cors());
 
 router.get('/api/selectmaterialsinventory', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-
-
-    console.log("endpoint");
     
     try{
         uspSelectMaterialsInventory()

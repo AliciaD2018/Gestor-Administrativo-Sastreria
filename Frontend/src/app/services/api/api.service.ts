@@ -44,10 +44,7 @@ export class ApiService {
 
   async selectMaterialsInventory(){
     console.clear();
-    
     this.myHeaders.append('Content-Type', 'application/json');
-
-    console.log("api.service")
     var requestOptions = {
       method: 'GET',
       headers: this.myHeaders,
