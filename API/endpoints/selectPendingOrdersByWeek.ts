@@ -1,5 +1,5 @@
 import express from 'express';
-import { uspSelectPendingOrdersByWeek } from '../controllers/SelectPendingOrdersByWeekController';
+import { uspSelectPendingOrdersByWeek } from '../controllers/selectPendingOrdersByWeekController';
 
 const router = express();
 
