@@ -54,24 +54,14 @@
       <td mat-cell *matCellDef="let inventario"> {{inventario.codigo}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let inventario"> {{inventario.descripcion}} </td>
-    </ng-container>
-
     <ng-container matColumnDef="categoria">
       <th mat-header-cell *matHeaderCellDef> Categoria </th>
       <td mat-cell *matCellDef="let inventario"> {{inventario.categoria}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="precio">
-      <th mat-header-cell *matHeaderCellDef> Precio </th>
-      <td mat-cell *matCellDef="let inventario"> {{inventario.precio}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="fecharegistro">
-      <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
-      <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.descripcion}} </td>
     </ng-container>
 
     <ng-container matColumnDef="cantidad">
@@ -84,6 +74,16 @@
       <td mat-cell *matCellDef="let inventario"> {{inventario.unidadmedida}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.precio}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecharegistro">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+      <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
+    </ng-container>
+    
     <ng-container matColumnDef="borrar">
       <th mat-header-cell *matHeaderCellDef> Borrar? </th>
       <td mat-cell *matCellDef="let j = index;">

@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, camel_case_types
 
-import 'package:flutter/material.dart';
 import 'package:flutter_app_sastreria/models/Orden.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -19,6 +19,7 @@ class missing_orders extends StatelessWidget {
         '/' +
         ahora.day.toString();
 
+    print(fechaHoy);
     var queryParameters = {
       'fechaActual': fechaHoy,
     };
@@ -102,7 +103,7 @@ List<Widget> _buildItem(ordenes) {
       contentPadding:
           const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
       onTap: () {
-        print(orden.codigo);
+        print(orden.numeroOrden);
       },
     ));
   }

@@ -13,7 +13,7 @@ async function uspSelectPendingOrdersByWeek(FechaActual: String) {
         // String Query
         let strQuery = `EXEC uspSelectPendingOrdersByWeek \'${FechaActual}\';`;
 
-        //console.log(strQuery);
+        // console.log(strQuery);
 
         // Executes string query
         let response = await request.query(strQuery);
