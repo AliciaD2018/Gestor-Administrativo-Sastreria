@@ -59,7 +59,7 @@ export class InventarioComponent implements OnInit {
           descripcion: material['Descripcion'], cantidad: material['Cantidad'], unidadmedida: material['UnidadDeMedida'],
           precio: material['PrecioVenta'], fecharegistro: material['FechaRegistro']
         });
-        console.log(material);
+        // console.log(material);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
