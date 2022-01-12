@@ -1,10 +1,6 @@
 import { insertCustomers } from './endpoints/insertCustomer';
 import { selectCustomer } from './endpoints/selectCustomer';
-<<<<<<< HEAD
 import { SelectAllCustomers } from './endpoints/selectAllCustomers';
-=======
-import { selectCustomers } from './endpoints/selectCustomers';
->>>>>>> 2b5b887d7f8ad1fca01b70b5c2417de6fa626dba
 import { SelectMaterialsInventory } from './endpoints/selectMaterialsInventory';
 import { selectMissingMaterialsAllOrders } from './endpoints/selectMissingMaterialsAllOrders';
 import { selectOrders } from './endpoints/selectOrders';
@@ -21,11 +17,7 @@ app.use(insertCustomers);
 app.use(SelectMaterialsInventory);
 app.use(selectMissingMaterialsAllOrders);
 app.use(selectCustomer);
-<<<<<<< HEAD
 app.use(SelectAllCustomers);
-=======
-app.use(selectCustomers);
->>>>>>> 2b5b887d7f8ad1fca01b70b5c2417de6fa626dba
 app.use(selectPendingOrdersByWeek);
 app.use(selectOrders);
 
