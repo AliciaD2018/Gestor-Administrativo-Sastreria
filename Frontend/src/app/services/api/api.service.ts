@@ -55,7 +55,7 @@ export class ApiService {
     return materiales['materiales'];
   }
 
-  async selectCustomers(){
+  async selectAllCustomers(){
     console.clear();
     
     this.myHeaders.append('Content-Type', 'application/json');
@@ -65,7 +65,7 @@ export class ApiService {
       headers: this.myHeaders,
     };
 
-    let respuesta = await fetch(this.url + `/api/selectcustomers`, requestOptions)
+    let respuesta = await fetch(this.url + `/api/selectallcustomers`, requestOptions)
     let cliente = await respuesta.json();
     return cliente['clientes'];
   }

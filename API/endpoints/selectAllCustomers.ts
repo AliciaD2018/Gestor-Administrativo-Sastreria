@@ -1,6 +1,6 @@
 import express, { response } from 'express';
 
-import { uspSelectCustomers } from '../controllers/selectClientesController';
+import { uspSelectAllCustomers } from '../controllers/selectAllCustomersController';
 
 const router = express();
 
@@ -9,11 +9,11 @@ const router = express();
 const cors = require('cors');
 router.use(cors());
 
-router.get('/api/selectcustomers', (req, res) => {
+router.get('/api/selectallcustomers', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
     try {
-        uspSelectCustomers()
+        uspSelectAllCustomers()
         .then( response => {
             // console.log(response);
             res.status(200).send({
@@ -27,4 +27,4 @@ router.get('/api/selectcustomers', (req, res) => {
     }
 });
 
-export { router as SelectCustomers }
+export { router as SelectAllCustomers }
