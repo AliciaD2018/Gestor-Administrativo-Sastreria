@@ -26,4 +26,4 @@ router.get('/api/selectmaterialsinventory', (req, res) => {
     }
 });
 
-export {router as SelectMaterialsInventory}
+export {router as selectMaterialsInventory}

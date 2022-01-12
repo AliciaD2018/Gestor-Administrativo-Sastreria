@@ -27,4 +27,4 @@ router.get('/api/selectallcustomers', (req, res) => {
     }
 });
 
-export { router as SelectAllCustomers }
+export { router as selectAllCustomers }

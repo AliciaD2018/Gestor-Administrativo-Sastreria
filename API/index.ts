@@ -1,10 +1,11 @@
+import { selectMissingMaterialsAllOrders } from './endpoints/selectMissingMaterialsAllOrders';
+import { selectPendingOrdersByWeek } from './endpoints/selectPendingOrdersByWeek';
+import { SelectMaterialsCategories } from './endpoints/selectMaterialsCategories';
+import { selectMaterialsInventory } from './endpoints/selectMaterialsInventory';
+import { selectAllCustomers } from './endpoints/selectAllCustomers';
 import { insertCustomers } from './endpoints/insertCustomer';
 import { selectCustomer } from './endpoints/selectCustomer';
-import { SelectAllCustomers } from './endpoints/selectAllCustomers';
-import { SelectMaterialsInventory } from './endpoints/selectMaterialsInventory';
-import { selectMissingMaterialsAllOrders } from './endpoints/selectMissingMaterialsAllOrders';
 import { selectOrders } from './endpoints/selectOrders';
-import { selectPendingOrdersByWeek } from './endpoints/selectPendingOrdersByWeek';
 
 var express = require('express');
 
@@ -13,12 +14,12 @@ const app = express();
 
 app.use(insertCustomers);
 
-
-app.use(SelectMaterialsInventory);
 app.use(selectMissingMaterialsAllOrders);
-app.use(selectCustomer);
-app.use(SelectAllCustomers);
+app.use(selectMaterialsInventory);
+app.use(SelectMaterialsCategories);
 app.use(selectPendingOrdersByWeek);
+app.use(selectAllCustomers);
+app.use(selectCustomer);
 app.use(selectOrders);
 
 app.listen(PORT,()=>{

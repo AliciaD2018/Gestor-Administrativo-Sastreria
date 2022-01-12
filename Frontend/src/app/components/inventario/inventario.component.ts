@@ -18,15 +18,10 @@ export class InventarioComponent implements OnInit {
 
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
-  columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'borrar'];
+  columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'editar', 'borrar'];
 
   private datos: Array<Articulo> = [];
-
-
-
-  //datos.push({cantidad:material['Cantidad'],codigo:material['Codigo'],categoria:material['Categoria'],descripcion:material['Descripcion'],fecharegistro:material['FechaRegistro'],precio:material['PrecioVenta']});
-
-  articuloselect: Articulo = new Articulo('', '', '', '', '', '', '');
+  private categorias: Array<string> = [];
 
   @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
 
@@ -41,11 +36,28 @@ export class InventarioComponent implements OnInit {
 
   ngOnInit() {
     this.agregaMateriales();
+    this.agregarCategorias();
   }
 
   filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
+  }
+
+  agregarCategorias(): void{
+    const promise = this.api.selectMaterialsCategories().then()
+    promise.then((categories) => {
+      // Se crea variable de referencia al elemento select
+      const $select = document.getElementById("categorias");
+      for (var category of categories) {
+        // Se crea una option
+        const opcion = document.createElement('option');
+        const valor = category['CategoriaMaterial'];
+        opcion.value = valor;
+        opcion.text = valor;
+        $select.appendChild(opcion);
+      }
+    })
   }
 
   agregaMateriales(): void {
@@ -70,7 +82,6 @@ export class InventarioComponent implements OnInit {
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
-
   }
 
 }
