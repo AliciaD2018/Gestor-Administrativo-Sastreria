@@ -2,7 +2,7 @@ import { config } from "../config";
 
 var sql = require("mssql");
 
-async function uspSelectMissingMaterialsAllOrders() {
+async function uspSelectOrdersDetailsForCalendar() {
     try{
         // Establish connection
         await sql.connect(config);
@@ -11,14 +11,14 @@ async function uspSelectMissingMaterialsAllOrders() {
         var request = new sql.Request();
 
         // String Query
-        let strQuery = 'EXEC uspSelectMissingMaterialsAllOrders;';
+        let strQuery = 'EXEC uspSelectOrdersDetailsForCalendar;';
 
         //console.log(strQuery);
 
         // Executes string query
         let response = await request.query(strQuery);
 
-        console.log("Selection successfully: Missing materials from all orders\n");
+        console.log("Selection successfully: Orders details for calendar from all pending orders\n");
         return response.recordset;
 
     }catch(error){
@@ -27,4 +27,4 @@ async function uspSelectMissingMaterialsAllOrders() {
     };
 }
 
-export{uspSelectMissingMaterialsAllOrders}
+export{uspSelectOrdersDetailsForCalendar}

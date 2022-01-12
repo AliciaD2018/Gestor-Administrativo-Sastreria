@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api/api.service';
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -12,13 +13,15 @@ import esLocale from '@fullcalendar/core/locales/es';
 })
 export class CalendarioComponent implements OnInit {
 
-  public events: any[];
+  public events = [];
   public options: any;
 
-  constructor() { }
+  constructor(private api: ApiService) { 
+    this.agregarEventos();
+  }
 
   ngOnInit() {
-
+    
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin,interactionPlugin],
       defaulDate: new Date(),
@@ -30,38 +33,33 @@ export class CalendarioComponent implements OnInit {
       },
       editable: false
     }
-
-    this.events = [
-      {
-        title: "Orden 1284",
-        start: new Date(),
-      },
-      {
-        title: "Orden 1288",
-        start: new Date(),
-      },
-      {
-        title: "Orden 1289",
-        start: new Date(2022, 0, 10, 16, 30, 0, 0),
-      },
-      {
-        title: "Orden 1290",
-        start: new Date(2022, 0, 10, 8, 1, 0, 0),
-      },
-      {
-        title: "Orden 1292",
-        start: new Date(2022, 0, 10, 14, 45, 0, 0),
-      },
-      {
-        title: "Orden 1292",
-        start: new Date(2022, 0, 13, 13, 5, 0, 0),
-      },
-      {
-        title: "Orden 1292",
-        start: new Date(2022, 0, 14, 3, 30, 0, 0),
-      },
-    ]
     
+    
+  }
+
+  agregarEventos(): void{
+    const promise = this.api.selectOrdersDetailsForCalendar().then()
+    promise.then((ordersDatails) => {
+      for(var order of ordersDatails){
+                
+        var year = order['FechaEntrega'].substring(0,4);
+        var month = order['FechaEntrega'].substring(5,7);
+        var day = order['FechaEntrega'].substring(8);
+        var hora = 8;
+        var minuto = 0;
+        var segundo = 0;
+        
+        this.events.push({
+          title: `Orden ${order['IdOrden']}`,
+          start: new Date(year, month, day, hora, minuto, segundo),
+        });
+
+      }
+
+    }).catch((error) => {
+      console.log("Promise rejected with " + JSON.stringify(error));
+    });
+
   }
 
 }

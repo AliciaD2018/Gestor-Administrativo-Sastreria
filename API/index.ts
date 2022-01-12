@@ -1,4 +1,5 @@
 import { selectMissingMaterialsAllOrders } from './endpoints/selectMissingMaterialsAllOrders';
+import { selectOrdersDetailsForCalendar } from './endpoints/selectOrdersDetailsForCalendar';
 import { selectPendingOrdersByWeek } from './endpoints/selectPendingOrdersByWeek';
 import { SelectMaterialsCategories } from './endpoints/selectMaterialsCategories';
 import { selectMaterialsInventory } from './endpoints/selectMaterialsInventory';
@@ -6,6 +7,7 @@ import { selectAllCustomers } from './endpoints/selectAllCustomers';
 import { insertCustomers } from './endpoints/insertCustomer';
 import { selectCustomer } from './endpoints/selectCustomer';
 import { selectOrders } from './endpoints/selectOrders';
+
 
 var express = require('express');
 
@@ -15,6 +17,7 @@ const app = express();
 app.use(insertCustomers);
 
 app.use(selectMissingMaterialsAllOrders);
+app.use(selectOrdersDetailsForCalendar)
 app.use(selectMaterialsInventory);
 app.use(SelectMaterialsCategories);
 app.use(selectPendingOrdersByWeek);

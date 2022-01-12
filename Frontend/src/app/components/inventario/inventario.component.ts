@@ -2,7 +2,6 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { RegistrarMaterialComponent } from '../registrarMaterial/registrarMaterial.component';
 import { ApiService } from '../../services/api/api.service';
-import { DataSource } from '@angular/cdk/collections';
 
 
 @Component({
@@ -40,7 +39,7 @@ export class InventarioComponent implements OnInit {
   }
 
   filtrar(event: Event) {
-    const filtro = (event.target as HTMLInputElement).value;
+    let filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
@@ -48,7 +47,7 @@ export class InventarioComponent implements OnInit {
     const promise = this.api.selectMaterialsCategories().then()
     promise.then((categories) => {
       // Se crea variable de referencia al elemento select
-      const $select = document.getElementById("categorias");
+      const $select = document.getElementById("categoriasSelect");
       for (var category of categories) {
         // Se crea una option
         const opcion = document.createElement('option');
