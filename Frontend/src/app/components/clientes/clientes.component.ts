@@ -45,17 +45,17 @@ export class ClientesComponent {
   }
 
   agregarCliente(): void {
-    const promise = this.api.selectCustomer().then()
+    const promise = this.api.selectCustomers().then()
     promise.then((data) => {
       console.log(JSON.stringify(data));
       for (var index of data) {
 
         this.datos.push({
-          nombre: index['Nombre'], telefono1: index['Telefono'],
-          telefono2: index['Telefono'], cedula: index['Cedula'],
+          nombre: index['NombreCompleto'], telefono1: index['Telefono1'],
+          telefono2: index['Telefono2'], cedula: index['Cedula'],
           email: index['Email'], direccion: index['Direccion']
         });
-        //console.log(index);
+        console.log("-------------->",index);
       }
 
       //Se realiza la carga en la tabla general html del inventario.

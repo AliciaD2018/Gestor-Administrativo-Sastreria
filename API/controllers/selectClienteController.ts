@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000}));
 app.use(bodyParser.json({ limit: '50mb'}));
 
-async function uspSelectCustomers() {
+async function uspSelectCustomer(Cedula: string) {
     try{
         // Establish connection
         await sql.connect(config);
@@ -17,14 +17,15 @@ async function uspSelectCustomers() {
         var request = new sql.Request();
 
         // String Query
-        let strQuery = 'EXEC uspSelectCustomers;';
+        let strQuery = 'EXEC uspSelectCustomer ';
+        strQuery += Cedula + ';';
 
         console.log(strQuery);
 
         // Executes string query
         await request.query(strQuery);
 
-        console.log("Selection successfully: Customers");
+        console.log("Insertion successfully: Customer");
 
     }catch(error){
         console.log("Something went wrong");
@@ -32,4 +33,4 @@ async function uspSelectCustomers() {
     };
 }
 
-export{uspSelectCustomers}
+export{uspSelectCustomer}
