@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ApiService } from 'src/app/services/api/api.service';
 import { RegistrarOrdenComponent } from '../registrarOrden/registrarOrden.component';
 
 @Component({
@@ -9,6 +10,9 @@ import { RegistrarOrdenComponent } from '../registrarOrden/registrarOrden.compon
 })
 export class OrdenesComponent implements OnInit {
 
+  constructor(private api: ApiService) {
+  }
+  
   @ViewChild(RegistrarOrdenComponent) importa: RegistrarOrdenComponent;
 
 
@@ -32,23 +36,6 @@ export class OrdenesComponent implements OnInit {
   dataSource: any;
   ngOnInit() {
 
-    if (localStorage.getItem("isFirstTime") === "true" || localStorage.getItem("isFirstTime") === null) {
-      this.datos = [
-        new Orders('1', 'Alicia Diaz', '7000', '0', '27/12/2021', '2'),
-        new Orders('2', 'Maritza Rivas', '4200', '200', '30/12/2021', '1'),
-        new Orders('3', 'Hector Araya', '23000', '11500', '31/12/2021', '1'),
-      ]
-      localStorage.setItem("ordenes", JSON.stringify(this.datos));
-      localStorage.setItem("isFirstTime", "false");
-    }
-    // extrae los datos del local storage
-    const c = localStorage.getItem("ordenes");
-    if (c !== null) {
-      this.datos = JSON.parse(c);
-    }
-
-    this.dataSource = new MatTableDataSource(this.datos);
-
   }
 
   filtrar(event: Event) {
@@ -56,29 +43,29 @@ export class OrdenesComponent implements OnInit {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  nuevo(nombre) {
+  
+  agregarOrden(): void {
+    const promise = this.api.selectOrders().then()
+    promise.then((data) => {
+      console.log(JSON.stringify(data));
+      for (var order of data) {
 
-    var valor = new Orders('malisim', nombre, 'd1', 'd1', 'd1', 'd1')
-    console.log(valor);
-    this.datos.push(valor);
+        this.datos.push({
+          numeroOrden: order['NombreCompleto'], cliente: order['Telefono1'],
+          costoTotal: order['Telefono2'], saldo: order['Cedula'],
+          fechaEntrega: order['Email'], cantidadPrendas: order['Direccion']
+        });
+        console.log("-------------->",order);
+      }
 
-    this.tabla1.renderRows();
-    this.orderselect = new Orders('', '', '', '', '', '');
+      //Se realiza la carga en la tabla general html del inventario.
+      const articulos = JSON.stringify(this.datos);
+      this.datos = JSON.parse(articulos);
+      this.dataSource = new MatTableDataSource(this.datos);
 
-    console.log(this.datos)
-  }
-
-  agregar(): void {
-    console.log("entra")
-
-    this.importa.guardarOrden();
-    console.log("Prueba");
-    console.log(this.importa.orden_nueva)
-
-    this.tabla1.renderRows();
-    this.orderselect = new Orders('', '', '', '', '', '');
-
-    console.log(this.datos)
+    }).catch((error) => {
+      console.log("Promise rejected with " + JSON.stringify(error));
+    });
   }
 }
 

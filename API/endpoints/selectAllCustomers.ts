@@ -27,4 +27,8 @@ router.get('/api/selectallcustomers', (req, res) => {
     }
 });
 
+<<<<<<< HEAD:API/endpoints/selectAllCustomers.ts
 export { router as SelectAllCustomers }
+=======
+export { router as selectCustomers }
+>>>>>>> 2b5b887d7f8ad1fca01b70b5c2417de6fa626dba:API/endpoints/selectCustomers.ts

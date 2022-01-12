@@ -69,4 +69,19 @@ export class ApiService {
     let cliente = await respuesta.json();
     return cliente['clientes'];
   }
+
+  async selectOrders(){
+    console.clear();
+    
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectorders`, requestOptions)
+    let orden = await respuesta.json();
+    return orden['ordenes']; //la clave esta en el endpoint como response
+  }
 }
