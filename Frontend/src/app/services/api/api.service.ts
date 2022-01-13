@@ -103,6 +103,21 @@ export class ApiService {
     return categorias['categorias'];
   }
 
+  async selectPhonesTypes(){
+    console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+  
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectphonestypes`, requestOptions);
+    let tipos = await respuesta.json();
+    return tipos['tipostelefonos'];
+  }
+
   async selectOrdersDetailsForCalendar(){
     //console.clear();
 

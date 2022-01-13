@@ -1,0 +1,12 @@
+form {
+    float: right;
+  }
+  input {
+    display: block;
+    direction: ltr;
+  }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5fr;
+}

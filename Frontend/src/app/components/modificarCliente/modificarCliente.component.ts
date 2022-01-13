@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api/api.service'
 
 @Component({
   selector: 'app-modificarCliente',
@@ -7,75 +8,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModificarClienteComponent implements OnInit {
 
-  private datosalmacenados: any;
-  private cedula: any;
+  private datosCliente: any;
 
-  constructor() {
-    this.datosalmacenados = []
-    this.cedula = ""
+  constructor(private api: ApiService) {
   }
 
   ngOnInit() {
-    this.datosalmacenados = JSON.parse(localStorage.getItem('clientes'))
-  }
+    this.agregarTiposTelefonos();
 
-  buscar() {
-    this.cedula = (<HTMLInputElement>document.getElementById("cedula")).value;
-    const iterator = this.buscarAux();
+    this.datosCliente = JSON.parse(localStorage.getItem('clientes'));
 
-    if (iterator !== null) {
-      (<HTMLInputElement>document.getElementById("nombre")).value = iterator.nombre;
-      (<HTMLInputElement>document.getElementById("email")).value = iterator.email;
-      (<HTMLInputElement>document.getElementById("direccion")).value = iterator.direccion;
-      (<HTMLInputElement>document.getElementById("observacionesCliente")).value = iterator.observacionesCliente;
-      (<HTMLInputElement>document.getElementById("telefono1")).value = iterator.telefono1;
-      (<HTMLInputElement>document.getElementById("notasTelefono1")).value = iterator.notasTelefono1;
-      (<HTMLInputElement>document.getElementById("telefono2")).value = iterator.telefono2;
-      (<HTMLInputElement>document.getElementById("notasTelefono2")).value = iterator.notasTelefono2;
-      return;
+    (<HTMLInputElement>document.getElementById('cedula')).value=this.datosCliente['cedula'];
+    (<HTMLInputElement>document.getElementById('nombre')).value=this.datosCliente['nombre'];
+    (<HTMLInputElement>document.getElementById('telefono1')).value=this.datosCliente['telefono1'];
+    if(this.datosCliente['notasTelefono1']!=undefined){
+      (<HTMLInputElement>document.getElementById('notasTelefono1')).value=this.datosCliente['notasTelefono1'];
     }
-    alert("Usuario con cedula " + this.cedula + " no encontrado.")
+    if(this.datosCliente['telefono2']!=undefined){
+      (<HTMLInputElement>document.getElementById('telefono2')).value=this.datosCliente['telefono2'];
+    }
+    if(this.datosCliente['notasTelefono2']!=undefined){
+      (<HTMLInputElement>document.getElementById('notasTelefono2')).value=this.datosCliente['notasTelefono2'];
+    }
+    if(this.datosCliente['email']!=undefined){
+      (<HTMLInputElement>document.getElementById('email')).value=this.datosCliente['email'];
+    }
+    if(this.datosCliente['direccion']!=undefined){
+      (<HTMLInputElement>document.getElementById('direccion')).value=this.datosCliente['direccion'];
+    }
+    if(this.datosCliente['observaciones']!=undefined){
+      (<HTMLInputElement>document.getElementById('observaciones')).value=this.datosCliente['observaciones'];
+    }
   }
-
-  buscarAux() {
-    for (const iterator of this.datosalmacenados) {
-      if (iterator.cedula === this.cedula) {
-
-        (<HTMLInputElement>document.getElementById("nombre")).value = iterator.nombre;
-        (<HTMLInputElement>document.getElementById("email")).value = iterator.email;
-        (<HTMLInputElement>document.getElementById("direccion")).value = iterator.direccion;
-        (<HTMLInputElement>document.getElementById("observacionesCliente")).value = iterator.observacionesCliente;
-        (<HTMLInputElement>document.getElementById("telefono1")).value = iterator.telefono1;
-        (<HTMLInputElement>document.getElementById("notasTelefono1")).value = iterator.notasTelefono1;
-        (<HTMLInputElement>document.getElementById("telefono2")).value = iterator.telefono2;
-        (<HTMLInputElement>document.getElementById("notasTelefono2")).value = iterator.notasTelefono2;
-        return iterator;
+  
+  agregarTiposTelefonos(): void{
+    const promise = this.api.selectPhonesTypes().then()
+    promise.then((types) => {
+      // Se crea variable de referencia al elemento select
+      const $select1 = document.getElementById("tiposSelect1");
+      const $select2 = document.getElementById("tiposSelect2");
+      for (var type of types) {
+        // Se crea una option
+        const opcion1 = document.createElement('option');
+        const opcion2 = document.createElement('option');
+        const valor = type['TipoTelefono'];
+        opcion1.value = valor;
+        opcion1.text = valor;
+        opcion2.value = valor;
+        opcion2.text = valor;
+        $select1.appendChild(opcion1);
+        $select2.appendChild(opcion2);
       }
-    }
-    return null;
-  }
-
-  modificarCliente() {
-    console.log('modificando cliente...')
-    
-    for (const iterator of this.datosalmacenados) {
-      if (iterator.cedula === this.cedula) {
-
-        iterator.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-        iterator.email = (<HTMLInputElement>document.getElementById("email")).value;
-        iterator.direccion = (<HTMLInputElement>document.getElementById("direccion")).value;
-        iterator.observacionesCliente = (<HTMLInputElement>document.getElementById("observacionesCliente")).value;
-        iterator.telefono1 = (<HTMLInputElement>document.getElementById("telefono1")).value;
-        iterator.notasTelefono1 = (<HTMLInputElement>document.getElementById("notasTelefono1")).value;
-        iterator.telefono2 = (<HTMLInputElement>document.getElementById("telefono2")).value;
-        iterator.notasTelefono2 = (<HTMLInputElement>document.getElementById("notasTelefono2")).value;
-        
-        localStorage.setItem("clientes", JSON.stringify(this.datosalmacenados))
-        alert("Cliente modificado")
-        return;
-      }
-    }
-
-
+    });
   }
 }
