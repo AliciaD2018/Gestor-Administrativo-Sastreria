@@ -27,6 +27,8 @@ import { ModificarClienteComponent } from './components/modificarCliente/modific
 import { ModificarInventarioComponent } from './components/modificarInventario/modificarInventario.component';
 import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOrden.component';
 import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
+import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
+import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 
 const routes: Routes = [
 
@@ -78,6 +80,15 @@ const routes: Routes = [
   {
     path:'modificarOrden',
     component: ModificarOrdenComponent
+  },
+  {
+    path:'crearOrden',
+    component: CrearOrdenComponent
+  }
+  ,
+  {
+    path:'detalleOrden',
+    component: DetalleOrdenComponent
   }
 ];
 
@@ -95,7 +106,9 @@ const routes: Routes = [
     RegistrarMaterialComponent,
     ModificarInventarioComponent,
     RegistrarOrdenComponent,
-    ModificarOrdenComponent
+    ModificarOrdenComponent,
+    CrearOrdenComponent,
+    DetalleOrdenComponent
    ],
   imports: [
     BrowserModule,
