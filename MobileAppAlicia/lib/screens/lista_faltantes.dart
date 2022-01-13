@@ -12,7 +12,7 @@ class Lista_Faltantes extends StatelessWidget {
   const Lista_Faltantes({Key? key}) : super(key: key);
 
   Future<List<Articulo>> _selectMaterials() async {
-    String url = 'http://192.168.1.4:4500/api/selectmissingmaterialsallorders';
+    String url = 'http://192.168.1.3:4500/api/selectmissingmaterialsallorders';
     final response = await http.get(Uri.parse(url));
     List<Articulo> articulos = [];
 

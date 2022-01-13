@@ -29,23 +29,15 @@
 
   <hr>
   <form action="" align='left'>
-    <select name="cars" id="cars" class="forms-control" placeholder="Seleccionar..." border-radius=4px>
-      <optgroup label="Hilos">
+    <select name="cats" id="categoriasSelect" class="forms-control" placeholder="Seleccionar..." border-radius=4px>
         <option value="" disabled selected hidden>Categorias...</option>
-        <option value="negro">Negro</option>
-        <option value="blanco">Blanco</option>
-      </optgroup>
-      <optgroup label="Telas">
-        <option value="suave">Suave</option>
-        <option value="lisa">Lisa</option>
-      </optgroup>
     </select>
   </form>
 
   <form action="" method="get" align='right'>
     <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
   </form>
-  <hr>  
+  <hr>
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
 
@@ -84,6 +76,13 @@
       <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
     </ng-container>
     
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let j = index;">
+        <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" routerLink="/modificarInventario">edit</i>
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="borrar">
       <th mat-header-cell *matHeaderCellDef> Borrar? </th>
       <td mat-cell *matCellDef="let j = index;">

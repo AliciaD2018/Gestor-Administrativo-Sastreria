@@ -19,11 +19,9 @@ export class ClientesComponent {
 
   columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
 
-  public datos: Clients[] = [];
+  public datos: Customers[] = [];
 
-  clientselect: Clients = new Clients('', "", '', '', '', '');
-
-  @ViewChild(MatTable) tabla1!: MatTable<Clients>;
+  @ViewChild(MatTable) tabla1!: MatTable<Customers>;
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
@@ -33,21 +31,21 @@ export class ClientesComponent {
     }
   }
 
-  //-------Filtro de busqueda
   dataSource: any;
   ngOnInit() {
-    this.agregarCliente();
+    this.agregarClientes();
   }
 
+  //-------Filtro de busqueda
   filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  agregarCliente(): void {
-    const promise = this.api.selectCustomers().then()
+  agregarClientes(): void {
+    const promise = this.api.selectAllCustomers().then()
     promise.then((data) => {
-      console.log(JSON.stringify(data));
+      // console.log("data: ",JSON.stringify(data));
       for (var index of data) {
 
         this.datos.push({
@@ -55,7 +53,7 @@ export class ClientesComponent {
           telefono2: index['Telefono2'], cedula: index['Cedula'],
           email: index['Email'], direccion: index['Direccion']
         });
-        console.log("-------------->",index);
+        // console.log("-------------->",index);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
@@ -70,7 +68,7 @@ export class ClientesComponent {
 
 }
 
-export class Clients {
+export class Customers {
   constructor(
     public nombre: string,
     public telefono1: string,

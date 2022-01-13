@@ -18,7 +18,7 @@ async function uspSelectMissingMaterialsAllOrders() {
         // Executes string query
         let response = await request.query(strQuery);
 
-        console.log("Selection successfully: Missing Materials from all orders\n");
+        console.log("Selection successfully: Missing materials from all orders\n");
         return response.recordset;
 
     }catch(error){

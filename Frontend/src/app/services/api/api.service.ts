@@ -36,7 +36,10 @@ export class ApiService {
       body: JSON.stringify(clienteJSON)
     };
 
-    return fetch(this.url + `/api/insertcustomer?cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}&telefono1=${cliente.Telefono1}&notasTelefono1=${cliente.NotasTelefono1}&telefono2=${cliente.Telefono2}&notasTelefono2=${cliente.NotasTelefono2}`, requestOptions)
+    return fetch(this.url + `/api/insertcustomer?cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}` +
+                            `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
+                            `&telefono1=${cliente.Telefono1}&notasTelefono1=${cliente.NotasTelefono1}&telefono2=${cliente.Telefono2}` +
+                            `&notasTelefono2=${cliente.NotasTelefono2}`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -50,12 +53,12 @@ export class ApiService {
       headers: this.myHeaders,
     };
 
-    let respuesta = await fetch(this.url + `/api/selectmaterialsinventory`, requestOptions)
+    let respuesta = await fetch(this.url + `/api/selectmaterialsinventory`, requestOptions);
     let materiales = await respuesta.json();
     return materiales['materiales'];
   }
 
-  async selectCustomers(){
+  async selectAllCustomers(){
     console.clear();
     
     this.myHeaders.append('Content-Type', 'application/json');
@@ -65,7 +68,7 @@ export class ApiService {
       headers: this.myHeaders,
     };
 
-    let respuesta = await fetch(this.url + `/api/selectcustomers`, requestOptions)
+    let respuesta = await fetch(this.url + `/api/selectallcustomers`, requestOptions);
     let cliente = await respuesta.json();
     return cliente['clientes'];
   }
@@ -80,8 +83,39 @@ export class ApiService {
       headers: this.myHeaders,
     };
 
-    let respuesta = await fetch(this.url + `/api/selectorders`, requestOptions)
-    let orden = await respuesta.json();
-    return orden['ordenes']; //la clave esta en el endpoint como response
+    let respuesta = await fetch(this.url + `/api/selectorders`, requestOptions);
+    let ordenes = await respuesta.json();
+    return ordenes['ordenes']; //la clave esta en el endpoint como response
   }
-}
+
+  async selectMaterialsCategories(){
+    console.clear();
+  
+    this.myHeaders.append('Content-Type', 'application/json');
+  
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectmaterialscategories`, requestOptions);
+    let categorias = await respuesta.json();
+    return categorias['categorias'];
+  }
+
+  async selectOrdersDetailsForCalendar(){
+    //console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+  
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectordersdetailsforcalendar`, requestOptions);
+    let categorias = await respuesta.json();
+    return categorias['detallesordenesparacalendario'];
+  }
+
+} // ApiService
