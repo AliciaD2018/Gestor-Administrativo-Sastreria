@@ -29,6 +29,7 @@ import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOr
 import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
 import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
+import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 
 const routes: Routes = [
 
@@ -89,7 +90,12 @@ const routes: Routes = [
   {
     path:'detalleOrden',
     component: DetalleOrdenComponent
+  },
+  {
+    path:'registrarAbono',
+    component: RegistrarAbonoComponent
   }
+
 ];
 
 
@@ -108,7 +114,8 @@ const routes: Routes = [
     RegistrarOrdenComponent,
     ModificarOrdenComponent,
     CrearOrdenComponent,
-    DetalleOrdenComponent
+    DetalleOrdenComponent,
+    RegistrarAbonoComponent
    ],
   imports: [
     BrowserModule,
