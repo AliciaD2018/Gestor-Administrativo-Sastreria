@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>crear Ordenes</title>
   <h1>SISTEMA GESTOR DE SASTRERIA</h1>
 
@@ -23,32 +22,49 @@
     <h2> Numero de orden: </h2>
   </div>
 
-  <div class="container">
+  <div class="container1">
     <table class='tabla1'>
       <tr>
         <td bgcolor="GhostWhite">
           <form class='form1'>
-            <fieldset>
-              <div>
+            <div align='center'>
+                
                 <h1> Datos del Cliente</h1>
-                <button>Editar</button>
-              </div>
+                
+            </div>
+                <li>
+                <label> Nombre </label> &nbsp;
+                <input id="nombre" type="text" placeholder="" value="Alicia Diaz">&nbsp;
 
-              <label> Número de orden: </label> &nbsp;
-              <input id="numeroOrden" type="text" placeholder="" value="7">&nbsp;
+                <label> Telefono1: </label> &nbsp;
+                <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
+                
+                <label> Telefono1: </label> &nbsp;
+                <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
 
-              <label> Cliente: </label> &nbsp;
-              <input id="cliente" type="text" placeholder="" value="Jeffry Daniel">&nbsp;
+                <label> Cedula:</label> &nbsp;
+                <input id="cedula" type="text" placeholder="" value="8888888">&nbsp;
+                
+                <input type="button"  value="Click Me" /> 
 
-              <label> Costo total:</label> &nbsp;
-              <input id="costoTotal" type="text" placeholder="" value="18000">&nbsp;
+              </li>
+              
+              <li>
+                <label> Direccion: </label> &nbsp;
+                <input id="direccion" type="text" placeholder="" value="Bonanza, San Carlos">&nbsp;
 
-              <label> Saldo: </label> &nbsp;
-              <input id="saldo" type="text" placeholder="" value="9000">&nbsp;
+                <label> Correo Electronico</label> &nbsp;
+                <input id="email" type="text" placeholder="" value="rivas@gmail.com">&nbsp;
 
-              <label> Fecha de entrega:</label> &nbsp;
-              <input id="fechaEntrega" type="text" placeholder="" value="31/12/2021">&nbsp;
-            </fieldset>
+                <label> Observaciones</label> &nbsp;
+                <textarea id="observaciones"></textarea>
+              </li>
+              
+             
+                 
+              
+                
+             
           </form>
         </td>
       </tr>
@@ -63,7 +79,7 @@
       <tr>
         <td bgcolor="HoneyDew">
           <form class="form2">
-            <fieldset>
+    
               <div>
                 <h1> Historico de Pagos</h1>
                 <button>Abonar</button>
@@ -78,43 +94,41 @@
               <label> Saldo actual:</label> &nbsp;
               <input id="costoTotal" type="text" placeholder="" value="18000">&nbsp;
 
-
-            </fieldset>
           </form>
           <br>
           <div class="example-container">
-          <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
+            <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
 
-            <ng-container matColumnDef="fecha">
-              <th mat-header-cell *matHeaderCellDef> Fecha </th>
-              <td mat-cell *matCellDef="let pago"> {{pago.fecha}} </td>
-            </ng-container>
+              <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.fecha}} </td>
+              </ng-container>
 
-            <ng-container matColumnDef="salAnterior">
-              <th mat-header-cell *matHeaderCellDef> S. Anterior </th>
-              <td mat-cell *matCellDef="let pago"> {{pago.salAnterior}} </td>
-            </ng-container>
+              <ng-container matColumnDef="salAnterior">
+                <th mat-header-cell *matHeaderCellDef> S. Anterior </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.salAnterior}} </td>
+              </ng-container>
 
-            <ng-container matColumnDef="abono">
-              <th mat-header-cell *matHeaderCellDef> Abono </th>
-              <td mat-cell *matCellDef="let pago"> {{pago.abono}} </td>
-            </ng-container>
+              <ng-container matColumnDef="abono">
+                <th mat-header-cell *matHeaderCellDef> Abono </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.abono}} </td>
+              </ng-container>
 
-            <ng-container matColumnDef="salNuevo">
-              <th mat-header-cell *matHeaderCellDef> S. Nuevo </th>
-              <td mat-cell *matCellDef="let pago"> {{pago.salNuevo}} </td>
-            </ng-container>
+              <ng-container matColumnDef="salNuevo">
+                <th mat-header-cell *matHeaderCellDef> S. Nuevo </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.salNuevo}} </td>
+              </ng-container>
 
-            <ng-container matColumnDef="montoP">
-              <th mat-header-cell *matHeaderCellDef> Monto</th>
-              <td mat-cell *matCellDef="let pago"> {{pago.montoP}} </td>
-            </ng-container>
+              <ng-container matColumnDef="montoP">
+                <th mat-header-cell *matHeaderCellDef> Monto</th>
+                <td mat-cell *matCellDef="let pago"> {{pago.montoP}} </td>
+              </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
+              <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
+              <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
 
-          </table>
-        </div>
+            </table>
+          </div>
         </td>
 
         <td bgcolor="Gainsboro">

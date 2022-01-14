@@ -16,11 +16,16 @@ p{
     margin-bottom: 1.6em;
 }
 
+.container1{
+    width: 95%;
+    height: 150px;
+    margin: 0 auto;    
+}
+
 .container{
-    width: 85%;
-    max-height: 200px;
+    width: 2500px;
+    max-height: 100px;
     margin: 0 auto;
-    
 }
 
 .header{
@@ -29,7 +34,6 @@ p{
     left: 0;
     top:0;
     width: 100%;
-
 }
 
 .header a {
@@ -155,3 +159,4 @@ form button{
     font-style: normal;
     color: aliceblue;
 }
+
