@@ -62,10 +62,19 @@
           <td mat-cell *matCellDef="let clients"> {{clients.direccion}} </td>
         </ng-container>
       
+        <ng-container matColumnDef="ver">
+          <th mat-header-cell *matHeaderCellDef> Ver </th>
+          <td mat-cell *matCellDef="let j = index;">
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" (click)="pasarDatosCliente(j)"
+             style="margin-right: 20px;" routerLink="/verDetallesCliente">remove_red_eye</i>
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="editar">
           <th mat-header-cell *matHeaderCellDef> Editar </th>
           <td mat-cell *matCellDef="let j = index;">
-            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" (click)="pasarDatosCliente(j)" routerLink="/modificarCliente">edit</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" (click)="pasarDatosCliente(j)"
+             style="margin-right: 20px;" routerLink="/modificarCliente">edit</i>
           </td>
         </ng-container>
 

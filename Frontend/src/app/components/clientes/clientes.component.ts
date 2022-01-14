@@ -17,7 +17,7 @@ export class ClientesComponent {
   @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
 
 
-  columnas: string[] = ['cedula', 'nombre', 'telefono1', 'telefono2', 'email', 'direccion', 'editar', 'borrar'];
+  columnas: string[] = ['cedula', 'nombre', 'telefono1', 'telefono2', 'email', 'direccion', 'ver', 'editar', 'borrar'];
 
   public clientes: Customers[] = [];
 
@@ -32,8 +32,7 @@ export class ClientesComponent {
   }
 
   pasarDatosCliente(j: number){
-    console.log(this.clientes[j]);
-    localStorage.setItem('clientes', JSON.stringify(this.clientes[j]));
+    localStorage.setItem('cliente', JSON.stringify(this.clientes[j]));
   }
 
   dataSource: any;
@@ -56,9 +55,10 @@ export class ClientesComponent {
       for (var customer of customers) {
 
         this.clientes.push({
-          nombre: customer['NombreCompleto'], cedula: customer['Cedula'],
-          telefono1: customer['Telefono1'], telefono2: customer['Telefono2'], 
-          email: customer['Email'], direccion: customer['Direccion']
+          id: customer['Id'], cedula: customer['Cedula'], nombre: customer['NombreCompleto'],
+          telefono1: customer['Telefono1'], tipoTelefono1: customer['TipoTelefono1'], notasTelefono1: customer['NotasTelefono1'],
+          telefono2: customer['Telefono2'], tipoTelefono2: customer['TipoTelefono2'], notasTelefono2: customer['NotasTelefono2'],
+          email: customer['Email'], direccion: customer['Direccion'], observaciones: customer['Observaciones']
         });
         // console.log("-------------->",index);
       }
@@ -77,12 +77,18 @@ export class ClientesComponent {
 
 export class Customers {
   constructor(
-    public nombre: string,
+    public id: string,
     public cedula: string,
+    public nombre: string,
     public telefono1: string,
+    public tipoTelefono1: string,
+    public notasTelefono1: string,
     public telefono2: string,
+    public tipoTelefono2: string,
+    public notasTelefono2: string,
     public email: string,
-    public direccion: string) {
+    public direccion: string,
+    public observaciones: string) {
   }
 
 }
