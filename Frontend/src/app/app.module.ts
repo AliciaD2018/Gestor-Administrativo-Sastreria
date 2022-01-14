@@ -28,6 +28,9 @@ import { ModificarInventarioComponent } from './components/modificarInventario/m
 import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOrden.component';
 import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
 import { VerDetallesClienteComponent } from './components/verDetallesCliente/verDetallesCliente.component';
+import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
+import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
+import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 
 const routes: Routes = [
 
@@ -83,6 +86,18 @@ const routes: Routes = [
   {
     path:'verDetallesCliente',
     component: VerDetallesClienteComponent
+  },
+  {
+    path:'crearOrden',
+    component: CrearOrdenComponent
+  },
+  {
+    path:'detalleOrden',
+    component: DetalleOrdenComponent
+  },
+  {
+    path:'registrarAbono',
+    component: RegistrarAbonoComponent
   }
 ];
 
@@ -101,7 +116,10 @@ const routes: Routes = [
     ModificarInventarioComponent,
     RegistrarOrdenComponent,
     ModificarOrdenComponent,
-    VerDetallesClienteComponent
+    VerDetallesClienteComponent,
+    CrearOrdenComponent,
+    DetalleOrdenComponent,
+    RegistrarAbonoComponent
    ],
   imports: [
     BrowserModule,

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>crear Ordenes</title>
+  <h1>SISTEMA GESTOR DE SASTRERIA</h1>
+
+</head>
+
+
+
+<body>
+  <header>
+    <h1 align="center">Sistema de Gestor de Sastreria</h1>
+
+  </header>
+
+  <div class="max-width1">
+    <h2> Numero de orden: </h2>
+  </div>
+
+  <div class="container1">
+    <table class='tabla1'>
+      <tr>
+        <td bgcolor="GhostWhite">
+          <form class='form1'>
+
+            <div style="display:flex; justify-content:flex-start; width:50%; padding:0;">
+              <h1> Datos del Cliente</h1>
+              
+              <button>Editar</button>
+            </div>
+            <li>
+              <label> Nombre </label> &nbsp;
+              <input id="nombre" type="text" placeholder="" value="Alicia Diaz">&nbsp;
+
+              <label> Telefono1: </label> &nbsp;
+              <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
+
+              <label> Telefono1: </label> &nbsp;
+              <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
+
+              <label> Cedula:</label> &nbsp;
+              <input id="cedula" type="text" placeholder="" value="8888888">&nbsp;
+
+            </li>
+
+            <li>
+              <label> Direccion: </label> &nbsp;
+              <input id="direccion" type="text" placeholder="" value="Bonanza, San Carlos">&nbsp;
+
+              <label> Correo Electronico</label> &nbsp;
+              <input id="email" type="text" placeholder="" value="rivas@gmail.com">&nbsp;
+
+              <label> Observaciones</label> &nbsp;
+              <textarea id="observaciones">Ocupa ropa para perros pincher</textarea>
+            </li>
+
+
+          </form>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <br />
+
+  <div class="container">
+    <table class='tabla2'>
+      <tr>
+        <td bgcolor="HoneyDew">
+          <form class="form2">
+            <fieldset>
+              <div>
+                <h1> Historico de Pagos</h1>
+                <button>Abonar</button>
+              </div>
+
+              <label> Saldo Inicial </label> &nbsp;
+              <input id="numeroOrden" type="text" placeholder="" value="7">&nbsp;
+
+              <label> Total abonos: </label> &nbsp;
+              <input id="cliente" type="text" placeholder="" value="Jeffry Daniel">&nbsp;
+
+              <label> Saldo actual:</label> &nbsp;
+              <input id="costoTotal" type="text" placeholder="" value="18000">&nbsp;
+
+
+            </fieldset>
+          </form>
+          <br>
+          <div class="example-container">
+            <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
+
+              <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.fecha}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="salAnterior">
+                <th mat-header-cell *matHeaderCellDef> S. Anterior </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.salAnterior}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="abono">
+                <th mat-header-cell *matHeaderCellDef> Abono </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.abono}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="salNuevo">
+                <th mat-header-cell *matHeaderCellDef> S. Nuevo </th>
+                <td mat-cell *matCellDef="let pago"> {{pago.salNuevo}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="montoP">
+                <th mat-header-cell *matHeaderCellDef> Monto</th>
+                <td mat-cell *matCellDef="let pago"> {{pago.montoP}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
+              <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
+
+            </table>
+          </div>
+        </td>
+
+        <td bgcolor="Gainsboro">
+          <form class="form3">
+            <fieldset>
+              <div>
+                <h1> Listado de Prensas</h1>
+                <button>Agregar Prenda</button>
+              </div>
+
+              <label> Total de prendas: </label> &nbsp;
+              <input id="numeroOrden" type="text" placeholder="" value="7">&nbsp;
+
+              <label> Total entregados: </label> &nbsp;
+              <input id="cliente" type="text" placeholder="" value="Jeffry Daniel">&nbsp;
+
+              <label> Próxima entrega:</label> &nbsp;
+              <input id="costoTotal" type="text" placeholder="" value="18000">&nbsp;
+
+            </fieldset>
+            <br>
+          </form>
+
+          <div class="example-container">
+            <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+
+              <ng-container matColumnDef="numeroOrden">
+                <th mat-header-cell *matHeaderCellDef> Nº </th>
+                <td mat-cell *matCellDef="let prenda"> {{prenda.numeroOrden}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                <td mat-cell *matCellDef="let prenda"> {{prenda.tipo}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="decTrabajo">
+                <th mat-header-cell *matHeaderCellDef> Des.trabajo </th>
+                <td mat-cell *matCellDef="let prenda"> {{prenda.decTrabajo}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="fentrega">
+                <th mat-header-cell *matHeaderCellDef> F. entrega </th>
+                <td mat-cell *matCellDef="let prenda"> {{prenda.fentrega}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="monto">
+                <th mat-header-cell *matHeaderCellDef> Monto</th>
+                <td mat-cell *matCellDef="let prenda"> {{prenda.monto}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+              <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+
+            </table>
+          </div>
+
+        </td>
+
+      </tr>
+
+    </table>
+  </div>
+
+</body>
+
+</html>

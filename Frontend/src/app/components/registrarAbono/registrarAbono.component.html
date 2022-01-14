@@ -1,0 +1,39 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br>
+<h1 align="center">
+  Registro de Abono
+</h1>
+
+<div class="container">
+  <form>
+   <div class="form-group">
+    <p>
+      <br>
+      <label>Fecha:</label> <br>
+      <input id="fecha" class="form-control" type="text" placeholder="fecha.." value="24/12/2021"> <br>
+    </p>
+    <p>
+      <label>Monto abono:</label> <br>
+      <input id="montoAbono" class="form-control" type="text" placeholder="monto..." value="4000"><br>
+    </p>
+    <p>
+      <label>Saldo Anterior</label> <br>
+      <input id="salAnterior" class="form-control" type="text" placeholder="" value="9500"><br>
+    </p>
+    <p>
+      <label>Nuevo Saldo:</label> <br>
+      <input id="nuevoSaldo" class="form-control" type="text" placeholder="" value="5000"> <br>
+    </p>
+    <p>
+      <label>Anotaciones:</label> <br>
+      <textarea>Abona un domingo</textarea>
+       <br>
+    </p>
+
+    <div align="center">
+      <button class="btn btn-success" type="button" routerLink="/inventario" (click)="null">Agregar</button>
+      <!--routerLink="/clientes"-->
+    </div>
+  </div>
+</form>
