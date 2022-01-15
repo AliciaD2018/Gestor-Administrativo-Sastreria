@@ -9,28 +9,26 @@
     <link rel="stylesheet" href="principal.component.css">
 
 </head>
-<header class="header">
-    <div class="container logo-nav-container">
-        <a href="#" class='logo'> Sara Lerh Sastrería</a>
-        <nav class='navigation'>
-            <ul>
-                <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
-                <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
-                <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']"> Clientes </a> </li>
-                <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']"> Órdenes</a> </li>
-            </ul>
-        </nav>
-    </div>
-</header>
 
 <body>
+    <header class="header">
+        <div class="container logo-nav-container">
+            <a href="#" class='logo'> Sara Lerh Sastrería</a>
+            <nav class='navigation'>
+                <ul>
+                    <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
+                    <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
+                    <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']"> Clientes </a> </li>
+                    <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']"> Órdenes</a> </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <br>
     <br>
     <h1 align='center' style="font-size: 40px;">Sistema Gestor de Sastrería</h1>
-
     <table align=center [border]="1">
         <img src="/assets/portadasastre.png" class="responsive" alt="Test" width="600" height="500" />
-
     </table>
 </body>
 
