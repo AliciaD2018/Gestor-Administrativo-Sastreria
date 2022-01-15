@@ -5,187 +5,253 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>crear Ordenes</title>
+  <title>crear ordenes</title>
   <h1>SISTEMA GESTOR DE SASTRERIA</h1>
 </head>
 
 <body>
   <header>
-    <h1 class='logo' align="center"> <a  href="#">Sara Lerh Sastrería </a></h1>
-
+    <h1 class='logo' align="center"> <a  href="#">Sara Lehr Sastrería </a></h1>
   </header>
 
   <div class="max-width1">
     <h2> Numero de orden: </h2>
   </div>
 
-  <div  class="container-fluid bg-success">
-    <table class="table table-responsive">
+  <!-- Datos cliente -->
+  <div style="margin-bottom: 20px;">
+    <table>
       <tr>
-        <td bgcolor="GhostWhite">
+        <td bgcolor="HoneyDew">
           <form class='form1'>
-            <div align='center'>
+            
+            <div class="wrapper_a">
+                <div align='left' style="margin-left: 20px; margin-top: 20px;">
+                  <h1> Datos del Cliente</h1>
+                </div>
                 
-                <h1> Datos del Cliente</h1>
-                
+                <div align="right" style="margin-top: 20px;">
+                  <button class="btn btn-success" type="button" style="margin-right: 20px; margin-top: 20px;" routerLink="/modificarCliente">
+                    Editar
+                    <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
+                         style="margin-left: 20px;" routerLink="/modificarCliente">edit</i>
+                  </button>
+                </div>
             </div>
-                <li>
-                <label> Nombre </label> &nbsp;
-                <input id="nombre" type="text" placeholder="" value="Alicia Diaz" readonly>&nbsp;
 
-                <label> Telefono1: </label> &nbsp;
-                <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
-                
-                <label> Telefono1: </label> &nbsp;
-                <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
+            <div class="wrapper_a">
+              <div>
+                <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Nombre: </label>
+                <input id="nombre" type="text" placeholder="Alicia Diaz" value="" readonly>
+              </div>
+              <div>
+                <label style="margin-top: 20px; margin-right: 10px;"> Correo Electronico: </label> 
+                <input id="email" type="text" placeholder="" value="rivas@gmail.com" readonly>
+              </div>
+            </div>
 
-                <label> Cedula:</label> &nbsp;
-                <input id="cedula" type="text" placeholder="" value="8888888" autofocus>&nbsp;
-                
-                <input type="button"  value="Click Me" /> 
+            <div class="wrapper_a">
+              <div>
+                <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Teléfono 1: </label>
+                <input id="telefono1" style="margin-top: 20px;" type="text" placeholder="86556412" value="" readonly>
+              </div>
+              <div>
+                <label style="margin-top: 20px; margin-right: 20px;" > Teléfono 2: </label>
+                <input id="telefono2" style="margin-top: 20px;" type="text" placeholder="86556412" value="" readonly>
+              </div>
+            </div>
 
-              </li>
-              
-              <li>
-                <label> Direccion: </label> &nbsp;
-                <input id="direccion" type="text" placeholder="" value="Bonanza, San Carlos">&nbsp;
+            <div class="wrapper_a">
+              <div>
+                <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Cedula:</label>
+                <input id="cedula" type="text" placeholder="301230456" value="" autofocus readonly>
+              </div>
+              <div></div>
+            </div>
 
-                <label> Correo Electronico</label> &nbsp;
-                <input id="email" type="text" placeholder="" value="rivas@gmail.com">&nbsp;
-
-                <label> Observaciones</label> &nbsp;
-                <textarea id="observaciones"></textarea>
-              </li>
+            <div class="wrapper_a">
+              <div style="margin-right: 20px; margin-left: 20px; margin-bottom: 20px;">
+                <label style="margin-top: 20px; margin-right: 10px; margin-bottom: 5px;"> Dirección: </label> 
+                <textarea id="direccion" rows="4" class="form-control" type="text" value="Bonanza, San Carlos" readonly></textarea>
+              </div>
+              <div style="margin-right: 20px; margin-left: 20px; margin-bottom: 20px;">
+                <label style="margin-top: 20px; margin-right: 10px; margin-bottom: 5px;"> Observaciones: </label> 
+                <textarea id="observaciones" rows="4" class="form-control" type="text" readonly></textarea>
+              </div>
+            </div>
              
           </form>
         </td>
       </tr>
     </table>
-
   </div>
 
-  <br />
-
-  <div  class="container-fluid bg-success">
-    <table class="table table-responsive">
-      <tr>
-        <td bgcolor="HoneyDew">
-          <form class="form2">
-    
-              <div>
-                <h1> Historico de Pagos</h1>
-                <button routerLink="/registrarAbono" routerLinkActive="/registrarAbono">Abonar</button>
-              </div>
-
-              <label> Saldo Inicial </label> &nbsp;
-              <input id="numeroOrden" type="text" placeholder="" value="7">&nbsp;
-
-              <label> Total abonos: </label> &nbsp;
-              <input id="cliente" type="text" placeholder="" value="Jeffry Daniel">&nbsp;
-
-              <label> Saldo actual:</label> &nbsp;
-              <input id="costoTotal" type="text" placeholder="" value="18000">&nbsp;
-
-          </form>
-          <br>
-          <div class="example-container">
-            <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
-
-              <ng-container matColumnDef="fecha">
-                <th mat-header-cell *matHeaderCellDef> Fecha </th>
-                <td mat-cell *matCellDef="let pago"> {{pago.fecha}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="salAnterior">
-                <th mat-header-cell *matHeaderCellDef> S. Anterior </th>
-                <td mat-cell *matCellDef="let pago"> {{pago.salAnterior}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="abono">
-                <th mat-header-cell *matHeaderCellDef> Abono </th>
-                <td mat-cell *matCellDef="let pago"> {{pago.abono}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="salNuevo">
-                <th mat-header-cell *matHeaderCellDef> S. Nuevo </th>
-                <td mat-cell *matCellDef="let pago"> {{pago.salNuevo}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="montoP">
-                <th mat-header-cell *matHeaderCellDef> Monto</th>
-                <td mat-cell *matCellDef="let pago"> {{pago.montoP}} </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
-              <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
-
-            </table>
+  <div class="wrapper_a">
+    <!-- Histórico de Pagos -->
+    <div>
+      <td bgcolor="HoneyDew">
+        <form>
+  
+          <div class="wrapper_a" style="margin-top: 20px;">
+            <div align="left" style="margin-left: 20px;">
+              <h1> Histórico de Pagos</h1>
+            </div>
+            <div align="right" style="margin-right: 20px;">
+              <button style="margin-right: 20px;" routerLink="/registrarAbono" routerLinkActive="/registrarAbono">
+                Abonar
+                <i class="material-icons" style="margin-left: 20px;">credit_score</i>
+              </button>
+            </div>
           </div>
-        </td>
+            
+          <div class="wrapper_a" style="margin-top: 20px;">
+            <div>
+              <label style="margin-left: 20px;" > Saldo Inicial: </label>
+            </div>
+            <div>
+              <input id="saldoInicial" style="margin-left: 10px;" type="text" placeholder="7000" value="">
+            </div>
+          </div>
 
-        <td bgcolor="Gainsboro">
-          <form class="form3">
-            <fieldset>
+          <div class="wrapper_a" style="margin-top: 10px;">
+            <div>
+              <label style="margin-left: 20px;"> Total abonado: </label> 
+            </div>
+            <div>
+              <input id="totalAbonado" style="margin-left: 10px;" type="text" placeholder="3000" value="">
+            </div>
+          </div>
 
-              <div>
-                <h1> Listado de Prensas</h1>
+          <div class="wrapper_a" style="margin-top: 10px;">
+            <div>
+              <label style="margin-left: 20px;"> Saldo actual:</label>
+            </div>
+            <div>
+              <input id="saldoActual" style="margin-left: 10px;" type="text" placeholder="4000" value="">
+            </div>
+          </div>
+
+        </form>
+        <br>
+        <div class="scrollbar">
+          <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
+
+            <ng-container matColumnDef="fecha">
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let pago"> {{pago.fecha}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="salAnterior">
+              <th mat-header-cell *matHeaderCellDef> S. Anterior </th>
+              <td mat-cell *matCellDef="let pago"> {{pago.salAnterior}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="abono">
+              <th mat-header-cell *matHeaderCellDef> Abono </th>
+              <td mat-cell *matCellDef="let pago"> {{pago.abono}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="salNuevo">
+              <th mat-header-cell *matHeaderCellDef> S. Nuevo </th>
+              <td mat-cell *matCellDef="let pago"> {{pago.salNuevo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="montoP">
+              <th mat-header-cell *matHeaderCellDef> Monto</th>
+              <td mat-cell *matCellDef="let pago"> {{pago.montoP}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
+
+          </table>
+        </div>
+      </td>
+    </div>
+
+    <!-- Listado de prendas -->
+    <div>
+      <td bgcolor="HoneyDew">
+        <form>
+          <fieldset>
+
+            <div class="wrapper_a" style="margin-top: 20px;">
+              <div align="left">
+                <h1 style="margin-left: 20px;"> Listado de Prendas</h1>
+              </div>
+              <div align="right" style="margin-right: 20px;">
                 <button routerLink="/registrarPrenda" routerLinkActive="/registrarPrenda">Prendas</button>
               </div>
+            </div>
 
-              <label> Total de prendas: </label> &nbsp;
-              <input id="numeroOrden" type="text" placeholder="" value="7" >&nbsp;
+            <div class="wrapper_a" style="margin-top: 20px;">
+              <div>
+                <label style="margin-left: 20px;" > Total de prendas: </label>
+              </div>
+              <div>
+                <input id="totalPrendas" style="margin-left: 10px;" type="text" placeholder="3" value="7000">
+              </div>
+            </div>
+  
+            <div class="wrapper_a" style="margin-top: 10px;">
+              <div>
+                <label style="margin-left: 20px;"> Total entregadas: </label> 
+              </div>
+              <div>
+                <input id="totalEntregadas" style="margin-left: 10px;" type="text" placeholder="1" value="3000">
+              </div>
+            </div>
+  
+            <div class="wrapper_a" style="margin-top: 10px;">
+              <div>
+                <label style="margin-left: 20px;"> Próxima entrega:</label>
+              </div>
+              <div>
+                <input id="proximaEntrega" style="margin-left: 10px;" type="text" placeholder="13/03/2022" value="4000">
+              </div>
+            </div>
 
-              <label> Total entregados: </label> &nbsp;
-              <input id="cliente" type="text" placeholder="" value="Jeffry Daniel">&nbsp;
+          </fieldset>
+          <br>
+        </form>
 
-              <label> Próxima entrega:</label> &nbsp;
-              <input id="costoTotal" type="text" placeholder="" value="18000">&nbsp;
+        <div class="scrollbar" style="size: 100%;">
+          <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
 
-            </fieldset>
-            <br>
-          </form>
+            <ng-container matColumnDef="numeroOrden">
+              <th mat-header-cell *matHeaderCellDef> Nº </th>
+              <td mat-cell *matCellDef="let prenda"> {{prenda.numeroOrden}} </td>
+            </ng-container>
 
-          <div class="example-container">
-            <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+            <ng-container matColumnDef="tipo">
+              <th mat-header-cell *matHeaderCellDef> Tipo </th>
+              <td mat-cell *matCellDef="let prenda"> {{prenda.tipo}} </td>
+            </ng-container>
 
-              <ng-container matColumnDef="numeroOrden">
-                <th mat-header-cell *matHeaderCellDef> Nº </th>
-                <td mat-cell *matCellDef="let prenda"> {{prenda.numeroOrden}} </td>
-              </ng-container>
+            <ng-container matColumnDef="decTrabajo">
+              <th mat-header-cell *matHeaderCellDef> Des.trabajo </th>
+              <td mat-cell *matCellDef="let prenda"> {{prenda.decTrabajo}} </td>
+            </ng-container>
 
-              <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef> Tipo </th>
-                <td mat-cell *matCellDef="let prenda"> {{prenda.tipo}} </td>
-              </ng-container>
+            <ng-container matColumnDef="fentrega">
+              <th mat-header-cell *matHeaderCellDef> F. entrega </th>
+              <td mat-cell *matCellDef="let prenda"> {{prenda.fentrega}} </td>
+            </ng-container>
 
-              <ng-container matColumnDef="decTrabajo">
-                <th mat-header-cell *matHeaderCellDef> Des.trabajo </th>
-                <td mat-cell *matCellDef="let prenda"> {{prenda.decTrabajo}} </td>
-              </ng-container>
+            <ng-container matColumnDef="monto">
+              <th mat-header-cell *matHeaderCellDef> Monto</th>
+              <td mat-cell *matCellDef="let prenda"> {{prenda.monto}} </td>
+            </ng-container>
 
-              <ng-container matColumnDef="fentrega">
-                <th mat-header-cell *matHeaderCellDef> F. entrega </th>
-                <td mat-cell *matCellDef="let prenda"> {{prenda.fentrega}} </td>
-              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
 
-              <ng-container matColumnDef="monto">
-                <th mat-header-cell *matHeaderCellDef> Monto</th>
-                <td mat-cell *matCellDef="let prenda"> {{prenda.monto}} </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-              <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
-
-            </table>
-          </div>
-
-        </td>
-
-      </tr>
-
-    </table>
+          </table>
+        </div>
+      </td>
+    </div>
   </div>
-
+  
 </body>
 
 </html>

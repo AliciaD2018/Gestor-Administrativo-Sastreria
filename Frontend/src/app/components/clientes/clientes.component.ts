@@ -18,7 +18,7 @@ export class ClientesComponent {
   @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
 
 
-  columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
+  columnas: string[] = ['cedula', 'nombre', 'telefono1', 'telefono2', 'email', 'direccion', 'opciones'];
   clickedRows = new Set<Customers>();
 
   public clientes: Customers[] = [];

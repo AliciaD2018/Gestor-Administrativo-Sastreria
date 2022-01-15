@@ -4,8 +4,6 @@ body{
     font-size: 1.2rem;
     line-height: 1.6em;
     background:#E5E5E5
-    
-
 }
 h1 {
 	line-height: 1.3em;
@@ -20,7 +18,6 @@ p{
     width: 85%;
     max-width: 850px;
     margin: 0 auto;
-    
 }
 
 .header{
@@ -36,7 +33,6 @@ p{
     color: white;
     text-decoration: none;
     position: relative;
-  
 }
 
 .logo-nav-container{
@@ -75,4 +71,3 @@ p{
     padding: 0.5rem 0;
     text-align: center;
 }
-

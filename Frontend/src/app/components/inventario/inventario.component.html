@@ -84,26 +84,14 @@
         <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
       </ng-container>
       
-      <ng-container matColumnDef="ver">
-        <th mat-header-cell *matHeaderCellDef> Ver </th>
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef> Ver Actualizar Borrar? </th>
         <td mat-cell *matCellDef="let j = index;">
-          <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
-           style="margin-right: 20px;">remove_red_eye</i>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="editar">
-        <th mat-header-cell *matHeaderCellDef> Editar </th>
-        <td mat-cell *matCellDef="let j = index;">
-          <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
-          routerLink="/modificarInventario" style="margin-right: 20px;">edit</i>
-        </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="borrar">
-        <th mat-header-cell *matHeaderCellDef> Borrar? </th>
-        <td mat-cell *matCellDef="let j = index;">
-          <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">delete</i>
+          <div class="btn-group btn-group-lg">
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">remove_red_eye</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">edit</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;" (click)="borrarFila(j)">delete</i>
+          </div>
         </td>
       </ng-container>
   

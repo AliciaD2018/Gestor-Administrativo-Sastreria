@@ -4,8 +4,6 @@ body{
     font-size: 0.9rem; 
     line-height: 1.6em;
     background:#E5E5E5
-       
-
 }
 
 .logo {
@@ -47,24 +45,25 @@ p{
     padding: 0.5rem 0;
     text-align: center;
 }
-/*Inicio scroll bar*/
-.example-container {
+/* Iserta el scrollbar */
+.scrollbar {
     height: 270px;
     overflow: auto;
-  }
+}
   
-  table {
-    width: 100%;
-  }
+table {
+width: 100%;
+}
   
-  tr.mat-footer-row {
-    font-weight: bold;
-  }
+tr.mat-footer-row {
+font-weight: bold;
+}
   
-  .mat-table-sticky {
-    border-top: 1px solid #e0e0e0;
-  }
-/*fin scroll bar*/
+.mat-table-sticky {
+border-top: 1px solid #e0e0e0;
+}
+
+/* Fin scrollbar */
 
 
 th,td{
@@ -86,13 +85,13 @@ tr:nth-child(even){
     background-color: #ddd;
 }
 
-form input{
+/* form input{
     border-radius: 4px;
     width: 200px;
     height: 30px;
-}
+} */
 
-form button{
+/* form button{
     text-decoration:none;
     font-weight: 600;
     font-size: 15px;
@@ -103,7 +102,7 @@ form button{
     border-style: solid;
     border-radius:15px;
     border-color: #333;
-}
+} */
 
 .max-width1 h2 {
     
@@ -115,3 +114,19 @@ form button{
     color: aliceblue;
 }
 
+
+/* Elementos alineados en la misma fila */
+.wrapper_a {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_b {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_c {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -17,7 +17,7 @@ export class InventarioComponent implements OnInit {
 
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
-  columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'ver', 'editar', 'borrar'];
+  columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
 
   private datos: Array<Articulo> = [];
 
