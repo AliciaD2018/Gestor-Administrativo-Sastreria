@@ -4,8 +4,6 @@ body{
     font-size: 1.2rem;
     line-height: 1.6em;
     background:#ffffff
-    
-
 }
 h1 {
 	line-height: 1.3em;
@@ -20,7 +18,6 @@ p{
     width: 85%;
     max-width: 850px;
     margin: 0 auto;
-    
 }
 
 .header{
@@ -74,5 +71,6 @@ p{
     background: #f2f2f2;
     padding: 0.5rem 0;
     text-align: center;
+    width: 100%;
 }
 

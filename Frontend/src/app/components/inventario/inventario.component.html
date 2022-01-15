@@ -11,7 +11,7 @@
 <body>
   <header class="header">
     <div class="container logo-nav-container">
-      <a href="#" class='logo'> Sara Lerh Sastrería</a>
+      <a href="#" class='logo'> Sara Lehr Sastrería</a>
       <nav class='navigation'>
         <ul>
           <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
@@ -26,19 +26,26 @@
   <br>
   <br>
   <h1 align='center'> <b> <u>Lista de Inventario</u></b></h1>
-
-  <hr>
-  <form action="" align='left'>
-    <select name="cats" id="categoriasSelect" class="forms-control" placeholder="Seleccionar..." border-radius=4px>
-        <option value="" disabled selected hidden>Categorias...</option>
-    </select>
-  </form>
-
-  <form action="" method="get" align='right'>
-    <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
-  </form>
-  <hr>
   
+  <hr>
+  <div class="wrapper">
+    <!-- Dropdown list (select) Categorías -->
+    <div align='left'>
+        <select name="cats" id="categoriasSelect" style="margin-left: 30px;" class="forms-control"
+          placeholder="Seleccionar..." border-radius=4px>
+            <option value="" disabled selected hidden>Categorías...</option>
+        </select>
+    </div>
+
+    <!-- Input Buscar -->
+    <div align='right'>
+        <input (keyup)="filtrar($event)" style="margin-right: 30px;" class="forms-control"
+        placeholder="Buscar..." border-radius=4px >
+    </div>
+  </div>
+  <hr>
+
+  <!-- Tabla -->
   <div class="scrollbar">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
 
@@ -77,10 +84,19 @@
         <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
       </ng-container>
       
+      <ng-container matColumnDef="ver">
+        <th mat-header-cell *matHeaderCellDef> Ver </th>
+        <td mat-cell *matCellDef="let j = index;">
+          <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
+           style="margin-right: 20px;">remove_red_eye</i>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="editar">
         <th mat-header-cell *matHeaderCellDef> Editar </th>
         <td mat-cell *matCellDef="let j = index;">
-          <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" routerLink="/modificarInventario">edit</i>
+          <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
+          routerLink="/modificarInventario" style="margin-right: 20px;">edit</i>
         </td>
       </ng-container>
   
@@ -102,8 +118,9 @@
         <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarMaterial" routerLinkActive="/registrarMaterial">
           Agregar material
           <i class="material-icons" style="margin-left: 20px;">add_shopping_cart</i>
-        </button> 
-      </nav>               
+        </button>
+      </nav>
+      
   </div>
   <hr>
 

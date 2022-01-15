@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <header class="header">
         <div class="container logo-nav-container">
-            <a href="#" class='logo'> Sara Lerh Sastrería </a>
+            <a href="#" class='logo'> Sara Lehr Sastrería </a>
             <nav class='navigation'>
                 <ul>
                   <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
@@ -18,20 +20,24 @@
                   <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']"> Órdenes</a> </li>
                 </ul>  
             </nav>
-        </div>
-        
+        </div>        
     </header>
 
     <br>
     <br>     
     <h1 align='center'> <b> <u>Lista de Clientes</u></b></h1>
-    <form action="" method="get" align='right'>
-      <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px >
-    </form>
 
-    <br>
-  
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
+    <hr>
+    <!-- Input Buscar -->
+    <form action="" method="get" align='right'>
+      <input (keyup)="filtrar($event)" style="margin-right: 30px;" class="forms-control" placeholder="Buscar..." border-radius=4px >
+    </form>
+    <hr>
+    
+    <!-- Tabla -->
+    <div class="scrollbar">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
+        
         <ng-container matColumnDef="cedula">
           <th mat-header-cell *matHeaderCellDef> Cedula </th>
           <td mat-cell *matCellDef="let clients"> {{clients.cedula}} </td>
@@ -88,6 +94,7 @@
         <tr mat-header-row *matHeaderRowDef="columnas"></tr>
         <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
       </table>
+    </div>
 
       <hr>
       <div align='center'> 
@@ -95,9 +102,9 @@
             <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarCliente" routerLinkActive="registrarCliente">
               Agregar cliente
               <i class="material-icons" style="margin-left: 20px;">person_add</i>
-            </button> 
-            
-          </nav>               
+            </button>
+          </nav>
+          
       </div>
       <hr>
     

@@ -16,11 +16,9 @@ export class OrdenesComponent implements OnInit {
   @ViewChild(RegistrarOrdenComponent) importa: RegistrarOrdenComponent;
 
 
-  columnas: string[] = ['numeroOrden', 'cliente', 'costoTotal', 'saldo', 'fechaEntrega', 'cantidadPrendas', 'borrar'];
+  columnas: string[] = ['numeroOrden', 'cliente', 'costoTotal', 'saldo', 'fechaEntrega', 'cantidadPrendas', 'opciones'];
 
   public datos: Orders[] = [];
-
-  orderselect: Orders = new Orders('', "", '', '', '', '');
 
   @ViewChild(MatTable) tabla1!: MatTable<Orders>;
 
@@ -35,7 +33,7 @@ export class OrdenesComponent implements OnInit {
   //-------Filtro de busqueda
   dataSource: any;
   ngOnInit() {
-
+    this.agregarOrdenes();
   }
 
   filtrar(event: Event) {
@@ -44,18 +42,38 @@ export class OrdenesComponent implements OnInit {
   }
 
   
-  agregarOrden(): void {
-    const promise = this.api.selectOrders().then()
+  agregarOrdenes(): void {
+    const promise = this.api.selectAllOrders().then()
     promise.then((data) => {
       console.log(JSON.stringify(data));
       for (var order of data) {
+        let saldo;
+        let fecha;
+        let cantidad;
+
+        if (order['Saldo'] == null) {
+          saldo = 0;
+        } else {
+          saldo = order['Saldo'];
+        }
+
+        if (order['FechaEntrega'] == null) {
+          fecha = "N/A";
+        } else {
+          fecha = order['FechaEntrega'];
+        }
+        
+        if (order['Cantidad'] == null) {
+          cantidad = 0;
+        } else {
+          cantidad = order['Cantidad'];
+        }
 
         this.datos.push({
-          numeroOrden: order['NombreCompleto'], cliente: order['Telefono1'],
-          costoTotal: order['Telefono2'], saldo: order['Cedula'],
-          fechaEntrega: order['Email'], cantidadPrendas: order['Direccion']
+          numeroOrden: order['NumeroOrden'],idCliente: order['IdCliente'], cliente: order['NombreCompleto'],
+          costoTotal: order['CostoTotal'], saldo: saldo, fechaEntrega: fecha, cantidadPrendas: cantidad
         });
-        console.log("-------------->",order);
+        // console.log("-------------->",order);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
@@ -72,6 +90,7 @@ export class OrdenesComponent implements OnInit {
 export class Orders {
   constructor(
     public numeroOrden: string,
+    public idCliente: string,
     public cliente: string,
     public costoTotal: string,
     public saldo: string,

@@ -16,39 +16,43 @@ export class CalendarioComponent implements OnInit {
   public events = [];
   public options: any;
 
-  constructor(private api: ApiService) { 
-    this.agregarEventos();
+  constructor(private api: ApiService) {
   }
 
-  ngOnInit() {
-    
+  async ngOnInit() {
+
     this.options = {
-      plugins: [dayGridPlugin, timeGridPlugin,interactionPlugin],
+      plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       defaulDate: new Date(),
       locale: esLocale,
-      header:{
+      header: {
         left: 'prev,next',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       editable: false
     }
-    
-    
+
+    this.agregarEventos();
+    console.log(`1- Evento: ${JSON.stringify(this.events[0])}`);
+  }
+  
+  imprimirEvento() {
+    console.log(`2- Evento: ${JSON.stringify(this.events[0])}`);
   }
 
-  agregarEventos(): void{
+  agregarEventos(): void {
     const promise = this.api.selectOrdersDetailsForCalendar().then()
     promise.then((ordersDatails) => {
-      for(var order of ordersDatails){
-                
-        var year = order['FechaEntrega'].substring(0,4);
-        var month = order['FechaEntrega'].substring(5,7);
+      for (var order of ordersDatails) {
+
+        var year = order['FechaEntrega'].substring(0, 4);
+        var month = order['FechaEntrega'].substring(5, 7);
         var day = order['FechaEntrega'].substring(8);
         var hora = 8;
         var minuto = 0;
         var segundo = 0;
-        
+
         this.events.push({
           title: `Orden ${order['IdOrden']}`,
           start: new Date(year, month, day, hora, minuto, segundo),

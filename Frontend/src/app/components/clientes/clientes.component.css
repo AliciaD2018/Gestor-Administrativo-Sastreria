@@ -4,9 +4,8 @@ body{
     font-size: 1.2rem;
     line-height: 1.6em;
     background:#E5E5E5
-    
-
 }
+
 h1 {
 	line-height: 1.3em;
 	font-weight: 300;
@@ -19,8 +18,7 @@ p{
 .container{
     width: 85%;
     max-width: 850px;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
 }
 
 .header{
@@ -29,14 +27,12 @@ p{
     left: 0;
     top:0;
     width: 100%;
-
 }
 
 .header a {
     color: white;
     text-decoration: none;
     position: relative;
-  
 }
 
 .logo-nav-container{
@@ -81,7 +77,6 @@ table{
     background-color: rgb(252, 250, 250);
     border-collapse: collapse;
     width: 100%;
-   
 }
 
 th,td{
@@ -121,4 +116,10 @@ form button{
     border-style: solid;
     border-radius:25px;
     border-color: #333;
+}
+
+/* Agrega el scrollbar a la tabla */
+.scrollbar {
+    height: 600px;
+  overflow: auto;
 }

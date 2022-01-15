@@ -82,7 +82,7 @@ export class ApiService {
     return cliente['clientes'];
   }
 
-  async selectOrders(){
+  async selectAllOrders(){
     console.clear();
     
     this.myHeaders.append('Content-Type', 'application/json');
@@ -92,9 +92,9 @@ export class ApiService {
       headers: this.myHeaders,
     };
 
-    let respuesta = await fetch(this.url + `/api/selectorders`, requestOptions);
-    let ordenes = await respuesta.json();
-    return ordenes['ordenes']; //la clave esta en el endpoint como response
+    let respuesta = await fetch(this.url + `/api/selectallorders`, requestOptions);
+    let cliente = await respuesta.json();
+    return cliente['ordenes'];
   }
 
   async selectMaterialsCategories(){

@@ -9,7 +9,7 @@
 <body>
     <header class="header">
         <div class="container logo-nav-container">
-            <a href="#" class='logo'> Sara Lerh Sastrería</a>
+            <a href="#" class='logo'> Sara Lehr Sastrería</a>
             <nav class='navigation'>
                 <ul>
                     <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
@@ -27,7 +27,7 @@
         <br>
     </div>
     <div align="center">
-        <button class="btn btn-success" type="submit">Generar lista semana</button>
+        <button class="btn btn-success" type="submit" (click)="imprimirEvento()">Generar lista semana</button>
     </div>
     <br>
     
