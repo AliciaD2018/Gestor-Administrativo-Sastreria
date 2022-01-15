@@ -5,6 +5,49 @@ body{
     line-height: 1.6em;
     background:#E5E5E5
 }
+/*Lineas Verticales de en la tabla- INICIO*/
+.mat-column-nombre{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 15% ;
+}
+.mat-column-telefono1{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+}
+.mat-column-telefono2{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+}
+.mat-column-cedula{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+}
+.mat-column-email{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 15% ;
+}
+.mat-column-direccion{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    width: 18% ;
+
+}
+
+/*Lineas Verticales de en la tabla- FIN*/
+
+.mat-row .mat-cell {
+    cursor: pointer;
+} 
 
 h1 {
 	line-height: 1.3em;
@@ -73,7 +116,7 @@ p{
 }
 
 
-table{
+#tabla1{
     background-color: rgb(252, 250, 250);
     border-collapse: collapse;
     width: 100%;

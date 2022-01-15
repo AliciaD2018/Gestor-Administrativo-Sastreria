@@ -31,6 +31,7 @@ import { VerDetallesClienteComponent } from './components/verDetallesCliente/ver
 import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
+import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
 
 const routes: Routes = [
 
@@ -98,6 +99,10 @@ const routes: Routes = [
   {
     path:'registrarAbono',
     component: RegistrarAbonoComponent
+  },
+  {
+    path:'registrarPrenda',
+    component: RegistrarPrendaComponent
   }
 ];
 
@@ -119,7 +124,8 @@ const routes: Routes = [
     VerDetallesClienteComponent,
     CrearOrdenComponent,
     DetalleOrdenComponent,
-    RegistrarAbonoComponent
+    RegistrarAbonoComponent,
+    RegistrarPrendaComponent
    ],
   imports: [
     BrowserModule,

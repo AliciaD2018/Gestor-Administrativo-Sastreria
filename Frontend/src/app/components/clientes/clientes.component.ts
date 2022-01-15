@@ -11,13 +11,15 @@ import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.
 
 export class ClientesComponent {
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService ) {
+    
   }
   
   @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
 
 
-  columnas: string[] = ['cedula', 'nombre', 'telefono1', 'telefono2', 'email', 'direccion', 'ver', 'editar', 'borrar'];
+  columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
+  clickedRows = new Set<Customers>();
 
   public clientes: Customers[] = [];
 
@@ -90,6 +92,7 @@ export class Customers {
     public direccion: string,
     public observaciones: string) {
   }
+  
 
 }
 

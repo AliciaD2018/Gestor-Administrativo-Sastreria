@@ -7,14 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>crear Ordenes</title>
   <h1>SISTEMA GESTOR DE SASTRERIA</h1>
-
 </head>
-
-
 
 <body>
   <header>
-    <h1 align="center">Sistema de Gestor de Sastreria</h1>
+    <h1 class='logo' align="center"> <a  href="#">Sara Lerh Sastrería </a></h1>
 
   </header>
 
@@ -22,8 +19,8 @@
     <h2> Numero de orden: </h2>
   </div>
 
-  <div class="container-fluid">
-    <table class='tabla1'>
+  <div  class="container-fluid bg-success">
+    <table class="table table-responsive">
       <tr>
         <td bgcolor="GhostWhite">
           <form class='form1'>
@@ -34,7 +31,7 @@
             </div>
                 <li>
                 <label> Nombre </label> &nbsp;
-                <input id="nombre" type="text" placeholder="" value="Alicia Diaz">&nbsp;
+                <input id="nombre" type="text" placeholder="" value="Alicia Diaz" readonly>&nbsp;
 
                 <label> Telefono1: </label> &nbsp;
                 <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
@@ -43,7 +40,7 @@
                 <input id="telefono1" type="text" placeholder="" value="86556412">&nbsp;
 
                 <label> Cedula:</label> &nbsp;
-                <input id="cedula" type="text" placeholder="" value="8888888">&nbsp;
+                <input id="cedula" type="text" placeholder="" value="8888888" autofocus>&nbsp;
                 
                 <input type="button"  value="Click Me" /> 
 
@@ -59,11 +56,6 @@
                 <label> Observaciones</label> &nbsp;
                 <textarea id="observaciones"></textarea>
               </li>
-              
-             
-                 
-              
-                
              
           </form>
         </td>
@@ -74,8 +66,8 @@
 
   <br />
 
-  <div class="container-fluid">
-    <table class='tabla2'>
+  <div  class="container-fluid bg-success">
+    <table class="table table-responsive">
       <tr>
         <td bgcolor="HoneyDew">
           <form class="form2">
@@ -134,13 +126,14 @@
         <td bgcolor="Gainsboro">
           <form class="form3">
             <fieldset>
+
               <div>
                 <h1> Listado de Prensas</h1>
-                <button>Agregar Prenda</button>
+                <button routerLink="/registrarPrenda" routerLinkActive="/registrarPrenda">Prendas</button>
               </div>
 
               <label> Total de prendas: </label> &nbsp;
-              <input id="numeroOrden" type="text" placeholder="" value="7">&nbsp;
+              <input id="numeroOrden" type="text" placeholder="" value="7" >&nbsp;
 
               <label> Total entregados: </label> &nbsp;
               <input id="cliente" type="text" placeholder="" value="Jeffry Daniel">&nbsp;
@@ -192,7 +185,6 @@
 
     </table>
   </div>
-
 
 </body>
 

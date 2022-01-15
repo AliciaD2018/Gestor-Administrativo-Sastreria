@@ -20,7 +20,6 @@ export class InventarioComponent implements OnInit {
   columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'ver', 'editar', 'borrar'];
 
   private datos: Array<Articulo> = [];
-  private categorias: Array<string> = [];
 
   @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
 

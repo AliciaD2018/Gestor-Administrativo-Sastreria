@@ -6,6 +6,58 @@ body{
     background:#E5E5E5
 }
 
+/*Lineas Verticales de en la tabla- INICIO*/
+.mat-column-codigo{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+}
+.mat-column-categoria{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+}
+.mat-column-descripcion{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    width: 18% ;
+}
+.mat-column-cantidad{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 7% ;
+}
+.mat-column-unidadmedida{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 7% ;
+}
+.mat-column-precio{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+
+}
+.mat-column-fecharegistro{
+    border-right: 1px solid currentColor;
+    align-self: stretch;
+    text-align: center;
+    width: 10% ;
+
+}
+
+/*Lineas Verticales de en la tabla- FIN*/
+ 
+.mat-row .mat-cell {
+    cursor: pointer;
+}
+
+
 h1 {
 	line-height: 1.3em;
 	font-weight: 300;
@@ -73,7 +125,7 @@ p{
 }
 
 
-table{
+#tabla2{
     background-color: rgb(252, 250, 250);
     border-collapse: collapse;
     width: 100%;
@@ -120,20 +172,22 @@ form button{
 
 /* Agrega el scrollbar a la tabla */
 .scrollbar {
-    height: 600px;
-  overflow: auto;
-}
-
-table {
-  width: 100%;
-}
-tr.mat-heater-row {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  tr.mat-footer-row {
     font-weight: bold;
-}
-
-.mat-table-sticky {
+  }
+  
+  .mat-table-sticky {
     border-top: 1px solid #e0e0e0;
-}
+  }
+/*fin scroll bar*/
 
 /* Elementos alineados en la misma fila */
 .wrapper {
