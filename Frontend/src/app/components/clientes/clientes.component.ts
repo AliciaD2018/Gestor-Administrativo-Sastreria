@@ -21,16 +21,20 @@ export class ClientesComponent {
   columnas: string[] = ['nombre', 'telefono1', 'telefono2', 'cedula', 'email', 'direccion', 'borrar'];
   clickedRows = new Set<Customers>();
 
-  public datos: Customers[] = [];
+  public clientes: Customers[] = [];
 
   @ViewChild(MatTable) tabla1!: MatTable<Customers>;
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.datos.splice(cod, 1);
+      this.clientes.splice(cod, 1);
       this.tabla1.renderRows();
-      localStorage.setItem("clientes", JSON.stringify(this.datos));
+      localStorage.setItem("clientes", JSON.stringify(this.clientes));
     }
+  }
+
+  pasarDatosCliente(j: number){
+    localStorage.setItem('cliente', JSON.stringify(this.clientes[j]));
   }
 
   dataSource: any;
@@ -44,24 +48,27 @@ export class ClientesComponent {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
+  pasar
+
   agregarClientes(): void {
     const promise = this.api.selectAllCustomers().then()
-    promise.then((data) => {
+    promise.then((customers) => {
       // console.log("data: ",JSON.stringify(data));
-      for (var index of data) {
+      for (var customer of customers) {
 
-        this.datos.push({
-          nombre: index['NombreCompleto'], telefono1: index['Telefono1'],
-          telefono2: index['Telefono2'], cedula: index['Cedula'],
-          email: index['Email'], direccion: index['Direccion']
+        this.clientes.push({
+          id: customer['Id'], cedula: customer['Cedula'], nombre: customer['NombreCompleto'],
+          telefono1: customer['Telefono1'], tipoTelefono1: customer['TipoTelefono1'], notasTelefono1: customer['NotasTelefono1'],
+          telefono2: customer['Telefono2'], tipoTelefono2: customer['TipoTelefono2'], notasTelefono2: customer['NotasTelefono2'],
+          email: customer['Email'], direccion: customer['Direccion'], observaciones: customer['Observaciones']
         });
         // console.log("-------------->",index);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
-      const articulos = JSON.stringify(this.datos);
-      this.datos = JSON.parse(articulos);
-      this.dataSource = new MatTableDataSource(this.datos);
+      const Clientes = JSON.stringify(this.clientes);
+      this.clientes = JSON.parse(Clientes);
+      this.dataSource = new MatTableDataSource(this.clientes);
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
@@ -72,12 +79,18 @@ export class ClientesComponent {
 
 export class Customers {
   constructor(
+    public id: string,
+    public cedula: string,
     public nombre: string,
     public telefono1: string,
+    public tipoTelefono1: string,
+    public notasTelefono1: string,
     public telefono2: string,
-    public cedula: string,
+    public tipoTelefono2: string,
+    public notasTelefono2: string,
     public email: string,
-    public direccion: string) {
+    public direccion: string,
+    public observaciones: string) {
   }
   
 

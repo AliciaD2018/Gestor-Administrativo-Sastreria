@@ -27,6 +27,7 @@ import { ModificarClienteComponent } from './components/modificarCliente/modific
 import { ModificarInventarioComponent } from './components/modificarInventario/modificarInventario.component';
 import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOrden.component';
 import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
+import { VerDetallesClienteComponent } from './components/verDetallesCliente/verDetallesCliente.component';
 import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
@@ -84,10 +85,13 @@ const routes: Routes = [
     component: ModificarOrdenComponent
   },
   {
+    path:'verDetallesCliente',
+    component: VerDetallesClienteComponent
+  },
+  {
     path:'crearOrden',
     component: CrearOrdenComponent
-  }
-  ,
+  },
   {
     path:'detalleOrden',
     component: DetalleOrdenComponent
@@ -100,7 +104,6 @@ const routes: Routes = [
     path:'registrarPrenda',
     component: RegistrarPrendaComponent
   }
-
 ];
 
 
@@ -118,6 +121,7 @@ const routes: Routes = [
     ModificarInventarioComponent,
     RegistrarOrdenComponent,
     ModificarOrdenComponent,
+    VerDetallesClienteComponent,
     CrearOrdenComponent,
     DetalleOrdenComponent,
     RegistrarAbonoComponent,

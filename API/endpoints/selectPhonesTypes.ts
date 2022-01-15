@@ -1,5 +1,5 @@
 import express from 'express';
-import { uspSelectMaterialsCategories } from '../controllers/selectMaterialsCategoriesController';
+import { uspSelectPhonesTypes } from '../controllers/selectPhonesTypesController';
 
 const router = express();
 
@@ -8,15 +8,15 @@ const router = express();
 const cors = require('cors');
 router.use(cors());
 
-router.get('/api/selectmaterialscategories', (req, res) => {
+router.get('/api/selectphonestypes', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     
     try{
-        uspSelectMaterialsCategories()
+        uspSelectPhonesTypes()
         .then( response => {
             // console.log(response);
             res.status(200).send({
-                categorias: response
+                tipostelefonos: response
             });
         });
     }catch(err){
@@ -26,4 +26,4 @@ router.get('/api/selectmaterialscategories', (req, res) => {
     }
 });
 
-export {router as selectMaterialsCategories}
+export {router as selectPhonesTypes}

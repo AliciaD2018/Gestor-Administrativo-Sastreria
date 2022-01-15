@@ -17,29 +17,37 @@ export class ApiService {
 
     this.myHeaders.append("Content-Type", "application/json");
 
-    const clienteJSON = {
-      Cedula: cliente.Cedula,
-      NombreCompleto: cliente.NombreCompleto,
-      Email: cliente.Email,
-      Direccion: cliente.Direccion,
-      Observaciones: cliente.Observaciones,
-      Telefono1: cliente.Telefono1,
-      NotasTelefono1: cliente.NotasTelefono1,
-      Telefono2: cliente.Telefono2,
-      NotasTelefono2: cliente.NotasTelefono2
-    }
-
     // Generado con postman
     var requestOptions = {
       method: 'POST',
       headers: this.myHeaders,
-      body: JSON.stringify(clienteJSON)
     };
 
     return fetch(this.url + `/api/insertcustomer?cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}` +
                             `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
-                            `&telefono1=${cliente.Telefono1}&notasTelefono1=${cliente.NotasTelefono1}&telefono2=${cliente.Telefono2}` +
-                            `&notasTelefono2=${cliente.NotasTelefono2}`, requestOptions)
+                            `&telefono1=${cliente.Telefono1}&tipoTelefono1=${cliente.TipoTelefono1}&notasTelefono1=${cliente.NotasTelefono1}` +
+                            `&telefono2=${cliente.Telefono2}&tipoTelefono2=${cliente.TipoTelefono2}&notasTelefono2=${cliente.NotasTelefono2}`,
+                            requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  async updateCustomer(cliente: CustomerI){
+    console.clear();
+
+    this.myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+      method: 'POST',
+      headers: this.myHeaders,
+    };
+
+    return fetch(this.url + `/api/updatecustomer?id=${cliente.Id}&cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}` +
+                            `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
+                            `&telefono1=${cliente.Telefono1}&tipoTelefono1=${cliente.TipoTelefono1}&notasTelefono1=${cliente.NotasTelefono1}` +
+                            `&telefono2=${cliente.Telefono2}&tipoTelefono2=${cliente.TipoTelefono2}&notasTelefono2=${cliente.NotasTelefono2}`,
+                            requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -47,6 +55,7 @@ export class ApiService {
 
   async selectMaterialsInventory(){
     console.clear();
+    
     this.myHeaders.append('Content-Type', 'application/json');
     var requestOptions = {
       method: 'GET',
@@ -103,8 +112,23 @@ export class ApiService {
     return categorias['categorias'];
   }
 
+  async selectPhonesTypes(){
+    console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+  
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectphonestypes`, requestOptions);
+    let tipos = await respuesta.json();
+    return tipos['tipostelefonos'];
+  }
+
   async selectOrdersDetailsForCalendar(){
-    //console.clear();
+    console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
   

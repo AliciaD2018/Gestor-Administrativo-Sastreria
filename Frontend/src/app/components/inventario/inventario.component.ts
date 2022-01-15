@@ -57,7 +57,7 @@ export class InventarioComponent implements OnInit {
         opcion.text = valor;
         $select.appendChild(opcion);
       }
-    })
+    });
   }
 
   agregaMateriales(): void {
