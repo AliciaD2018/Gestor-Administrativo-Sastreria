@@ -19,7 +19,7 @@
   </div>
 
   <!-- Datos cliente -->
-  <div style="margin-bottom: 20px;">
+  <div style="margin-bottom: 20px;" class="div_border_1" >
     <table>
       <tr>
         <td bgcolor="HoneyDew">
@@ -32,9 +32,15 @@
                 
                 <div align="right" style="margin-top: 20px;">
                   <button class="btn btn-success" type="button" style="margin-right: 20px; margin-top: 20px;" routerLink="/modificarCliente">
-                    Editar
+                    Seleccionar
                     <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
-                         style="margin-left: 20px;" routerLink="/modificarCliente">edit</i>
+                         style="margin-left: 20px;" routerLink="/modificarCliente">person_add_alt</i>
+                  </button>
+
+                  <button class="btn btn-success" type="button" style="margin-right: 20px; margin-top: 20px;" routerLink="/registrarCliente" routerLinkActive="registrarCliente">
+                    Agregar cliente
+                    <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false"
+                         style="margin-left: 20px;" routerLink="/modificarCliente">person_add</i>
                   </button>
                 </div>
             </div>
@@ -46,18 +52,18 @@
               </div>
               <div>
                 <label style="margin-top: 20px; margin-right: 10px;"> Correo Electronico: </label> 
-                <input id="email" type="text" placeholder="" value="rivas@gmail.com" readonly>
+                <input id="email" type="email" placeholder="" value="rivas@gmail.com" readonly>
               </div>
             </div>
 
             <div class="wrapper_a">
               <div>
                 <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Teléfono 1: </label>
-                <input id="telefono1" style="margin-top: 20px;" type="text" placeholder="86556412" value="" readonly>
+                <input id="telefono1" style="margin-top: 20px;" type="tel" placeholder="86556412" value="" readonly>
               </div>
               <div>
                 <label style="margin-top: 20px; margin-right: 20px;" > Teléfono 2: </label>
-                <input id="telefono2" style="margin-top: 20px;" type="text" placeholder="86556412" value="" readonly>
+                <input id="telefono2" style="margin-top: 20px;" type="tel" placeholder="86556412" value="" readonly>
               </div>
             </div>
 
@@ -86,10 +92,9 @@
     </table>
   </div>
 
-  <div class="wrapper_a">
+  <div class="wrapper_b">
     <!-- Histórico de Pagos -->
-    <div>
-      <td bgcolor="HoneyDew">
+    <div style="margin-right: 20px; background-color:cadetblue;" class="div_border_1">
         <form>
   
           <div class="wrapper_a" style="margin-top: 20px;">
@@ -109,7 +114,7 @@
               <label style="margin-left: 20px;" > Saldo Inicial: </label>
             </div>
             <div>
-              <input id="saldoInicial" style="margin-left: 10px;" type="text" placeholder="7000" value="">
+              <input id="saldoInicial" style="margin-left: 10px;" type="number" readonly placeholder="7000" value="">
             </div>
           </div>
 
@@ -118,7 +123,7 @@
               <label style="margin-left: 20px;"> Total abonado: </label> 
             </div>
             <div>
-              <input id="totalAbonado" style="margin-left: 10px;" type="text" placeholder="3000" value="">
+              <input id="totalAbonado" style="margin-left: 10px;" type="number" readonly placeholder="3000" value="">
             </div>
           </div>
 
@@ -127,14 +132,16 @@
               <label style="margin-left: 20px;"> Saldo actual:</label>
             </div>
             <div>
-              <input id="saldoActual" style="margin-left: 10px;" type="text" placeholder="4000" value="">
+              <input id="saldoActual" style="margin-left: 10px;" type="number" readonly placeholder="4000" value="">
             </div>
           </div>
 
         </form>
         <br>
+
+        <!-- Tabla Abonos -->
         <div class="scrollbar">
-          <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
+          <table mat-table [dataSource]="datosAbonos" class="mat-elevation-z8" #tabla2>
 
             <ng-container matColumnDef="fecha">
               <th mat-header-cell *matHeaderCellDef> Fecha </th>
@@ -161,17 +168,30 @@
               <td mat-cell *matCellDef="let pago"> {{pago.montoP}} </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
+            <ng-container matColumnDef="opciones">
+              <th mat-header-cell *matHeaderCellDef>
+                <label > Ver </label>
+                <label style="margin-left: 35px;"> Act. </label>
+                <label style="margin-left: 26px;"> Borrar? </label>
+              </th>
+              <td mat-cell *matCellDef="let j = index;">
+                <div class="btn-group btn-group-lg">
+                  <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">remove_red_eye</i>
+                  <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">edit</i>
+                  <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;">delete</i>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasAbonos"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasAbonos;"></tr>
 
           </table>
-        </div>
-      </td>
+        </div> <!-- FIN Tabla Abonos -->
     </div>
 
     <!-- Listado de prendas -->
-    <div>
-      <td bgcolor="HoneyDew">
+    <div style="margin-left: 20px; background-color: cadetblue;" class="div_border_1">
         <form>
           <fieldset>
 
@@ -215,12 +235,18 @@
           <br>
         </form>
 
+        <!-- Tabla prendas -->
         <div class="scrollbar" style="size: 100%;">
-          <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+          <table mat-table [dataSource]="datosPrendas" class="mat-elevation-z8" #tabla1>
 
             <ng-container matColumnDef="numeroOrden">
               <th mat-header-cell *matHeaderCellDef> Nº </th>
               <td mat-cell *matCellDef="let prenda"> {{prenda.numeroOrden}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fentrega">
+              <th mat-header-cell *matHeaderCellDef> F. entrega </th>
+              <td mat-cell *matCellDef="let prenda"> {{prenda.fentrega}} </td>
             </ng-container>
 
             <ng-container matColumnDef="tipo">
@@ -233,24 +259,94 @@
               <td mat-cell *matCellDef="let prenda"> {{prenda.decTrabajo}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="fentrega">
-              <th mat-header-cell *matHeaderCellDef> F. entrega </th>
-              <td mat-cell *matCellDef="let prenda"> {{prenda.fentrega}} </td>
-            </ng-container>
-
             <ng-container matColumnDef="monto">
               <th mat-header-cell *matHeaderCellDef> Monto</th>
               <td mat-cell *matCellDef="let prenda"> {{prenda.monto}} </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+            <ng-container matColumnDef="opciones">
+              <th mat-header-cell *matHeaderCellDef> 
+                <label > Ver </label>
+                <label style="margin-left: 35px;"> Act. </label>
+                <label style="margin-left: 26px;"> Borrar? </label>
+              </th>
+              <td mat-cell *matCellDef="let j = index;">
+                <div class="btn-group btn-group-lg">
+                  <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">remove_red_eye</i>
+                  <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">edit</i>
+                  <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;">delete</i>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasPrendas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasPrendas;"></tr>
 
           </table>
-        </div>
-      </td>
+        </div> <!-- FIN Tabla prendas -->
     </div>
   </div>
+
+  <!-- Tabla materiales -->
+  <div style="margin-top: 20px; margin-bottom: 20px;" class="div_border_1">
+    <div class="scrollbar">
+      <table mat-table [dataSource]="datosMateriales" class="mat-elevation-z8" #tabla1>
+  
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Codigo </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.codigo}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="categoria">
+          <th mat-header-cell *matHeaderCellDef> Categoria </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.categoria}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.descripcion}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.cantidad}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="unidadmedida">
+          <th mat-header-cell *matHeaderCellDef> Unidad de medida </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.unidadmedida}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.precio}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="fecharegistro">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+          <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef>
+            <label > Ver </label>
+            <label style="margin-left: 35px;"> Act. </label>
+            <label style="margin-left: 26px;"> Borrar? </label>
+          </th>
+          <td mat-cell *matCellDef="let j = index;">
+            <div class="btn-group btn-group-lg">
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">remove_red_eye</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">edit</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;">delete</i>
+            </div>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="columnasMateriales; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnasMateriales;"></tr>
+      </table>
+    </div>
+  </div> <!-- FIN Tabla materiales -->
   
 </body>
 

@@ -81,12 +81,12 @@ const routes: Routes = [
     component: RegistrarOrdenComponent
   },
   {
-    path:'modificarOrden',
-    component: ModificarOrdenComponent
-  },
-  {
     path:'verDetallesCliente',
     component: VerDetallesClienteComponent
+  },
+  {
+    path:'modificarOrden',
+    component: ModificarOrdenComponent
   },
   {
     path:'crearOrden',
@@ -121,9 +121,9 @@ const routes: Routes = [
     ModificarInventarioComponent,
     RegistrarOrdenComponent,
     ModificarOrdenComponent,
-    VerDetallesClienteComponent,
-    CrearOrdenComponent,
     DetalleOrdenComponent,
+    CrearOrdenComponent,
+    VerDetallesClienteComponent,
     RegistrarAbonoComponent,
     RegistrarPrendaComponent
    ],

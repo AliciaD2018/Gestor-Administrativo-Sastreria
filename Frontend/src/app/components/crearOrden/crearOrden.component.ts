@@ -11,61 +11,142 @@ export class CrearOrdenComponent implements OnInit {
 
   constructor() { }
 
-  columnas: string[] = ['numeroOrden', 'tipo', 'decTrabajo', 'fentrega', 'monto'];
+  columnasAbonos: string[] = ['fecha', 'salAnterior', 'abono', 'salNuevo', 'montoP', 'opciones'];
+  columnasPrendas: string[] = ['numeroOrden', 'tipo', 'decTrabajo', 'fentrega', 'monto', 'opciones'];
+  columnasMateriales: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
 
-  columnas2: string[] = ['fecha', 'salAnterior', 'abono', 'salNuevo', 'montoP'];
-
-  datos: Articulo[] = [new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-  new Articulo('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-
+  datosPrendas: Prenda[] = [
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
   ];
 
-  articuloselect: Articulo = new Articulo('','','','','');
+  articuloselect: Prenda = new Prenda('','','','','');
 
   
-  datos2: Historico[] = [new Historico('13/01/2022', '10000', '2500','7500','2500'),
-  new Historico('13/01/2022', '10000', '2500','7500','2500'),
-  new Historico('13/01/2022', '10000', '2500','7500','2500'),
-  new Historico('13/01/2022', '10000', '2500','7500','2500'),
-  new Historico('13/01/2022', '10000', '2500','7500','2500'),
-  new Historico('13/01/2022', '10000', '2500','7500','2500'),
-
-
+  datosAbonos: Abono[] = [
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500','7500','2500'),
   ];
-  historicoselect: Historico = new Historico('','','','','');
 
-  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
+  datosMateriales: Articulo[] = [
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100'),
+    new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '20', 'm', '26-11-2021', '1100')
+  ];
+
+  historicoselect: Abono = new Abono('','','','','');
+
+  @ViewChild(MatTable) tabla1!: MatTable<Prenda>;
   
-  @ViewChild(MatTable) tabla2!: MatTable<Historico>;
+  @ViewChild(MatTable) tabla2!: MatTable<Abono>;
 
   ngOnInit() {
  
   }
 
-  agregar(){
-    this.datos.push(new Articulo(this.articuloselect.numeroOrden, this.articuloselect.tipo, this.articuloselect.decTrabajo,
-    this.articuloselect.fentrega,this.articuloselect.monto));
-    this.tabla1.renderRows();
-    this.articuloselect = new Articulo('','','','','');
-  }
-
-  agregar2(){
-    this.datos2.push(new Historico(this.historicoselect.fecha, this.historicoselect.salAnterior, this.historicoselect.abono,
+  agregarAbonos(){
+    this.datosAbonos.push(new Abono(this.historicoselect.fecha, this.historicoselect.salAnterior, this.historicoselect.abono,
     this.historicoselect.salNuevo,this.historicoselect.montoP));
     this.tabla2.renderRows();
-    this.historicoselect = new Historico('','','','','');
+    this.historicoselect = new Abono('','','','','');
+  }
+
+  agregarPrendas(){
+    this.datosPrendas.push(new Prenda(this.articuloselect.numeroOrden, this.articuloselect.tipo, this.articuloselect.decTrabajo,
+    this.articuloselect.fentrega,this.articuloselect.monto));
+    this.tabla1.renderRows();
+    this.articuloselect = new Prenda('','','','','');
   }
   
 }
 
+export class Abono {
+  constructor(
+    public fecha: string,
+    public salAnterior: string,
+    public abono: string,
+    public salNuevo: string,
+    public montoP: string) {
+  }
+}
 
-export class Articulo {
+export class Prenda {
   constructor(
     public numeroOrden: string,
     public tipo: string,
@@ -75,12 +156,15 @@ export class Articulo {
   }
 }
 
-export class Historico {
-  constructor(
-    public fecha: string,
-    public salAnterior: string,
-    public abono: string,
-    public salNuevo: string,
-    public montoP: string) {
-  }
+export class Articulo {
+  constructor(//'codigo','categoria' , 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'borrar'
+    public codigo: string,
+    public categoria: string,
+    public descripcion: string,
+    public cantidad: string,
+    public unidadmedida: string,
+    public fecharegistro: string,
+    public precio: string
+  ) { }
+
 }

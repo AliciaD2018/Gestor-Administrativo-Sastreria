@@ -1,10 +1,10 @@
-body{
+/* body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #333;
     font-size: 0.9rem; 
     line-height: 1.6em;
-    background:#E5E5E5
-}
+    background:#d10b0b
+} */
 
 .logo {
     letter-spacing: 5px;
@@ -50,7 +50,9 @@ p{
     height: 270px;
     overflow: auto;
 }
-  
+
+/* Fin scrollbar */
+
 table {
 width: 100%;
 }
@@ -63,8 +65,10 @@ font-weight: bold;
 border-top: 1px solid #e0e0e0;
 }
 
-/* Fin scrollbar */
-
+/* Revisar que hace */
+/* .mat-column-select {
+    overflow: initial;
+  } */
 
 th,td{
     border:1px black ;
@@ -114,6 +118,12 @@ tr:nth-child(even){
     color: aliceblue;
 }
 
+/* Estilos para bordes */
+.div_border_1{
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
 
 /* Elementos alineados en la misma fila */
 .wrapper_a {
@@ -123,10 +133,11 @@ tr:nth-child(even){
 
 .wrapper_b {
     display: grid;
+    height: 900px;
     grid-template-columns: 1fr 1fr;
 }
 
 .wrapper_c {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
