@@ -32,6 +32,7 @@ import { CrearOrdenComponent } from './components/crearOrden/crearOrden.componen
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
+import { EnvioCorreoComponent } from './components/envioCorreo/envioCorreo.component';
 
 const routes: Routes = [
 
@@ -103,6 +104,10 @@ const routes: Routes = [
   {
     path:'registrarPrenda',
     component: RegistrarPrendaComponent
+  },
+  {
+    path:'envioCorreo',
+    component: EnvioCorreoComponent
   }
 ];
 
@@ -125,7 +130,8 @@ const routes: Routes = [
     CrearOrdenComponent,
     VerDetallesClienteComponent,
     RegistrarAbonoComponent,
-    RegistrarPrendaComponent
+    RegistrarPrendaComponent,
+    EnvioCorreoComponent
    ],
   imports: [
     BrowserModule,
