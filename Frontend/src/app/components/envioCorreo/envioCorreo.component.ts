@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
@@ -10,13 +10,15 @@ export interface DialogData {
 @Component({
   selector: 'app-envioCorreo',
   templateUrl: './envioCorreo.component.html',
-  styleUrls: ['./envioCorreo.component.css']
+  styleUrls: ['./envioCorreo.component.css']   
 })
+
 export class EnvioCorreoComponent {
   nombre: string;
   email: string;
 
   constructor(public dialog: MatDialog) { }
+  
 
   openDialog(): void {
     const dialogRef = this.dialog.open(Correo, {
@@ -31,11 +33,14 @@ export class EnvioCorreoComponent {
   }
 }
 
+
+
 @Component({
   selector: 'correo',
   templateUrl: 'correo.html',
 })
-export class Correo {
+
+export class Correo{
   constructor(
     public dialogRef: MatDialogRef<Correo>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
@@ -44,5 +49,4 @@ export class Correo {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

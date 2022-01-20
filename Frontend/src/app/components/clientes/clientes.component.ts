@@ -87,9 +87,12 @@ export class ClientesComponent {
   email: string;
 
 
-  openDialog(): void {
+  openDialog(j: number): void {
+    this.nombre = this.clientes[j]['nombre'];
+    this.email = this.clientes[j]['email'];
+
     const dialogRef = this.dialog.open(Correo, {
-      width: '250px',
+      width: '500px',
       data: { nombre: this.nombre, email: this.email },
     });
 
@@ -99,7 +102,6 @@ export class ClientesComponent {
     });
   }
 }
-
 
 export class Customers {
   constructor(
