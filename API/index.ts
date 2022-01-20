@@ -11,6 +11,7 @@ import { updateCustomer } from './endpoints/updateCustomer';
 import { selectPhonesTypes } from './endpoints/selectPhonesTypes';
 import { selectAllOrders } from './endpoints/selectAllOrders';
 import { selectNextOrderId } from './endpoints/selectNextOrderId';
+import { emailcorreo } from './endpoints/emailRoutes';
 
 
 
@@ -33,6 +34,7 @@ app.use(selectOrders);
 app.use(selectPhonesTypes);
 app.use(selectAllOrders);
 app.use(selectNextOrderId)
+app.use(emailcorreo);
 
 app.listen(PORT,()=>{
     console.log('Backend listening on port: ', PORT, '\n');

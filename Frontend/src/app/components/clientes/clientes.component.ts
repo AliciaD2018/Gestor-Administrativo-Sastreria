@@ -2,6 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
 import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
+//---correo
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Correo } from '../envioCorreo/envioCorreo.component';
+
+
+export interface DialogData {
+  email: string;
+  nombre: string;
+}
 
 @Component({
   selector: 'app-clientes',
@@ -11,9 +20,8 @@ import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.
 
 export class ClientesComponent {
 
-  constructor(private api: ApiService ) {
-    
-  }
+  constructor(private api: ApiService,public dialog: MatDialog ) { }
+
   
   @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
 
@@ -48,8 +56,6 @@ export class ClientesComponent {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  pasar
-
   agregarClientes(): void {
     const promise = this.api.selectAllCustomers().then()
     promise.then((customers) => {
@@ -74,8 +80,26 @@ export class ClientesComponent {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
   }
+  //------------------------------------------------------------
+  //-------             CORREO                          --------
+  //------------------------------------------------------------
+  nombre: string;
+  email: string;
 
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(Correo, {
+      width: '250px',
+      data: { nombre: this.nombre, email: this.email },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.email = result;
+    });
+  }
 }
+
 
 export class Customers {
   constructor(
