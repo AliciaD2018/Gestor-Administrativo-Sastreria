@@ -11,14 +11,11 @@
 
 </head>
 <body>
-
+<h1 align='center'>Envio de Correo Electronico</h1>
 <form action="#" target="" method="get" name="formDatosPersonales">
 
 	<label for="nombre">Nombre</label>
 	<input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre"/>
-
-	<label for="apellidos">Apellidos</label>
-	<input type="text" name="apellidos" id="apellidos" placeholder="1r Apellido"/>
 
 	<label for="email" >Email</label>
 	<input type="email" name="email" id="email" placeholder="email" required />
@@ -34,3 +31,6 @@
 
 </body>
 </html>
+
+
+<button mat-raised-button (click)="openDialog()">Pick one</button>

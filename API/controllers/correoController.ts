@@ -30,7 +30,6 @@ const envioCorreo = (req = request, resp = response) => {
         }); 
     })
 
-
 }
 
 module.exports={

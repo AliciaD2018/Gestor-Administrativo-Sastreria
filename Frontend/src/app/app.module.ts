@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDialogModule } from '@angular/material/dialog';
+
 
 
 import { AppComponent } from './app.component';
@@ -32,7 +34,9 @@ import { CrearOrdenComponent } from './components/crearOrden/crearOrden.componen
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
-import { EnvioCorreoComponent } from './components/envioCorreo/envioCorreo.component';
+import { Correo, EnvioCorreoComponent } from './components/envioCorreo/envioCorreo.component';
+import { DialogOverviewExampleDialog } from './components/pop-up/pop-up.component';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
 
 const routes: Routes = [
 
@@ -108,6 +112,20 @@ const routes: Routes = [
   {
     path:'envioCorreo',
     component: EnvioCorreoComponent
+  },
+  {
+    path:'popup',
+    component: PopUpComponent
+  }
+  ,
+  {
+    path:'popupdialog',
+    component: DialogOverviewExampleDialog
+  }
+  ,
+  {
+    path:'correo',
+    component: Correo
   }
 ];
 
@@ -131,7 +149,10 @@ const routes: Routes = [
     VerDetallesClienteComponent,
     RegistrarAbonoComponent,
     RegistrarPrendaComponent,
-    EnvioCorreoComponent
+    EnvioCorreoComponent,
+    PopUpComponent,
+    DialogOverviewExampleDialog,
+    Correo
    ],
   imports: [
     BrowserModule,
@@ -143,7 +164,8 @@ const routes: Routes = [
     MatButtonModule,
     FormsModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
