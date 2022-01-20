@@ -1,5 +1,5 @@
 import express, { response } from 'express';
-import { uspSelectCustomer } from '../controllers/selectCustomerController';
+import { uspSelectNextOrderId } from '../controllers/selectNextOrderIdController'
 
 const router = express();
 
@@ -8,15 +8,15 @@ const router = express();
 const cors = require('cors');
 router.use(cors());
 
-router.get('/api/selectcustomer', (req, res) => {
+router.get('/api/selectnextorderid', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
     try {
-        uspSelectCustomer(<string>(req.query['cedula']))
+        uspSelectNextOrderId()
         .then( response => {
             // console.log(response);
             res.status(200).send({
-                cliente: response
+                idsiguienteorden: response
             });
         });
     } catch (err) {
@@ -26,4 +26,4 @@ router.get('/api/selectcustomer', (req, res) => {
     }
 });
 
-export { router as selectCustomer }
+export { router as selectNextOrderId }

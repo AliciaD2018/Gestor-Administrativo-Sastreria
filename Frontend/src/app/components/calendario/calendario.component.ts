@@ -5,12 +5,14 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
+import { FullCalendar } from 'primeng/fullcalendar';
 
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
+
 export class CalendarioComponent implements OnInit {
 
   public events = [];
@@ -21,6 +23,8 @@ export class CalendarioComponent implements OnInit {
 
   async ngOnInit() {
 
+
+
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       defaulDate: new Date(),
@@ -30,13 +34,24 @@ export class CalendarioComponent implements OnInit {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      editable: false
+      editable: false,
     }
 
     this.agregarEventos();
+    await this.resolveAfterXSeconds();
+
     console.log(`1- Evento: ${JSON.stringify(this.events[0])}`);
   }
-  
+
+  resolveAfterXSeconds() {
+    var x = 1000
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(x);
+      }, 1000);
+    });
+  }
+
   imprimirEvento() {
     console.log(`2- Evento: ${JSON.stringify(this.events[0])}`);
   }
@@ -44,6 +59,8 @@ export class CalendarioComponent implements OnInit {
   agregarEventos(): void {
     const promise = this.api.selectOrdersDetailsForCalendar().then()
     promise.then((ordersDatails) => {
+      // var calendar = document.getElementById('calendar');
+      
       for (var order of ordersDatails) {
 
         var year = order['FechaEntrega'].substring(0, 4);
@@ -53,17 +70,18 @@ export class CalendarioComponent implements OnInit {
         var minuto = 0;
         var segundo = 0;
 
-        this.events.push({
+        var event = {
           title: `Orden ${order['IdOrden']}`,
           start: new Date(year, month, day, hora, minuto, segundo),
-        });
+        }
+
+        this.events.push(event);
+        // calendario.addEvent(event)
 
       }
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
-
   }
-
 }

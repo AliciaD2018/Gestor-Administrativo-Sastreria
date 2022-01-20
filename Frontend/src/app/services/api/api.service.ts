@@ -7,7 +7,6 @@ import { CustomerI } from '../../models/customer.interface';
 export class ApiService {
 
   private url = "http://localhost:4500";
-  // private url = "https://sistemagestorsastreria.herokuapp.com/";
   private myHeaders = new Headers();
   
   constructor() { }
@@ -125,6 +124,22 @@ export class ApiService {
     let respuesta = await fetch(this.url + `/api/selectphonestypes`, requestOptions);
     let tipos = await respuesta.json();
     return tipos['tipostelefonos'];
+  }
+
+  async selectNextOrderId(){
+    console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+  
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectnextorderid`, requestOptions);
+    let id = await respuesta.json();
+    console.log(id['idsiguienteorden'][0]);
+    return id['idsiguienteorden'][0];
   }
 
   async selectOrdersDetailsForCalendar(){

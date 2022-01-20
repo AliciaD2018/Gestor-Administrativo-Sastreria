@@ -5,7 +5,6 @@ body{
     line-height: 1.6em;
     background:#E5E5E5
     
-
 }
 h1 {
 	line-height: 1.3em;
@@ -17,10 +16,9 @@ p{
 }
 
 .container{
-    width: 85%;
-    max-width: 850px;
-    margin: 0 auto;
-    
+    width: 50%;
+    /* max-width: 850px; */
+    /* margin: 0 auto; */
 }
 
 .header{
@@ -29,7 +27,6 @@ p{
     left: 0;
     top:0;
     width: 100%;
-
 }
 
 .header a {

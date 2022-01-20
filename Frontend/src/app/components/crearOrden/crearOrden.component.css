@@ -1,19 +1,16 @@
-/* body{
+body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #333;
-    font-size: 0.9rem; 
+    font-size: 1.2rem;
     line-height: 1.6em;
-    background:#d10b0b
-} */
-
-.logo {
-    letter-spacing: 5px;
-    font-size: 2em
+    background:#E5E5E5
 }
 
 h1 {
+    color: black;
 	line-height: 1.3em;
 	font-weight: 300;
+    font-weight: bold;
 }
 
 p{
@@ -27,9 +24,9 @@ p{
 }
 
 .container{
-    width: 2500px;
-    max-height: 100px;
-    margin: 0 auto;
+    width: 85%;
+    max-width: 850px;
+    margin: 0 auto;    
 }
 
 .header{
@@ -40,18 +37,60 @@ p{
     width: 100%;
 }
 
+.header a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+}
+
+.navigation ul li a:hover{
+    background:#4a4a4a
+}
+
+.logo {
+    letter-spacing: 5px;
+    font-size: 1em;
+}
+
 .footer{
     background: #f2f2f2;
     padding: 0.5rem 0;
     text-align: center;
 }
-/* Iserta el scrollbar */
-.scrollbar {
-    height: 270px;
-    overflow: auto;
+
+th,td{
+    border:1px black ;
+    padding: 0;
 }
 
-/* Fin scrollbar */
+thead{
+    background-color: #246355;
+    border-bottom: solid 5px;
+    color: white;
+}
 
 table {
 width: 100%;
@@ -113,17 +152,29 @@ tr:nth-child(even){
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #020202;
-    background-color: #5c82ff;
+    background-color: rgb(58, 58, 248);
     font-style: normal;
     color: aliceblue;
 }
 
 /* Estilos para bordes */
 .div_border_1{
-    border-width: 1px;
+    border-width: 4px;
     border-style: solid;
     border-color: black;
 }
+
+/* Iserta el scrollbar */
+.scrollbar_h675 {
+    max-height: 450px;
+    overflow: auto;
+}
+
+.scrollbar_h270 {
+    max-height: 350px;
+    overflow: auto;
+}
+/* Fin scrollbar */
 
 /* Elementos alineados en la misma fila */
 .wrapper_a {
@@ -133,7 +184,7 @@ tr:nth-child(even){
 
 .wrapper_b {
     display: grid;
-    height: 900px;
+    max-height: 900px;
     grid-template-columns: 1fr 1fr;
 }
 

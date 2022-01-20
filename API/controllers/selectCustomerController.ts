@@ -1,12 +1,6 @@
 import { config } from "../config";
 
-var express = require('express');
-var app = express();
 var sql = require("mssql");
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000}));
-app.use(bodyParser.json({ limit: '50mb'}));
 
 async function uspSelectCustomer(Cedula: string) {
     try{
@@ -20,12 +14,13 @@ async function uspSelectCustomer(Cedula: string) {
         let strQuery = 'EXEC uspSelectCustomer ';
         strQuery += Cedula + ';';
 
-        console.log(strQuery);
+        // console.log(strQuery);
 
         // Executes string query
-        await request.query(strQuery);
+        let response = await request.query(strQuery);
 
-        console.log("Insertion successfully: Customer");
+        console.log("Selection successfully: Customer");
+        return response.recordset;
 
     }catch(error){
         console.log("Something went wrong");

@@ -44,9 +44,9 @@ export class OrdenesComponent implements OnInit {
   
   agregarOrdenes(): void {
     const promise = this.api.selectAllOrders().then()
-    promise.then((data) => {
-      console.log(JSON.stringify(data));
-      for (var order of data) {
+    promise.then((orders) => {
+      // console.log(JSON.stringify(data));
+      for (var order of orders) {
         let saldo;
         let fecha;
         let cantidad;

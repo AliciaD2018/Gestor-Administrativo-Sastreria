@@ -5,6 +5,7 @@ body{
     line-height: 1.6em;
     background:#E5E5E5
 }
+
 /*Lineas Verticales de en la tabla- INICIO*/
 .mat-column-cedula{
     border: 1px dotted currentColor;
@@ -88,19 +89,21 @@ p{
     padding: 0;
     list-style: none;
 }
-    .navigation ul li {
-        display: inline-block;
-    }
-        .navigation ul li a {
-            display: block;
-            padding: 0.5rem 1rem;
-            transition: all 0.4s linear;
-            border-radius: 5px;
-        }
 
-        .navigation ul li a:hover{
-            background:#4a4a4a
-        }
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+}
+
+.navigation ul li a:hover{
+    background:#4a4a4a
+}
 
 .logo {
     letter-spacing: 5px;
