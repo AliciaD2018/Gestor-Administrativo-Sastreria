@@ -1,11 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
+import { PopupEnviarEmailComponent } from '../popupEnviarEmail/popupEnviarEmail.component';
 
 //---correo
 import { MatDialog } from '@angular/material/dialog';
-import { Correo } from '../pop-up/pop-up.component';
-
 
 @Component({
   selector: 'app-clientes',
@@ -81,7 +80,7 @@ export class ClientesComponent {
     this.nombre = this.clientes[j]['nombre'];
     this.email = this.clientes[j]['email'];
 
-    const dialogRef = this.dialog.open(Correo, {
+    const dialogRef = this.dialog.open(PopupEnviarEmailComponent, {
       width: '400px',
       data: { nombre: this.nombre, email: this.email },
     });

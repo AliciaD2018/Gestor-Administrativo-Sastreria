@@ -11,8 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
@@ -34,10 +33,8 @@ import { CrearOrdenComponent } from './components/crearOrden/crearOrden.componen
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
-import { EnvioCorreoComponent } from './components/envioCorreo/envioCorreo.component';
-import { DialogOverviewExampleDialog, SeleccionaCliente } from './components/pop-up/pop-up.component';
-import { Correo} from './components/pop-up/pop-up.component';
-import { PopUpComponent } from './components/pop-up/pop-up.component';
+import { PopupEnviarEmailComponent } from './components/popupEnviarEmail/popupEnviarEmail.component';
+import { PopupSeleccionarClienteComponent } from './components/popupSeleccionarCliente/popupSeleccionarCliente.component';
 
 const routes: Routes = [
 
@@ -111,24 +108,12 @@ const routes: Routes = [
     component: RegistrarPrendaComponent
   },
   {
-    path:'envioCorreo',
-    component: EnvioCorreoComponent
+    path:'popupEnviarEmail',
+    component: PopupEnviarEmailComponent
   },
   {
-    path:'popup',
-    component: PopUpComponent
-  },
-  {
-    path:'popupdialog',
-    component: DialogOverviewExampleDialog
-  },
-  {
-    path:'correo',
-    component: Correo
-  },
-  {
-    path:'seleccionacliente',
-    component: SeleccionaCliente
+    path:'popupSeleccionarCliente',
+    component: PopupSeleccionarClienteComponent
   }
 ];
 
@@ -152,12 +137,8 @@ const routes: Routes = [
     VerDetallesClienteComponent,
     RegistrarAbonoComponent,
     RegistrarPrendaComponent,
-    EnvioCorreoComponent,
-    PopUpComponent,
-    DialogOverviewExampleDialog,
-    Correo,
-    SeleccionaCliente
-  
+    PopupEnviarEmailComponent,
+    PopupSeleccionarClienteComponent
    ],
   imports: [
     BrowserModule,
@@ -170,7 +151,8 @@ const routes: Routes = [
     FormsModule,
     MatFormFieldModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
