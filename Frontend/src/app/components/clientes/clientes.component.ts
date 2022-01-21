@@ -4,7 +4,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 
 //---correo
 import { MatDialog } from '@angular/material/dialog';
-import { Correo } from '../envioCorreo/envioCorreo.component';
+import { Correo } from '../pop-up/pop-up.component';
+
 
 @Component({
   selector: 'app-clientes',

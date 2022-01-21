@@ -1,7 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
+import { Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SeleccionaCliente } from '../pop-up/pop-up.component';
 
+
+export interface DialogData {
+  cedula: string;
+  nombre: string;
+}
 @Component({
   selector: 'app-crearOrden',
   templateUrl: './crearOrden.component.html',
@@ -9,7 +17,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class CrearOrdenComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,
+    public dialog: MatDialog) { }
 
   idNuevaOrden;
   columnasAbonos: string[] = ['fecha', 'salAnterior', 'abono', 'salNuevo', 'montoP', 'opciones'];
@@ -17,38 +26,38 @@ export class CrearOrdenComponent implements OnInit {
   columnasMateriales: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
 
   datosPrendas: Prenda[] = [
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
-    new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
+    new Prenda('O-01', 'temp', 'costura de vestido', '15/01/2022', '1000'),
   ];
-  
+
   datosAbonos: Abono[] = [
-    new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
+    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
+    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
+    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
+    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
     // new Abono('13/01/2022', '10000', '2500','7500','2500'),
     // new Abono('13/01/2022', '10000', '2500','7500','2500'),
     // new Abono('13/01/2022', '10000', '2500','7500','2500'),
@@ -109,21 +118,40 @@ export class CrearOrdenComponent implements OnInit {
   ];
 
   @ViewChild(MatTable) tabla1!: MatTable<Prenda>;
-  
+
   @ViewChild(MatTable) tabla2!: MatTable<Abono>;
 
   ngOnInit() {
     this.obtenerSiguienteId();
   }
 
-  obtenerSiguienteId(){
+  obtenerSiguienteId() {
     const promise = this.api.selectNextOrderId().then()
     promise.then((id) => {
       this.idNuevaOrden = id['SiguienteOrden'];
       (<HTMLLabelElement>document.getElementById("numeroId")).innerText = this.idNuevaOrden;
     });
   }
-  
+
+  //-------------------------------------------------------------
+  //------              POPUP Selecciona Cliente           ------
+  //---------------------------------------------------------------
+
+  cliente: string;
+  cedula: string;
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SeleccionaCliente, {
+      width: '250px',
+      data: { cliente: this.cliente, cedula: this.cedula },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.cedula = result;
+    });
+  }
 }
 
 export class Abono {

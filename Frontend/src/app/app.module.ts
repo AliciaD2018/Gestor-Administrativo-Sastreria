@@ -34,8 +34,9 @@ import { CrearOrdenComponent } from './components/crearOrden/crearOrden.componen
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
-import { Correo, EnvioCorreoComponent } from './components/envioCorreo/envioCorreo.component';
-import { DialogOverviewExampleDialog } from './components/pop-up/pop-up.component';
+import { EnvioCorreoComponent } from './components/envioCorreo/envioCorreo.component';
+import { DialogOverviewExampleDialog, SeleccionaCliente } from './components/pop-up/pop-up.component';
+import { Correo} from './components/pop-up/pop-up.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 
 const routes: Routes = [
@@ -116,16 +117,18 @@ const routes: Routes = [
   {
     path:'popup',
     component: PopUpComponent
-  }
-  ,
+  },
   {
     path:'popupdialog',
     component: DialogOverviewExampleDialog
-  }
-  ,
+  },
   {
     path:'correo',
     component: Correo
+  },
+  {
+    path:'seleccionacliente',
+    component: SeleccionaCliente
   }
 ];
 
@@ -152,7 +155,9 @@ const routes: Routes = [
     EnvioCorreoComponent,
     PopUpComponent,
     DialogOverviewExampleDialog,
-    Correo
+    Correo,
+    SeleccionaCliente
+  
    ],
   imports: [
     BrowserModule,
