@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
-import { Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SeleccionaCliente } from '../pop-up/pop-up.component';
-
+import { MatDialog } from '@angular/material/dialog';
+import { PopupSeleccionarClienteComponent } from '../popupSeleccionarCliente/popupSeleccionarCliente.component';
 
 export interface DialogData {
   cedula: string;
@@ -142,7 +140,7 @@ export class CrearOrdenComponent implements OnInit {
 
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(SeleccionaCliente, {
+    const dialogRef = this.dialog.open(PopupSeleccionarClienteComponent, {
       width: '250px',
       data: { cliente: this.cliente, cedula: this.cedula },
     });
