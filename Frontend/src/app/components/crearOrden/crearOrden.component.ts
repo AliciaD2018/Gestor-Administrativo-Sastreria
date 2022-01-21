@@ -1,7 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
+import {Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SeleccionaCliente } from '../pop-up/pop-up.component';
 
+
+export interface DialogData {
+  cedula: string;
+  nombre: string;
+}
 @Component({
   selector: 'app-crearOrden',
   templateUrl: './crearOrden.component.html',
@@ -9,9 +17,10 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class CrearOrdenComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,
+    public dialog: MatDialog) { }
 
-  iDNuevaOrden;
+  idNuevaOrden;
   columnasAbonos: string[] = ['fecha', 'salAnterior', 'abono', 'salNuevo', 'montoP', 'opciones'];
   columnasPrendas: string[] = ['numeroOrden', 'tipo', 'decTrabajo', 'fentrega', 'monto', 'opciones'];
   columnasMateriales: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
@@ -44,7 +53,6 @@ export class CrearOrdenComponent implements OnInit {
   ];
 
   // articuloselect: Prenda = new Prenda('','','','','');
-
   
   datosAbonos: Abono[] = [
     new Abono('13/01/2022', '10000', '2500','7500','2500'),
@@ -124,8 +132,8 @@ export class CrearOrdenComponent implements OnInit {
   obtenerSiguienteId(){
     const promise = this.api.selectNextOrderId().then()
     promise.then((id) => {
-      this.iDNuevaOrden = id['SiguienteOrden'];
-      (<HTMLLabelElement>document.getElementById("numeroId")).innerText = this.iDNuevaOrden;
+      this.idNuevaOrden = id['SiguienteOrden'];
+      (<HTMLLabelElement>document.getElementById("numeroId")).innerText = this.idNuevaOrden;
     });
   }
   // agregarAbonos(){
@@ -141,6 +149,28 @@ export class CrearOrdenComponent implements OnInit {
   //   this.tabla1.renderRows();
   //   this.articuloselect = new Prenda('','','','','');
   // }
+ 
+  //-------------------------------------------------------------
+  //------              POPUP Selecciona Cliente           ------
+//---------------------------------------------------------------
+
+cliente: string;
+cedula: string;
+
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(SeleccionaCliente, {
+    width: '250px',
+    data: { cliente: this.cliente, cedula: this.cedula },
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.cedula = result;
+  });
+}
+
+  
   
 }
 

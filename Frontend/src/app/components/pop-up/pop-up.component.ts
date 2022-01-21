@@ -6,6 +6,14 @@ export interface DialogData {
   nombre: string;
 }
 
+export interface DialogData2 {
+  cedula: string;
+  cliente: string;
+}
+const ELEMENT_DATA: DialogData2[] = [
+  {cedula: '20222022', cliente: 'Alicia'}
+];
+
 @Component({
   selector: 'app-pop-up',
   templateUrl: 'pop-up.component.html',
@@ -29,16 +37,63 @@ export class PopUpComponent {
       this.email = result;
     });
   }
+
 }
 
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
+
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+//------------------------------------------------------------------------------------
+//-------------------------           Correo         ---------------------------------
+//------------------------------------------------------------------------------------
+
+@Component({
+  selector: 'correo',
+  templateUrl: 'correo.html',
+})
+
+export class Correo{
+  constructor(
+    public dialogRef: MatDialogRef<Correo>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+
+//------------------------------------------------------------------------------------
+//------------------------------------Selecciona Cliente---------------------------------
+//------------------------------------------------------------------------------------
+
+@Component({
+  selector: 'seleccionaCliente',
+  templateUrl: 'seleccionaCliente.html',
+})
+
+export class SeleccionaCliente {
+  displayedColumns: string[] = ['cedula', 'cliente'];
+  dataSource = ELEMENT_DATA;
+  
+  constructor(
+    public dialogRef: MatDialogRef<SeleccionaCliente>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData2
   ) { }
 
   onNoClick(): void {

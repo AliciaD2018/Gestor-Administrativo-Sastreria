@@ -4,7 +4,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
 //---correo
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Correo } from '../envioCorreo/envioCorreo.component';
+import { Correo } from '../pop-up/pop-up.component';
+
 
 
 export interface DialogData {

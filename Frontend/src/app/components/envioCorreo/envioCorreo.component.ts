@@ -18,7 +18,7 @@ export class EnvioCorreoComponent {
   email: string;
 
   constructor(public dialog: MatDialog) { }
-  
+  /*
 
   openDialog(): void {
     const dialogRef = this.dialog.open(Correo, {
@@ -31,10 +31,11 @@ export class EnvioCorreoComponent {
       this.email = result;
     });
   }
+  */
 }
 
 
-
+/*
 @Component({
   selector: 'correo',
   templateUrl: 'correo.html',
@@ -50,3 +51,4 @@ export class Correo{
     this.dialogRef.close();
   }
 }
+*/
