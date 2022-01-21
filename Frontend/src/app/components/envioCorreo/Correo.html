@@ -1,23 +1,23 @@
 <h1 mat-dialog-title>Enviar E-mail al cliente</h1>
 <div mat-dialog-content>
   <div>
-    <label style="margin-left: 10px;">Nombre</label>
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput [(ngModel)]="data.nombre">
-    </mat-form-field>
+      <label style="margin-right: 10px;">Nombre:</label>
+      <mat-form-field appearance="fill" >
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="data.nombre" type="text" readonly>
+      </mat-form-field>
   </div>
 
   <div>
-    <label style="margin-left: 10px;">Correo Electronico</label>
+    <label style="margin-right: 10px;">E-mail:</label>
     <mat-form-field appearance="fill">
       <mat-label>Correo Electronico</mat-label>
-      <input matInput [(ngModel)]="data.email">
+      <input matInput [(ngModel)]="data.email" type="email" readonly>
     </mat-form-field>
   </div>
 
   <div>
-    <label style="margin-left: 10px;">Asunto</label>
+    <label style="margin-right: 10px;">Asunto:</label>
     <mat-form-field appearance="fill">
       <mat-label>Asunto</mat-label>
       <input matInput>
@@ -25,15 +25,15 @@
   </div>
 
   <div>
-    <label style="margin-left: 10px;">Mensaje</label>
+    <label style="margin-right: 10px;">Mensaje:</label>
     <mat-form-field appearance="fill">
       <mat-label>Mensaje</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput rows="4"></textarea>
     </mat-form-field>
   </div>
 
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions align="center">
   <button mat-button (click)="onNoClick()">Cancelar</button>
   <button mat-button [mat-dialog-close]="data.nombre" cdkFocusInitial>Enviar</button>
 </div>

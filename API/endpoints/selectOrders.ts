@@ -1,5 +1,4 @@
 import express from 'express';
-import { uspSelectMaterialsInventory } from '../controllers/selectMaterialsInventoryController';
 import { uspSelectOrder } from '../controllers/selectOrderController';
 
 const router = express();

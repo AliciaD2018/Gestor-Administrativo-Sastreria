@@ -40,6 +40,7 @@ body{
 .mat-column-direccion{
     border: 1px dotted currentColor;
     align-self: stretch;
+    margin-left: 10px;
     width: 18% ;
 }
 

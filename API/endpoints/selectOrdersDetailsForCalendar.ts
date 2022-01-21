@@ -1,5 +1,5 @@
 import express from 'express';
-import { uspSelectOrdersDetailsForCalendar } from '../controllers/SelectOrdersDetailsForCalendarController';
+import { uspSelectOrdersDetailsForCalendar } from '../controllers/selectOrdersDetailsForCalendarController';
 
 const router = express();
 

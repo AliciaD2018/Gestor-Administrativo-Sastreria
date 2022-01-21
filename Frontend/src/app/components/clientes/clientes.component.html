@@ -70,12 +70,13 @@
       
         <ng-container matColumnDef="opciones">
           <th mat-header-cell *matHeaderCellDef>
-            <label > Ver </label>
+            <label style="margin-left: 5px;"> Ver </label>
             <label style="margin-left: 35px;"> Act. </label>
-            <label style="margin-left: 26px;"> Borrar? </label>
+            <label style="margin-left: 23px;"> Borrar? </label>
+            <label style="margin-left: 15px;"> E-mail </label>
           </th>
           <td mat-cell *matCellDef="let j = index;">
-            <div class="btn-group btn-group-lg">
+            <div class="btn-group btn-group-lg" style="margin-left: 5px;">
               <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" routerLink="/verDetallesCliente" (click)="pasarDatosCliente(j)">remove_red_eye</i>
               <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" routerLink="/modificarCliente" (click)="pasarDatosCliente(j)">edit</i>
               <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="borrarFila(j)">delete</i>

@@ -11,7 +11,7 @@ export class CrearOrdenComponent implements OnInit {
 
   constructor(private api: ApiService) { }
 
-  iDNuevaOrden;
+  idNuevaOrden;
   columnasAbonos: string[] = ['fecha', 'salAnterior', 'abono', 'salNuevo', 'montoP', 'opciones'];
   columnasPrendas: string[] = ['numeroOrden', 'tipo', 'decTrabajo', 'fentrega', 'monto', 'opciones'];
   columnasMateriales: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
@@ -42,9 +42,6 @@ export class CrearOrdenComponent implements OnInit {
     new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
     new Prenda('O-01', 'temp', 'costura de vestido','15/01/2022','1000'),
   ];
-
-  // articuloselect: Prenda = new Prenda('','','','','');
-
   
   datosAbonos: Abono[] = [
     new Abono('13/01/2022', '10000', '2500','7500','2500'),
@@ -111,8 +108,6 @@ export class CrearOrdenComponent implements OnInit {
     new Articulo('TEL008', 'TELAS', 'TELA TROPICAL AZUL', '23', 'm', '26-11-2021', '1100')
   ];
 
-  // historicoselect: Abono = new Abono('','','','','');
-
   @ViewChild(MatTable) tabla1!: MatTable<Prenda>;
   
   @ViewChild(MatTable) tabla2!: MatTable<Abono>;
@@ -124,23 +119,10 @@ export class CrearOrdenComponent implements OnInit {
   obtenerSiguienteId(){
     const promise = this.api.selectNextOrderId().then()
     promise.then((id) => {
-      this.iDNuevaOrden = id['SiguienteOrden'];
-      (<HTMLLabelElement>document.getElementById("numeroId")).innerText = this.iDNuevaOrden;
+      this.idNuevaOrden = id['SiguienteOrden'];
+      (<HTMLLabelElement>document.getElementById("numeroId")).innerText = this.idNuevaOrden;
     });
   }
-  // agregarAbonos(){
-  //   this.datosAbonos.push(new Abono(this.historicoselect.fecha, this.historicoselect.salAnterior, this.historicoselect.abono,
-  //   this.historicoselect.salNuevo,this.historicoselect.montoP));
-  //   this.tabla2.renderRows();
-  //   this.historicoselect = new Abono('','','','','');
-  // }
-
-  // agregarPrendas(){
-  //   this.datosPrendas.push(new Prenda(this.articuloselect.numeroOrden, this.articuloselect.tipo, this.articuloselect.decTrabajo,
-  //   this.articuloselect.fentrega,this.articuloselect.monto));
-  //   this.tabla1.renderRows();
-  //   this.articuloselect = new Prenda('','','','','');
-  // }
   
 }
 

@@ -1,16 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
-import { RegistrarClienteComponent } from '../registrarCliente/registrarCliente.component';
+
 //---correo
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Correo } from '../envioCorreo/envioCorreo.component';
-
-
-export interface DialogData {
-  email: string;
-  nombre: string;
-}
 
 @Component({
   selector: 'app-clientes',
@@ -20,34 +14,29 @@ export interface DialogData {
 
 export class ClientesComponent {
 
-  constructor(private api: ApiService,public dialog: MatDialog ) { }
+  constructor(private api: ApiService, public dialog: MatDialog) { }
 
-  
-  @ViewChild(RegistrarClienteComponent) importa: RegistrarClienteComponent;
-
-
-  columnas: string[] = ['cedula', 'nombre', 'telefono1', 'telefono2', 'email', 'direccion', 'opciones'];
+  columnas = ['cedula', 'nombre', 'telefono1', 'telefono2', 'email', 'direccion', 'opciones'];
   clickedRows = new Set<Customers>();
-
-  public clientes: Customers[] = [];
+  clientes: Customers[] = [];
+  dataSource: any;
 
   @ViewChild(MatTable) tabla1!: MatTable<Customers>;
 
-  borrarFila(cod: number) {
+  ngOnInit() {
+    this.agregarClientes();
+  }
+
+  borrarFila(j: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.clientes.splice(cod, 1);
+      this.clientes.splice(j, 1);
       this.tabla1.renderRows();
       localStorage.setItem("clientes", JSON.stringify(this.clientes));
     }
   }
 
-  pasarDatosCliente(j: number){
+  pasarDatosCliente(j: number) {
     localStorage.setItem('cliente', JSON.stringify(this.clientes[j]));
-  }
-
-  dataSource: any;
-  ngOnInit() {
-    this.agregarClientes();
   }
 
   //-------Filtro de busqueda
@@ -80,19 +69,19 @@ export class ClientesComponent {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
   }
-  //------------------------------------------------------------
-  //-------             CORREO                          --------
-  //------------------------------------------------------------
+
+  //------------------------------------------------------------//
+  //-------             CORREO                          --------//
+  //------------------------------------------------------------//
   nombre: string;
   email: string;
-
 
   openDialog(j: number): void {
     this.nombre = this.clientes[j]['nombre'];
     this.email = this.clientes[j]['email'];
 
     const dialogRef = this.dialog.open(Correo, {
-      width: '500px',
+      width: '400px',
       data: { nombre: this.nombre, email: this.email },
     });
 
@@ -118,7 +107,5 @@ export class Customers {
     public direccion: string,
     public observaciones: string) {
   }
-  
-
 }
 

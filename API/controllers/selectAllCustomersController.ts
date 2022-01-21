@@ -1,12 +1,6 @@
 import { config } from "../config";
 
-var express = require('express');
-var app = express();
 var sql = require("mssql");
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000}));
-app.use(bodyParser.json({ limit: '50mb'}));
 
 async function uspSelectAllCustomers() {
     try{
