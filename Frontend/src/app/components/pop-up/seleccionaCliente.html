@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-    <table mat-table  class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Cliente Column -->
         <ng-container matColumnDef="cliente">
             <th mat-header-cell *matHeaderCellDef> Cliente </th>
