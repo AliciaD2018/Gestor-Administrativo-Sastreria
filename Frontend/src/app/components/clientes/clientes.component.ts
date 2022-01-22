@@ -6,6 +6,9 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PopupVerDetallesClienteComponent } from '../popupVerDetallesCliente/popupVerDetallesCliente.component';
 import { CustomerI } from 'src/app/models/customer.interface';
 import { PopupModificarClienteComponent } from '../popupModificarCliente/popupModificarCliente.component';
+import { PopupRegistrarClienteComponent } from '../popupRegistrarCliente/popupRegistrarCliente.component';
+import { AdvertenciaI } from 'src/app/models/advertencia.interface';
+import { PopupAdvertenciaComponent } from '../popupAdvertencia/popupAdvertencia.component';
 
 @Component({
   selector: 'app-clientes',
@@ -61,7 +64,7 @@ export class ClientesComponent {
           Telefono2: customer['Telefono2'], TipoTelefono2: customer['TipoTelefono2'], NotasTelefono2: customer['NotasTelefono2'],
           Email: customer['Email'], Direccion: customer['Direccion'], Observaciones: customer['Observaciones']
         });
-        // console.log("-------------->", customer);
+        // console.log("Cliente:", customer);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
@@ -97,7 +100,7 @@ export class ClientesComponent {
   //------------------------------------------------------------//
 
   openDialogCustomerDatils(j: number): void {
-    let cliente: CustomerI = this.clientes[j]
+    let cliente: CustomerI = this.clientes[j];
 
     const dialogRef = this.dialog.open(PopupVerDetallesClienteComponent, {
       width: '900px',
@@ -114,7 +117,7 @@ export class ClientesComponent {
   //------------------------------------------------------------//
 
   openDialogEditCustomer(j: number): void {
-    let cliente: CustomerI = this.clientes[j]
+    let cliente: CustomerI = this.clientes[j];
 
     const dialogRef = this.dialog.open(PopupModificarClienteComponent, {
       width: '900px',
@@ -132,9 +135,51 @@ export class ClientesComponent {
 
     dialogRef.afterClosed().subscribe(customer => {
       console.log('The dialog was closed');
-      this.api.updateCustomer(customer);
+      window.location.reload();
     });
   } // openDialogEditCustomer
+
+  //------------------------------------------------------------//
+  //-------            REGISTRAR CLIENTE                --------//
+  //------------------------------------------------------------//
+
+  openDialogAddCustomer(): void {
+    let cliente: CustomerI;
+    cliente = {Id: '', Cedula: '', NombreCompleto: '',
+               Email: '',Direccion: '', Observaciones: '',
+               Telefono1: '', TipoTelefono1: '', NotasTelefono1: '',
+               Telefono2: '', TipoTelefono2: '', NotasTelefono2:''};
+
+    const dialogRef = this.dialog.open(PopupRegistrarClienteComponent, {
+      width: '900px',
+      data: cliente,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+      console.log('The dialog was closed');
+      window.location.reload();
+    });
+  } // openDialogAddCustomer
+
+  //------------------------------------------------------------//
+  //-------             ELIMINAR USUARIO                --------//
+  //------------------------------------------------------------//
+
+  openDialogDeleteCustomer(j: number): void {
+    let cliente = this.clientes[j];
+    let atributos: AdvertenciaI;
+    atributos = {Pregunta: "¿Seguro que desea eliminar este cliente?", Dato: cliente.NombreCompleto, IdDato: cliente.Id, Orden: 0};
+
+    const dialogRef = this.dialog.open(PopupAdvertenciaComponent, {
+      width: '500px',
+      data: atributos
+    });
+
+    dialogRef.afterClosed().subscribe(correo => {
+      console.log('The dialog was closed');
+      window.location.reload();
+    });
+  } // openDialogDeleteCustomer
 
 } // ClientesComponent
 

@@ -2,22 +2,35 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerI } from 'src/app/models/customer.interface';
 import { ApiService } from 'src/app/services/api/api.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-popupModificarCliente',
-  templateUrl: './popupModificarCliente.component.html',
-  styleUrls: ['./popupModificarCliente.component.css']
+  selector: 'app-popupRegistrarCliente',
+  templateUrl: './popupRegistrarCliente.component.html',
+  styleUrls: ['./popupRegistrarCliente.component.css']
 })
-export class PopupModificarClienteComponent implements OnInit {
+export class PopupRegistrarClienteComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<PopupModificarClienteComponent>,
+    public dialogRef: MatDialogRef<PopupRegistrarClienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CustomerI,
     private api: ApiService
   ) { }
 
   ngOnInit() {
     this.agregarTiposTelefonos();
+  }
+
+  formularioRegistroCliente = new FormGroup({
+    correo: new FormControl('', [Validators.required, Validators.email])
+  });
+
+  resultado!: string;
+  submit() {
+    if (this.formularioRegistroCliente.valid)
+      this.resultado = "Todos los datos son válidos";
+    else
+      this.resultado = "Hay datos inválidos en el formulario";
   }
 
   onCancelClick(): void {
@@ -45,7 +58,7 @@ export class PopupModificarClienteComponent implements OnInit {
     });
   } // agregarTiposTelefonos
 
-  actualizarCliente(customer: CustomerI) {
+  insertarCliente(customer: CustomerI) {
     console.log("Insertar cliente:", customer);
 
     // Validar si se incluyeron los teléfonos
@@ -67,7 +80,7 @@ export class PopupModificarClienteComponent implements OnInit {
     customer.TipoTelefono1 = tipotelefono1;
     customer.TipoTelefono2 = tipotelefono2;
 
-    this.api.updateCustomer(customer);
-  } // actualizarCliente
-
-}
+    this.api.insertCustomer(customer);
+  } // insertarCliente
+  
+} // PopupRegistrarClienteComponent

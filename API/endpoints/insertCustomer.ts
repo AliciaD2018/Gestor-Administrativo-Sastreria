@@ -9,7 +9,6 @@ const cors = require('cors');
 router.use(cors());
 
 router.post('/api/insertcustomer', (req, res) => {
-    console.log(`Body: ${req.body}`);
 
     try{
         uspInsertCustomer(<string>(req.query['cedula']), <string>(req.query['nombreCompleto']),

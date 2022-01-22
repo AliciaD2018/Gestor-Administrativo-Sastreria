@@ -12,6 +12,7 @@ import { selectPhonesTypes } from './endpoints/selectPhonesTypes';
 import { selectAllOrders } from './endpoints/selectAllOrders';
 import { selectNextOrderId } from './endpoints/selectNextOrderId';
 import { sendEmail } from './endpoints/sendEmail';
+import { deleteCustomer } from './endpoints/deleteCustomer';
 
 var express = require('express');
 
@@ -32,6 +33,7 @@ app.use(selectPhonesTypes);
 app.use(selectAllOrders);
 app.use(selectNextOrderId)
 app.use(sendEmail);
+app.use(deleteCustomer);
 
 app.listen(PORT,()=>{
     console.log('Backend listening on port: ', PORT, '\n');

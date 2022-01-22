@@ -6,7 +6,7 @@ import { FullCalendarModule} from 'primeng/fullcalendar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,6 +35,8 @@ import { PopupEnviarEmailComponent } from './components/popupEnviarEmail/popupEn
 import { PopupSeleccionarClienteComponent } from './components/popupSeleccionarCliente/popupSeleccionarCliente.component';
 import { PopupVerDetallesClienteComponent } from './components/popupVerDetallesCliente/popupVerDetallesCliente.component';
 import { PopupModificarClienteComponent } from './components/popupModificarCliente/popupModificarCliente.component';
+import { PopupRegistrarClienteComponent } from './components/popupRegistrarCliente/popupRegistrarCliente.component';
+import { PopupAdvertenciaComponent } from './components/popupAdvertencia/popupAdvertencia.component';
 
 const routes: Routes = [
 
@@ -110,6 +112,14 @@ const routes: Routes = [
   {
     path:'popupModificarCliente',
     component: PopupModificarClienteComponent
+  },
+  {
+    path: 'popupRegistrarCliente',
+    component: PopupRegistrarClienteComponent
+  },
+  {
+    path: 'popupAdvertencia',
+    component: PopupAdvertenciaComponent
   }
 ];
 
@@ -134,7 +144,9 @@ const routes: Routes = [
     PopupEnviarEmailComponent,
     PopupSeleccionarClienteComponent,
     PopupVerDetallesClienteComponent,
-    PopupModificarClienteComponent
+    PopupModificarClienteComponent,
+    PopupRegistrarClienteComponent,
+    PopupAdvertenciaComponent
    ],
   imports: [
     BrowserModule,
@@ -148,7 +160,8 @@ const routes: Routes = [
     MatFormFieldModule,
     HttpClientModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -41,7 +41,6 @@ export class PopupSeleccionarClienteComponent implements OnInit {
   };
 
   insertarDatosCliente(clienteSeleccionado: CustomerI): void {
-    console.log("Cliente seleccionado:", clienteSeleccionado);
     let datosCliente = clienteSeleccionado;
 
     // Agregar los datos del cliente seleccionado a la interface

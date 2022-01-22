@@ -1,3 +1,4 @@
+import { Console } from "console";
 import { config } from "../config";
 
 var sql = require("mssql");

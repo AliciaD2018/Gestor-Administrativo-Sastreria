@@ -182,4 +182,25 @@ export class ApiService {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   } // sendEmail
+
+  /**********************************************************************************************************************************************/
+  async deleteCustomer(idCliente: number) {
+    console.clear();
+
+    console.log("Service, Id: ", idCliente);
+    console.log("Service, Type of Id: ",typeof idCliente);
+
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'DELETE',
+      headers: this.myHeaders,
+    };
+
+    await fetch(this.url + `/api/deletecustomer?id=${idCliente}`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
 } // ApiService

@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupSeleccionarClienteComponent } from '../popupSeleccionarCliente/popupSeleccionarCliente.component';
 import { CustomerI } from 'src/app/models/customer.interface';
+import { PopupRegistrarClienteComponent } from '../popupRegistrarCliente/popupRegistrarCliente.component';
 
 @Component({
   selector: 'app-crearOrden',
@@ -145,6 +146,64 @@ export class CrearOrdenComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  //------------------------------------------------------------//
+  //-------            REGISTRAR CLIENTE                --------//
+  //------------------------------------------------------------//
+
+  openDialogAddCustomer(): void {
+    let cliente: CustomerI;
+
+    const dialogRef = this.dialog.open(PopupRegistrarClienteComponent, {
+      width: '900px',
+      data: cliente,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+      console.log('The dialog was closed');
+      this.api.insertCustomer(customer);
+      this.insertarDatosCliente(customer);
+    });
+  } // openDialogAddCustomer
+
+  insertarDatosCliente(nuevoCliente: CustomerI): void {
+    let datosCliente = nuevoCliente;
+
+    // Agregar los datos del cliente seleccionado a la interface
+    if (datosCliente['Cedula'] != undefined) {
+      (<HTMLInputElement>document.getElementById('cedula')).value = datosCliente['Cedula'];
+    }
+    if (datosCliente['NombreCompleto'] != undefined) {
+      (<HTMLInputElement>document.getElementById('nombre')).value = datosCliente['NombreCompleto'];
+    }
+    if (datosCliente['Telefono1'] != undefined) {
+      (<HTMLInputElement>document.getElementById('telefono1')).value = datosCliente['Telefono1'];
+    }
+    if (datosCliente['TipoTelefono1'] != undefined) {
+      (<HTMLInputElement>document.getElementById("tipoTelefono1")).value = datosCliente['TipoTelefono1'];
+    }
+    if (datosCliente['NotasTelefono1'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('notasTelefono1')).value = datosCliente['NotasTelefono1'];
+    }
+    if (datosCliente['Telefono2'] != undefined) {
+      (<HTMLInputElement>document.getElementById('telefono2')).value = datosCliente['Telefono2'];
+    }
+    if (datosCliente['TipoTelefono2'] != undefined) {
+      (<HTMLInputElement>document.getElementById("tipoTelefono2")).value = datosCliente['TipoTelefono2'];
+    }
+    if (datosCliente['NotasTelefono2'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('notasTelefono2')).value = datosCliente['NotasTelefono2'];
+    }
+    if (datosCliente['Email'] != undefined) {
+      (<HTMLInputElement>document.getElementById('email')).value = datosCliente['Email'];
+    }
+    if (datosCliente['Direccion'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('direccion')).value = datosCliente['Direccion'];
+    }
+    if (datosCliente['Observaciones'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('observaciones')).value = datosCliente['Observaciones'];
+    }
+  } // insertarDatosCliente
   
 } // CrearOrdenComponent
 

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>
+  <i class="material-icons" style="margin-right: 20px;">warning_amber</i>
+  Advertencia
+</h1>
+<div mat-dialog-content align="center">
+  <div>
+      <label id="pregunta"></label>
+  </div>
+  <div style="margin-top: 20px;">
+    <label id="dato"></label>
+  </div>
+
+</div>
+<div mat-dialog-actions align="center" style="margin-top: 30px;">
+  <button class="btn btn-success" type="button" style="margin-right: 20px;" (click)="onCancelClick()">
+    Cancelar
+    <i class="material-icons" style="margin-left: 20px;">close</i>
+  </button>
+  <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="onAceptClick()">
+    Borrar
+    <i class="material-icons" style="margin-left: 20px;">delete</i>
+  </button>
+</div>
