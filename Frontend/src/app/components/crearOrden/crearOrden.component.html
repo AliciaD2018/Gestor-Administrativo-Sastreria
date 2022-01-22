@@ -43,7 +43,7 @@
 
         <div align="right" style="margin-top: 20px;">
           <button class="btn btn-success" type="button" style="margin-right: 20px; margin-top: 20px;"
-            (click)="openDialog()">
+            (click)="openDialogSelectCustomer()">
             Seleccionar
             <i class="material-icons" focusable="false" style="margin-left: 10px;">person_add_alt</i>
           </button>
@@ -56,45 +56,73 @@
         </div>
       </div>
 
-      <div class="wrapper_a">
-        <div>
-          <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Nombre: </label>
-          <input id="nombre" type="text" placeholder="Alicia Diaz" value="" readonly>
+      <!-- Cédula -->
+      <div class="wrapper_e" style="margin-left: 20px; margin-right: 20px; margin-top: 20px;">
+        <div style="margin-right: 20px;">
+          <label>Cedula:</label><br>
+          <input id="cedula" style="height: 35px;" readonly class="form-control" type="text">
         </div>
+
+        <!-- Nombre -->
+        <div style="margin-right: 20px;">
+          <label>Nombre:</label><br>
+          <input id="nombre" style="height: 35px;" readonly class="form-control" type="text"><br>
+        </div>
+
+        <!-- Correo electrónico (E-mail) -->
         <div>
-          <label style="margin-top: 20px; margin-right: 10px;"> Correo Electronico: </label>
-          <input id="email" type="email" placeholder="" value="rivas@gmail.com" readonly>
+          <label>E-mail:</label> <br>
+          <input id="email" style="height: 35px;" readonly class="form-control" type="email">
         </div>
       </div>
 
-      <div class="wrapper_a">
-        <div>
-          <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Teléfono 1: </label>
-          <input id="telefono1" style="margin-top: 20px;" type="tel" placeholder="86556412" value="" readonly>
+      <!-- Teléfono1 -->
+      <div class="wrapper_f" style="margin-left: 20px; margin-right: 20px;">
+        <div style="margin-right: 20px;">
+          <label>Teléfono 1:</label><br>
+          <input id="telefono1" style="height: 35px;" readonly class="form-control" type="tel">
         </div>
-        <div>
-          <label style="margin-top: 20px; margin-right: 20px;"> Teléfono 2: </label>
-          <input id="telefono2" style="margin-top: 20px;" type="tel" placeholder="86556412" value="" readonly>
-        </div>
-      </div>
 
-      <div class="wrapper_a">
-        <div>
-          <label style="margin-top: 20px; margin-left: 20px; margin-right: 10px;"> Cedula:</label>
-          <input id="cedula" type="text" placeholder="301230456" value="" readonly>
+        <div style="margin-right: 20px;">
+          <label>Tipo teléfono 1:</label><br>
+          <input id="tipoTelefono1" style="height: 35px;" readonly class="form-control" type="tel">
         </div>
-        <div></div>
-      </div>
 
-      <div class="wrapper_a">
-        <div style="margin-right: 20px; margin-left: 20px; margin-bottom: 20px;">
-          <label style="margin-top: 20px; margin-right: 10px; margin-bottom: 5px;"> Dirección: </label>
-          <textarea id="direccion" rows="4" class="form-control" type="text" value="Bonanza, San Carlos"
-            readonly></textarea>
+        <div>
+          <label>Notas teléfono 1:</label><br>
+          <textarea id="notasTelefono1" style="height: 35px;" readonly style="width: 300;" rows="1" class="form-control"
+            type="text"></textarea>
         </div>
-        <div style="margin-right: 20px; margin-left: 20px; margin-bottom: 20px;">
-          <label style="margin-top: 20px; margin-right: 10px; margin-bottom: 5px;"> Observaciones: </label>
-          <textarea id="observaciones" rows="4" class="form-control" type="text" readonly></textarea>
+      </div><br>
+
+      <!-- Teléfono 2 -->
+      <div class="wrapper_f" style="margin-left: 20px; margin-right: 20px;">
+        <div style="margin-right: 20px;">
+          <label>Teléfono 2:</label><br>
+          <input id="telefono2" style="height: 35px;" readonly class="form-control" type="tel">
+        </div>
+        <div style="margin-right: 20px;">
+          <label>Tipo teléfono 2:</label><br>
+          <input id="tipoTelefono2" style="height: 35px;" readonly class="form-control" type="tel">
+        </div>
+        <div>
+          <label>Notas teléfono 2:</label><br>
+          <textarea id="notasTelefono2" style="height: 35px;" readonly rows="1" class="form-control"
+            type="text"></textarea>
+        </div>
+      </div><br>
+
+      <!-- Dirección -->
+      <div class="wrapper_d" style="margin-left: 20px; margin-bottom: 20px; margin-right: 20px;">
+        <div style="margin-right: 20px;">
+          <label>Dirección:</label>
+          <textarea id="direccion" readonly rows="4" class="form-control" type="text"></textarea>
+        </div>
+
+        <!-- Observaciones -->
+        <div>
+          <label>Observaciones cliente:</label>
+          <textarea id="observaciones" readonly rows="4" class="form-control" type="text"></textarea>
         </div>
       </div>
     </form>
@@ -149,7 +177,7 @@
       <br>
 
       <!-- Tabla Abonos -->
-      <div class="scrollbar_h675">
+      <div class="scrollbar_h450">
         <table mat-table [dataSource]="datosAbonos" class="mat-elevation-z8" #tabla2>
 
           <ng-container matColumnDef="fecha">
@@ -252,7 +280,7 @@
       </form>
 
       <!-- Tabla prendas -->
-      <div class="scrollbar_h675">
+      <div class="scrollbar_h450">
         <table mat-table [dataSource]="datosPrendas" class="mat-elevation-z8" #tabla1>
 
           <ng-container matColumnDef="numeroOrden">
@@ -323,7 +351,7 @@
       </div>
 
       <!-- Tabla materiales -->
-      <div class="scrollbar_h270">
+      <div class="scrollbar_h350">
         <table mat-table [dataSource]="datosMateriales" class="mat-elevation-z8" #tabla1>
 
           <ng-container matColumnDef="codigo">

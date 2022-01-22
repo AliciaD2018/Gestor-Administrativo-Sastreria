@@ -165,12 +165,12 @@ tr:nth-child(even){
 }
 
 /* Iserta el scrollbar */
-.scrollbar_h675 {
+.scrollbar_h450 {
     max-height: 450px;
     overflow: auto;
 }
 
-.scrollbar_h270 {
+.scrollbar_h350 {
     max-height: 350px;
     overflow: auto;
 }
@@ -190,5 +190,21 @@ tr:nth-child(even){
 
 .wrapper_c {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+/* Elementos alineados en la misma fila */
+.wrapper_d {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_e {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+.wrapper_f {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
 }

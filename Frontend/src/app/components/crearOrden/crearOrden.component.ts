@@ -3,20 +3,18 @@ import { MatTable } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupSeleccionarClienteComponent } from '../popupSeleccionarCliente/popupSeleccionarCliente.component';
+import { CustomerI } from 'src/app/models/customer.interface';
 
-export interface DialogData {
-  cedula: string;
-  nombre: string;
-}
 @Component({
   selector: 'app-crearOrden',
   templateUrl: './crearOrden.component.html',
   styleUrls: ['./crearOrden.component.css']
 })
+
 export class CrearOrdenComponent implements OnInit {
 
   constructor(private api: ApiService,
-    public dialog: MatDialog) { }
+              public dialog: MatDialog) { }
 
   idNuevaOrden;
   columnasAbonos: string[] = ['fecha', 'salAnterior', 'abono', 'salNuevo', 'montoP', 'opciones'];
@@ -135,22 +133,21 @@ export class CrearOrdenComponent implements OnInit {
   //------              POPUP Selecciona Cliente           ------
   //---------------------------------------------------------------
 
-  cliente: string;
-  cedula: string;
+  openDialogSelectCustomer(): void {
+    let clientes: CustomerI[] = [];
 
-
-  openDialog(): void {
     const dialogRef = this.dialog.open(PopupSeleccionarClienteComponent, {
-      width: '500px',
-      data: { cliente: this.cliente, cedula: this.cedula },
+      width: '700px',
+      data: clientes,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
-      this.cedula = result;
     });
   }
-}
+  
+} // CrearOrdenComponent
+
 
 export class Abono {
   constructor(

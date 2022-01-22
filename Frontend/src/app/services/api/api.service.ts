@@ -147,7 +147,6 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectnextorderid`, requestOptions);
     let id = await respuesta.json();
-    console.log(id['idsiguienteorden'][0]);
     return id['idsiguienteorden'][0];
   }
 
