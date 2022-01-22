@@ -40,32 +40,32 @@
         
         <ng-container matColumnDef="cedula">
           <th mat-header-cell *matHeaderCellDef> Cedula </th>
-          <td mat-cell *matCellDef="let clients"> {{clients.cedula}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.Cedula}} </td>
         </ng-container>
       
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let clients"> {{clients.nombre}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.NombreCompleto}} </td>
         </ng-container>
 
         <ng-container matColumnDef="telefono1">
           <th mat-header-cell *matHeaderCellDef> Telefono 1 </th>
-          <td mat-cell *matCellDef="let clients"> {{clients.telefono1}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.Telefono1}} </td>
         </ng-container>
       
         <ng-container matColumnDef="telefono2">
           <th mat-header-cell *matHeaderCellDef> Telefono 2 </th>
-          <td mat-cell *matCellDef="let clients"> {{clients.telefono2}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.Telefono2}} </td>
         </ng-container>
 
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef> E-mail </th>
-          <td mat-cell *matCellDef="let clients"> {{clients.email}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.Email}} </td>
         </ng-container>
 
         <ng-container matColumnDef="direccion">
           <th mat-header-cell *matHeaderCellDef> Dirección </th>
-          <td mat-cell *matCellDef="let clients"> {{clients.direccion}} </td>
+          <td mat-cell *matCellDef="let clients"> {{clients.Direccion}} </td>
         </ng-container>
       
         <ng-container matColumnDef="opciones">
@@ -77,10 +77,10 @@
           </th>
           <td mat-cell *matCellDef="let j = index;">
             <div class="btn-group btn-group-lg" style="margin-left: 5px;">
-              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" routerLink="/verDetallesCliente" (click)="pasarDatosCliente(j)">remove_red_eye</i>
-              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" routerLink="/modificarCliente" (click)="pasarDatosCliente(j)">edit</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="openDialogCustomerDatils(j)">remove_red_eye</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="openDialogEditCustomer(j)">edit</i>
               <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="borrarFila(j)">delete</i>
-              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;" (click)="openDialog(j)">email</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;" (click)="openDialogEmail(j)">email</i>
             </div>
           </td>
         </ng-container>

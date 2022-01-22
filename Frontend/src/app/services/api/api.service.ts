@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EmailI } from 'src/app/models/email.interface';
 import { CustomerI } from '../../models/customer.interface';
 
 @Injectable({
@@ -8,10 +9,11 @@ export class ApiService {
 
   private url = "http://localhost:4500";
   private myHeaders = new Headers();
-  
+
   constructor() { }
 
-  insertCustomer(cliente: CustomerI) {
+  /**********************************************************************************************************************************************/
+  async insertCustomer(cliente: CustomerI) {
     console.clear();
 
     this.myHeaders.append("Content-Type", "application/json");
@@ -23,16 +25,17 @@ export class ApiService {
     };
 
     return fetch(this.url + `/api/insertcustomer?cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}` +
-                            `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
-                            `&telefono1=${cliente.Telefono1}&tipoTelefono1=${cliente.TipoTelefono1}&notasTelefono1=${cliente.NotasTelefono1}` +
-                            `&telefono2=${cliente.Telefono2}&tipoTelefono2=${cliente.TipoTelefono2}&notasTelefono2=${cliente.NotasTelefono2}`,
-                            requestOptions)
+      `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
+      `&telefono1=${cliente.Telefono1}&tipoTelefono1=${cliente.TipoTelefono1}&notasTelefono1=${cliente.NotasTelefono1}` +
+      `&telefono2=${cliente.Telefono2}&tipoTelefono2=${cliente.TipoTelefono2}&notasTelefono2=${cliente.NotasTelefono2}`,
+      requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
 
-  async updateCustomer(cliente: CustomerI){
+  /**********************************************************************************************************************************************/
+  async updateCustomer(cliente: CustomerI) {
     console.clear();
 
     this.myHeaders.append("Content-Type", "application/json");
@@ -43,18 +46,19 @@ export class ApiService {
     };
 
     return fetch(this.url + `/api/updatecustomer?id=${cliente.Id}&cedula=${cliente.Cedula}&nombreCompleto=${cliente.NombreCompleto}` +
-                            `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
-                            `&telefono1=${cliente.Telefono1}&tipoTelefono1=${cliente.TipoTelefono1}&notasTelefono1=${cliente.NotasTelefono1}` +
-                            `&telefono2=${cliente.Telefono2}&tipoTelefono2=${cliente.TipoTelefono2}&notasTelefono2=${cliente.NotasTelefono2}`,
-                            requestOptions)
+      `&email=${cliente.Email}&direccion=${cliente.Direccion}&observaciones=${cliente.Observaciones}` +
+      `&telefono1=${cliente.Telefono1}&tipoTelefono1=${cliente.TipoTelefono1}&notasTelefono1=${cliente.NotasTelefono1}` +
+      `&telefono2=${cliente.Telefono2}&tipoTelefono2=${cliente.TipoTelefono2}&notasTelefono2=${cliente.NotasTelefono2}`,
+      requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
 
-  async selectMaterialsInventory(){
+  /**********************************************************************************************************************************************/
+  async selectMaterialsInventory() {
     console.clear();
-    
+
     this.myHeaders.append('Content-Type', 'application/json');
     var requestOptions = {
       method: 'GET',
@@ -66,9 +70,10 @@ export class ApiService {
     return materiales['materiales'];
   }
 
-  async selectAllCustomers(){
+  /**********************************************************************************************************************************************/
+  async selectAllCustomers() {
     console.clear();
-    
+
     this.myHeaders.append('Content-Type', 'application/json');
 
     var requestOptions = {
@@ -81,9 +86,10 @@ export class ApiService {
     return cliente['clientes'];
   }
 
-  async selectAllOrders(){
+  /**********************************************************************************************************************************************/
+  async selectAllOrders() {
     console.clear();
-    
+
     this.myHeaders.append('Content-Type', 'application/json');
 
     var requestOptions = {
@@ -96,11 +102,12 @@ export class ApiService {
     return cliente['ordenes'];
   }
 
-  async selectMaterialsCategories(){
+  /**********************************************************************************************************************************************/
+  async selectMaterialsCategories() {
     console.clear();
-  
+
     this.myHeaders.append('Content-Type', 'application/json');
-  
+
     var requestOptions = {
       method: 'GET',
       headers: this.myHeaders,
@@ -111,11 +118,12 @@ export class ApiService {
     return categorias['categorias'];
   }
 
-  async selectPhonesTypes(){
+  /**********************************************************************************************************************************************/
+  async selectPhonesTypes() {
     console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
-  
+
     var requestOptions = {
       method: 'GET',
       headers: this.myHeaders,
@@ -126,11 +134,12 @@ export class ApiService {
     return tipos['tipostelefonos'];
   }
 
-  async selectNextOrderId(){
+  /**********************************************************************************************************************************************/
+  async selectNextOrderId() {
     console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
-  
+
     var requestOptions = {
       method: 'GET',
       headers: this.myHeaders,
@@ -142,11 +151,12 @@ export class ApiService {
     return id['idsiguienteorden'][0];
   }
 
-  async selectOrdersDetailsForCalendar(){
+  /**********************************************************************************************************************************************/
+  async selectOrdersDetailsForCalendar() {
     console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
-  
+
     var requestOptions = {
       method: 'GET',
       headers: this.myHeaders,
@@ -157,4 +167,20 @@ export class ApiService {
     return categorias['detallesordenesparacalendario'];
   }
 
+  /**********************************************************************************************************************************************/
+  async sendEmail(body: EmailI) {
+    console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+
+    var requestOptions = {
+      method: 'POST',
+      headers: this.myHeaders,
+    };
+
+    await fetch(this.url + `/api/sendemail?body=${JSON.stringify(body)}`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  } // sendEmail
 } // ApiService

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ModificarClienteComponent } from './modificarCliente.component';
+import { PopupVerDetallesClienteComponent } from './popupVerDetallesCliente.component';
 
-describe('ModificarClienteComponent', () => {
-  let component: ModificarClienteComponent;
-  let fixture: ComponentFixture<ModificarClienteComponent>;
+describe('PopupVerDetallesClienteComponent', () => {
+  let component: PopupVerDetallesClienteComponent;
+  let fixture: ComponentFixture<PopupVerDetallesClienteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModificarClienteComponent ]
+      declarations: [ PopupVerDetallesClienteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModificarClienteComponent);
+    fixture = TestBed.createComponent(PopupVerDetallesClienteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

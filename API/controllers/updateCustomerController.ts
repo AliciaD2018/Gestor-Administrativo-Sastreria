@@ -1,3 +1,4 @@
+import console from "console";
 import { config } from "../config";
 
 var sql = require("mssql");
@@ -6,6 +7,12 @@ async function uspUpdateCustomer(Id: string, NombreCompleto: string,
                                  Email: string, Direccion: string, Observaciones: string,
                                  Telefono1: string, TipoTelefono1: string, NotasTelefono1: string,
                                  Telefono2: string, TipoTelefono2: string, NotasTelefono2: string) {
+    
+    console.log("Teléfono 1:", Telefono1);
+    console.log("Tipo teléfono 1:", TipoTelefono1);
+    console.log("Teléfono 2:", Telefono2);
+    console.log("Tipo teléfono 2:", TipoTelefono2);
+
     try{
         // Establish connection
         await sql.connect(config);

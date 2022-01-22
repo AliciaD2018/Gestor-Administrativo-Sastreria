@@ -11,9 +11,7 @@ import { updateCustomer } from './endpoints/updateCustomer';
 import { selectPhonesTypes } from './endpoints/selectPhonesTypes';
 import { selectAllOrders } from './endpoints/selectAllOrders';
 import { selectNextOrderId } from './endpoints/selectNextOrderId';
-import { emailcorreo } from './endpoints/emailRoutes';
-
-
+import { sendEmail } from './endpoints/sendEmail';
 
 var express = require('express');
 
@@ -21,7 +19,6 @@ const PORT = process.env.PORT || 4500;
 const app = express();
 
 app.use(insertCustomers);
-
 app.use(selectMissingMaterialsAllOrders);
 app.use(selectOrdersDetailsForCalendar)
 app.use(selectMaterialsInventory);
@@ -34,7 +31,7 @@ app.use(selectOrders);
 app.use(selectPhonesTypes);
 app.use(selectAllOrders);
 app.use(selectNextOrderId)
-app.use(emailcorreo);
+app.use(sendEmail);
 
 app.listen(PORT,()=>{
     console.log('Backend listening on port: ', PORT, '\n');

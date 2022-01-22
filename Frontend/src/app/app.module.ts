@@ -24,17 +24,17 @@ import { OrdenesComponent } from './components/ordenes/ordenes.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { RegistrarMaterialComponent } from './components/registrarMaterial/registrarMaterial.component';
-import { ModificarClienteComponent } from './components/modificarCliente/modificarCliente.component';
 import { ModificarInventarioComponent } from './components/modificarInventario/modificarInventario.component';
 import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOrden.component';
 import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
-import { VerDetallesClienteComponent } from './components/verDetallesCliente/verDetallesCliente.component';
 import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
 import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
 import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
 import { PopupEnviarEmailComponent } from './components/popupEnviarEmail/popupEnviarEmail.component';
 import { PopupSeleccionarClienteComponent } from './components/popupSeleccionarCliente/popupSeleccionarCliente.component';
+import { PopupVerDetallesClienteComponent } from './components/popupVerDetallesCliente/popupVerDetallesCliente.component';
+import { PopupModificarClienteComponent } from './components/popupModificarCliente/popupModificarCliente.component';
 
 const routes: Routes = [
 
@@ -60,10 +60,6 @@ const routes: Routes = [
     component: InventarioComponent
   },
   {
-    path:'modificarClientes',
-    component: ModificarClienteComponent
-  },
-  {
     path:'ordenes',
     component: OrdenesComponent
   },
@@ -72,20 +68,12 @@ const routes: Routes = [
     component: RegistrarMaterialComponent
   },
   {
-    path:'modificarCliente',
-    component: ModificarClienteComponent
-  },
-  {
     path:'modificarInventario',
     component: ModificarInventarioComponent
   },
   {
     path:'registrarOrden',
     component: RegistrarOrdenComponent
-  },
-  {
-    path:'verDetallesCliente',
-    component: VerDetallesClienteComponent
   },
   {
     path:'modificarOrden',
@@ -114,6 +102,14 @@ const routes: Routes = [
   {
     path:'popupSeleccionarCliente',
     component: PopupSeleccionarClienteComponent
+  },
+  {
+    path:'popupVerDetallesCliente',
+    component: PopupVerDetallesClienteComponent
+  },
+  {
+    path:'popupModificarCliente',
+    component: PopupModificarClienteComponent
   }
 ];
 
@@ -125,7 +121,6 @@ const routes: Routes = [
     ClientesComponent,
     CalendarioComponent,
     RegistrarClienteComponent,
-    ModificarClienteComponent,
     InventarioComponent,
     OrdenesComponent,
     RegistrarMaterialComponent,
@@ -134,11 +129,12 @@ const routes: Routes = [
     ModificarOrdenComponent,
     DetalleOrdenComponent,
     CrearOrdenComponent,
-    VerDetallesClienteComponent,
     RegistrarAbonoComponent,
     RegistrarPrendaComponent,
     PopupEnviarEmailComponent,
-    PopupSeleccionarClienteComponent
+    PopupSeleccionarClienteComponent,
+    PopupVerDetallesClienteComponent,
+    PopupModificarClienteComponent
    ],
   imports: [
     BrowserModule,

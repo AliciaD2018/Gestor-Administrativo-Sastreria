@@ -1,8 +1,8 @@
 const { request, response } = require('express');
 const nodeMailer = require('nodemailer');
 
-const envioCorreo = (req = request, resp = response) => {
-    let body = req.body;
+const sendEmailController = (req = request, resp = response) => {
+    let body = JSON.parse(req.query['body']);
 
     let config = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
@@ -15,10 +15,10 @@ const envioCorreo = (req = request, resp = response) => {
     })
 
     const opciones = {
-        from: 'Sara',
-        subject: body.asunto,
-        to: body.email,
-        text: body.mensaje
+        from: 'Sastrería Sara Lehr',
+        subject: body.Asunto,
+        to: body.Email,
+        text: body.Mensaje + body.Firma
     }
 
     config.sendMail(opciones,function(error: any, result: any){
@@ -32,6 +32,4 @@ const envioCorreo = (req = request, resp = response) => {
 
 }
 
-module.exports={
-    envioCorreo
-}
+export{sendEmailController}
