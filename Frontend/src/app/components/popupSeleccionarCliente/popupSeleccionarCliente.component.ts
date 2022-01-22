@@ -9,8 +9,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class PopupSeleccionarClienteComponent implements OnInit {
 
-  displayedColumns: string[] = ['cedula', 'cliente'];
+  displayedColumns: string[] = ['cedula', 'cliente', 'opciones'];
   dataSource = ELEMENT_DATA;
+  checked=false;
+  
   
   constructor(
     public dialogRef: MatDialogRef<PopupSeleccionarClienteComponent>,
@@ -32,5 +34,8 @@ export interface DialogData2 {
 }
 
 const ELEMENT_DATA: DialogData2[] = [
-  {cedula: '20222022', cliente: 'Alicia'}
+  {cedula: '20222022', cliente: 'Alicia'},
+  {cedula: '20222022', cliente: 'Jeffry'}
 ];
+
+
