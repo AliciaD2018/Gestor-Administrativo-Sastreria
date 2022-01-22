@@ -141,7 +141,7 @@ export class CrearOrdenComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupSeleccionarClienteComponent, {
-      width: '250px',
+      width: '500px',
       data: { cliente: this.cliente, cedula: this.cedula },
     });
 
