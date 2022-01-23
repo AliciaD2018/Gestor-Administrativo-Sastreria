@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="ordenes.component.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container logo-nav-container">
+        <a href="#" class='logo'> Sara Lehr Sastrería</a>
+        <nav class='navigation'>
+            <ul>
+              <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
+              <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
+              <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']" > Clientes </a> </li>
+              <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']" > Órdenes</a> </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<br>
+<br>
+
+  <h1 align='center'> <b> <u>Lista de Órdenes</u></b></h1>
+
+  <hr>
+  <!-- Input Buscar -->
+  <form action="" method="get" align='right'>
+    <input (keyup)="filtrar($event)"  class="forms-control" placeholder="Buscar..." border-radius=4px style="margin-right: 30px;">
+  </form>
+  <hr>  
+  
+  <div class="scrollbar">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
+
+      <ng-container matColumnDef="numeroOrden">
+        <th mat-header-cell *matHeaderCellDef> Número <br> de orden </th>
+        <td mat-cell *matCellDef="let orden"> {{orden.numeroOrden}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let orden"> {{orden.cliente}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="costoTotal">
+        <th mat-header-cell *matHeaderCellDef> Costo total </th>
+        <td mat-cell *matCellDef="let orden"> {{orden.costoTotal}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="saldo">
+        <th mat-header-cell *matHeaderCellDef> Saldo </th>
+        <td mat-cell *matCellDef="let orden"> {{orden.saldo}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="fechaEntrega">
+        <th mat-header-cell *matHeaderCellDef> Fecha de <br> entrega </th>
+        <td mat-cell *matCellDef="let orden"> {{orden.fechaEntrega}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="cantidadPrendas">
+        <th mat-header-cell *matHeaderCellDef> Cantidad <br> de prendas </th>
+        <td mat-cell *matCellDef="let orden"> {{orden.cantidadPrendas}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef>
+          <label > Ver </label>
+          <label style="margin-left: 35px;"> Act. </label>
+          <label style="margin-left: 26px;"> Borrar? </label>
+        </th>
+        <td mat-cell *matCellDef="let j = index;">
+          <div class="btn-group btn-group-lg">
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">remove_red_eye</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">edit</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;" (click)="borrarFila(j)">delete</i>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+  </div>
+  
+  <hr>
+  <div align='center'> 
+    <nav>   
+        <button class="material-icons" mat-raised-button focusable="false" routerLink="/crearOrden" routerLinkActive="/crearOrden">
+          Agregar orden
+          <i class="material-icons" style="margin-left: 20px;">content_paste</i>
+        </button>
+      </nav>               
+  </div>
+  <hr>
+  
+</body>
+</html>

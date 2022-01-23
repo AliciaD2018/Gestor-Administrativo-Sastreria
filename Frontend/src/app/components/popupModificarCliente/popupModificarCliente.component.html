@@ -1,0 +1,93 @@
+<h1 mat-dialog-title>Actualizar datos cliente</h1>
+
+<div mat-dialog-content style="height: 455px;">
+
+  <!-- Cédula -->
+  <div class="wrapper_b">
+    <div style="margin-right: 20px;">
+      <label>Cedula:</label><br>
+      <input matInput [(ngModel)]="data.Cedula" style="height: 35px;" readonly class="form-control" type="text">
+    </div>
+
+    <!-- Nombre -->
+    <div style="margin-right: 20px;">
+      <label>Nombre:</label><br>
+      <input matInput [(ngModel)]="data.NombreCompleto" style="height: 35px;" class="form-control"
+        type="text"><br>
+    </div>
+
+    <!-- Correo electrónico (E-mail) -->
+    <div>
+      <label>E-mail:</label> <br>
+      <input matInput [(ngModel)]="data.Email" style="height: 35px;" class="form-control" type="email">
+    </div>
+  </div>
+
+  <!-- Teléfono1 -->
+  <div class="wrapper_c">
+    <div style="margin-right: 20px;">
+      <label>Teléfono 1:</label><br>
+      <input matInput [(ngModel)]="data.Telefono1" style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <div style="margin-right: 20px;">
+      <label>Tipo teléfono 1:</label><br>
+      <select name="types" id="tiposTelefono1" class="forms-control" style="height: 35px; width: 150px;" placeholder="Seleccionar tipo..." border-radius=4px>
+        <option value="" disabled selected hidden>Tipo de teléfono</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Notas teléfono 1:</label><br>
+      <textarea matInput [(ngModel)]="data.NotasTelefono1" style="height: 35px;" style="width: 300;" rows="1"
+        class="form-control" type="text"></textarea>
+    </div>
+  </div><br>
+
+  <!-- Teléfono 2 -->
+  <div class="wrapper_c">
+    <div style="margin-right: 20px;">
+      <label>Teléfono 2:</label><br>
+      <input matInput [(ngModel)]="data.Telefono2" style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <div style="margin-right: 20px;">
+      <label>Tipo teléfono 2:</label><br>
+      <select name="types" id="tiposTelefono2" class="forms-control" style="height: 35px; width: 150px;" placeholder="Seleccionar tipo..." border-radius=4px>
+          <option value="" disabled selected hidden>Tipo de teléfono</option>
+        </select>
+    </div>
+
+    <div>
+      <label>Notas teléfono 2:</label><br>
+      <textarea matInput [(ngModel)]="data.NotasTelefono2" style="height: 35px;" rows="1" class="form-control"
+        type="text"></textarea>
+    </div>
+  </div><br>
+
+  <!-- Dirección -->
+  <div class="wrapper_a">
+    <div style="margin-right: 20px;">
+      <label>Dirección:</label>
+      <textarea matInput [(ngModel)]="data.Direccion" rows="4" class="form-control" type="text"></textarea>
+    </div>
+
+    <!-- Observaciones -->
+    <div>
+      <label>Observaciones cliente:</label>
+      <textarea matInput [(ngModel)]="data.Observaciones" rows="4" class="form-control" type="text"></textarea>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div mat-dialog-actions align="center" style="margin-top: 20px;">
+    <button class="btn btn-success" type="button" style="margin-right: 20px;" (click)="onCancelClick()">
+      Cerrar
+      <i class="material-icons" style="margin-left: 20px;">close</i>
+    </button>
+    <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="actualizarCliente(data)">
+      Actualizar
+      <i class="material-icons" style="margin-left: 20px;">edit</i>
+    </button>
+  </div>
+</div>

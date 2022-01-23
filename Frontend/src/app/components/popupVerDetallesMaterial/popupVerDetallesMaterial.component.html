@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Detalles material</h1>
+
+<div mat-dialog-content style="height: 420px;">
+
+  <div class="wrapper_a">
+    <!-- Código -->
+    <div style="margin-right: 20px;">
+      <label>Código:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <!-- Fecha de registro -->
+    <div>
+      <label>Fecha de registro:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+  </div>
+
+  <div style="margin-top: 20px;">
+    <label>Descripción:</label><br>
+    <textarea matInput [(ngModel)]="data.Descripcion" cdkFocusInitial readonly style="height: 35px;" style="width: 100%;" rows="3"
+      class="form-control" type="text"></textarea>
+  </div>
+
+  <div class="wrapper_b" style="margin-top: 20px;">
+    <div style="margin-right: 20px;">
+      <label>Categoría:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
+      <input matInput [(ngModel)]="data.Categoria" style="height: 35px;" readonly class="form-control" type="text">
+    </div>
+
+    <div style="margin-right: 20px;">
+      <label>Cantidad:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <div>
+      <label>Unidad de medida:</label><br>
+      <input matInput [(ngModel)]="data.UnidadMedida" style="height: 35px;" readonly class="form-control" type="text">
+    </div>
+
+  </div>
+
+  <div class="wrapper_a" style="margin-top: 20px;">
+    <!-- Precio de compra -->
+    <div style="margin-right: 20px;">
+      <label>Precio de compra:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <!-- Precio de venta -->
+    <div>
+      <label>Precio de venta:</label><br>
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+  </div>
+
+  <!-- Botones -->
+  <div mat-dialog-actions align="center" style="margin-top: 20px;">
+    <button class="btn btn-success" type="button" style="margin-right: 20px;" (click)="onCancelClick()">
+      Cancelar
+      <i class="material-icons" style="margin-left: 20px;">close</i>
+    </button>                                <!-- [mat-dialog-close]="data" retorna el 'data con los valores que tengan los campos del formulario '-->
+    <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="openDialogEditMaterial(data)">
+      Editar
+      <i class="material-icons" style="margin-left: 20px;">edit</i>
+    </button>
+  </div>
+</div>

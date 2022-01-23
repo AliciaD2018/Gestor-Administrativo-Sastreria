@@ -1,0 +1,82 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br>
+<h1 align="center">
+  Formulario para registrar nuevos clientes
+</h1>
+
+<div class="container">
+  <form>
+
+    <div class="wrapper">
+      <div>
+        <label style="margin-right: 150px;">Cedula:</label><br>
+        <input style="margin-right: 30px;" id="cedula" class="form-control" type="text" placeholder="301230456">
+      </div>
+
+      <div>
+        <label style="margin-left: 30px;">Nombre:</label><br>
+        <input style="margin-left: 30px; width:338%" id="nombre" class="form-control" type="text"
+          placeholder="Juan de los Palotes"><br>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div>
+        <label style="margin-top: 30px;">Teléfono 1:</label><br>
+        <input id="telefono1" style="width: 200px; margin-right: 70px; height: 35px;" class="form-control" type="tel"
+          placeholder="83152829">
+      </div>
+      <div>
+        <label style="margin-top: 30px;">Tipo teléfono 1:</label><br>
+        <select name="types" style="height: 35px; margin-right: 30px;" id="tiposTelefono1" class="forms-control"
+          placeholder="Seleccionar tipo..." border-radius=4px>
+          <option value="" disabled selected hidden>Tipo de teléfono</option>
+        </select>
+      </div>
+      <div>
+        <label style="margin-top: 30px;">Notas teléfono 1:</label><br>
+        <textarea id="notasTelefono1" style="width: 300; height: 35px;" rows="1" class="form-control" type="text"
+          placeholder="Notas..."></textarea>
+      </div>
+    </div><br>
+    
+    <div class="wrapper">
+      <div>
+        <label style="margin-top: 30px;">Teléfono 2:</label><br>
+        <input id="telefono2" style="width: 200px; margin-right: 70px;" class="form-control" type="tel" placeholder="25520714">
+      </div>
+      <div>
+        <label style="margin-top: 30px;">Tipo teléfono 2:</label><br>
+        <select name="types" style="height: 35px; margin-right: 30px;" id="tiposTelefono2" class="forms-control"
+          placeholder="Seleccionar tipo..." border-radius=4px>
+          <option value="" disabled selected hidden>Tipo de teléfono</option>
+        </select>
+      </div>
+      <div>
+        <label style="margin-top: 30px;">Notas teléfono 2:</label><br>
+        <textarea id="notasTelefono2" style="margin-bottom: 20px; height: 35px;" rows="1" class="form-control"
+          type="text" placeholder="Notas..."></textarea>
+      </div>
+    </div><br>
+
+    <p>
+      <label>E-mail:</label> <br>
+      <input id="email" class="form-control" type="email" placeholder="usuario@dominio.ext"> <br>
+    </p>
+    <p>
+      <label>Dirección:</label> <br>
+      <textarea id="direccion" rows="4" class="form-control" type="text" placeholder="Provincia, Cantón, Distrito, Barrio.
+      Otras señas..."></textarea>
+    </p>
+    <p>
+      <label>Observaciones cliente:</label> <br>
+      <textarea id="observacionesCliente" rows="4" class="form-control" type="text" placeholder="Observaciones cliente..."></textarea><br>
+    </p>
+    <div align="center">
+      <button class="btn btn-success" type="button" routerLink="/clientes" style="margin-right: 50px" (click)="insertarCliente()">
+        Agregar
+      </button>
+      <button class="btn btn-success" type="button" routerLink="/clientes">Cancelar</button>
+    </div>
+  </form>
+</div>

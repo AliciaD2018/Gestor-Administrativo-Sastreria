@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container logo-nav-container">
+            <a href="#" class='logo'> Sara Lehr Sastrería </a>
+            <nav class='navigation'>
+                <ul>
+                  <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
+                  <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
+                  <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']"> Clientes </a> </li>
+                  <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']"> Órdenes</a> </li>
+                </ul>  
+            </nav>
+        </div>        
+    </header>
+
+    <br>
+    <br>     
+    <h1 align='center'> <b> <u>Lista de Clientes</u></b></h1>
+
+    <hr>
+    <!-- Input Buscar -->
+    <form action="" method="get" align='right'>
+      <input (keyup)="filtrar($event)" style="margin-right: 30px;" class="forms-control" placeholder="Buscar..." border-radius=4px >
+    </form>
+    <hr>
+    
+    <!-- Tabla -->
+    <div class="scrollbar">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
+        
+        <ng-container matColumnDef="cedula">
+          <th mat-header-cell *matHeaderCellDef> Cedula </th>
+          <td mat-cell *matCellDef="let clients"> {{clients.Cedula}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let clients"> {{clients.NombreCompleto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono1">
+          <th mat-header-cell *matHeaderCellDef> Telefono 1 </th>
+          <td mat-cell *matCellDef="let clients"> {{clients.Telefono1}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="telefono2">
+          <th mat-header-cell *matHeaderCellDef> Telefono 2 </th>
+          <td mat-cell *matCellDef="let clients"> {{clients.Telefono2}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> E-mail </th>
+          <td mat-cell *matCellDef="let clients"> {{clients.Email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef> Dirección </th>
+          <td mat-cell *matCellDef="let clients"> {{clients.Direccion}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef>
+            <label style="margin-left: 5px;"> Ver </label>
+            <label style="margin-left: 35px;"> Act. </label>
+            <label style="margin-left: 23px;"> Borrar? </label>
+            <label style="margin-left: 15px;"> E-mail </label>
+          </th>
+          <td mat-cell *matCellDef="let j = index;">
+            <div class="btn-group btn-group-lg" style="margin-left: 5px;">
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="openDialogCustomerDatils(j)">remove_red_eye</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="openDialogEditCustomer(j)">edit</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;" (click)="openDialogDeleteCustomer(j)">delete</i>
+              <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;" (click)="openDialogEmail(j)">email</i>
+            </div>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;" (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"></tr>
+      </table>
+    </div>
+
+      <hr>
+      <div align='center'> 
+        <nav>   
+            <button class="material-icons" mat-raised-button focusable="false" (click)="openDialogAddCustomer()">
+              Agregar cliente
+              <i class="material-icons" style="margin-left: 20px;">person_add</i>
+            </button>
+          </nav>
+          
+      </div>
+      <hr>
+    
+</body>
+</html>
+

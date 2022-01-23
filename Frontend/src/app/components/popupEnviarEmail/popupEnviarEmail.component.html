@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Enviar E-mail al cliente</h1>
+<div mat-dialog-content>
+  <div>
+      <label style="margin-right: 10px;">Nombre:</label>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="data.Nombre" type="text" readonly>
+      </mat-form-field>
+  </div>
+
+  <!-- <mat-divider></mat-divider> -->
+
+  <div style="margin-top: 10px;">
+    <label style="margin-right: 10px;">E-mail:</label>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Correo Electronico</mat-label>
+      <input matInput [(ngModel)]="data.Email" type="email" readonly>
+    </mat-form-field>
+  </div>
+
+  <!-- <mat-divider></mat-divider> -->
+
+  <div style="margin-top: 10px;">
+    <label style="margin-right: 10px;">Asunto:</label>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Asunto</mat-label>
+      <input matInput [(ngModel)]="data.Asunto" type="input">
+      <input matInput>
+    </mat-form-field>
+  </div>
+
+  <!-- <mat-divider></mat-divider> -->
+
+  <div style="margin-top: 10px;">
+    <div>
+      <label>Mensaje:</label>
+    </div>
+    <div style="margin-top: 10px;">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Mensaje</mat-label>
+        <input matInput [(ngModel)]="data.Mensaje" type="email">
+        <textarea matInput rows="6"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
+<div mat-dialog-actions align="center">
+  <button class="btn btn-success" type="button" style="margin-right: 20px;" (click)="onCancelClick()">Cancelar</button>
+  <button class="btn btn-success" type="button" [mat-dialog-close]="data">Enviar</button>
+</div>

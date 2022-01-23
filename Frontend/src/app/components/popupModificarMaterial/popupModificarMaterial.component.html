@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>Actualizar detalles de material</h1>
+
+<div mat-dialog-content style="height: 420px;">
+
+  <div class="wrapper_a">
+    <!-- Código -->
+    <div style="margin-right: 20px;">
+      <label>Código:</label><br>
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <!-- Fecha de registro -->
+    <div>
+      <label>Fecha de registro:</label><br>
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+  </div>
+
+  <div style="margin-top: 20px;">
+    <label>Descripción:</label><br>
+    <textarea matInput [(ngModel)]="data.Descripcion" cdkFocusInitial style="height: 35px;" style="width: 100%;" rows="3"
+      class="form-control" type="text"></textarea>
+  </div>
+
+  <div class="wrapper_b" style="margin-top: 20px;">
+    <div style="margin-right: 20px;">
+      <label>Categoría:</label><br>
+      <select name="types" id="categoriasMateriales" class="forms-control" style="height: 35px; width: 100%;" border-radius=4px>
+        <option disabled selected hidden>Seleccione una categoría</option>
+      </select>
+    </div>
+
+    <div style="margin-right: 20px;">
+      <label>Cantidad:</label><br>
+      <input matInput [(ngModel)]="data.Codigo" style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <div>
+      <label>Unidad de medida:</label><br>
+      <select name="types" id="unidadesDeMedida" class="forms-control" style="height: 35px; width: 100%;" border-radius=4px>
+        <option disabled selected hidden>Seleccione una unidad</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="wrapper_a" style="margin-top: 20px;">
+    <!-- Precio de compra -->
+    <div style="margin-right: 20px;">
+      <label>Precio de compra:</label><br>
+      <input matInput [(ngModel)]="data.Codigo" style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+    <!-- Precio de venta -->
+    <div>
+      <label>Precio de venta:</label><br>
+      <input matInput [(ngModel)]="data.Codigo" style="height: 35px;" class="form-control" type="tel">
+    </div>
+
+  </div>
+
+  <!-- Botones -->
+  <div mat-dialog-actions align="center" style="margin-top: 20px;">               <!-- onCancelClick() está definido en el .ts -->
+    <button class="btn btn-success" type="button" style="margin-right: 20px;" (click)="onCancelClick()">
+      Cancelar
+      <i class="material-icons" style="margin-left: 20px;">cancel</i>
+    </button>                                                                   <!-- actualizarMaterial(data) está definido en el .ts -->
+    <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="actualizarMaterial(data)">
+      Actualizar
+      <i class="material-icons" style="margin-left: 20px;">sync</i>
+    </button>
+  </div>
+</div>

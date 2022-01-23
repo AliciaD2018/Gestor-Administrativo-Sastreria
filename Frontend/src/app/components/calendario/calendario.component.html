@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container logo-nav-container">
+            <a href="#" class='logo'> Sara Lehr Sastrería</a>
+            <nav class='navigation'>
+                <ul>
+                    <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
+                    <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
+                    <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']" > Clientes </a> </li>
+                    <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']" > Órdenes</a> </li>
+                    <!-- <li> <a [routerLink]="['../envioCorreo']" [routerLinkActive]="['envioCorreo']" > MsjEmail</a> </li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <br>
+        <br>
+        <p-fullCalendar id="calendar" [events]="events" refresh='refetchEvents' [options]="options"></p-fullCalendar>
+        <br>
+    </div>
+
+    <div align="center">
+        <button class="btn btn-success" type="submit" (click)="imprimirEvento()">Generar lista semana</button>
+    </div>
+
+    <br>
+
+</body>
+
+</html>

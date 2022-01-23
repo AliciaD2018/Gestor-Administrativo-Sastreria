@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container logo-nav-container">
+      <a href="#" class='logo'> Sara Lehr Sastrería</a>
+      <nav class='navigation'>
+        <ul>
+          <li> <a [routerLink]="['../calendario']" [routerLinkActive]="['calendario']"> Calendario </a> </li>
+          <li> <a [routerLink]="['../inventario']" [routerLinkActive]="['inventario']"> Inventario</a> </li>
+          <li> <a [routerLink]="['../clientes']" [routerLinkActive]="['clientes']"> Clientes </a> </li>
+          <li> <a [routerLink]="['../ordenes']" [routerLinkActive]="['ordenes']"> Órdenes</a> </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <br>
+  <br>
+  <h1 align='center'> <b> <u>Lista de Inventario</u></b></h1>
+  
+  <hr>
+  <div class="wrapper">
+    <!-- Dropdown list (select) Categorías -->
+    <div align='left'>
+        <select   name="cats" id="categoriasSelect" style="margin-left: 30px;" class="forms-control"
+          placeholder="Seleccionar..." border-radius=4px>
+            <option  value="" disabled selected hidden >Categorías...</option>
+        </select>
+    </div>
+
+    <!-- Input Buscar -->
+    <div align='right'>
+        <input (keyup)="filtrar($event)" style="margin-right: 30px;" class="forms-control"
+        placeholder="Buscar..." border-radius=4px >
+    </div>
+  </div>
+  <hr>
+
+  <!-- Tabla -->
+  <div class="scrollbar">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
+
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.codigo}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.categoria}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.descripcion}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.cantidad}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="unidadmedida">
+        <th mat-header-cell *matHeaderCellDef> Unidad de medida </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.unidadmedida}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.precio}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="fecharegistro">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+        <td mat-cell *matCellDef="let inventario"> {{inventario.fecharegistro}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef>
+          <label > Ver </label>
+          <label style="margin-left: 35px;"> Act. </label>
+          <label style="margin-left: 26px;"> Borrar? </label>
+        </th>
+        <td mat-cell *matCellDef="let j = index;">
+          <div class="btn-group btn-group-lg">
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">remove_red_eye</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="margin-right: 20px; border:groove;">edit</i>
+            <i class="material-icons" type="button" mat-raised-button color="warn" focusable="false" style="border:groove;" (click)="borrarFila(j)">delete</i>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+  </div>
+
+  <hr>
+  <div align='center'> 
+    <nav>   
+        <button class="material-icons" mat-raised-button focusable="false" routerLink="/registrarMaterial" routerLinkActive="/registrarMaterial">
+          Agregar material
+          <i class="material-icons" style="margin-left: 20px;">add_shopping_cart</i>
+        </button>
+      </nav>
+      
+  </div>
+  <hr>
+
+</body>
+</html>

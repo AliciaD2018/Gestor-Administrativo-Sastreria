@@ -1,0 +1,210 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.6em;
+    background:#E5E5E5
+}
+
+h1 {
+    color: black;
+	line-height: 1.3em;
+	font-weight: 300;
+    font-weight: bold;
+}
+
+p{
+    margin-bottom: 1.6em;
+}
+
+.container1{
+    width: 95%;
+    height: 150px;
+    margin: 0 auto;    
+}
+
+.container{
+    width: 85%;
+    max-width: 850px;
+    margin: 0 auto;    
+}
+
+.header{
+    background: rgb(58, 58, 248);
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+}
+
+.navigation ul li a:hover{
+    background:#4a4a4a
+}
+
+.logo {
+    letter-spacing: 5px;
+    font-size: 1em;
+}
+
+.footer{
+    background: #f2f2f2;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+th,td{
+    border:1px black ;
+    padding: 0;
+}
+
+thead{
+    background-color: #246355;
+    border-bottom: solid 5px;
+    color: white;
+}
+
+table {
+width: 100%;
+}
+  
+tr.mat-footer-row {
+font-weight: bold;
+}
+  
+.mat-table-sticky {
+border-top: 1px solid #e0e0e0;
+}
+
+/* Revisar que hace */
+/* .mat-column-select {
+    overflow: initial;
+  } */
+
+th,td{
+    border:1px black ;
+    padding: 0;    
+}
+
+.table { 
+    table-layout:fixed;
+}
+
+td { 
+    overflow: hidden; 
+    text-overflow: Ellipsis; 
+    Word-wrap: break-Word;
+}
+
+tr:nth-child(even){
+    background-color: #ddd;
+}
+
+/* form input{
+    border-radius: 4px;
+    width: 200px;
+    height: 30px;
+} */
+
+/* form button{
+    text-decoration:none;
+    font-weight: 600;
+    font-size: 15px;
+    color:#333333;
+    background-color:#c2c2c7;
+    border-color: #d8d8d8;
+    border-width: 2px;
+    border-style: solid;
+    border-radius:15px;
+    border-color: #333;
+} */
+
+.max-width1 h2 {
+    
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #020202;
+    background-color: rgb(58, 58, 248);
+    font-style: normal;
+    color: aliceblue;
+}
+
+/* Estilos para bordes */
+.div_border_1{
+    border-width: 4px;
+    border-style: solid;
+    border-color: black;
+}
+
+/* Iserta el scrollbar */
+.scrollbar_h450 {
+    max-height: 450px;
+    overflow: auto;
+}
+
+.scrollbar_h350 {
+    max-height: 350px;
+    overflow: auto;
+}
+/* Fin scrollbar */
+
+/* Elementos alineados en la misma fila */
+.wrapper_a {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_b {
+    display: grid;
+    max-height: 900px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_c {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+/* Elementos alineados en la misma fila */
+.wrapper_d {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_e {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+.wrapper_f {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+}

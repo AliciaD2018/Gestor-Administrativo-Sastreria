@@ -1,0 +1,39 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br>
+<h1 align="center">
+  Registro de Prendas
+</h1>
+
+<div class="container">
+  <form>
+   <div class="form-group">
+    <p>
+      <br>
+      <label>Nº:</label> <br>
+      <input id="No" class="form-control" type="text" placeholder="Nº" value=""> <br>
+    </p>
+    <p>
+      <label>Tipo de Prenda:</label> <br>
+      <input id="tipoPrenda" class="form-control" type="text" placeholder="Pantalon" value=""><br>
+    </p>
+    <p>
+      <label>Precio</label> <br>
+      <input id="precio" class="form-control" type="text" placeholder="precio" value=""><br>
+    </p>
+    <p>
+      <label>Fecha de Entrega</label> <br>
+      <input id="fechaEntrega" class="form-control" type="text" placeholder="dd/mm/yyyy" value=""> <br>
+    </p>
+    <p>
+      <label>Descripción:</label> <br>
+      <textarea cols="50" rows="3"> </textarea>
+       <br>
+    </p>
+
+    <div align="center">
+      <button class="btn btn-success" type="button" routerLink="null" (click)="null">Agregar</button>
+    </div>
+  </div>
+</form>
+

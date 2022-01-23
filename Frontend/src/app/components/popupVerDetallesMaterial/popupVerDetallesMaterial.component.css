@@ -1,0 +1,15 @@
+/* Elementos alineados en la misma fila */
+.wrapper_a {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrapper_b {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wrapper_c {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+}

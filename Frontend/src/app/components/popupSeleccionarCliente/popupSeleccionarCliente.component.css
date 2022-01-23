@@ -1,0 +1,34 @@
+table {
+    width: 100%;
+  }
+
+  /*Lineas Verticales de en la tabla- INICIO*/
+.mat-column-cedula{
+  border: 1px dotted currentColor;
+  align-self: stretch;
+  text-align: center;
+  width: 15% ;
+}
+
+.mat-column-cliente{
+  border: 1px dotted currentColor;
+  align-self: stretch;
+  text-align: center;
+  width: 40% ;
+}
+
+.mat-column-opciones{
+  border: 1px dotted currentColor;
+  align-self: stretch;
+  text-align: center;
+  width: 10% ;
+}
+
+/*Lineas Verticales de en la tabla- FIN*/
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
