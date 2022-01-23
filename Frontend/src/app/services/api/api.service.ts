@@ -152,7 +152,7 @@ export class ApiService {
 
   /**********************************************************************************************************************************************/
   async selectOrdersDetailsForCalendar() {
-    console.clear();
+    //console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
 

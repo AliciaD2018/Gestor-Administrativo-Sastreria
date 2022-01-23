@@ -25,12 +25,14 @@
             </nav>
         </div>
     </header>
+    
     <div class="container">
         <br>
         <br>
-        <p-fullCalendar id="calendar" [events]="events" [options]="options"></p-fullCalendar>
+        <p-fullCalendar id="calendar" [events]="events" refresh='refetchEvents' [options]="options"></p-fullCalendar>
         <br>
     </div>
+
     <div align="center">
         <button class="btn btn-success" type="submit" (click)="imprimirEvento()">Generar lista semana</button>
     </div>

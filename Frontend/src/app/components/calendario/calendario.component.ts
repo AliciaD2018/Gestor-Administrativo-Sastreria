@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
-import { FullCalendar } from 'primeng/fullcalendar';
+import { Subject } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-calendario',
@@ -15,16 +17,19 @@ import { FullCalendar } from 'primeng/fullcalendar';
 
 export class CalendarioComponent implements OnInit {
 
+
+
   public events = [];
   public options: any;
+  public refresh: Subject<any> = new Subject();
+  public eventosUp = {};
 
-  constructor(private api: ApiService) {
-  }
+  constructor(private api: ApiService) { }
 
   async ngOnInit() {
 
 
-
+    //this.events = [...this.events];
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       defaulDate: new Date(),
@@ -38,10 +43,15 @@ export class CalendarioComponent implements OnInit {
     }
 
     this.agregarEventos();
+
     await this.resolveAfterXSeconds();
 
-    console.log(`1- Evento: ${JSON.stringify(this.events[0])}`);
+    //console.log("/////",this.events[0]);
+    this.events.push(JSON.parse(JSON.stringify(this.events[0])));
+  
+
   }
+
 
   resolveAfterXSeconds() {
     var x = 1000
@@ -54,29 +64,32 @@ export class CalendarioComponent implements OnInit {
 
   imprimirEvento() {
     console.log(`2- Evento: ${JSON.stringify(this.events[0])}`);
+
   }
+  // agrega eventos a la vista calendario 
+  agregarEventos() {
+    console.log('entra');
 
-  agregarEventos(): void {
     const promise = this.api.selectOrdersDetailsForCalendar().then()
-    promise.then((ordersDatails) => {
-      // var calendar = document.getElementById('calendar');
-      
-      for (var order of ordersDatails) {
+    promise.then(async (ordersDetails) => {
 
-        var year = order['FechaEntrega'].substring(0, 4);
+      // var calendar = document.getElementById('calendar');
+
+      for (var order of ordersDetails) {
+
+        var year = order['FechaEntrega'].substring(0, 4);// los numeros son los caracteres de la fecha.
         var month = order['FechaEntrega'].substring(5, 7);
         var day = order['FechaEntrega'].substring(8);
         var hora = 8;
         var minuto = 0;
         var segundo = 0;
 
-        var event = {
+        let event = {
           title: `Orden ${order['IdOrden']}`,
           start: new Date(year, month, day, hora, minuto, segundo),
         }
 
         this.events.push(event);
-        // calendario.addEvent(event)
 
       }
 
@@ -84,4 +97,9 @@ export class CalendarioComponent implements OnInit {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
   }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
 }
+}
+
