@@ -23,8 +23,6 @@ export class CalendarioComponent implements OnInit {
 
   async ngOnInit() {
 
-
-
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       defaulDate: new Date(),
@@ -38,18 +36,7 @@ export class CalendarioComponent implements OnInit {
     }
 
     this.agregarEventos();
-    await this.resolveAfterXSeconds();
-
     console.log(`1- Evento: ${JSON.stringify(this.events[0])}`);
-  }
-
-  resolveAfterXSeconds() {
-    var x = 1000
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(x);
-      }, 1000);
-    });
   }
 
   imprimirEvento() {
@@ -74,10 +61,9 @@ export class CalendarioComponent implements OnInit {
           title: `Orden ${order['IdOrden']}`,
           start: new Date(year, month, day, hora, minuto, segundo),
         }
-
+        
         this.events.push(event);
         // calendario.addEvent(event)
-
       }
 
     }).catch((error) => {

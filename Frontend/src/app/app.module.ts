@@ -37,6 +37,9 @@ import { PopupVerDetallesClienteComponent } from './components/popupVerDetallesC
 import { PopupModificarClienteComponent } from './components/popupModificarCliente/popupModificarCliente.component';
 import { PopupRegistrarClienteComponent } from './components/popupRegistrarCliente/popupRegistrarCliente.component';
 import { PopupAdvertenciaComponent } from './components/popupAdvertencia/popupAdvertencia.component';
+import { PopupRegistrarMaterialComponent } from './components/popupRegistrarMaterial/popupRegistrarMaterial.component';
+import { PopupVerDetallesMaterialComponent } from './components/popupVerDetallesMaterial/popupVerDetallesMaterial.component';
+import { PopupModificarMaterialComponent } from './components/popupModificarMaterial/popupModificarMaterial.component';
 
 const routes: Routes = [
 
@@ -120,7 +123,19 @@ const routes: Routes = [
   {
     path: 'popupAdvertencia',
     component: PopupAdvertenciaComponent
-  }
+  },
+  {
+    path: 'popupRegistrarMaterial',
+    component: PopupRegistrarMaterialComponent
+  },
+  {
+    path: 'popupVerDetallesMaterial',
+    component: PopupVerDetallesMaterialComponent
+  },
+  {
+    path:'popupModificarMaterial',
+    component: PopupModificarMaterialComponent
+  },
 ];
 
 
@@ -146,7 +161,10 @@ const routes: Routes = [
     PopupVerDetallesClienteComponent,
     PopupModificarClienteComponent,
     PopupRegistrarClienteComponent,
-    PopupAdvertenciaComponent
+    PopupAdvertenciaComponent,
+    PopupRegistrarMaterialComponent,
+    PopupVerDetallesMaterialComponent,
+    PopupModificarMaterialComponent
    ],
   imports: [
     BrowserModule,

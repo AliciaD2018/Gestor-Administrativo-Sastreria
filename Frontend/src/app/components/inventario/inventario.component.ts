@@ -2,34 +2,42 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { RegistrarMaterialComponent } from '../registrarMaterial/registrarMaterial.component';
 import { ApiService } from '../../services/api/api.service';
-
+import { MaterialI } from 'src/app/models/material.interface';
+import { PopupRegistrarMaterialComponent } from '../popupRegistrarMaterial/popupRegistrarMaterial.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupVerDetallesMaterialComponent } from '../popupVerDetallesMaterial/popupVerDetallesMaterial.component';
+import { PopupModificarMaterialComponent } from '../popupModificarMaterial/popupModificarMaterial.component';
+import { AdvertenciaI } from 'src/app/models/advertencia.interface';
+import { PopupAdvertenciaComponent } from '../popupAdvertencia/popupAdvertencia.component';
 
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
+
 export class InventarioComponent implements OnInit {
 
-
-  constructor(private api: ApiService) {
+  constructor(
+    private api: ApiService,
+    public dialog: MatDialog) {
   }
 
   @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
   columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
 
-  private datos: Array<Articulo> = [];
+  private inventario: MaterialI[] = [];
 
-  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
+  @ViewChild(MatTable) tabla1!: MatTable<MaterialI>;
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.datos.splice(cod, 1);
+      this.inventario.splice(cod, 1);
       this.tabla1.renderRows();
     }
   }
-  //-------Filtro de busqueda
+  
   dataSource: any;
 
   ngOnInit() {
@@ -37,6 +45,7 @@ export class InventarioComponent implements OnInit {
     this.agregarCategorias();
   }
 
+  //-------Filtro de busqueda
   filtrar(event: Event) {
     let filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
@@ -64,35 +73,108 @@ export class InventarioComponent implements OnInit {
       //console.log(JSON.stringify(data));
       for (var material of materiales) {
 
-        this.datos.push({
-          codigo: material['Codigo'], categoria: material['Categoria'],
-          descripcion: material['Descripcion'], cantidad: material['Cantidad'], unidadmedida: material['UnidadDeMedida'],
-          precio: material['PrecioVenta'], fecharegistro: material['FechaRegistro']
+        this.inventario.push({
+          Id: material['Id'], Codigo: material['Codigo'], Categoria: material['Categoria'],
+          Descripcion: material['Descripcion'], Cantidad: material['Cantidad'],
+          UnidadMedida: material['UnidadDeMedida'], PrecioCompra: material['PrecioCompra'],
+          PrecioVenta: material['PrecioVenta'], FechaRegistro: material['FechaRegistro']
         });
         // console.log(material);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
-      const articulos = JSON.stringify(this.datos);
-      this.datos = JSON.parse(articulos);
-      this.dataSource = new MatTableDataSource(this.datos);
+      const articulos = JSON.stringify(this.inventario);
+      this.inventario = JSON.parse(articulos);
+      this.dataSource = new MatTableDataSource(this.inventario);
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
   }
 
-}
+  //------------------------------------------------------------//
+  //-------             DETALLES MATERIAL               --------//
+  //------------------------------------------------------------//
 
-export class Articulo {
-  constructor(//'codigo','categoria' , 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'borrar'
-    public codigo: string,
-    public categoria: string,
-    public descripcion: string,
-    public cantidad: string,
-    public unidadmedida: string,
-    public fecharegistro: string,
-    public precio: string
-  ) { }
+  openDialogMaterialDatails(j: number): void {
+    let material: MaterialI = this.inventario[j];
+
+    const dialogRef = this.dialog.open(PopupVerDetallesMaterialComponent, {
+      width: '730px',
+      data: material,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+      console.log('The dialog was closed');
+    });
+  } // openDialogMaterialDatails
+
+  //------------------------------------------------------------//
+  //-------              EDITAR MATERIAL                --------//
+  //------------------------------------------------------------//
+
+  openDialogEditMaterial(j: number): void {
+    let material: MaterialI = this.inventario[j];
+
+    const dialogRef = this.dialog.open(PopupModificarMaterialComponent, {
+      width: '730px',
+      data: material,
+    });
+
+    if (material['Categoria'] != undefined) {
+      const $select2 = (<HTMLSelectElement>document.getElementById("categoriasMateriales"));
+      $select2.options[$select2.selectedIndex].innerText = material['Categoria'];
+    }
+    if (material['UnidadMedida'] != undefined) {
+      const $select2 = (<HTMLSelectElement>document.getElementById("unidadesDeMedida"));
+      $select2.options[$select2.selectedIndex].innerText = material['UnidadMedida'];
+    }
+
+    dialogRef.afterClosed().subscribe(customer => {
+      console.log('The dialog was closed');
+      window.location.reload();
+    });
+  } // openDialogEditCustomer
+
+  //------------------------------------------------------------//
+  //-------            REGISTRAR MATERIAL               --------//
+  //------------------------------------------------------------//
+
+  openDialogAddMaterial(): void {
+    let material: MaterialI;
+    material = {Id: '', Codigo: '', Categoria: '',
+               Descripcion: '',Cantidad: '', UnidadMedida: '',
+               PrecioCompra: '', PrecioVenta: '', FechaRegistro: ''};
+
+    const dialogRef = this.dialog.open(PopupRegistrarMaterialComponent, {
+      width: '730px',
+      data: material,
+    });
+
+    dialogRef.afterClosed().subscribe(material => {
+      console.log('The dialog was closed');
+      window.location.reload();
+    });
+  } // openDialogAddMaterial
+
+  //------------------------------------------------------------//
+  //-------             ELIMINAR MATERIAL               --------//
+  //------------------------------------------------------------//
+
+  openDialogDeleteMaterial(j: number): void {
+    let material = this.inventario[j];
+    let atributos: AdvertenciaI;
+    atributos = {Pregunta: "¿Seguro que desea eliminar este material?", Dato: material.Codigo + ' - ' + material.Descripcion, IdDato: material.Id, Orden: 1};
+
+    const dialogRef = this.dialog.open(PopupAdvertenciaComponent, {
+      width: '500px',
+      data: atributos
+    });
+
+    dialogRef.afterClosed().subscribe(correo => {
+      console.log('The dialog was closed');
+      window.location.reload();
+    });
+  } // openDialogDeleteMaterial
 
 }

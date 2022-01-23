@@ -8,42 +8,49 @@ body{
 
 /*Lineas Verticales de en la tabla- INICIO*/
 .mat-column-cedula{
-    border: 1px dotted currentColor;
+    /* border: 1px dotted currentColor; */
     align-self: stretch;
     text-align: center;
-    width: 10% ;
+    width: 8% ;
 }
 .mat-column-nombre{
-    border: 1px dotted currentColor;
+    /* border: 1px dotted currentColor; */
     align-self: stretch;
-    text-align: center;
+    text-align: left;
     width: 15% ;
 }
 .mat-column-telefono1{
-    border: 1px dotted currentColor;
+    /* border: 1px dotted currentColor; */
     align-self: stretch;
     text-align: center;
-    width: 10% ;
+    width: 8% ;
 }
 .mat-column-telefono2{
-    border: 1px dotted currentColor;
+    /* border: 1px dotted currentColor; */
     align-self: stretch;
     text-align: center;
-    width: 10% ;
+    width: 8% ;
 }
 .mat-column-email{
-    border: 1px dotted currentColor;
+    /* border: 1px dotted currentColor; */
     align-self: stretch;
-    text-align: center;
-    width: 15% ;
+    text-align: left;
+    width: 20% ;
 }
 .mat-column-direccion{
-    border: 1px dotted currentColor;
+    /* border: 1px dotted currentColor; */
     align-self: stretch;
+    text-align: left;
     margin-left: 10px;
-    width: 18% ;
+    width: 29% ;
 }
-
+.mat-column-opciones{
+    /* border: 1px dotted currentColor; */
+    align-self: stretch;
+    text-align: center;
+    margin-left: 10px;
+    width: 12% ;
+}
 /*Lineas Verticales de en la tabla- FIN*/
 
 .mat-row .mat-cell {

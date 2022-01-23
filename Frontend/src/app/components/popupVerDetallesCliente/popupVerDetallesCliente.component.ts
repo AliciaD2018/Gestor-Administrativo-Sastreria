@@ -13,7 +13,7 @@ export class PopupVerDetallesClienteComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<PopupVerDetallesClienteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CustomerI,
+    @Inject(MAT_DIALOG_DATA) public data: CustomerI, // Aquí se define el nombre y tipo de 'data'
     public dialog: MatDialog,
     private api: ApiService
   ) { }

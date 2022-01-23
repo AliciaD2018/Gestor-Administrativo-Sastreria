@@ -2,7 +2,7 @@ import { Component, ViewChild, Inject } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupEnviarEmailComponent } from '../popupEnviarEmail/popupEnviarEmail.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PopupVerDetallesClienteComponent } from '../popupVerDetallesCliente/popupVerDetallesCliente.component';
 import { CustomerI } from 'src/app/models/customer.interface';
 import { PopupModificarClienteComponent } from '../popupModificarCliente/popupModificarCliente.component';
@@ -99,7 +99,7 @@ export class ClientesComponent {
   //-------             DETALLES CLIENTE                --------//
   //------------------------------------------------------------//
 
-  openDialogCustomerDatils(j: number): void {
+  openDialogCustomerDatails(j: number): void {
     let cliente: CustomerI = this.clientes[j];
 
     const dialogRef = this.dialog.open(PopupVerDetallesClienteComponent, {
@@ -110,7 +110,7 @@ export class ClientesComponent {
     dialogRef.afterClosed().subscribe(customer => {
       console.log('The dialog was closed');
     });
-  } // openDialogCustomerDatils
+  } // openDialogCustomerDatails
 
   //------------------------------------------------------------//
   //-------              EDITAR CLIENTE                 --------//
@@ -162,7 +162,7 @@ export class ClientesComponent {
   } // openDialogAddCustomer
 
   //------------------------------------------------------------//
-  //-------             ELIMINAR USUARIO                --------//
+  //-------             ELIMINAR CLIENTE                --------//
   //------------------------------------------------------------//
 
   openDialogDeleteCustomer(j: number): void {

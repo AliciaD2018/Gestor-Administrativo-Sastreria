@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerI } from 'src/app/models/customer.interface';
 import { ApiService } from 'src/app/services/api/api.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-popupRegistrarCliente',
@@ -21,22 +21,25 @@ export class PopupRegistrarClienteComponent implements OnInit {
     this.agregarTiposTelefonos();
   }
 
-  formularioRegistroCliente = new FormGroup({
-    correo: new FormControl('', [Validators.required, Validators.email])
-  });
+  // formularioRegistroCliente = new FormGroup({
+  //   correo: new FormControl('', [Validators.required, Validators.email])
+  // });
 
-  resultado!: string;
-  submit() {
-    if (this.formularioRegistroCliente.valid)
-      this.resultado = "Todos los datos son válidos";
-    else
-      this.resultado = "Hay datos inválidos en el formulario";
-  }
+  // resultado!: string;
+  // submit() {
+  //   if (this.formularioRegistroCliente.valid)
+  //     this.resultado = "Todos los datos son válidos";
+  //   else
+  //     this.resultado = "Hay datos inválidos en el formulario";
+  // }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
+  /**
+   * Agrega los tipos de teléfonos en el select de la vista
+   * */
   agregarTiposTelefonos(): void {
     const promise = this.api.selectPhonesTypes().then()
     promise.then((types) => {
@@ -58,8 +61,11 @@ export class PopupRegistrarClienteComponent implements OnInit {
     });
   } // agregarTiposTelefonos
 
+  /**
+   * Inserta un nuevo cliente en la Base de Datos
+   * */
   insertarCliente(customer: CustomerI) {
-    console.log("Insertar cliente:", customer);
+    // console.log("Insertar cliente:", customer);
 
     // Validar si se incluyeron los teléfonos
     if (customer.Telefono1 == '') {

@@ -67,7 +67,7 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectmaterialsinventory`, requestOptions);
     let materiales = await respuesta.json();
-    return materiales['materiales'];
+    return materiales['materiales']; // Este nombre se define en el end point del API:
   }
 
   /**********************************************************************************************************************************************/
@@ -83,7 +83,7 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectallcustomers`, requestOptions);
     let cliente = await respuesta.json();
-    return cliente['clientes'];
+    return cliente['clientes']; // Este nombre se define en el end point del API:
   }
 
   /**********************************************************************************************************************************************/
@@ -99,7 +99,7 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectallorders`, requestOptions);
     let cliente = await respuesta.json();
-    return cliente['ordenes'];
+    return cliente['ordenes']; // Este nombre se define en el end point del API:
   }
 
   /**********************************************************************************************************************************************/
@@ -115,7 +115,7 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectmaterialscategories`, requestOptions);
     let categorias = await respuesta.json();
-    return categorias['categorias'];
+    return categorias['categorias']; // Este nombre se define en el end point del API:
   }
 
   /**********************************************************************************************************************************************/
@@ -131,8 +131,26 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectphonestypes`, requestOptions);
     let tipos = await respuesta.json();
-    return tipos['tipostelefonos'];
+    return tipos['tipostelefonos']; // Este nombre se define en el end point del API:
   }
+
+    /**********************************************************************************************************************************************/
+    async selectUnits() {
+      console.clear();
+  
+      this.myHeaders.append('Content-Type', 'application/json');
+  
+      var requestOptions = {
+        method: 'GET',
+        headers: this.myHeaders,
+      };
+  
+      let respuesta = await fetch(this.url + `/api/selectunits`, requestOptions);
+      let categorias = await respuesta.json();
+      return categorias['unidadesdemedidas']; // Este nombre se define en el end point del API: res.status(200).send({
+                                              //                                                    unidadesdemedidas: response
+                                              //                                                });
+    }
 
   /**********************************************************************************************************************************************/
   async selectNextOrderId() {
@@ -147,7 +165,7 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectnextorderid`, requestOptions);
     let id = await respuesta.json();
-    return id['idsiguienteorden'][0];
+    return id['idsiguienteorden'][0]; // Este nombre se define en el end point del API:
   }
 
   /**********************************************************************************************************************************************/
@@ -163,7 +181,7 @@ export class ApiService {
 
     let respuesta = await fetch(this.url + `/api/selectordersdetailsforcalendar`, requestOptions);
     let categorias = await respuesta.json();
-    return categorias['detallesordenesparacalendario'];
+    return categorias['detallesordenesparacalendario']; // Este nombre se define en el end point del API:
   }
 
   /**********************************************************************************************************************************************/

@@ -46,7 +46,6 @@ export class PopupModificarClienteComponent implements OnInit {
   } // agregarTiposTelefonos
 
   actualizarCliente(customer: CustomerI) {
-    console.log("Insertar cliente:", customer);
 
     // Validar si se incluyeron los teléfonos
     if (customer.Telefono1 == '') {
