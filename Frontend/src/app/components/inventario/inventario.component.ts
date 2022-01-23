@@ -39,13 +39,7 @@ export class InventarioComponent implements OnInit {
 
   filtrar(event: Event) {
     let filtro = (event.target as HTMLInputElement).value;
-    
     this.dataSource.filter = filtro.trim().toLowerCase();
-   
-  }
-  filtrar2(event: Event) {
-    let filtro2 = (event.target as HTMLSelectElement).value;
-    this.dataSource.filter = filtro2.trim().toLowerCase();
   }
 
   agregarCategorias(): void{
