@@ -57,7 +57,7 @@ export class ApiService {
 
   /**********************************************************************************************************************************************/
   async selectMaterialsInventory() {
-    console.clear();
+    // console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
     var requestOptions = {
@@ -104,7 +104,7 @@ export class ApiService {
 
   /**********************************************************************************************************************************************/
   async selectMaterialsCategories() {
-    console.clear();
+    // console.clear();
 
     this.myHeaders.append('Content-Type', 'application/json');
 
@@ -205,9 +205,6 @@ export class ApiService {
   async deleteCustomer(idCliente: number) {
     console.clear();
 
-    console.log("Service, Id: ", idCliente);
-    console.log("Service, Type of Id: ",typeof idCliente);
-
     this.myHeaders.append('Content-Type', 'application/json');
 
     var requestOptions = {
@@ -216,6 +213,23 @@ export class ApiService {
     };
 
     await fetch(this.url + `/api/deletecustomer?id=${idCliente}`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  /**********************************************************************************************************************************************/
+  async deleteMaterial(idMaterial: number) {
+    console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'DELETE',
+      headers: this.myHeaders,
+    };
+
+    await fetch(this.url + `/api/deletematerial?id=${idMaterial}`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

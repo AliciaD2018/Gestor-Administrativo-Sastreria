@@ -16,7 +16,7 @@ router.get('/api/selectorders', (req, res) => {
         .then( response => {
             // console.log(response);
             res.status(200).send({
-                ordenes: response
+                ordenes: response // Este es el nombre con el cual se recibe la respuesta en el api.service.ts
             });
         });
     }catch(err){

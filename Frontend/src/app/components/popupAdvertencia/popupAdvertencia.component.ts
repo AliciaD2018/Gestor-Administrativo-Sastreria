@@ -29,5 +29,8 @@ export class PopupAdvertenciaComponent implements OnInit {
     if (this.data.Orden == 0) {
       this.api.deleteCustomer(parseInt(this.data.IdDato));
     }
+    else if (this.data.Orden == 1) {
+      this.api.deleteMaterial(parseInt(this.data.IdDato));
+    }
   }
 }

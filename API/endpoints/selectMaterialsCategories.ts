@@ -16,7 +16,7 @@ router.get('/api/selectmaterialscategories', (req, res) => {
         .then( response => {
             // console.log(response);
             res.status(200).send({
-                categorias: response
+                categorias: response // Este es el nombre con el cual se recibe la respuesta en el api.service.ts
             });
         });
     }catch(err){

@@ -16,7 +16,7 @@ router.get('/api/selectallcustomers', (req, res) => {
         .then( response => {
             // console.log(response);
             res.status(200).send({
-                clientes: response
+                clientes: response // Este es el nombre con el cual se recibe la respuesta en el api.service.ts
             });
         });
     } catch (err) {

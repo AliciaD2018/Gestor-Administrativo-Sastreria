@@ -16,7 +16,7 @@ router.get('/api/selectmaterialsinventory', (req, res) => {
         .then( response => {
             // console.log(response);
             res.status(200).send({
-                materiales: response
+                materiales: response // Este es el nombre con el cual se recibe la respuesta en el api.service.ts
             });
         });
     }catch(err){

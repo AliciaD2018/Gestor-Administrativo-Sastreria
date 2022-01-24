@@ -2,7 +2,8 @@ import { config } from "../config";
 
 var sql = require("mssql");
 
-async function uspDeleteCustomer(Id: number) {
+async function uspDeleteMaterial(Id: number) {
+    console.log("Borrar: ", Id);
     try{
         // Establish connection
         await sql.connect(config);
@@ -11,14 +12,14 @@ async function uspDeleteCustomer(Id: number) {
         var request = new sql.Request();
 
         // String Query
-        let strQuery = `EXEC uspDeleteCustomer ${Id};`;
+        let strQuery = `EXEC uspDeleteMaterial ${Id};`;
 
         // console.log(strQuery);
 
         // Executes string query
         let response = await request.query(strQuery);
 
-        console.log("Deletion successfully: Customer deleted\n");
+        console.log("Deletion successfully: Material deleted\n");
 
         return response;
 
@@ -28,4 +29,4 @@ async function uspDeleteCustomer(Id: number) {
     };
 }
 
-export{uspDeleteCustomer}
+export{uspDeleteMaterial}

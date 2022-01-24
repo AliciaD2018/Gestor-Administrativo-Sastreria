@@ -34,14 +34,6 @@ export class ClientesComponent {
     this.agregarClientes();
   }
 
-  borrarFila(j: number) {
-    if (confirm("Realmente quiere borrarlo?")) {
-      this.clientes.splice(j, 1);
-      this.tabla1.renderRows();
-      localStorage.setItem("clientes", JSON.stringify(this.clientes));
-    }
-  }
-
   pasarDatosCliente(j: number) {
     localStorage.setItem('cliente', JSON.stringify(this.clientes[j]));
   }

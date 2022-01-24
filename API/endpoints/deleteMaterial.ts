@@ -1,5 +1,5 @@
 import express from 'express';
-import { uspDeleteCustomer } from '../controllers/deleteCustomerController';
+import { uspDeleteMaterial } from '../controllers/deleteMaterialController';
 
 const router = express();
 
@@ -8,15 +8,15 @@ const router = express();
 const cors = require('cors');
 router.use(cors());
 
-router.delete('/api/deletecustomer', (req, res) => {
+router.delete('/api/deletematerial', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
-
+    console.log("END: ", req.query['id']);
     try {
-        uspDeleteCustomer(parseInt(<string>(req.query['id'])))
+        uspDeleteMaterial(parseInt(<string>(req.query['id'])))
         .then( response => {
             // console.log(response);
-            res.sendStatus(200);
-            });
+            res.sendStatus(200)
+        });
     } catch (err) {
         res.status(500).send({
             error: err
@@ -24,4 +24,4 @@ router.delete('/api/deletecustomer', (req, res) => {
     }
 });
 
-export { router as deleteCustomer }
+export { router as deleteMaterial }
