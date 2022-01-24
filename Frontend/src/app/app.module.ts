@@ -40,6 +40,8 @@ import { PopupAdvertenciaComponent } from './components/popupAdvertencia/popupAd
 import { PopupRegistrarMaterialComponent } from './components/popupRegistrarMaterial/popupRegistrarMaterial.component';
 import { PopupVerDetallesMaterialComponent } from './components/popupVerDetallesMaterial/popupVerDetallesMaterial.component';
 import { PopupModificarMaterialComponent } from './components/popupModificarMaterial/popupModificarMaterial.component';
+import { PopupAbonarComponent } from './components/popupAbonar/popupAbonar.component';
+import { PopupPrendasComponent } from './components/popupPrendas/popupPrendas.component';
 
 const routes: Routes = [
 
@@ -136,6 +138,14 @@ const routes: Routes = [
     path:'popupModificarMaterial',
     component: PopupModificarMaterialComponent
   },
+  {
+    path:'popupAbonar',
+    component: PopupAbonarComponent
+  },
+  {
+    path:'popupPrendas',
+    component: PopupPrendasComponent
+  },
 ];
 
 
@@ -164,7 +174,9 @@ const routes: Routes = [
     PopupAdvertenciaComponent,
     PopupRegistrarMaterialComponent,
     PopupVerDetallesMaterialComponent,
-    PopupModificarMaterialComponent
+    PopupModificarMaterialComponent,
+    PopupAbonarComponent,
+    PopupPrendasComponent
    ],
   imports: [
     BrowserModule,

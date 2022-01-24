@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Registrar Abono  nuevo</h1>
+
+<div mat-dialog-content style="height: 420px;">
+
+  <div class="wrapper_a" >
+
+    <!-- Fecha de registro -->
+    <div style="margin-right: 20px;">
+      <label>Fecha de registro:</label><br>
+      <input readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.Fecha" -->
+    </div>
+
+    <!-- Monto -->
+    <div style="margin-right: 20px;">
+      <label>Monto Abono:</label><br>
+      <input   style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.MontoAbono" -->
+    </div>
+
+  </div>
+
+
+  <div class="wrapper_a" style="margin-top: 20px;">
+    <div style="margin-right: 20px;">
+      <label>Saldo Anterior:</label><br>
+      <input  readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.SaldoAnterior" -->
+    </div>
+
+    <div style="margin-right: 20px;">
+      <label>NuevoSaldo:</label><br>
+      <input readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.NuevoSaldo" -->
+    </div>
+
+  </div>
+
+  <div style="margin-top: 20px;">
+    <label>Anotaciones:</label><br>
+    <textarea  cdkFocusInitial style="height: 35px;" style="width: 100%;"
+      rows="3" class="form-control" type="text"></textarea> <!-- matInput [(ngModel)]="data.Anotaciones" -->
+  </div>
+
+
+  <!-- Botones -->
+  <div mat-dialog-actions align="center" style="margin-top: 20px;">
+    <button class="btn btn-success" type="button" style="margin-right: 20px;" (click)="onCancelClick()">
+      Cancelar
+      <i class="material-icons" style="margin-left: 20px;">close</i>
+    </button>
+    <button class="btn btn-success" type="button" [mat-dialog-close]="data">
+      <!--  (click)="insertarCliente(data)"> -->
+      Agregar
+      <i class="material-icons" style="margin-left: 20px;">money</i>
+    </button>
+  </div>
+</div>
