@@ -11,7 +11,9 @@ router.use(cors());
 router.delete('/api/deletecustomer', (req, res) => {
     res.set('Acces-Control-Allow-Origin', '*');
 
-    try {
+    try { // Los nombres de las variables de req.query['variable'],
+          // se definen en el api.service.ts del front end
+          // cuando se indican los parámetros en el string del URL
         uspDeleteCustomer(parseInt(<string>(req.query['id'])))
         .then( response => {
             // console.log(response);

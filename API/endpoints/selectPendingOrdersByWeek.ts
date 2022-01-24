@@ -11,7 +11,9 @@ router.use(cors());
 router.get('/api/selectpendingordersbyweek', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     
-    try{
+    try{ // Los nombres de las variables de req.query['variable'],
+         // se definen en el api.service.ts del front end
+         // cuando se indican los parámetros en el string del URL
         uspSelectPendingOrdersByWeek(<string>(req.query['fechaActual']))
         .then( response => {
             // console.log(response);

@@ -125,7 +125,7 @@ export class CrearOrdenComponent implements OnInit {
   obtenerSiguienteId() {
     const promise = this.api.selectNextOrderId().then()
     promise.then((id) => {
-      this.idNuevaOrden = id['SiguienteOrden'];
+      this.idNuevaOrden = id['SiguienteOrden']; // El nombre 'SiguienteOrden' se define en el procedimiento almacenado de la BD
       (<HTMLLabelElement>document.getElementById("numeroId")).innerText = this.idNuevaOrden;
     });
   }

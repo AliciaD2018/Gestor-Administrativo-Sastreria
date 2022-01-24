@@ -2,6 +2,9 @@ const { request, response } = require('express');
 const nodeMailer = require('nodemailer');
 
 const sendEmailController = (req = request, resp = response) => {
+    // Los nombres de la variable de req.query['body'],
+    // se definen en el api.service.ts del front end
+    // cuando se indican los parámetros en el string del URL
     let body = JSON.parse(req.query['body']);
 
     let config = nodeMailer.createTransport({

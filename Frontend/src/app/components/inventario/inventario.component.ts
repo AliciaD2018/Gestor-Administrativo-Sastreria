@@ -74,9 +74,9 @@ export class InventarioComponent implements OnInit {
       for (var material of materiales) {
 
         this.inventario.push({
-          Id: material['Id'], Codigo: material['Codigo'], Categoria: material['Categoria'],
-          Descripcion: material['Descripcion'], Cantidad: material['Cantidad'],
-          UnidadMedida: material['UnidadDeMedida'], PrecioCompra: material['PrecioCompra'],
+          IdMaterial: material['IdMaterial'], Codigo: material['Codigo'], IdCategoria: material['IdCategoria'],
+          Categoria: material['Categoria'], Descripcion: material['Descripcion'], Cantidad: material['Cantidad'],
+          IdUnidad: material['IdUnidad'], UnidadMedida: material['UnidadDeMedida'], PrecioCompra: material['PrecioCompra'],
           PrecioVenta: material['PrecioVenta'], FechaRegistro: material['FechaRegistro']
         });
         // console.log(material);
@@ -122,12 +122,14 @@ export class InventarioComponent implements OnInit {
     });
 
     if (material['Categoria'] != undefined) {
-      const $select2 = (<HTMLSelectElement>document.getElementById("categoriasMateriales"));
-      $select2.options[$select2.selectedIndex].innerText = material['Categoria'];
+      const $select = (<HTMLSelectElement>document.getElementById("categoriasMateriales"));
+      console.log("Select 1: ", $select.selectedIndex);
+      $select.options[$select.selectedIndex].innerText = material['Categoria'];
     }
     if (material['UnidadMedida'] != undefined) {
-      const $select2 = (<HTMLSelectElement>document.getElementById("unidadesDeMedida"));
-      $select2.options[$select2.selectedIndex].innerText = material['UnidadMedida'];
+      const $select = (<HTMLSelectElement>document.getElementById("unidadesDeMedida"));
+      console.log("Select 2: ", $select.selectedIndex);
+      $select.options[$select.selectedIndex].innerText = material['UnidadMedida'];
     }
 
     dialogRef.afterClosed().subscribe(customer => {
@@ -141,10 +143,9 @@ export class InventarioComponent implements OnInit {
   //------------------------------------------------------------//
 
   openDialogAddMaterial(): void {
-    let material: MaterialI;
-    material = {Id: '', Codigo: '', Categoria: '',
-               Descripcion: '',Cantidad: '', UnidadMedida: '',
-               PrecioCompra: '', PrecioVenta: '', FechaRegistro: ''};
+    let material: MaterialI = {IdMaterial: '', Codigo: '',IdCategoria: '', Categoria: '',
+                               Descripcion: '',Cantidad: '', IdUnidad: '', UnidadMedida: '',
+                               PrecioCompra: '', PrecioVenta: '', FechaRegistro: ''};
 
     const dialogRef = this.dialog.open(PopupRegistrarMaterialComponent, {
       width: '730px',
@@ -164,7 +165,7 @@ export class InventarioComponent implements OnInit {
   openDialogDeleteMaterial(j: number): void {
     let material = this.inventario[j];
     let atributos: AdvertenciaI;
-    atributos = {Pregunta: "¿Seguro que desea eliminar este material?", Dato: material.Codigo + ' - ' + material.Descripcion, IdDato: material.Id, Orden: 1};
+    atributos = {Pregunta: "¿Seguro que desea eliminar este material?", Dato: material.Codigo + ' - ' + material.Descripcion, IdDato: material.IdMaterial, Orden: 1};
 
     const dialogRef = this.dialog.open(PopupAdvertenciaComponent, {
       width: '500px',

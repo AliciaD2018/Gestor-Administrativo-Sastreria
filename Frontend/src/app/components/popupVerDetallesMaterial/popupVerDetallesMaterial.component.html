@@ -6,13 +6,13 @@
     <!-- Código -->
     <div style="margin-right: 20px;">
       <label>Código:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
-      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="text">
     </div>
 
     <!-- Fecha de registro -->
     <div>
       <label>Fecha de registro:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
-      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+      <input matInput [(ngModel)]="data.FechaRegistro" readonly style="height: 35px;" class="form-control" type="text">
     </div>
 
   </div>
@@ -31,7 +31,7 @@
 
     <div style="margin-right: 20px;">
       <label>Cantidad:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
-      <input matInput [(ngModel)]="data.Codigo" readonly style="height: 35px;" class="form-control" type="tel">
+      <input matInput [(ngModel)]="data.Cantidad" readonly style="height: 35px;" class="form-control" type="number">
     </div>
 
     <div>
@@ -45,13 +45,13 @@
     <!-- Precio de compra -->
     <div style="margin-right: 20px;">
       <label>Precio de compra:</label><br> <!-- El nombre de la variable 'data' se define en el constructor (.ts) de la vista (HTML)-->
-      <input matInput [(ngModel)]="data.PrecioCompra" readonly style="height: 35px;" class="form-control" type="tel">
+      <input matInput [(ngModel)]="data.PrecioCompra" readonly style="height: 35px;" class="form-control" type="number">
     </div>
 
     <!-- Precio de venta -->
     <div>
       <label>Precio de venta:</label><br>
-      <input matInput [(ngModel)]="data.PrecioVenta" readonly style="height: 35px;" class="form-control" type="tel">
+      <input matInput [(ngModel)]="data.PrecioVenta" readonly style="height: 35px;" class="form-control" type="number">
     </div>
 
   </div>

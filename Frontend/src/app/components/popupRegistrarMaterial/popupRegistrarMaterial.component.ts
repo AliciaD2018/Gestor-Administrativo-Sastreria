@@ -63,4 +63,21 @@ export class PopupRegistrarMaterialComponent implements OnInit {
     });
   } // agregarUnidadesDeMedida
 
+  obtenerSiguienteId() {
+    const promise = this.api.selectNextMaterialId().then()
+    promise.then((id) => {
+      let idNuevoMaterial = id['SiguienteIdMaterial']; // El nombre 'SiguienteIdMaterial' se define en el procedimiento almacenado de la BD
+      return idNuevoMaterial;
+    });
+  }
+
+  generarCodigoMaterialNuevo(){
+    const $categoria = (<HTMLSelectElement>document.getElementById("categoriasMateriales")); // Referencia al select
+    let categoria = $categoria.options[$categoria.selectedIndex].innerText; // Obtener el texto del select
+    let prefijoCategoria = categoria.substring(0,3); // Tres primeras letras de la categoría
+    console.log(prefijoCategoria);
+    let siguienteId = this.obtenerSiguienteId();
+    console.log("Tipo id:",typeof siguienteId);
+  }
+
 }

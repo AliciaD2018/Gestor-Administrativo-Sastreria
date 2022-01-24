@@ -10,7 +10,9 @@ router.use(cors());
 
 router.post('/api/insertcustomer', (req, res) => {
 
-    try{
+    try{ // Los nombres de las variables de req.query['variable'],
+         // se definen en el api.service.ts del front end
+         // cuando se indican los parámetros en el string del URL
         uspInsertCustomer(<string>(req.query['cedula']), <string>(req.query['nombreCompleto']),
                           <string>(req.query['email']), <string>(req.query['direccion']), <string>(req.query['observaciones']),
                           <string>(req.query['telefono1']), <string>(req.query['tipoTelefono1']), <string>(req.query['notasTelefono1']),

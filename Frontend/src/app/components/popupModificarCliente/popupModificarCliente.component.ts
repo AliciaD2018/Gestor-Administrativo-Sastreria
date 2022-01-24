@@ -12,7 +12,7 @@ export class PopupModificarClienteComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<PopupModificarClienteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CustomerI,
+    @Inject(MAT_DIALOG_DATA) public data: CustomerI, // Aquí se define el nombre de la variable 'data'
     private api: ApiService
   ) { }
 
@@ -24,6 +24,9 @@ export class PopupModificarClienteComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Agrega los tipos de teléfonos en los selects de la vista
+   * */
   agregarTiposTelefonos(): void {
     const promise = this.api.selectPhonesTypes().then()
     promise.then((types) => {

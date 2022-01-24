@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MaterialI } from 'src/app/models/material.interface';
 import { ApiService } from 'src/app/services/api/api.service';
-import { PopupRegistrarMaterialComponent } from '../popupRegistrarMaterial/popupRegistrarMaterial.component';
 
 @Component({
   selector: 'app-popupModificarMaterial',
@@ -12,10 +11,13 @@ import { PopupRegistrarMaterialComponent } from '../popupRegistrarMaterial/popup
 export class PopupModificarMaterialComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<PopupRegistrarMaterialComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: MaterialI,
+    public dialogRef: MatDialogRef<PopupModificarMaterialComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: MaterialI, // Aquí se define el nombre de la variable 'data'
     private api: ApiService
   ) { }
+
+  unidades: MaterialI[] = [];
+  categorias: MaterialI[] = [];
 
   ngOnInit() {
     this.agregarCategoriasMateriales();
@@ -29,18 +31,29 @@ export class PopupModificarMaterialComponent implements OnInit {
   /**
    * Agrega las categorías de los materiales en el select de la vista
    * */
-   agregarCategoriasMateriales(): void {
+  agregarCategoriasMateriales(): void {
     const promise = this.api.selectMaterialsCategories().then()
     promise.then((categories) => {
       // Se crea variable de referencia al elemento select
-      const $select1 = document.getElementById("categoriasMateriales");
+      const $select = document.getElementById("categoriasMateriales");
       for (var category of categories) {
+        // Se guarda un array con las categorias de los materiales para
+        // consultar los Id cuando se llame el método actualizarMaterial
+        let categoria: MaterialI = {
+          IdMaterial: '', Codigo: '', IdCategoria: '', Categoria: '',
+          Descripcion: '', Cantidad: '', IdUnidad: '', UnidadMedida: '',
+          PrecioCompra: '', PrecioVenta: '', FechaRegistro: ''
+        };
+        categoria.IdCategoria = category['Id'];
+        categoria.Categoria = category['CategoriaMaterial'];
+        this.categorias.push(categoria);
+
         // Se crea una option
-        const opcion1 = document.createElement('option');
+        const opcion = document.createElement('option');
         const valor = category['CategoriaMaterial'];
-        opcion1.value = valor;
-        opcion1.text = valor;
-        $select1.appendChild(opcion1);
+        opcion.value = valor;
+        opcion.text = valor;
+        $select.appendChild(opcion);
       }
     });
   } // agregarCategoriasMateriales
@@ -48,35 +61,59 @@ export class PopupModificarMaterialComponent implements OnInit {
   /**
    * Agrega las unidades de medida en el select de la vista
    * */
-   agregarUnidadesDeMedida(): void {
+  agregarUnidadesDeMedida(): void {
     const promise = this.api.selectUnits().then()
     promise.then((units) => {
       // Se crea variable de referencia al elemento select
-      const $select1 = document.getElementById("unidadesDeMedida");
+      const $select = document.getElementById("unidadesDeMedida");
       for (var unit of units) {
+        // Se guarda un array con las unidades de medida para consultar los Id
+        // cuando se llame el método actualizarMaterial
+        let material: MaterialI = {
+          IdMaterial: '', Codigo: '', IdCategoria: '', Categoria: '',
+          Descripcion: '', Cantidad: '', IdUnidad: '', UnidadMedida: '',
+          PrecioCompra: '', PrecioVenta: '', FechaRegistro: ''
+        };
+        material.IdUnidad = unit['Id'];
+        material.UnidadMedida = unit['Simbolo'];
+        this.unidades.push(material);
+
         // Se crea una option
-        const opcion1 = document.createElement('option');
+        const opcion = document.createElement('option');
         const valor = unit['Simbolo'];
-        opcion1.value = valor;
-        opcion1.text = valor;
-        $select1.appendChild(opcion1);
+        opcion.value = valor;
+        opcion.text = valor;
+        $select.appendChild(opcion);
       }
     });
   } // agregarUnidadesDeMedida
 
   actualizarMaterial(material: MaterialI) {
 
-    // Leer la categoría del material de los select
-    const $categoria = (<HTMLSelectElement>document.getElementById("tiposTelefono1"));
-    let categoria = $categoria.options[$categoria.selectedIndex].innerText;
+    // Leer la categoría del material del select
+    const $categoria = (<HTMLSelectElement>document.getElementById("categoriasMateriales")); // Referencia al select
+    let Categoria = $categoria.options[$categoria.selectedIndex].innerText; // Obtener el texto del select
+    let IdCategoria: string;
+    for (let i = 0; i < this.categorias.length; i++) {          // Recorre el arreglo
+      if (this.categorias[i].Categoria == Categoria) {          // hasta encontrar el elemento que tiene el mismo texto
+        IdCategoria = this.categorias[i].IdCategoria;           // y obtiene el Id
+      }
+    }
 
-    const $unidad = (<HTMLSelectElement>document.getElementById("tiposTelefono2"));
-    var unidadDeMedida = $unidad.options[$unidad.selectedIndex].innerText;
+    // Leer la unidad de medida del select
+    const $unidad = (<HTMLSelectElement>document.getElementById("unidadesDeMedida")); // Referencia al select
+    let UnidadDeMedida = $unidad.options[$unidad.selectedIndex].innerText; // Obtener el texto del select
+    let IdUnidadDeMedida: string;
+    for (let i = 0; i < this.unidades.length; i++) {            // Recorre el arreglo
+      if (this.unidades[i].UnidadMedida == UnidadDeMedida) {    // hasta encontrar el elemento que tiene el mismo texto
+        IdUnidadDeMedida = this.unidades[i].IdUnidad;           // y obtiene el Id
+      }
+    }
 
-    material.Categoria = categoria;
-    material.UnidadMedida = unidadDeMedida;
+    material.IdCategoria = IdCategoria;
+    material.IdUnidad = IdUnidadDeMedida;
 
-    // this.api.(material);
-  } // actualizarCliente
+    this.api.updateMaterialInvnetory(material);
+  } // actualizarMaterial
 
 }

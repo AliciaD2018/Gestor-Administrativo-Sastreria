@@ -26,8 +26,9 @@
   <div class="wrapper_b" style="margin-top: 20px;">
     <div style="margin-right: 20px;">
       <label>Categoría:</label><br>
-      <select name="types" id="categoriasMateriales" class="forms-control" style="height: 35px; width: 100%;" border-radius=4px>
-        <option disabled selected hidden>Seleccione una categoría</option>
+      <select name="types" id="categoriasMateriales" OnSelectedIndexChanged="generarCodigoMaterialNuevo"
+      placeholder="Seleccione una categoría..." class="forms-control" style="height: 35px; width: 100%;" border-radius=4px>
+        <!-- <option disabled selected hidden>Seleccione una categoría</option> -->
       </select>
     </div>
 

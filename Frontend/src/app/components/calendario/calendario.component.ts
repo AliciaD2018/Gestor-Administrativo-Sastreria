@@ -76,6 +76,11 @@ export class CalendarioComponent implements OnInit {
       // var calendar = document.getElementById('calendar');
 
       for (var order of ordersDetails) {
+        /**
+         * .substring(ini, fin) obtiene el substring desde el índice 'ini' hasta el índice 'fin'
+         * Ejemplo: índice:  0123456789
+         *                  '2022/03/13'.substring(0 4); // Resultad0: '2022'
+         *  */
 
         var year = order['FechaEntrega'].substring(0, 4);// los numeros son los caracteres de la fecha.
         var month = order['FechaEntrega'].substring(5, 7);
