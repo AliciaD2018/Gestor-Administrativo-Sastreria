@@ -3,8 +3,12 @@ import { MatTable } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupSeleccionarClienteComponent } from '../popupSeleccionarCliente/popupSeleccionarCliente.component';
-import { CustomerI } from 'src/app/models/customer.interface';
+import { Abonos } from 'src/app/models/abono.interface';
 import { PopupRegistrarClienteComponent } from '../popupRegistrarCliente/popupRegistrarCliente.component';
+import { PopupAbonarComponent } from '../popupAbonar/popupAbonar.component';
+import { CustomerI } from 'src/app/models/customer.interface';
+import { PopupPrendasComponent } from '../popupPrendas/popupPrendas.component';
+import { Prendas } from '../../models/prendas.interface';
 
 @Component({
   selector: 'app-crearOrden',
@@ -205,6 +209,44 @@ export class CrearOrdenComponent implements OnInit {
     }
   } // insertarDatosCliente
   
+
+
+  //------------------------------------------------------------//
+  //-------              ABONAR                         --------//
+  //------------------------------------------------------------//
+
+  openDialogAbonar(): void {
+    let abonar: Abonos;
+
+    const dialogRef = this.dialog.open(PopupAbonarComponent, {
+      width: '900px',
+      data: abonar,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+      console.log('The dialog was closed');
+    });
+  } // openDialogCustomerDatails
+
+
+  //------------------------------------------------------------//
+  //-------              PRENDAS                         --------//
+  //------------------------------------------------------------//
+
+  openDialogPrendas(): void {
+    let prenda: Prendas;
+
+    const dialogRef = this.dialog.open(PopupPrendasComponent, {
+      width: '900px',
+      data: prenda,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+      console.log('The dialog was closed');
+    });
+  } // openDialogCustomerDatails
+
+
 } // CrearOrdenComponent
 
 

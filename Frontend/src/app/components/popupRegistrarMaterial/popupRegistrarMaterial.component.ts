@@ -14,7 +14,7 @@ export class PopupRegistrarMaterialComponent implements OnInit {
     public dialogRef: MatDialogRef<PopupRegistrarMaterialComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MaterialI,
     private api: ApiService
-  ) { }
+    ) { }
 
   ngOnInit() {
     this.agregarCategoriasMateriales();

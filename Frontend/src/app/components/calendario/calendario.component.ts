@@ -7,6 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { Subject } from 'rxjs';
 import { FullCalendarModule } from 'primeng/fullcalendar';
+import slicingUtils from '@fullcalendar/core/common/slicing-utils';
 
 
 
@@ -20,17 +21,17 @@ export class CalendarioComponent implements OnInit {
 
 
 
-  public events:any;
+  public events: any;
   public options: any;
   public refresh: Subject<any> = new Subject();
   public eventosUp = [];
 
-  constructor(private api: ApiService) { 
-    this.events=[]
+  constructor(private api: ApiService) {
+    this.events = []
   }
 
   async ngOnInit() {
-    
+
 
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -47,6 +48,8 @@ export class CalendarioComponent implements OnInit {
     this.agregarEventos();
     let eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
     console.log(eventosLocalStorage);
+    
+
     await this.resolveAfterXSeconds();
 
   }
@@ -87,23 +90,48 @@ export class CalendarioComponent implements OnInit {
           title: `Orden ${order['IdOrden']}`,
           start: new Date(year, month, day, hora, minuto, segundo),
         }
-        
+
         this.events.push(event);
-        
+
       }
 
-      let bien=JSON.stringify(this.events);
-      console.log(bien)
+      let eventosJson = JSON.stringify(this.events);
+      this.compararJSON(localStorage.getItem('eventos'),eventosJson);
+      //console.log(eventosJson)
+
       localStorage.removeItem('eventos')
-      localStorage.setItem('eventos', `${bien}`);
+      localStorage.setItem('eventos', `${eventosJson}`);
+
+      this.agregarEnEvents(localStorage.getItem('eventos'));
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
   }
 
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+  compararJSON(actual, nuevo) {
+    console.log(actual);
+    console.log();
+    console.log(nuevo);
+    if (JSON.stringify(actual) === JSON.stringify(nuevo)) {
+      console.log("son iguales, es decir ya existe");
+    }
+    else{
+      console.log("NO iguales");
+    }
+  }
+
+  agregarEnEvents(actual){
+    for(var x in this.events){
+      let datojs=JSON.stringify(this.events[x]);
+
+      console.log(JSON.stringify(this.events[x]));
+      if(datojs in actual){
+        console.log('si');
+      }
+      console.log('no');
+    }
+  }
+
 }
 
