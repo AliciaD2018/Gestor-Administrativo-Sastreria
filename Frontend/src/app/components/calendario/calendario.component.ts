@@ -6,6 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { Subject } from 'rxjs';
+import { FullCalendarModule } from 'primeng/fullcalendar';
 
 
 
@@ -19,17 +20,18 @@ export class CalendarioComponent implements OnInit {
 
 
 
-  public events = [];
+  public events:any;
   public options: any;
   public refresh: Subject<any> = new Subject();
-  public eventosUp = {};
+  public eventosUp = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) { 
+    this.events=[]
+  }
 
   async ngOnInit() {
+    
 
-
-    //this.events = [...this.events];
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       defaulDate: new Date(),
@@ -43,12 +45,9 @@ export class CalendarioComponent implements OnInit {
     }
 
     this.agregarEventos();
-
+    let eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
+    console.log(eventosLocalStorage);
     await this.resolveAfterXSeconds();
-
-    //console.log("/////",this.events[0]);
-    this.events.push(JSON.parse(JSON.stringify(this.events[0])));
-  
 
   }
 
@@ -81,7 +80,7 @@ export class CalendarioComponent implements OnInit {
         var month = order['FechaEntrega'].substring(5, 7);
         var day = order['FechaEntrega'].substring(8);
         var hora = 8;
-        var minuto = 0;
+        var minuto = 1;
         var segundo = 0;
 
         let event = {
@@ -90,7 +89,13 @@ export class CalendarioComponent implements OnInit {
         }
         
         this.events.push(event);
+        
       }
+
+      let bien=JSON.stringify(this.events);
+      console.log(bien)
+      localStorage.removeItem('eventos')
+      localStorage.setItem('eventos', `${bien}`);
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
