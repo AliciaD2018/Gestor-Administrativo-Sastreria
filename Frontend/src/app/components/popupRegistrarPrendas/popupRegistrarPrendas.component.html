@@ -2,40 +2,41 @@
 
 <div mat-dialog-content style="height: 420px;">
 
-  <div class="wrapper_a" >
+  <div class="wrapper_a">
 
     <!-- numero -->
     <div style="margin-right: 20px;">
       <label>N°:</label><br>
-      <input  readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.Fecha" -->
+      <input readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.Fecha" -->
     </div>
 
     <!-- Tipo Prenda -->
     <div style="margin-right: 20px;">
       <label>Tipo Prenda:</label><br>
-      <input   style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.MontoAbono" -->
+      <input style="height: 35px;" class="form-control" type="select"> <!-- matInput [(ngModel)]="data.MontoAbono" -->
     </div>
 
   </div>
 
 
+
   <div class="wrapper_a" style="margin-top: 20px;">
     <div style="margin-right: 20px;">
       <label>Precio:</label><br>
-      <input  style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.SaldoAnterior" -->
+      <input style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.SaldoAnterior" -->
     </div>
 
     <div style="margin-right: 20px;">
       <label>Fechas de Entrega:</label><br>
-      <input  style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.NuevoSaldo" -->
+      <input style="height: 35px;" class="form-control" type="date"> <!-- matInput [(ngModel)]="data.NuevoSaldo" -->
     </div>
 
   </div>
 
   <div style="margin-top: 20px;">
     <label>Descripción:</label><br>
-    <textarea  cdkFocusInitial style="height: 35px;" style="width: 100%;"
-      rows="3" class="form-control" type="text"></textarea> <!-- matInput [(ngModel)]="data.Anotaciones" -->
+    <textarea cdkFocusInitial style="height: 35px;" style="width: 100%;" rows="3" class="form-control"
+      type="text"></textarea> <!-- matInput [(ngModel)]="data.Anotaciones" -->
   </div>
 
 

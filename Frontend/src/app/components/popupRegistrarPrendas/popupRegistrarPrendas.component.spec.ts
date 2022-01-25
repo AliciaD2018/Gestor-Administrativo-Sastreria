@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PopupPrendasComponent } from './popupPrendas.component';
+import { PopupRegistrarPrendasComponent } from './popupRegistrarPrendas.component';
 
 describe('PopupPrendasComponent', () => {
-  let component: PopupPrendasComponent;
-  let fixture: ComponentFixture<PopupPrendasComponent>;
+  let component: PopupRegistrarPrendasComponent;
+  let fixture: ComponentFixture<PopupRegistrarPrendasComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopupPrendasComponent ]
+      declarations: [ PopupRegistrarPrendasComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupPrendasComponent);
+    fixture = TestBed.createComponent(PopupRegistrarPrendasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

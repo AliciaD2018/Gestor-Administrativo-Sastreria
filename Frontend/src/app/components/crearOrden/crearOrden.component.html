@@ -239,7 +239,7 @@
               <h1 style="margin-left: 20px;"> Listado de Prendas</h1>
             </div>
             <div align="right" style="margin-right: 20px;">
-              <button class="btn btn-success" style="margin-right: 20px;"(click)="openDialogPrendas()">
+              <button class="btn btn-success" style="margin-right: 20px;" (click)="openDialogPrendas()">
                 Agregar Prenda
                 <i class="material-icons" style="margin-left: 20px;">checkroom</i>
               </button>
@@ -341,7 +341,7 @@
           <h1 style="margin-left: 20px;">Listado de Materiales</h1>
         </div>
         <div align="right" style="margin-right: 20px; margin-bottom: 20px;">
-          <button class="btn btn-success" routerLink="/registrarPrenda" routerLinkActive="/registrarPrenda">
+          <button class="btn btn-success" (click)="openDialogMaterial()">
             Agregar material
             <i class="material-icons" style="margin-left: 20px;">style</i>
           </button>
