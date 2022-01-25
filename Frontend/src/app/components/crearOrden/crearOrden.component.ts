@@ -7,8 +7,10 @@ import { Abonos } from 'src/app/models/abono.interface';
 import { PopupRegistrarClienteComponent } from '../popupRegistrarCliente/popupRegistrarCliente.component';
 import { PopupAbonarComponent } from '../popupAbonar/popupAbonar.component';
 import { CustomerI } from 'src/app/models/customer.interface';
-import { PopupPrendasComponent } from '../popupPrendas/popupPrendas.component';
 import { Prendas } from '../../models/prendas.interface';
+import { PopupRegistrarPrendasComponent } from '../popupRegistrarPrendas/popupRegistrarPrendas.component';
+import { MaterialI } from 'src/app/models/material.interface';
+import { PopupRegistrarMaterialComponent } from '../popupRegistrarMaterial/popupRegistrarMaterial.component';
 
 @Component({
   selector: 'app-crearOrden',
@@ -58,38 +60,7 @@ export class CrearOrdenComponent implements OnInit {
     new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
     new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
     new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
-    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
-    // new Abono('13/01/2022', '10000', '2500','7500','2500'),
+    new Abono('13/01/2022', '10000', '2500', '7500', '2500'),   
   ];
 
   datosMateriales: Articulo[] = [
@@ -152,7 +123,7 @@ export class CrearOrdenComponent implements OnInit {
   }
 
   //------------------------------------------------------------//
-  //-------            REGISTRAR CLIENTE                --------//
+  //-------    DESPLIEGUE  POPUP  REGISTRAR CLIENTE     --------//
   //------------------------------------------------------------//
 
   openDialogAddCustomer(): void {
@@ -212,7 +183,7 @@ export class CrearOrdenComponent implements OnInit {
 
 
   //------------------------------------------------------------//
-  //-------              ABONAR                         --------//
+  //-------       DESPLIEGUE  POPUP ABONAR              --------//
   //------------------------------------------------------------//
 
   openDialogAbonar(): void {
@@ -230,13 +201,13 @@ export class CrearOrdenComponent implements OnInit {
 
 
   //------------------------------------------------------------//
-  //-------              PRENDAS                         --------//
+  //-------      DESPLIEGUE  POPUP PRENDAS              --------//
   //------------------------------------------------------------//
 
   openDialogPrendas(): void {
     let prenda: Prendas;
 
-    const dialogRef = this.dialog.open(PopupPrendasComponent, {
+    const dialogRef = this.dialog.open(PopupRegistrarPrendasComponent, {
       width: '900px',
       data: prenda,
     });
@@ -247,7 +218,29 @@ export class CrearOrdenComponent implements OnInit {
   } // openDialogCustomerDatails
 
 
+
+//------------------------------------------------------------//
+  //-------            REGISTRAR MATERIAL               --------//
+  //------------------------------------------------------------//
+
+  openDialogMaterial(): void {
+    let material: MaterialI = {IdMaterial: '', Codigo: '',IdCategoria: '', Categoria: '',
+                               Descripcion: '',Cantidad: '', IdUnidad: '', UnidadMedida: '',
+                               PrecioCompra: '', PrecioVenta: '', FechaRegistro: ''};
+
+    const dialogRef = this.dialog.open(PopupRegistrarMaterialComponent, {
+      width: '730px',
+      data: material,
+    });
+
+    dialogRef.afterClosed().subscribe(material => {
+      console.log('The dialog was closed');
+      window.location.reload();
+    });
+  } // openDialogAddMaterial
+
 } // CrearOrdenComponent
+
 
 
 export class Abono {
