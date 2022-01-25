@@ -33,6 +33,8 @@ const sendEmailController = (req = request, resp = response) => {
         }); 
     })
 
+    console.log("E-mail sent successfully\n")
+
 }
 
 export{sendEmailController}

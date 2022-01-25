@@ -1,3 +1,11 @@
+/**
+ * Se usa temporalmente el atributo Id de 'cliente' al instanciar
+ * al PopupRegistrarClienteComponent para indicar el origen de la
+ * instanciación
+ * 0 = instanciación desde clientes.component.ts
+ * 1 = instanciación desde crearOrden.component.ts
+ */
+
 export interface CustomerI{
     Id: string,
     Cedula: string,

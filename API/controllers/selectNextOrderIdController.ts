@@ -18,7 +18,7 @@ async function uspSelectNextOrderId() {
         // Executes string query
         let response = await request.query(strQuery);
 
-        console.log("Selection successfully: Next order Id");
+        console.log("Selection successfully: Next order Id\n");
         return response.recordset;
 
     }catch(error){

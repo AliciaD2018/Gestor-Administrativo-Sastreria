@@ -3,7 +3,7 @@ import { config } from "../config";
 
 var sql = require("mssql");
 
-async function uspUpdateMaterialInvnetory(IdMaterial: string, IdCategoria: string, IdUnidadMedida: string, 
+async function uspUpdateMaterialInventory(IdMaterial: string, IdCategoria: string, IdUnidadMedida: string, 
                                  Descripcion: string, Cantidad: string,
                                  PrecioCompra: string, PrecioVenta: string) {
 
@@ -15,7 +15,7 @@ async function uspUpdateMaterialInvnetory(IdMaterial: string, IdCategoria: strin
         var request = new sql.Request();
 
         // String Query
-        let strQuery = `EXEC uspUpdateMaterialInvnetory ${IdMaterial}, ${IdCategoria}, ${IdUnidadMedida},
+        let strQuery = `EXEC uspUpdateMaterialInventory ${IdMaterial}, ${IdCategoria}, ${IdUnidadMedida},
                                                       \'${Descripcion}\', ${Cantidad},
                                                         ${PrecioCompra}, ${PrecioVenta};`;
 
@@ -33,4 +33,4 @@ async function uspUpdateMaterialInvnetory(IdMaterial: string, IdCategoria: strin
     };
 }
 
-export{uspUpdateMaterialInvnetory}
+export{uspUpdateMaterialInventory}

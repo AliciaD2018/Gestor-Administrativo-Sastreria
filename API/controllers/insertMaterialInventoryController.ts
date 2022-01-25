@@ -17,9 +17,9 @@ async function uspInsertMaterialToInventory(Codigo: string, IdCategoriaMaterial:
         // String Query
         let strQuery = `EXEC uspInsertMaterialToInventory ${Codigo}, ${IdCategoriaMaterial}, \'${Descripcion}\',
                                                           ${Cantidad}, ${IdUnidadMedida}, ${PrecioCompra},
-                                                          ${PrecioVenta}, ${FechaRegistro};`;
+                                                          ${PrecioVenta}, \'${FechaRegistro}\';`;
 
-        // console.log(strQuery);
+        console.log(strQuery);
         
         // Executes string query
         let response = await request.query(strQuery);

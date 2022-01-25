@@ -1,15 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
-
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { Subject } from 'rxjs';
-import { FullCalendarModule } from 'primeng/fullcalendar';
-import slicingUtils from '@fullcalendar/core/common/slicing-utils';
-
-
 
 @Component({
   selector: 'app-calendario',
@@ -18,8 +13,6 @@ import slicingUtils from '@fullcalendar/core/common/slicing-utils';
 })
 
 export class CalendarioComponent implements OnInit {
-
-
 
   public events: any;
   public options: any;
@@ -31,7 +24,6 @@ export class CalendarioComponent implements OnInit {
   }
 
   async ngOnInit() {
-
 
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -49,11 +41,9 @@ export class CalendarioComponent implements OnInit {
     let eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
     console.log(eventosLocalStorage);
     
-
     await this.resolveAfterXSeconds();
 
   }
-
 
   resolveAfterXSeconds() {
     var x = 1000
@@ -66,7 +56,6 @@ export class CalendarioComponent implements OnInit {
 
   imprimirEvento() {
     console.log(`2- Evento: ${JSON.stringify(this.events[0])}`);
-
   }
   // agrega eventos a la vista calendario 
   agregarEventos() {
@@ -97,7 +86,6 @@ export class CalendarioComponent implements OnInit {
         }
 
         this.events.push(event);
-
       }
 
       let eventosJson = JSON.stringify(this.events);

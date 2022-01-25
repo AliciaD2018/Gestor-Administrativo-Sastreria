@@ -269,7 +269,7 @@ export class ApiService {
 
     return fetch(this.url + `/api/insertmaterialtoinventory?codigo=${material.Codigo}&idCategoriaMaterial=${material.IdCategoria}` +
       `&descripcion=${material.Descripcion}&cantidad=${material.Cantidad}&idUnidadMedida=${material.IdUnidad}` +
-      `&precioCompra=${material.PrecioCompra}&precioVenta=${material.PrecioVenta}&fechaRegistro${material.FechaRegistro}`,
+      `&precioCompra=${material.PrecioCompra}&precioVenta=${material.PrecioVenta}&fechaRegistro=${material.FechaRegistro}`,
       requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))

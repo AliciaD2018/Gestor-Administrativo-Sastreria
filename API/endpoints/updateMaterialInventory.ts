@@ -1,5 +1,5 @@
 import express from 'express';
-import { uspInsertMaterialToInventory } from '../controllers/insertMaterialInventoryController';
+import { uspUpdateMaterialInventory } from '../controllers/updateMaterialInventoryController';
 
 const router = express();
 
@@ -8,15 +8,15 @@ const router = express();
 const cors = require('cors');
 router.use(cors());
 
-router.post('/api/insertmaterialtoinventory', (req, res) => {
+router.put('/api/updatematerialinventory', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
     try { // Los nombres de las variables de req.query['variable'],
           // se definen en el api.service.ts del front end
           // cuando se indican los parámetros en el string del URL
-        uspInsertMaterialToInventory(<string>(req.query['codigo']), <string>(req.query['idCategoriaMaterial']), <string>(req.query['descripcion']),
-            <string>(req.query['cantidad']), <string>(req.query['idUnidadMedida']), <string>(req.query['precioCompra']),
-            <string>(req.query['precioVenta']), <string>(req.query['fechaRegistro']))
+        uspUpdateMaterialInventory(<string>(req.query['idMaterial']), <string>(req.query['idCategoria']),
+            <string>(req.query['idUnidadMedida']), <string>(req.query['descripcion']), <string>(req.query['cantidad']),
+            <string>(req.query['precioCompra']), <string>(req.query['precioVenta']))
             .then(response => {
                 // console.log("RESPONSE: ", response);
                 res.sendStatus(200);
@@ -28,4 +28,4 @@ router.post('/api/insertmaterialtoinventory', (req, res) => {
     }
 });
 
-export { router as insertMaterialToInventory }
+export { router as updateMaterialInventory }

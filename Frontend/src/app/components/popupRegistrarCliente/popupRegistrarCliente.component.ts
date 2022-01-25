@@ -17,21 +17,19 @@ export class PopupRegistrarClienteComponent implements OnInit {
     private api: ApiService
   ) { }
 
+  origen: string;
+
   ngOnInit() {
     this.agregarTiposTelefonos();
+    /**
+     * Se usa temporalmente el atributo Id de 'cliente' al instanciar
+     * al PopupRegistrarClienteComponent para indicar el origen de la
+     * instanciación
+     * 0 = instanciación desde clientes.component.ts
+     * 1 = instanciación desde crearOrden.component.ts
+     */
+    this.origen = this.data.Id;
   }
-
-  // formularioRegistroCliente = new FormGroup({
-  //   correo: new FormControl('', [Validators.required, Validators.email])
-  // });
-
-  // resultado!: string;
-  // submit() {
-  //   if (this.formularioRegistroCliente.valid)
-  //     this.resultado = "Todos los datos son válidos";
-  //   else
-  //     this.resultado = "Hay datos inválidos en el formulario";
-  // }
 
   onCancelClick(): void {
     this.dialogRef.close();
@@ -65,28 +63,74 @@ export class PopupRegistrarClienteComponent implements OnInit {
    * Inserta un nuevo cliente en la Base de Datos
    * */
   insertarCliente(customer: CustomerI) {
-    // console.log("Insertar cliente:", customer);
-
+    if (this.origen == '1') {
+      console.log("Mostrando datos...");
+      this.insertarDatosCliente(customer); 
+    }
+    
     // Validar si se incluyeron los teléfonos
-    if (customer.Telefono1 == '') {
+    if (customer.Telefono1 != '') {
+      // Leer el tipo de teléfono del select
+      const $select1 = (<HTMLSelectElement>document.getElementById("tiposTelefono1"));
+      let tipotelefono1 = $select1.options[$select1.selectedIndex].innerText;
+      customer.TipoTelefono1 = tipotelefono1;
+    } else {
       customer.Telefono1 = '0'
     }
 
-    if (customer.Telefono2 == '') {
+    if (customer.Telefono2 != '') {
+      // Leer el tipo de teléfono del select
+      const $select2 = (<HTMLSelectElement>document.getElementById("tiposTelefono2"));
+      var tipotelefono2 = $select2.options[$select2.selectedIndex].innerText;
+      customer.TipoTelefono2 = tipotelefono2;  
+    } else {
       customer.Telefono2 = '0'
     }
 
-    // Leer los tipos de teléfono de los select
-    const $select1 = (<HTMLSelectElement>document.getElementById("tiposTelefono1"));
-    let tipotelefono1 = $select1.options[$select1.selectedIndex].innerText;
-
-    const $select2 = (<HTMLSelectElement>document.getElementById("tiposTelefono2"));
-    var tipotelefono2 = $select2.options[$select2.selectedIndex].innerText;
-
-    customer.TipoTelefono1 = tipotelefono1;
-    customer.TipoTelefono2 = tipotelefono2;
-
     this.api.insertCustomer(customer);
   } // insertarCliente
+
+  //------------------------------------------------------------//
+  //-------      INSERTAR DATOS CLIENTE EN VISTA        --------//
+  //------------------------------------------------------------//
+
+  insertarDatosCliente(nuevoCliente: CustomerI): void {
+    let datosCliente = nuevoCliente;
+
+    // Agregar los datos del cliente seleccionado a la interface
+    if (datosCliente['Cedula'] != undefined) {
+      (<HTMLInputElement>document.getElementById('cedula')).value = datosCliente['Cedula'];
+    }
+    if (datosCliente['NombreCompleto'] != undefined) {
+      (<HTMLInputElement>document.getElementById('nombre')).value = datosCliente['NombreCompleto'];
+    }
+    if (datosCliente['Telefono1'] != undefined) {
+      (<HTMLInputElement>document.getElementById('telefono1')).value = datosCliente['Telefono1'];
+    }
+    if (datosCliente['TipoTelefono1'] != undefined) {
+      (<HTMLInputElement>document.getElementById("tipoTelefono1")).value = datosCliente['TipoTelefono1'];
+    }
+    if (datosCliente['NotasTelefono1'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('notasTelefono1')).value = datosCliente['NotasTelefono1'];
+    }
+    if (datosCliente['Telefono2'] != undefined) {
+      (<HTMLInputElement>document.getElementById('telefono2')).value = datosCliente['Telefono2'];
+    }
+    if (datosCliente['TipoTelefono2'] != undefined) {
+      (<HTMLInputElement>document.getElementById("tipoTelefono2")).value = datosCliente['TipoTelefono2'];
+    }
+    if (datosCliente['NotasTelefono2'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('notasTelefono2')).value = datosCliente['NotasTelefono2'];
+    }
+    if (datosCliente['Email'] != undefined) {
+      (<HTMLInputElement>document.getElementById('email')).value = datosCliente['Email'];
+    }
+    if (datosCliente['Direccion'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('direccion')).value = datosCliente['Direccion'];
+    }
+    if (datosCliente['Observaciones'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('observaciones')).value = datosCliente['Observaciones'];
+    }
+  } // insertarDatosCliente
   
 } // PopupRegistrarClienteComponent

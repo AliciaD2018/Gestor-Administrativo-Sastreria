@@ -22,7 +22,7 @@ export class PopupSeleccionarClienteComponent implements OnInit {
     
   constructor(
     public dialogRef: MatDialogRef<PopupSeleccionarClienteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {Cedula: string, NombreCompleto: string},
+    @Inject(MAT_DIALOG_DATA) public data: CustomerI,
     private api: ApiService
   ) { }
 

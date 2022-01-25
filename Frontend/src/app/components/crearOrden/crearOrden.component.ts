@@ -134,9 +134,9 @@ export class CrearOrdenComponent implements OnInit {
     });
   }
 
-  //-------------------------------------------------------------
-  //------              POPUP Selecciona Cliente           ------
-  //---------------------------------------------------------------
+  //-------------------------------------------------------------//
+  //------              POPUP Seleccionar Cliente          ------//
+  //-------------------------------------------------------------//
 
   openDialogSelectCustomer(): void {
     let clientes: CustomerI[] = [];
@@ -156,7 +156,17 @@ export class CrearOrdenComponent implements OnInit {
   //------------------------------------------------------------//
 
   openDialogAddCustomer(): void {
-    let cliente: CustomerI;
+    /**
+     * Se usa temporalmente el atributo Id de 'cliente' al instanciar
+     * al PopupRegistrarClienteComponent para indicar el origen de la
+     * instanciación
+     * 0 = instanciación desde clientes.component.ts
+     * 1 = instanciación desde crearOrden.component.ts
+     */
+    let cliente: CustomerI = {Id: '1', Cedula: '', NombreCompleto: '',
+                              Email: '',Direccion: '', Observaciones: '',
+                              Telefono1: '', TipoTelefono1: '', NotasTelefono1: '',
+                              Telefono2: '', TipoTelefono2: '', NotasTelefono2:''};
 
     const dialogRef = this.dialog.open(PopupRegistrarClienteComponent, {
       width: '900px',
@@ -165,51 +175,8 @@ export class CrearOrdenComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(customer => {
       console.log('The dialog was closed');
-      this.api.insertCustomer(customer);
-      this.insertarDatosCliente(customer);
     });
   } // openDialogAddCustomer
-
-  insertarDatosCliente(nuevoCliente: CustomerI): void {
-    let datosCliente = nuevoCliente;
-
-    // Agregar los datos del cliente seleccionado a la interface
-    if (datosCliente['Cedula'] != undefined) {
-      (<HTMLInputElement>document.getElementById('cedula')).value = datosCliente['Cedula'];
-    }
-    if (datosCliente['NombreCompleto'] != undefined) {
-      (<HTMLInputElement>document.getElementById('nombre')).value = datosCliente['NombreCompleto'];
-    }
-    if (datosCliente['Telefono1'] != undefined) {
-      (<HTMLInputElement>document.getElementById('telefono1')).value = datosCliente['Telefono1'];
-    }
-    if (datosCliente['TipoTelefono1'] != undefined) {
-      (<HTMLInputElement>document.getElementById("tipoTelefono1")).value = datosCliente['TipoTelefono1'];
-    }
-    if (datosCliente['NotasTelefono1'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('notasTelefono1')).value = datosCliente['NotasTelefono1'];
-    }
-    if (datosCliente['Telefono2'] != undefined) {
-      (<HTMLInputElement>document.getElementById('telefono2')).value = datosCliente['Telefono2'];
-    }
-    if (datosCliente['TipoTelefono2'] != undefined) {
-      (<HTMLInputElement>document.getElementById("tipoTelefono2")).value = datosCliente['TipoTelefono2'];
-    }
-    if (datosCliente['NotasTelefono2'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('notasTelefono2')).value = datosCliente['NotasTelefono2'];
-    }
-    if (datosCliente['Email'] != undefined) {
-      (<HTMLInputElement>document.getElementById('email')).value = datosCliente['Email'];
-    }
-    if (datosCliente['Direccion'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('direccion')).value = datosCliente['Direccion'];
-    }
-    if (datosCliente['Observaciones'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('observaciones')).value = datosCliente['Observaciones'];
-    }
-  } // insertarDatosCliente
-  
-
 
   //------------------------------------------------------------//
   //-------              ABONAR                         --------//

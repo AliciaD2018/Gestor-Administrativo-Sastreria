@@ -136,11 +136,17 @@ export class ClientesComponent {
   //------------------------------------------------------------//
 
   openDialogAddCustomer(): void {
-    let cliente: CustomerI;
-    cliente = {Id: '', Cedula: '', NombreCompleto: '',
-               Email: '',Direccion: '', Observaciones: '',
-               Telefono1: '', TipoTelefono1: '', NotasTelefono1: '',
-               Telefono2: '', TipoTelefono2: '', NotasTelefono2:''};
+    /**
+     * Se usa temporalmente el atributo Id de 'cliente' al instanciar
+     * al PopupRegistrarClienteComponent para indicar el origen de la
+     * instanciación
+     * 0 = instanciación desde clientes.component.ts
+     * 1 = instanciación desde crearOrden.component.ts
+     */
+    let cliente: CustomerI = {Id: '0', Cedula: '', NombreCompleto: '',
+                              Email: '',Direccion: '', Observaciones: '',
+                              Telefono1: '', TipoTelefono1: '', NotasTelefono1: '',
+                              Telefono2: '', TipoTelefono2: '', NotasTelefono2:''};
 
     const dialogRef = this.dialog.open(PopupRegistrarClienteComponent, {
       width: '900px',

@@ -18,7 +18,7 @@ async function uspSelectNextMaterialId() {
         // Executes string query
         let response = await request.query(strQuery);
 
-        console.log("Selection successfully: Next material Id");
+        console.log("Selection successfully: Next material Id\n");
         return response.recordset;
 
     }catch(error){
