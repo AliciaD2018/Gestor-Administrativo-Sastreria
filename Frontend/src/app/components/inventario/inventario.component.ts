@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { RegistrarMaterialComponent } from '../registrarMaterial/registrarMaterial.component';
 import { ApiService } from '../../services/api/api.service';
 import { MaterialI } from 'src/app/models/material.interface';
 import { PopupRegistrarMaterialComponent } from '../popupRegistrarMaterial/popupRegistrarMaterial.component';
@@ -22,8 +21,6 @@ export class InventarioComponent implements OnInit {
     private api: ApiService,
     public dialog: MatDialog) {
   }
-
-  @ViewChild(RegistrarMaterialComponent) importa: RegistrarMaterialComponent;
 
   columnas: string[] = ['codigo', 'categoria', 'descripcion', 'cantidad', 'unidadmedida', 'precio', 'fecharegistro', 'opciones'];
 

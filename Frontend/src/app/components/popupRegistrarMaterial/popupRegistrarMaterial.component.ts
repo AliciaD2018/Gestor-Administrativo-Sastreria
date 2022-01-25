@@ -141,7 +141,7 @@ export class PopupRegistrarMaterialComponent implements OnInit {
       }
     }
 
-    // Leer código y fecha de registro de los input
+    // Leer código de registro de los input
     let codigo = (<HTMLInputElement>document.getElementById('codigo')).value;
 
     // Asignar al material los atributos faltantes

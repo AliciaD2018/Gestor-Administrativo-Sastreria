@@ -64,11 +64,11 @@ export class PopupRegistrarClienteComponent implements OnInit {
    * */
   insertarCliente(customer: CustomerI) {
     if (this.origen == '1') {
-      console.log("Mostrando datos...");
+      // console.log("Mostrando datos...");
       this.insertarDatosCliente(customer); 
     }
     
-    // Validar si se incluyeron los teléfonos
+    // Validar si se incluyo el teléfono 1
     if (customer.Telefono1 != '') {
       // Leer el tipo de teléfono del select
       const $select1 = (<HTMLSelectElement>document.getElementById("tiposTelefono1"));
@@ -78,6 +78,7 @@ export class PopupRegistrarClienteComponent implements OnInit {
       customer.Telefono1 = '0'
     }
 
+    // Validar si se incluyo el teléfono 2
     if (customer.Telefono2 != '') {
       // Leer el tipo de teléfono del select
       const $select2 = (<HTMLSelectElement>document.getElementById("tiposTelefono2"));

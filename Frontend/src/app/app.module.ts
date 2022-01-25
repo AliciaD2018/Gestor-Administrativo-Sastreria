@@ -18,19 +18,14 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 
-import { RegistrarClienteComponent } from './components/registrarCliente/registrarCliente.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 
 import { HttpClientModule } from '@angular/common/http'
-import { RegistrarMaterialComponent } from './components/registrarMaterial/registrarMaterial.component';
 import { ModificarInventarioComponent } from './components/modificarInventario/modificarInventario.component';
-import { RegistrarOrdenComponent } from './components/registrarOrden/registrarOrden.component';
 import { ModificarOrdenComponent } from './components/modificarOrden/modificarOrden.component';
 import { CrearOrdenComponent } from './components/crearOrden/crearOrden.component';
 import { DetalleOrdenComponent } from './components/detalleOrden/detalleOrden.component';
-import { RegistrarAbonoComponent } from './components/registrarAbono/registrarAbono.component';
-import { RegistrarPrendaComponent } from './components/registrarPrenda/registrarPrenda.component';
 import { PopupEnviarEmailComponent } from './components/popupEnviarEmail/popupEnviarEmail.component';
 import { PopupSeleccionarClienteComponent } from './components/popupSeleccionarCliente/popupSeleccionarCliente.component';
 import { PopupVerDetallesClienteComponent } from './components/popupVerDetallesCliente/popupVerDetallesCliente.component';
@@ -56,11 +51,6 @@ const routes: Routes = [
   {
     path:'calendario',
     component: CalendarioComponent
-  }
-  ,
-  {
-    path:'registrarCliente',
-    component: RegistrarClienteComponent
   },
   {
     path:'inventario',
@@ -71,16 +61,8 @@ const routes: Routes = [
     component: OrdenesComponent
   },
   {
-    path:'registrarMaterial',
-    component: RegistrarMaterialComponent
-  },
-  {
     path:'modificarInventario',
     component: ModificarInventarioComponent
-  },
-  {
-    path:'registrarOrden',
-    component: RegistrarOrdenComponent
   },
   {
     path:'modificarOrden',
@@ -93,14 +75,6 @@ const routes: Routes = [
   {
     path:'detalleOrden',
     component: DetalleOrdenComponent
-  },
-  {
-    path:'registrarAbono',
-    component: RegistrarAbonoComponent
-  },
-  {
-    path:'registrarPrenda',
-    component: RegistrarPrendaComponent
   },
   {
     path:'popupEnviarEmail',
@@ -155,17 +129,12 @@ const routes: Routes = [
     PrincipalComponent,
     ClientesComponent,
     CalendarioComponent,
-    RegistrarClienteComponent,
     InventarioComponent,
     OrdenesComponent,
-    RegistrarMaterialComponent,
     ModificarInventarioComponent,
-    RegistrarOrdenComponent,
     ModificarOrdenComponent,
     DetalleOrdenComponent,
     CrearOrdenComponent,
-    RegistrarAbonoComponent,
-    RegistrarPrendaComponent,
     PopupEnviarEmailComponent,
     PopupSeleccionarClienteComponent,
     PopupVerDetallesClienteComponent,

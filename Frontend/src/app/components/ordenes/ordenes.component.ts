@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { OrdenI } from 'src/app/models/orden.interface';
 import { ApiService } from 'src/app/services/api/api.service';
-import { RegistrarOrdenComponent } from '../registrarOrden/registrarOrden.component';
 
 @Component({
   selector: 'app-ordenes',
@@ -12,21 +12,18 @@ export class OrdenesComponent implements OnInit {
 
   constructor(private api: ApiService) {
   }
-  
-  @ViewChild(RegistrarOrdenComponent) importa: RegistrarOrdenComponent;
-
 
   columnas: string[] = ['numeroOrden', 'cliente', 'costoTotal', 'saldo', 'fechaEntrega', 'cantidadPrendas', 'opciones'];
 
-  public datos: Orders[] = [];
+  ordenes: OrdenI[] = [];
 
-  @ViewChild(MatTable) tabla1!: MatTable<Orders>;
+  @ViewChild(MatTable) tabla1!: MatTable<OrdenI>;
 
   borrarFila(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.datos.splice(cod, 1);
+      this.ordenes.splice(cod, 1);
       this.tabla1.renderRows();
-      localStorage.setItem("ordenes", JSON.stringify(this.datos));
+      localStorage.setItem("ordenes", JSON.stringify(this.ordenes));
     }
   }
 
@@ -41,7 +38,6 @@ export class OrdenesComponent implements OnInit {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  
   agregarOrdenes(): void {
     const promise = this.api.selectAllOrders().then()
     promise.then((orders) => {
@@ -69,32 +65,21 @@ export class OrdenesComponent implements OnInit {
           cantidad = order['Cantidad'];
         }
 
-        this.datos.push({
-          numeroOrden: order['NumeroOrden'],idCliente: order['IdCliente'], cliente: order['NombreCompleto'],
-          costoTotal: order['CostoTotal'], saldo: saldo, fechaEntrega: fecha, cantidadPrendas: cantidad
+        this.ordenes.push({
+          IdOrden: order['IdOrden'], IdCliente: order['IdCliente'], NombreCliente: order['NombreCompleto'],
+          FechaInicio: order['FechaInicio'], IdEstadoOrden: order['IdEstadoOrden'], Comentarios: order['Comentarios'],
+          TotalPrendas: cantidad,PrendasEntregadas: order['PrendasEntregadas'], CostoTotal: order['CostoTotal']
         });
         // console.log("-------------->",order);
       }
 
       //Se realiza la carga en la tabla general html del inventario.
-      const articulos = JSON.stringify(this.datos);
-      this.datos = JSON.parse(articulos);
-      this.dataSource = new MatTableDataSource(this.datos);
+      const articulos = JSON.stringify(this.ordenes);
+      this.ordenes = JSON.parse(articulos);
+      this.dataSource = new MatTableDataSource(this.ordenes);
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
-  }
-}
-
-export class Orders {
-  constructor(
-    public numeroOrden: string,
-    public idCliente: string,
-    public cliente: string,
-    public costoTotal: string,
-    public saldo: string,
-    public fechaEntrega: string,
-    public cantidadPrendas: string) {
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbonoI } from 'src/app/models/abono.interface';
 import { EmailI } from 'src/app/models/email.interface';
 import { MaterialI } from 'src/app/models/material.interface';
+import { OrdenI } from 'src/app/models/orden.interface';
 import { CustomerI } from '../../models/customer.interface';
 
 @Injectable({
@@ -296,7 +297,7 @@ export class ApiService {
   /**********************************************************************************************************************************************/
   async selectBalance(idOrden: string) {
     // console.clear();
-    console.log("Id orden:", idOrden);
+    
     this.myHeaders.append('Content-Type', 'application/json');
 
     var requestOptions = {
@@ -342,6 +343,57 @@ export class ApiService {
     };
 
     return fetch(this.url + `/api/updatematerialinventory?idAbono=${abono.IdAbano}&anotaciones=${abono.Anotaciones}`,
+      requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  /**********************************************************************************************************************************************/
+  async selectNextClothingNumber(idOrden: string) {
+    // console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectnextclothingnumber?idOrden=${idOrden}`, requestOptions);
+    let numero = await respuesta.json();
+    return numero['numerosiguienteprenda'][0]; // Este nombre se define en el end point del API
+  }
+
+  /**********************************************************************************************************************************************/
+  async selectClothesTypes() {
+    // console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectclothestypes`, requestOptions);
+    let tipos = await respuesta.json();
+    return tipos['tiposprendas']; // Este nombre se define en el end point del API:
+  }
+
+  /**********************************************************************************************************************************************/
+  async insertOrder(orden: OrdenI) {
+    // console.clear();
+
+    this.myHeaders.append("Content-Type", "application/json");
+
+    // Generado con postman
+    var requestOptions = {
+      method: 'POST',
+      headers: this.myHeaders,
+    };
+
+    return fetch(this.url + `/api/insertorder?idCliente=${orden.IdCliente}&fechaInicio=${orden.FechaInicio}`,
       requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))

@@ -1,42 +1,64 @@
 <h1 mat-dialog-title>Registrar Prendas</h1>
 
-<div mat-dialog-content style="height: 420px;">
+<div mat-dialog-content style="height: 350px;">
 
-  <div class="wrapper_a">
+  <div class="wrapper_c">
 
-    <!-- numero -->
+    <!-- Número de prenda -->
     <div style="margin-right: 20px;">
-      <label>N°:</label><br>
-      <input readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.Fecha" -->
+      <label>N° de prenda:</label><br>
+      <input matInput [(ngModel)]="data.NumeroPrenda" readonly style="height: 35px;" class="form-control" type="number">
     </div>
 
-    <!-- Tipo Prenda -->
+    <!-- Cantidad -->
     <div style="margin-right: 20px;">
-      <label>Tipo Prenda:</label><br>
-      <input style="height: 35px;" class="form-control" type="select"> <!-- matInput [(ngModel)]="data.MontoAbono" -->
+      <label>Cantidad:</label><br>
+      <input id="cantidad" cdkFocusInitial matInput [(ngModel)]="data.Cantidad" min="1" 
+       (change)="calcularMonto()" style="height: 35px;" class="form-control" type="number">
+    </div>
+
+    <!-- Precio -->
+    <div style="margin-right: 20px;">
+      <label>Precio:</label><br>
+      <input matInput [(ngModel)]="data.Precio" min="0" style="height: 35px;" class="form-control"
+      (change)="calcularMonto()" type="number">
+    </div>
+
+    <!-- Monto -->
+    <div>
+      <label>Monto:</label><br>
+      <input id="monto" matInput [(ngModel)]="data.MontoTotal" min="0" readonly style="height: 35px;" class="form-control" type="text">
     </div>
 
   </div>
 
+  <div class="wrapper_b" style="margin-top: 20px;">
 
-
-  <div class="wrapper_a" style="margin-top: 20px;">
+    <!-- Tipo Prenda -->
     <div style="margin-right: 20px;">
-      <label>Precio:</label><br>
-      <input style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.SaldoAnterior" -->
+      <label>Tipo Prenda:</label><br>
+      <select id="tiposPrendas" class="forms-control" style="height: 35px; width: 100%;" border-radius=4px>
+        <option label="Seleccione una unidad"></option>
+      </select>
     </div>
 
+    <!-- Fecha de encargo -->
     <div style="margin-right: 20px;">
+      <label>Fecha de encargo:</label><br>
+      <input matInput [(ngModel)]="data.FechaEncargo" id="fechaRegistro" readonly style="height: 35px;" class="form-control" type="text">
+    </div>
+
+    <div>
       <label>Fechas de Entrega:</label><br>
-      <input style="height: 35px;" class="form-control" type="date"> <!-- matInput [(ngModel)]="data.NuevoSaldo" -->
+      <input matInput [(ngModel)]="data.FechaEntrega" style="height: 35px;" class="form-control" type="date">
     </div>
 
   </div>
 
   <div style="margin-top: 20px;">
     <label>Descripción:</label><br>
-    <textarea cdkFocusInitial style="height: 35px;" style="width: 100%;" rows="3" class="form-control"
-      type="text"></textarea> <!-- matInput [(ngModel)]="data.Anotaciones" -->
+    <textarea matInput [(ngModel)]="data.Descripciones" cdkFocusInitial style="height: 35px;" style="width: 100%;" rows="3"
+      class="form-control" type="text"></textarea>
   </div>
 
 
@@ -46,8 +68,7 @@
       Cancelar
       <i class="material-icons" style="margin-left: 20px;">close</i>
     </button>
-    <button class="btn btn-success" type="button" [mat-dialog-close]="data">
-      <!--  (click)="insertarCliente(data)"> -->
+    <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="insertarPrenda(data)">
       Agregar
       <i class="material-icons" style="margin-left: 20px;">money</i>
     </button>

@@ -1,4 +1,3 @@
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -40,45 +39,49 @@ export class PopupSeleccionarClienteComponent implements OnInit {
     this.dialogRef.close();
   };
 
+  /**
+   * Agregar los datos del cliente seleccionado a la interface
+   */
   insertarDatosCliente(clienteSeleccionado: CustomerI): void {
-    let datosCliente = clienteSeleccionado;
 
-    // Agregar los datos del cliente seleccionado a la interface
-    if (datosCliente['Cedula'] != undefined) {
-      (<HTMLInputElement>document.getElementById('cedula')).value = datosCliente['Cedula'];
+    if (clienteSeleccionado['Cedula'] != undefined) {
+      (<HTMLInputElement>document.getElementById('cedula')).value = clienteSeleccionado['Cedula'];
     }
-    if (datosCliente['NombreCompleto'] != undefined) {
-      (<HTMLInputElement>document.getElementById('nombre')).value = datosCliente['NombreCompleto'];
+    if (clienteSeleccionado['NombreCompleto'] != undefined) {
+      (<HTMLInputElement>document.getElementById('nombre')).value = clienteSeleccionado['NombreCompleto'];
     }
-    if (datosCliente['Telefono1'] != undefined) {
-      (<HTMLInputElement>document.getElementById('telefono1')).value = datosCliente['Telefono1'];
+    if (clienteSeleccionado['Telefono1'] != undefined) {
+      (<HTMLInputElement>document.getElementById('telefono1')).value = clienteSeleccionado['Telefono1'];
     }
-    if (datosCliente['TipoTelefono1'] != undefined) {
-      (<HTMLInputElement>document.getElementById("tipoTelefono1")).value = datosCliente['TipoTelefono1'];
+    if (clienteSeleccionado['TipoTelefono1'] != undefined) {
+      (<HTMLInputElement>document.getElementById("tipoTelefono1")).value = clienteSeleccionado['TipoTelefono1'];
     }
-    if (datosCliente['NotasTelefono1'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('notasTelefono1')).value = datosCliente['NotasTelefono1'];
+    if (clienteSeleccionado['NotasTelefono1'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('notasTelefono1')).value = clienteSeleccionado['NotasTelefono1'];
     }
-    if (datosCliente['Telefono2'] != undefined) {
-      (<HTMLInputElement>document.getElementById('telefono2')).value = datosCliente['Telefono2'];
+    if (clienteSeleccionado['Telefono2'] != undefined) {
+      (<HTMLInputElement>document.getElementById('telefono2')).value = clienteSeleccionado['Telefono2'];
     }
-    if (datosCliente['TipoTelefono2'] != undefined) {
-      (<HTMLInputElement>document.getElementById("tipoTelefono2")).value = datosCliente['TipoTelefono2'];
+    if (clienteSeleccionado['TipoTelefono2'] != undefined) {
+      (<HTMLInputElement>document.getElementById("tipoTelefono2")).value = clienteSeleccionado['TipoTelefono2'];
     }
-    if (datosCliente['NotasTelefono2'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('notasTelefono2')).value = datosCliente['NotasTelefono2'];
+    if (clienteSeleccionado['NotasTelefono2'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('notasTelefono2')).value = clienteSeleccionado['NotasTelefono2'];
     }
-    if (datosCliente['Email'] != undefined) {
-      (<HTMLInputElement>document.getElementById('email')).value = datosCliente['Email'];
+    if (clienteSeleccionado['Email'] != undefined) {
+      (<HTMLInputElement>document.getElementById('email')).value = clienteSeleccionado['Email'];
     }
-    if (datosCliente['Direccion'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('direccion')).value = datosCliente['Direccion'];
+    if (clienteSeleccionado['Direccion'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('direccion')).value = clienteSeleccionado['Direccion'];
     }
-    if (datosCliente['Observaciones'] != undefined) {
-      (<HTMLTextAreaElement>document.getElementById('observaciones')).value = datosCliente['Observaciones'];
+    if (clienteSeleccionado['Observaciones'] != undefined) {
+      (<HTMLTextAreaElement>document.getElementById('observaciones')).value = clienteSeleccionado['Observaciones'];
     }
   } // insertarDatosCliente
 
+  /**
+   * Obtiene todos los clientes desde la BD para mostrarlos en la lista
+   */
   agregarClientes(): void {
     const promise = this.api.selectAllCustomers().then()
 

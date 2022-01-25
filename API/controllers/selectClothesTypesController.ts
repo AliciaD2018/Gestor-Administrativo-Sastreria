@@ -2,7 +2,7 @@ import { config } from "../config";
 
 var sql = require("mssql");
 
-async function uspSelectMaterialsInventory() {
+async function uspSelectClothesTypes() {
     try{
         // Establish connection
         await sql.connect(config);
@@ -11,14 +11,14 @@ async function uspSelectMaterialsInventory() {
         var request = new sql.Request();
 
         // String Query
-        let strQuery = 'EXEC uspSelectMaterialsInventory;';
+        let strQuery = 'EXEC uspSelectClothesTypes;';
 
         //console.log(strQuery);
 
         // Executes string query
         let response = await request.query(strQuery);
 
-        console.log("Selection successfully: Materials from inventory\n");
+        console.log("Selection successfully: Clothes types\n");
         return response.recordset;
 
     }catch(error){
@@ -27,4 +27,4 @@ async function uspSelectMaterialsInventory() {
     };
 }
 
-export{uspSelectMaterialsInventory}
+export{uspSelectClothesTypes}

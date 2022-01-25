@@ -21,6 +21,9 @@ import { selectNextMaterialId } from './endpoints/selectNextMaterialId';
 import { selectBalance } from './endpoints/selectBalance';
 import { insertPayment } from './endpoints/insertPayment';
 import { updatePayment } from './endpoints/updatePayment';
+import { selectClothingsByOrder } from './endpoints/selectClothingsByOrder';
+import { selectNextClothingNumber } from './endpoints/selectNextClothingNumber';
+import { selectClothesTypes } from './endpoints/selectClothesTypes';
 
 var express = require('express');
 
@@ -34,11 +37,14 @@ app.use(insertMaterialToInventory);
 app.use(insertPayment);
 app.use(selectAllCustomers);
 app.use(selectAllOrders);
-app.use(selectBalance)
+app.use(selectBalance);
+app.use(selectClothesTypes);
+app.use(selectClothingsByOrder);
 app.use(selectCustomer);
 app.use(selectMaterialsCategories);
 app.use(selectMaterialsInventory);
 app.use(selectMissingMaterialsAllOrders);
+app.use(selectNextClothingNumber);
 app.use(selectNextMaterialId);
 app.use(selectNextOrderId)
 app.use(selectOrders);

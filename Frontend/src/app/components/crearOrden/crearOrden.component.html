@@ -150,7 +150,8 @@
             <label style="margin-left: 20px;"> Saldo Inicial: </label>
           </div>
           <div>     <!-- Debe usarse [ngModelOptions]="{standalone: true}" para que no de errores [(ngModel)] -->
-            <input matInput [(ngModel)]="abono.CostoTotal" [ngModelOptions]="{standalone: true}" id="saldoInicial" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
+            <input id="saldoInicial" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
+            <!-- matInput [(ngModel)]="abono.CostoTotal" [ngModelOptions]="{standalone: true}" -->
           </div>
         </div>
 
@@ -159,7 +160,8 @@
             <label style="margin-left: 20px;"> Total abonado: </label>
           </div>
           <div>     <!-- Debe usarse [ngModelOptions]="{standalone: true}" para que no de errores [(ngModel)] -->
-            <input matInput [(ngModel)]="abono.TotalAbonado" [ngModelOptions]="{standalone: true}" id="totalAbonado" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
+            <input id="totalAbonado" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
+            <!-- matInput [(ngModel)]="abono.TotalAbonado" [ngModelOptions]="{standalone: true}"  -->
           </div>
         </div>
 
@@ -168,7 +170,8 @@
             <label style="margin-left: 20px;"> Saldo actual:</label>
           </div>
           <div>      <!-- Debe usarse [ngModelOptions]="{standalone: true}" para que no de errores [(ngModel)] -->
-            <input matInput [(ngModel)]="abono.NuevoSaldo" [ngModelOptions]="{standalone: true}" id="saldoActual" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
+            <input id="saldoActual" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
+            <!-- matInput [(ngModel)]="abono.NuevoSaldo" [ngModelOptions]="{standalone: true}"  -->
           </div>
         </div>
 
@@ -239,7 +242,7 @@
               <h1 style="margin-left: 20px;"> Listado de Prendas</h1>
             </div>
             <div align="right" style="margin-right: 20px;">
-              <button class="btn btn-success" style="margin-right: 20px;" (click)="openDialogPrendas()">
+              <button class="btn btn-success" style="margin-right: 20px;" (click)="openDialogAgregarPrenda()">
                 Agregar Prenda
                 <i class="material-icons" style="margin-left: 20px;">checkroom</i>
               </button>
@@ -413,8 +416,8 @@
   </div> <!-- FIN Tabla materiales -->
 
   <div align="center">
-    <button class="btn btn-success" type="button" style="margin-top: 20px; margin-bottom: 20px; margin-right: 20px;"
-      routerLink="/ordenes">
+    <button class="btn btn-success" (click)="insertarOrden()" type="button" style="margin-top: 20px; margin-bottom: 20px; margin-right: 20px;">
+      <!-- routerLink="/ordenes"> -->
       Crear orden
       <i class="material-icons" style="margin-left: 20px;">spellcheck</i>
     </button>

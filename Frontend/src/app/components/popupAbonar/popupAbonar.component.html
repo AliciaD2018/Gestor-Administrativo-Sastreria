@@ -13,9 +13,9 @@
     </div>
 
     <!-- Monto -->
-    <div style="margin-right: 20px;">
+    <div>
       <label>Monto Abono:</label><br>
-      <input (change)="calcularNuevoSaldo($event)" matInput [(ngModel)]="data.MontoAbono" min="0" style="height: 35px;" class="form-control" type="number">
+      <input cdkFocusInitial (change)="calcularNuevoSaldo($event)" matInput [(ngModel)]="data.MontoAbono" min="0" style="height: 35px;" class="form-control" type="number">
     </div>
 
   </div>
@@ -36,8 +36,7 @@
 
   <div style="margin-top: 20px;">
     <label>Anotaciones:</label><br>
-    <textarea  cdkFocusInitial style="height: 35px;" style="width: 100%;"
-      rows="3" class="form-control" type="text"></textarea> <!-- matInput [(ngModel)]="data.Anotaciones" -->
+    <textarea style="height: 35px;" style="width: 100%;" rows="3" class="form-control" type="text"></textarea>
   </div>
 
 
