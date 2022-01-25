@@ -1,7 +1,7 @@
 body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #333;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.6em;
     background:#E5E5E5
     
@@ -16,7 +16,7 @@ p{
 }
 
 .container{
-    width: 50%;
+    width: 55%;
     /* max-width: 850px; */
     /* margin: 0 auto; */
 }
