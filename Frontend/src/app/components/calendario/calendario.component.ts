@@ -95,10 +95,10 @@ export class CalendarioComponent implements OnInit {
 
       // se valida el estado en false para calgar una unica vez en el calendario los eventos.
       if (localStorage.getItem('reload2') == 'false') {
-        console.log('yeayea');
+      
         let eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
         console.log("algo: ", eventosLocalStorage);
-        this.events = eventosLocalStorage
+        this.events = eventosLocalStorage //se asignan los resultados (eventos)
       }
 
       /* -----FIN Manejo de los datos en local storage----- */
