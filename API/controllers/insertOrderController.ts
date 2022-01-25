@@ -14,7 +14,7 @@ async function uspInsertOrder(IdCliente: string, FechaInicio: string) {
         // String Query
         let strQuery = `EXEC uspInsertOrder ${IdCliente}, \'${FechaInicio}\';`;
 
-        // console.log(strQuery);
+        console.log(strQuery);
 
         // Executes string query
         await request.query(strQuery);

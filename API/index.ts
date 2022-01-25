@@ -26,6 +26,7 @@ import { selectNextClothingNumber } from './endpoints/selectNextClothingNumber';
 import { selectClothesTypes } from './endpoints/selectClothesTypes';
 import { selectNextCustomerId } from './endpoints/selectNextCustomerId';
 import { insertClothing } from './endpoints/insertClothing';
+import { insertOrder } from './endpoints/insertOrder';
 
 var express = require('express');
 
@@ -37,6 +38,7 @@ app.use(deleteMaterial);
 app.use(insertClothing);
 app.use(insertCustomers);
 app.use(insertMaterialToInventory);
+app.use(insertOrder);
 app.use(insertPayment);
 app.use(selectAllCustomers);
 app.use(selectAllOrders);
