@@ -5,6 +5,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { Subject } from 'rxjs';
+import { isNumericLiteral } from 'typescript';
 
 @Component({
   selector: 'app-calendario',
@@ -13,6 +14,7 @@ import { Subject } from 'rxjs';
 })
 
 export class CalendarioComponent implements OnInit {
+
 
   public events: any;
   public options: any;
@@ -38,25 +40,15 @@ export class CalendarioComponent implements OnInit {
     }
 
     this.agregarEventos();
-    let eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
-    console.log(eventosLocalStorage);
-    
-    await this.resolveAfterXSeconds();
+
 
   }
 
-  resolveAfterXSeconds() {
-    var x = 1000
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(x);
-      }, 1000);
-    });
-  }
 
   imprimirEvento() {
     console.log(`2- Evento: ${JSON.stringify(this.events[0])}`);
   }
+
   // agrega eventos a la vista calendario 
   agregarEventos() {
     console.log('entra');
@@ -85,45 +77,35 @@ export class CalendarioComponent implements OnInit {
           start: new Date(year, month, day, hora, minuto, segundo),
         }
 
-        this.events.push(event);
+        this.eventosUp.push(event); //inserta los resultados en lista temporal
       }
 
-      let eventosJson = JSON.stringify(this.events);
-      this.compararJSON(localStorage.getItem('eventos'),eventosJson);
-      //console.log(eventosJson)
+      /* -----Manejo de los datos en local storage----- */
 
-      localStorage.removeItem('eventos')
+      //se crean en el localStorage
+      let eventosJson = JSON.stringify(this.eventosUp);
       localStorage.setItem('eventos', `${eventosJson}`);
+      localStorage.setItem('reload2', `${true}`);
 
-      this.agregarEnEvents(localStorage.getItem('eventos'));
+      // se valida el estado y se cambia el estado para no repetir
+      if (localStorage.getItem('reload2') == 'true') {
+        //this.events=this.eventosUp;
+        localStorage.setItem('reload2', `${false}`);
+      }
+
+      // se valida el estado en false para calgar una unica vez en el calendario los eventos.
+      if (localStorage.getItem('reload2') == 'false') {
+        console.log('yeayea');
+        let eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
+        console.log("algo: ", eventosLocalStorage);
+        this.events = eventosLocalStorage
+      }
+
+      /* -----FIN Manejo de los datos en local storage----- */
 
     }).catch((error) => {
       console.log("Promise rejected with " + JSON.stringify(error));
     });
-  }
-
-  compararJSON(actual, nuevo) {
-    console.log(actual);
-    console.log();
-    console.log(nuevo);
-    if (JSON.stringify(actual) === JSON.stringify(nuevo)) {
-      console.log("son iguales, es decir ya existe");
-    }
-    else{
-      console.log("NO iguales");
-    }
-  }
-
-  agregarEnEvents(actual){
-    for(var x in this.events){
-      let datojs=JSON.stringify(this.events[x]);
-
-      console.log(JSON.stringify(this.events[x]));
-      if(datojs in actual){
-        console.log('si');
-      }
-      console.log('no');
-    }
   }
 
 }
