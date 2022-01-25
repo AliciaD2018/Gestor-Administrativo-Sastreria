@@ -62,41 +62,45 @@ export class PopupRegistrarClienteComponent implements OnInit {
   /**
    * Inserta un nuevo cliente en la Base de Datos
    * */
-  insertarCliente(customer: CustomerI) {
+  insertarCliente() {
     if (this.origen == '1') {
       // console.log("Mostrando datos...");
-      this.insertarDatosCliente(customer); 
+      this.insertarDatosCliente(this.data); 
     }
     
     // Validar si se incluyo el teléfono 1
-    if (customer.Telefono1 != '') {
+    if (this.data.Telefono1 != '') {
       // Leer el tipo de teléfono del select
       const $select1 = (<HTMLSelectElement>document.getElementById("tiposTelefono1"));
       let tipotelefono1 = $select1.options[$select1.selectedIndex].innerText;
-      customer.TipoTelefono1 = tipotelefono1;
+      this.data.TipoTelefono1 = tipotelefono1;
     } else {
-      customer.Telefono1 = '0'
+      this.data.Telefono1 = '0'
     }
 
     // Validar si se incluyo el teléfono 2
-    if (customer.Telefono2 != '') {
+    if (this.data.Telefono2 != '') {
       // Leer el tipo de teléfono del select
       const $select2 = (<HTMLSelectElement>document.getElementById("tiposTelefono2"));
       var tipotelefono2 = $select2.options[$select2.selectedIndex].innerText;
-      customer.TipoTelefono2 = tipotelefono2;  
+      this.data.TipoTelefono2 = tipotelefono2;  
     } else {
-      customer.Telefono2 = '0'
+      this.data.Telefono2 = '0'
     }
-
-    this.api.insertCustomer(customer);
+    let siguienteId = this.api.selectNextCustomerId();
+    siguienteId.then((id) =>{
+      console.log("ID: ", id['SiguienteIdCliente']);
+      this.data.Id = id['SiguienteIdCliente'];
+    })
+    
+    this.api.insertCustomer(this.data);
   } // insertarCliente
 
   //------------------------------------------------------------//
   //-------      INSERTAR DATOS CLIENTE EN VISTA        --------//
   //------------------------------------------------------------//
 
-  insertarDatosCliente(nuevoCliente: CustomerI): void {
-    let datosCliente = nuevoCliente;
+  insertarDatosCliente(datosCliente: CustomerI): void {
 
     // Agregar los datos del cliente seleccionado a la interface
     if (datosCliente['Cedula'] != undefined) {

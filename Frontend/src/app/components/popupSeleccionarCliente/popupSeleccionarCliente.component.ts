@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomerI } from 'src/app/models/customer.interface';
-import { CustomerUII } from 'src/app/models/customerUI.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -43,6 +42,7 @@ export class PopupSeleccionarClienteComponent implements OnInit {
    * Agregar los datos del cliente seleccionado a la interface
    */
   insertarDatosCliente(clienteSeleccionado: CustomerI): void {
+    this.data.Id = clienteSeleccionado.Id;
 
     if (clienteSeleccionado['Cedula'] != undefined) {
       (<HTMLInputElement>document.getElementById('cedula')).value = clienteSeleccionado['Cedula'];

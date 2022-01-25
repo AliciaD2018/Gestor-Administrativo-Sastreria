@@ -21,13 +21,6 @@
       <div>
         <label>E-mail:</label> <br>
         <input matInput [(ngModel)]="data.Email" style="height: 35px;" class="form-control" type="email">
-        <!-- formControlName="correo" -->
-        <!-- <span *ngIf="this.formularioRegistroCliente.get('correo')?.errors?.['required'] == true">
-          (El mail no puede quedar vacío)
-        </span>
-        <span *ngIf="this.formularioRegistroCliente.get('correo')?.errors?.['email'] == true">
-          (El mail no es válido)
-        </span> -->
       </div>
     </div>
 
@@ -94,7 +87,7 @@
         Cerrar
         <i class="material-icons" style="margin-left: 20px;">close</i>
       </button>
-      <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="insertarCliente(data)">
+      <button class="btn btn-success" type="button" [mat-dialog-close]="data" (click)="insertarCliente()">
         Agregar
         <i class="material-icons" style="margin-left: 20px;">person_add</i>
       </button>

@@ -24,6 +24,8 @@ import { updatePayment } from './endpoints/updatePayment';
 import { selectClothingsByOrder } from './endpoints/selectClothingsByOrder';
 import { selectNextClothingNumber } from './endpoints/selectNextClothingNumber';
 import { selectClothesTypes } from './endpoints/selectClothesTypes';
+import { selectNextCustomerId } from './endpoints/selectNextCustomerId';
+import { insertClothing } from './endpoints/insertClothing';
 
 var express = require('express');
 
@@ -32,6 +34,7 @@ const app = express();
 
 app.use(deleteCustomer);
 app.use(deleteMaterial);
+app.use(insertClothing);
 app.use(insertCustomers);
 app.use(insertMaterialToInventory);
 app.use(insertPayment);
@@ -45,6 +48,7 @@ app.use(selectMaterialsCategories);
 app.use(selectMaterialsInventory);
 app.use(selectMissingMaterialsAllOrders);
 app.use(selectNextClothingNumber);
+app.use(selectNextCustomerId);
 app.use(selectNextMaterialId);
 app.use(selectNextOrderId)
 app.use(selectOrders);

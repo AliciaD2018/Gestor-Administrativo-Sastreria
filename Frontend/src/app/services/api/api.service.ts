@@ -3,6 +3,7 @@ import { AbonoI } from 'src/app/models/abono.interface';
 import { EmailI } from 'src/app/models/email.interface';
 import { MaterialI } from 'src/app/models/material.interface';
 import { OrdenI } from 'src/app/models/orden.interface';
+import { PrendaI } from 'src/app/models/prenda.interface';
 import { CustomerI } from '../../models/customer.interface';
 
 @Injectable({
@@ -394,6 +395,43 @@ export class ApiService {
     };
 
     return fetch(this.url + `/api/insertorder?idCliente=${orden.IdCliente}&fechaInicio=${orden.FechaInicio}`,
+      requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  /**********************************************************************************************************************************************/
+  async selectNextCustomerId() {
+    // console.clear();
+
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectnextcustomerid`, requestOptions);
+    let id = await respuesta.json();
+    return id['idsiguientecliente'][0]; // El nombre 'idsiguientecliente' se define en el end point del API
+  }
+
+  /**********************************************************************************************************************************************/
+  async insertClothing(prenda: PrendaI) {
+    // console.clear();
+
+    this.myHeaders.append("Content-Type", "application/json");
+
+    // Generado con postman
+    var requestOptions = {
+      method: 'POST',
+      headers: this.myHeaders,
+    };
+
+    return fetch(this.url + `/api/insertclothing?idOrden=${prenda.IdOrden}&numeroPrenda=${prenda.NumeroPrenda}` +
+      `&idTipoPrenda=${prenda.IdTipoPrenda}&precioTrabajo=${prenda.Precio}&cantidadPrendas=${prenda.Cantidad}` +
+      `&fechaEncargo=${prenda.FechaEncargo}&fechaEntrega=${prenda.FechaEntrega}&descripcionTrabajo=${prenda.Descripciones}`,
       requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
