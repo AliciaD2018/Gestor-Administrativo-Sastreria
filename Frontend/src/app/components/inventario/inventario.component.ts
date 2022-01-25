@@ -165,7 +165,9 @@ export class InventarioComponent implements OnInit {
   openDialogDeleteMaterial(j: number): void {
     let material = this.inventario[j];
     let atributos: AdvertenciaI;
-    atributos = {Pregunta: "¿Seguro que desea eliminar este material?", Dato: material.Codigo + ' - ' + material.Descripcion, IdDato: material.IdMaterial, Orden: 1};
+    atributos = { Titulo: 'Advertencia', Pregunta: "¿Seguro que desea eliminar este material?",
+                  Dato: material.Codigo + ' - ' + material.Descripcion, IdDato: material.IdMaterial,
+                  Orden: 1, Boton1: 'Cancelar', Boton2: 'Borrar', Icono0: '', Icono1: '', Icono2: ''};
 
     const dialogRef = this.dialog.open(PopupAdvertenciaComponent, {
       width: '500px',

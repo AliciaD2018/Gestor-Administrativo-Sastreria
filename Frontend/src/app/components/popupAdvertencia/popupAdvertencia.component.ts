@@ -19,6 +19,19 @@ export class PopupAdvertenciaComponent implements OnInit {
   ngOnInit() {
     (<HTMLLabelElement>document.getElementById('pregunta')).innerText = this.data.Pregunta;
     (<HTMLLabelElement>document.getElementById('dato')).innerText = this.data.Dato;
+    (<HTMLLabelElement>document.getElementById('titulo')).innerText = this.data.Titulo;
+    let $boton1 = (<HTMLButtonElement>document.getElementById('boton1'));
+    if (this.data.Boton1 == '') {
+      $boton1.hidden;
+    } else {
+      $boton1.innerText = this.data.Boton1;
+    }
+    let $boton2 = (<HTMLButtonElement>document.getElementById('boton2'));
+    if (this.data.Boton1 == '') {
+      $boton2.hidden;
+    } else {
+      $boton2.innerText = this.data.Boton2;
+    }
   }
 
   onCancelClick(): void {

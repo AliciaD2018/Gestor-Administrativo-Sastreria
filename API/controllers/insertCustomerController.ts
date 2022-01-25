@@ -21,7 +21,7 @@ async function uspInsertCustomer(Cedula: string, NombreCompleto: string,
                                                ${Telefono1}, \'${TipoTelefono1}\', \'${NotasTelefono1}\',
                                                ${Telefono2}, \'${TipoTelefono2}\', \'${NotasTelefono2}\';`;
 
-        console.log(strQuery);
+        // console.log(strQuery);
 
         // Executes string query
         await request.query(strQuery);

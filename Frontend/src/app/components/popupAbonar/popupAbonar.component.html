@@ -1,4 +1,6 @@
-<h1 mat-dialog-title>Registrar Abono  nuevo</h1>
+<h1 mat-dialog-title>
+  <label id="titulo">Abonar a la orden: </label>
+</h1>
 
 <div mat-dialog-content style="height: 420px;">
 
@@ -7,13 +9,13 @@
     <!-- Fecha de registro -->
     <div style="margin-right: 20px;">
       <label>Fecha de registro:</label><br>
-      <input readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.Fecha" -->
+      <input matInput [(ngModel)]="data.FechaAbono" readonly style="height: 35px;" class="form-control" type="text">
     </div>
 
     <!-- Monto -->
     <div style="margin-right: 20px;">
       <label>Monto Abono:</label><br>
-      <input   style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.MontoAbono" -->
+      <input (change)="calcularNuevoSaldo($event)" matInput [(ngModel)]="data.MontoAbono" min="0" style="height: 35px;" class="form-control" type="number">
     </div>
 
   </div>
@@ -22,12 +24,12 @@
   <div class="wrapper_a" style="margin-top: 20px;">
     <div style="margin-right: 20px;">
       <label>Saldo Anterior:</label><br>
-      <input  readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.SaldoAnterior" -->
+      <input matInput [(ngModel)]="data.SaldoAnterior" readonly style="height: 35px;" class="form-control" type="number">
     </div>
 
     <div style="margin-right: 20px;">
-      <label>NuevoSaldo:</label><br>
-      <input readonly style="height: 35px;" class="form-control" type="tel"> <!-- matInput [(ngModel)]="data.NuevoSaldo" -->
+      <label>Nuevo Saldo:</label><br>
+      <input matInput [(ngModel)]="data.NuevoSaldo" readonly style="height: 35px;" class="form-control" type="text">
     </div>
 
   </div>

@@ -1,4 +1,3 @@
-import console from "console";
 import { config } from "../config";
 
 var sql = require("mssql");
@@ -19,7 +18,7 @@ async function uspInsertMaterialToInventory(Codigo: string, IdCategoriaMaterial:
                                                           ${Cantidad}, ${IdUnidadMedida}, ${PrecioCompra},
                                                           ${PrecioVenta}, \'${FechaRegistro}\';`;
 
-        console.log(strQuery);
+        // console.log(strQuery);
         
         // Executes string query
         let response = await request.query(strQuery);

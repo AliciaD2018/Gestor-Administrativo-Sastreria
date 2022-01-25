@@ -18,6 +18,9 @@ import { deleteMaterial } from './endpoints/deleteMaterial';
 import { updateMaterialInventory } from './endpoints/updateMaterialInventory';
 import { insertMaterialToInventory } from './endpoints/insertMaterialToInventory';
 import { selectNextMaterialId } from './endpoints/selectNextMaterialId';
+import { selectBalance } from './endpoints/selectBalance';
+import { insertPayment } from './endpoints/insertPayment';
+import { updatePayment } from './endpoints/updatePayment';
 
 var express = require('express');
 
@@ -28,8 +31,10 @@ app.use(deleteCustomer);
 app.use(deleteMaterial);
 app.use(insertCustomers);
 app.use(insertMaterialToInventory);
+app.use(insertPayment);
 app.use(selectAllCustomers);
 app.use(selectAllOrders);
+app.use(selectBalance)
 app.use(selectCustomer);
 app.use(selectMaterialsCategories);
 app.use(selectMaterialsInventory);
@@ -44,6 +49,7 @@ app.use(selectUnits);
 app.use(sendEmail);
 app.use(updateCustomer);
 app.use(updateMaterialInventory);
+app.use(updatePayment);
 
 
 app.listen(PORT,()=>{

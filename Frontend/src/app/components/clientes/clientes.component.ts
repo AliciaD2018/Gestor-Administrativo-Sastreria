@@ -166,7 +166,9 @@ export class ClientesComponent {
   openDialogDeleteCustomer(j: number): void {
     let cliente = this.clientes[j];
     let atributos: AdvertenciaI;
-    atributos = {Pregunta: "¿Seguro que desea eliminar este cliente?", Dato: cliente.NombreCompleto, IdDato: cliente.Id, Orden: 0};
+    atributos = { Titulo: 'Advertencia', Pregunta: "¿Seguro que desea eliminar este cliente?",
+                  Dato: cliente.NombreCompleto, IdDato: cliente.Id, Orden: 0, Boton1: 'Cancelar', Boton2: 'Borrar',
+                  Icono0: '', Icono1: '', Icono2: '' };
 
     const dialogRef = this.dialog.open(PopupAdvertenciaComponent, {
       width: '500px',

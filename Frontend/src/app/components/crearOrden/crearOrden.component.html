@@ -149,8 +149,8 @@
           <div>
             <label style="margin-left: 20px;"> Saldo Inicial: </label>
           </div>
-          <div>
-            <input id="saldoInicial" style="margin-left: 10px;" type="number" readonly placeholder="7000" value="">
+          <div>     <!-- Debe usarse [ngModelOptions]="{standalone: true}" para que no de errores [(ngModel)] -->
+            <input matInput [(ngModel)]="abono.CostoTotal" [ngModelOptions]="{standalone: true}" id="saldoInicial" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
           </div>
         </div>
 
@@ -158,8 +158,8 @@
           <div>
             <label style="margin-left: 20px;"> Total abonado: </label>
           </div>
-          <div>
-            <input id="totalAbonado" style="margin-left: 10px;" type="number" readonly placeholder="3000" value="">
+          <div>     <!-- Debe usarse [ngModelOptions]="{standalone: true}" para que no de errores [(ngModel)] -->
+            <input matInput [(ngModel)]="abono.TotalAbonado" [ngModelOptions]="{standalone: true}" id="totalAbonado" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
           </div>
         </div>
 
@@ -167,8 +167,8 @@
           <div>
             <label style="margin-left: 20px;"> Saldo actual:</label>
           </div>
-          <div>
-            <input id="saldoActual" style="margin-left: 10px;" type="number" readonly placeholder="4000" value="">
+          <div>      <!-- Debe usarse [ngModelOptions]="{standalone: true}" para que no de errores [(ngModel)] -->
+            <input matInput [(ngModel)]="abono.NuevoSaldo" [ngModelOptions]="{standalone: true}" id="saldoActual" style="margin-left: 10px;" type="number" readonly placeholder="Sin registros" value="">
           </div>
         </div>
 
@@ -177,7 +177,7 @@
 
       <!-- Tabla Abonos -->
       <div class="scrollbar_h450">
-        <table mat-table [dataSource]="datosAbonos" class="mat-elevation-z8" #tabla2>
+        <table mat-table [dataSource]="abonos" class="mat-elevation-z8" #tabla2>
 
           <ng-container matColumnDef="fecha">
             <th mat-header-cell *matHeaderCellDef> Fecha </th>
@@ -279,7 +279,7 @@
 
       <!-- Tabla prendas -->
       <div class="scrollbar_h450">
-        <table mat-table [dataSource]="datosPrendas" class="mat-elevation-z8" #tabla1>
+        <table mat-table [dataSource]="prendas" class="mat-elevation-z8" #tabla1>
 
           <ng-container matColumnDef="numeroOrden">
             <th mat-header-cell *matHeaderCellDef> Nº </th>
@@ -350,7 +350,7 @@
 
       <!-- Tabla materiales -->
       <div class="scrollbar_h350">
-        <table mat-table [dataSource]="datosMateriales" class="mat-elevation-z8" #tabla1>
+        <table mat-table [dataSource]="materiales" class="mat-elevation-z8" #tabla1>
 
           <ng-container matColumnDef="codigo">
             <th mat-header-cell *matHeaderCellDef> Codigo </th>

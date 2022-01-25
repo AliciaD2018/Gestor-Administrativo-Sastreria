@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AbonoI } from 'src/app/models/abono.interface';
 import { EmailI } from 'src/app/models/email.interface';
 import { MaterialI } from 'src/app/models/material.interface';
 import { CustomerI } from '../../models/customer.interface';
@@ -290,6 +291,61 @@ export class ApiService {
     let respuesta = await fetch(this.url + `/api/selectnextmaterialid`, requestOptions);
     let id = await respuesta.json();
     return id['idsiguientematerial'][0]; // Este nombre se define en el end point del API
+  }
+
+  /**********************************************************************************************************************************************/
+  async selectBalance(idOrden: string) {
+    // console.clear();
+    console.log("Id orden:", idOrden);
+    this.myHeaders.append('Content-Type', 'application/json');
+
+    var requestOptions = {
+      method: 'GET',
+      headers: this.myHeaders,
+    };
+
+    let respuesta = await fetch(this.url + `/api/selectbalance?idOrden=${idOrden}`, requestOptions);
+    let balance = await respuesta.json();
+    return balance['balance'][0]; // El nombre 'balace' se define en el end point del API
+  }
+
+  /**********************************************************************************************************************************************/
+  async insertPayment(abono: AbonoI) {
+    // console.clear();
+
+    this.myHeaders.append("Content-Type", "application/json");
+
+    // Generado con postman
+    var requestOptions = {
+      method: 'POST',
+      headers: this.myHeaders,
+    };
+
+    return fetch(this.url + `/api/insertcustomer?idOrden=${abono.IdOrden}&saldoAnterior=${abono.SaldoAnterior}` +
+      `&montoAbono=${abono.MontoAbono}&nuevoSaldo=${abono.NuevoSaldo}&anotaciones=${abono.Anotaciones}` +
+      `&fechaAbono=${abono.FechaAbono}`,
+      requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+
+  /**********************************************************************************************************************************************/
+  async updatePayment(abono: AbonoI) {
+    // console.clear();
+
+    this.myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+      method: 'PUT',
+      headers: this.myHeaders,
+    };
+
+    return fetch(this.url + `/api/updatematerialinventory?idAbono=${abono.IdAbano}&anotaciones=${abono.Anotaciones}`,
+      requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
 
 } // ApiService

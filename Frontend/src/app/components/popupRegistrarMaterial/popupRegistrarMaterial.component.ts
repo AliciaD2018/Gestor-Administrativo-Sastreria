@@ -37,6 +37,7 @@ export class PopupRegistrarMaterialComponent implements OnInit {
     let fecha = dia + '/' + mes + '/' + year;
     this.data.FechaRegistro = fecha;
   }
+  
   /**
    * Agrega las categorías de los materiales en el select de la vista
    * */
