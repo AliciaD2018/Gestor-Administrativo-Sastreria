@@ -18,7 +18,7 @@ async function uspInsertClothing(IdOrden: string, NumeroPrenda: string, IdTipoPr
                                                ${PrecioTrabajo}, ${CantidadPrendas}, \'${FechaEncargo}\',
                                                \'${FechaEntrega}\', \'${DescripcionTrabajo}\';`;
 
-        // console.log(strQuery);
+        console.log(strQuery);
 
         // Executes string query
         await request.query(strQuery);

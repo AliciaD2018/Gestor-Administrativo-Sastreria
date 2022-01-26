@@ -98,6 +98,10 @@ export class PopupRegistrarPrendasComponent implements OnInit {
     // Asignar al material los atributos faltantes
     prenda.IdTipoPrenda = IdTipo;
     prenda.TipoPrenda = Tipo;
+    // let fecha = (<HTMLInputElement>document.getElementById('fechaEntrega')).innerText;
+
+    // console.log("***Fecha entrega:", prenda.FechaEntrega);
+    // console.log("***Prenda:", prenda);
 
   } // insertarMaterialAInventario
 

@@ -5,7 +5,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { Subject } from 'rxjs';
-import { isNumericLiteral } from 'typescript';
+import $ from "jquery";
 
 @Component({
   selector: 'app-calendario',
@@ -44,7 +44,6 @@ export class CalendarioComponent implements OnInit {
 
   }
 
-
   imprimirEvento() {
     console.log(`2- Evento: ${JSON.stringify(this.events[0])}`);
   }
@@ -75,7 +74,9 @@ export class CalendarioComponent implements OnInit {
         let event = {
           title: `Orden ${order['IdOrden']}`,
           start: new Date(year, month, day, hora, minuto, segundo),
+          description: `${order['Descripcion']}`,
         }
+        console.log(event);
 
         this.eventosUp.push(event); //inserta los resultados en lista temporal
       }

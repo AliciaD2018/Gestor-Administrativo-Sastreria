@@ -67,8 +67,8 @@ export class OrdenesComponent implements OnInit {
 
         this.ordenes.push({
           IdOrden: order['IdOrden'], IdCliente: order['IdCliente'], NombreCliente: order['NombreCompleto'],
-          FechaInicio: order['FechaInicio'], IdEstadoOrden: order['IdEstadoOrden'], Comentarios: order['Comentarios'],
-          TotalPrendas: cantidad,PrendasEntregadas: order['PrendasEntregadas'], CostoTotal: order['CostoTotal']
+          FechaInicio: fecha, IdEstadoOrden: order['IdEstadoOrden'], Comentarios: order['Comentarios'],
+          TotalPrendas: cantidad, PrendasEntregadas: order['PrendasEntregadas'], CostoTotal: order['CostoTotal']
         });
         // console.log("-------------->",order);
       }

@@ -87,7 +87,6 @@ export class CrearOrdenComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(customer => {
       console.log('The dialog was closed');
-      console.log("Nuevo id: ", this.cliente.Id);
       this.orden.IdCliente = this.cliente.Id;
     });
   }
@@ -104,7 +103,7 @@ export class CrearOrdenComponent implements OnInit {
      * 0 = instanciación desde clientes.component.ts
      * 1 = instanciación desde crearOrden.component.ts
      */
-    
+
 
     const dialogRef = this.dialog.open(PopupRegistrarClienteComponent, {
       width: '900px',
@@ -141,19 +140,20 @@ export class CrearOrdenComponent implements OnInit {
     });
 
     // Sí la orden tiene saldo se muestra la venta de abono nuevo
-    if (parseInt(abono.SaldoAnterior) > 0 || this.prendas.length > 0) {
-      const dialogRef = this.dialog.open(PopupAbonarComponent, {
-        width: '900px',
-        data: abono,
-      });
+    const dialogRef = this.dialog.open(PopupAbonarComponent, {
+      width: '900px',
+      data: abono,
+    });
 
-      dialogRef.afterClosed().subscribe(resultado => {
-        console.log('The dialog was closed');
-        if (abono.NuevoSaldo == 'Abono supera monto adeudado!') {
-          abono.NuevoSaldo = '0';
-          abono.MontoAbono = '0';
-        }
-      });
+    dialogRef.afterClosed().subscribe(resultado => {
+      console.log('The dialog was closed');
+      if (abono.NuevoSaldo == 'Abono supera monto adeudado!') {
+        abono.NuevoSaldo = '0';
+        abono.MontoAbono = '0';
+      }
+    });
+    if (parseInt(abono.SaldoAnterior) > 0 || this.prendas.length > 0) {
+      
     } else { // Sí la orden no tiene saldos, se muestra un mensaje
       let atributos: AdvertenciaI;
       atributos = {
@@ -201,6 +201,12 @@ export class CrearOrdenComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(prenda => {
       console.log('The dialog was closed');
+      let year = prenda.FechaEntrega.toString().substring(0, 4);
+      let mes = prenda.FechaEntrega.toString().substring(5, 7);
+      let dia = prenda.FechaEntrega.toString().substring(8);
+      let fecha = dia + '/' + mes + '/' + year;
+      prenda.FechaEntrega = fecha;
+      console.log("Fecha convertida: ", prenda.FechaEntrega);
       this.prendas.push(prenda);
     });
   } // openDialogCustomerDatails
@@ -227,21 +233,22 @@ export class CrearOrdenComponent implements OnInit {
     });
   } // openDialogAddMaterial
 
-  insertarOrden() {
+  async insertarOrden() {
     // Se inserta la orden nueva
-    this.api.insertOrder(this.orden);
+    console.log("Orden:", this.orden);
+    await this.api.insertOrder(this.orden);
 
-    // Se insertan las prendas
-    for (var item of this.prendas) {
-      console.log(item);
-      this.api.insertClothing(item);
-    }
+    // // Se insertan las prendas
+    // for (var item of this.prendas) {
+    //   console.log("Prenda:", item);
+    //   await this.api.insertClothing(item);
+    // }
 
-    // Se insertan los abonos
-    for (var elem of this.abonos) {
-      console.log(elem);
-      this.api.insertPayment(elem);
-    }
+    // // Se insertan los abonos
+    // for (var elem of this.abonos) {
+    //   console.log(elem);
+    //   await this.api.insertPayment(elem);
+    // }
   }
 
 } // CrearOrdenComponent

@@ -323,6 +323,8 @@ export class ApiService {
       headers: this.myHeaders,
     };
 
+    console.log(abono);
+
     return fetch(this.url + `/api/insertcustomer?idOrden=${abono.IdOrden}&saldoAnterior=${abono.SaldoAnterior}` +
       `&montoAbono=${abono.MontoAbono}&nuevoSaldo=${abono.NuevoSaldo}&anotaciones=${abono.Anotaciones}` +
       `&fechaAbono=${abono.FechaAbono}`,
